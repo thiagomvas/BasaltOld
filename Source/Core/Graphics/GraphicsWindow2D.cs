@@ -2,6 +2,7 @@
 using GameEngineProject.Source.Entities;
 using Raylib_cs;
 using System.Numerics;
+using static Raylib_cs.Raylib;
 
 namespace GameEngineProject.Source.Core.Graphics
 {
@@ -12,44 +13,68 @@ namespace GameEngineProject.Source.Core.Graphics
         public static void Init(int Width = -1, int Height = -1)
         {
 
-            Raylib.SetConfigFlags(ConfigFlags.FLAG_WINDOW_RESIZABLE);
-            Raylib.SetConfigFlags(ConfigFlags.FLAG_WINDOW_ALWAYS_RUN);
-            Raylib.SetConfigFlags(ConfigFlags.FLAG_WINDOW_MAXIMIZED);
+            SetConfigFlags(ConfigFlags.FLAG_WINDOW_RESIZABLE);
+            SetConfigFlags(ConfigFlags.FLAG_WINDOW_ALWAYS_RUN);
+            SetConfigFlags(ConfigFlags.FLAG_WINDOW_MAXIMIZED);
 
-            Raylib.InitWindow(Width, Height, "New Game");
+            InitWindow(Width, Height, "New Game");
 
-            Raylib.SetTargetFPS(60);
+            // 2D Camera used on the game
+            Camera2D camera = new Camera2D();
+            camera.rotation = 0.0f;
+            camera.zoom = 1.0f;
 
-            while(!Raylib.WindowShouldClose())
+
+            SetTargetFPS(60);
+
+            while (!WindowShouldClose())
             {
-                Raylib.BeginDrawing();
-                Raylib.ClearBackground(BackgroundColor);
+                if (IsKeyDown(KeyboardKey.KEY_RIGHT)) camera.target.X += 5;
+                if (IsKeyDown(KeyboardKey.KEY_LEFT)) camera.target.X -= 5;
+                if (IsKeyDown(KeyboardKey.KEY_DOWN)) camera.target.Y += 5;
+                if (IsKeyDown(KeyboardKey.KEY_UP)) camera.target.Y -= 5;
 
-                int i = 0;
-                foreach(var pair in Globals.AllComponentsOnScene)
-                {
-                    Raylib.DrawText($"{pair.Key} : {pair.Value.Count}", 12, 30 + 15 * i, 20, FontColor);
-                    i++;
-                }
+                BeginDrawing();
+                ClearBackground(BackgroundColor);
 
-                int j = 0;
-                foreach(var obj in Globals.GameObjectsOnScene)
-                {
-                    obj.transform.Position = new Vector3((float) Math.Sin(Raylib.GetTime()*1)*100 + 400, 400 + j*100, 0);
-                    if (obj.TryGetComponent<Renderer>(out Renderer rend)) rend.Render();
-                    j++;
-                }
+                BeginMode2D(camera); // Setting the camera view | Anything drawn inside Mode2D will be affected by the camera's POV
+                DrawWorldSpace();
+                EndMode2D();
 
-                if(Raylib.IsKeyPressed(KeyboardKey.KEY_A))
+                DrawUI(); // Anything outside Mode2D will always be on screen
+
+                EndDrawing();
+
+                if (IsKeyPressed(KeyboardKey.KEY_A))
                 {
                     var obj = new GameObject();
                     obj.AddComponent<Renderer>();
                     Globals.Instantiate(obj);
                 }
+            }
 
-                Raylib.DrawText($"{Globals.GameObjectsOnScene.Count} - {Globals.AllComponentsOnScene.Count} - {DateTime.Now}", 12, 12, 20, FontColor);
+        }
 
-                Raylib.EndDrawing();
+        private static void DrawUI()
+        {
+            int i = 0;
+            foreach (var pair in Globals.AllComponentsOnScene)
+            {
+                DrawText($"{pair.Key} : {pair.Value.Count}", 12, 30 + 15 * i, 20, FontColor);
+                i++;
+            }
+
+        }
+
+        private static void DrawWorldSpace()
+        {
+            DrawRectangle(100, 100, 200, 200, Color.RED);
+            int j = 0;
+            foreach (var obj in Globals.GameObjectsOnScene)
+            {
+                obj.transform.Position = new Vector3((float)Math.Sin(GetTime() * 1) * 100 + 400, 400 + j * 100, 0);
+                if (obj.TryGetComponent<Renderer>(out Renderer rend)) rend.Render();
+                j++;
             }
         }
     }

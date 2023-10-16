@@ -1,12 +1,7 @@
 ﻿using GameEngine.Source.Attributes;
 using GameEngineProject.Source.Components;
 using GameEngineProject.Source.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameEngineProject.Source.Entities
 {
