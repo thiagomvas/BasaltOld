@@ -1,4 +1,5 @@
-﻿using GameEngineProject.Source.Entities;
+﻿using GameEngineProject.Source.Core.Types;
+using GameEngineProject.Source.Entities;
 using GameEngineProject.Source.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,18 @@ namespace GameEngineProject.Source.Components
         /// </summary>
         public Quaternion Rotation { get; set; }
 
+        /// <summary>
+        /// All the children of this transform. Children get moved and rotated with a pivot on this object's Position and Rotation.
+        /// </summary>
+        public List<Transform> Children { get; private set; } = new();
+
+        /// <summary>
+        /// The GameObject that owns this component.
+        /// </summary>
+        public GameObject parent;
+
+        public event EventHandler<TransformPositionUpdatedEventArgs> OnPositionChanged;
+
         #region Constructors
         public Transform()
         {
@@ -40,12 +53,52 @@ namespace GameEngineProject.Source.Components
 
         public void Initialize(GameObject gameObject)
         {
-            throw new NotImplementedException();
+            parent = gameObject;
         }
 
         public void Update(float deltaTime)
         {
-            throw new NotImplementedException();
+
         }
+
+        /// <summary>
+        /// Moves the transform and all it's children by an amount in each axis
+        /// </summary>
+        /// <param name="units">The amount to move in each axis</param>
+        public void Move(Vector3 units)
+        {
+            foreach(Transform t in Children)
+                t.Move(units);
+
+            Position += units;
+            OnPositionChanged?.Invoke(this, new TransformPositionUpdatedEventArgs(Position));
+        }
+
+        /// <summary>
+        /// Moves the transform and all it's chidren to a point
+        /// </summary>
+        /// <param name="point">The point to set the position as</param>
+        public void MoveTo(Vector3 point)
+        {
+            foreach(Transform t in Children)
+            {
+                Vector3 offset = t.Position - Position;
+                t.MoveTo(point + offset);
+            }
+            Position = point;
+            OnPositionChanged?.Invoke(this, new TransformPositionUpdatedEventArgs(Position));
+        }
+
+        /// <summary>
+        /// Adds a children to this transform
+        /// </summary>
+        /// <param name="obj">The game object to set as children</param>
+        public void AddChildren(GameObject obj) => Children.Add(obj.transform);
+
+        /// <summary>
+        /// Adds a children to this transform
+        /// </summary>
+        /// <param name="transform">The transform to set as children</param>
+        public void AddChildren(Transform transform) => Children.Add(transform);
     }
 }

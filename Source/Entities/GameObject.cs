@@ -1,5 +1,6 @@
 ﻿using GameEngine.Source.Attributes;
 using GameEngineProject.Source.Components;
+using GameEngineProject.Source.Core.Graphics;
 using GameEngineProject.Source.Interfaces;
 using System.Numerics;
 
@@ -18,6 +19,7 @@ namespace GameEngineProject.Source.Entities
         /// All the components currently included in this object
         /// </summary>
         public List<IComponent> Components { get; private set; } = new();
+        public List<GameObject> Children { get; private set; } = new();
 
         #region Constructors
         public GameObject()
@@ -33,6 +35,12 @@ namespace GameEngineProject.Source.Entities
         }
 
         #endregion
+
+        public void AddChildren(GameObject obj)
+        {
+            Children.Add(obj);
+            transform.AddChildren(obj);
+        }
 
         /// <summary>
         /// Adds a component of type T to this object

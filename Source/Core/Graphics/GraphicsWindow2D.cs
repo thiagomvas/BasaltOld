@@ -10,7 +10,8 @@ namespace GameEngineProject.Source.Core.Graphics
     {
         public static Color BackgroundColor = Color.BLACK;
         public static Color FontColor = Color.WHITE;
-        public static void Init(int Width = -1, int Height = -1)
+        public static event EventHandler OnScreenRedraw;
+        public static void Init(int Width = -1, int Height = -1, Camera2DObject cameraObject = null)
         {
 
             SetConfigFlags(ConfigFlags.FLAG_WINDOW_RESIZABLE);
@@ -34,23 +35,19 @@ namespace GameEngineProject.Source.Core.Graphics
                 if (IsKeyDown(KeyboardKey.KEY_DOWN)) camera.target.Y += 5;
                 if (IsKeyDown(KeyboardKey.KEY_UP)) camera.target.Y -= 5;
 
+                OnScreenRedraw?.Invoke(null, EventArgs.Empty);
+
                 BeginDrawing();
                 ClearBackground(BackgroundColor);
 
-                BeginMode2D(camera); // Setting the camera view | Anything drawn inside Mode2D will be affected by the camera's POV
-                DrawWorldSpace();
-                EndMode2D();
+                    BeginMode2D(cameraObject is not null ? cameraObject.camera : camera); // Setting the camera view | Anything drawn inside Mode2D will be affected by the camera's POV
+                    DrawWorldSpace();
+                    EndMode2D();
 
                 DrawUI(); // Anything outside Mode2D will always be on screen
 
                 EndDrawing();
 
-                if (IsKeyPressed(KeyboardKey.KEY_A))
-                {
-                    var obj = new GameObject();
-                    obj.AddComponent<Renderer2D>();
-                    Globals.Instantiate(obj);
-                }
             }
 
         }
@@ -58,9 +55,15 @@ namespace GameEngineProject.Source.Core.Graphics
         private static void DrawUI()
         {
             int i = 0;
-            foreach (var pair in Globals.AllComponentsOnScene)
+            //foreach (var pair in Globals.AllComponentsOnScene)
+            //{
+            //    DrawText($"{pair.Key} : {pair.Value.Count}", 12, 30 + 15 * i, 20, FontColor);
+            //    i++;
+            //}
+
+            foreach(var obj in Globals.GameObjectsOnScene)
             {
-                DrawText($"{pair.Key} : {pair.Value.Count}", 12, 30 + 15 * i, 20, FontColor);
+                DrawText($"Position of object #{i} {obj.transform.Position}", 12, 30 + 15 * i, 20, FontColor);
                 i++;
             }
 
@@ -72,7 +75,6 @@ namespace GameEngineProject.Source.Core.Graphics
             int j = 0;
             foreach (var obj in Globals.GameObjectsOnScene)
             {
-                obj.transform.Position = new Vector3((float)Math.Sin(GetTime() * 1) * 100 + 400, 400 + j * 100, 0);
                 if (obj.TryGetComponent<Renderer2D>(out Renderer2D rend)) rend.Render();
                 j++;
             }

@@ -13,12 +13,12 @@ namespace GameEngineProject.Source.Components
         /// The parent's transform.
         /// </summary>
         public Transform transform { get; private set; }
-        public void Initialize(GameObject gameObject)
+        public virtual void Initialize(GameObject gameObject)
         {
             transform = gameObject.transform;
         }
 
-        public void Update(float deltaTime)
+        public virtual void Update(float deltaTime)
         {
             throw new NotImplementedException();
         }
