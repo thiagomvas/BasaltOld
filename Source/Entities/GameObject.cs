@@ -33,6 +33,20 @@ namespace GameEngineProject.Source.Entities
             Components.Add(transform);
             Console.WriteLine(Components.Count);
         }
+        
+        public GameObject(Transform transform, List<IComponent> components, List<GameObject> children)
+        {
+            this.transform = transform;
+            this.Components = components;
+            this.Children = children;
+        }
+
+        public GameObject(GameObject other)
+        {
+            transform = other.transform;
+            Components = new List<IComponent>(other.Components);
+            Children = new List<GameObject>(other.Children);
+        }
 
         #endregion
 

@@ -32,15 +32,31 @@ namespace GameEngineProject.Source.Components
         /// <summary>
         /// The GameObject that owns this component.
         /// </summary>
-        public GameObject parent;
+        public GameObject? parent;
 
-        public event EventHandler<TransformPositionUpdatedEventArgs> OnPositionChanged;
+        public event EventHandler<TransformPositionUpdatedEventArgs>? OnPositionChanged;
 
         #region Constructors
         public Transform()
         {
             Position = Vector3.Zero;
             Rotation = Quaternion.Identity;
+        }
+
+        public Transform(Vector3 position, Quaternion rotation, List<Transform> children, GameObject? parent = null)
+        {
+            Position = position;
+            Rotation = rotation;
+            Children = children;
+            this.parent = parent;
+        }
+
+        public Transform(Transform other)
+        {
+            this.Position = other.Position;
+            this.Rotation = other.Rotation;
+            this.parent = other.parent;
+            this.Children = new List<Transform>(other.Children);
         }
 
         public Transform(Vector3 position)
