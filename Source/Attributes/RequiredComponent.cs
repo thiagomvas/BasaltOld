@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace GameEngine.Source.Attributes
 {
+    /// <summary>
+    /// Determines which components should be included in the object for this component to work.
+    /// </summary>
     [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = true)]
     public class RequiredComponentsAttribute : Attribute
     {

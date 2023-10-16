@@ -5,10 +5,21 @@ using System.Numerics;
 
 namespace GameEngineProject.Source.Entities
 {
+    /// <summary>
+    /// The Object Class used by the entire engine. It represents any object and it's components that are in any world
+    /// </summary>
     public class GameObject
     {
+        /// <summary>
+        /// The object's transforms.
+        /// </summary>
         public Transform transform { get; private set; }
+        /// <summary>
+        /// All the components currently included in this object
+        /// </summary>
         public List<IComponent> Components { get; private set; } = new();
+
+        #region Constructors
         public GameObject()
         {
             transform = new Transform();
@@ -20,6 +31,14 @@ namespace GameEngineProject.Source.Entities
             Components.Add(transform);
             Console.WriteLine(Components.Count);
         }
+
+        #endregion
+
+        /// <summary>
+        /// Adds a component of type T to this object
+        /// </summary>
+        /// <typeparam name="T">The component type to be added</typeparam>
+        /// <returns>The reference to the component added</returns>
         public T AddComponent<T>() where T : IComponent, new()
         {
             T component = new();
@@ -44,7 +63,19 @@ namespace GameEngineProject.Source.Entities
             return component;
         }
 
+        /// <summary>
+        /// Gets the reference to the desired component in this object.
+        /// </summary>
+        /// <typeparam name="T">The component type</typeparam>
+        /// <returns>The reference to the component if it exists, null otherwise</returns>
         public T GetComponent<T>() where T : IComponent => Components.OfType<T>().FirstOrDefault();
+
+        /// <summary>
+        /// Checks if a component is in a Game Object, if it is, output a reference to it.
+        /// </summary>
+        /// <typeparam name="T">The component type</typeparam>
+        /// <param name="component">The output's reference</param>
+        /// <returns>true if the component is in the object, false otherwise</returns>
         public bool TryGetComponent<T>(out T component) where T : IComponent
         {
             component = Components.OfType<T>().FirstOrDefault();

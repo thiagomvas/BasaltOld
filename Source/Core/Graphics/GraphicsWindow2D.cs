@@ -48,7 +48,7 @@ namespace GameEngineProject.Source.Core.Graphics
                 if (IsKeyPressed(KeyboardKey.KEY_A))
                 {
                     var obj = new GameObject();
-                    obj.AddComponent<Renderer>();
+                    obj.AddComponent<Renderer2D>();
                     Globals.Instantiate(obj);
                 }
             }
@@ -73,7 +73,7 @@ namespace GameEngineProject.Source.Core.Graphics
             foreach (var obj in Globals.GameObjectsOnScene)
             {
                 obj.transform.Position = new Vector3((float)Math.Sin(GetTime() * 1) * 100 + 400, 400 + j * 100, 0);
-                if (obj.TryGetComponent<Renderer>(out Renderer rend)) rend.Render();
+                if (obj.TryGetComponent<Renderer2D>(out Renderer2D rend)) rend.Render();
                 j++;
             }
         }
