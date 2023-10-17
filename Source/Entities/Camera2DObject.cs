@@ -22,7 +22,7 @@ namespace GameEngineProject.Source.Entities
         }
         void UpdateCameraPosition(object? sender, TransformPositionUpdatedEventArgs e)
         {
-            camera.target = Conversions.XYFromVector3(e.NewPosition);
+            camera.target = Conversions.XYFromVector3(transform.Position);
         }
 
         public override void Destroy()

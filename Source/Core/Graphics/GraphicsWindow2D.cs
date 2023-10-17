@@ -31,7 +31,6 @@ namespace GameEngineProject.Source.Core.Graphics
             //Console.WriteLine(texture.width);
 
 
-            SetTargetFPS(60);
 
             while (!WindowShouldClose())
             {

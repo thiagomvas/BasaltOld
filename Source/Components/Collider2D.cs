@@ -41,6 +41,8 @@ namespace GameEngineProject.Source.Components
 
         }
 
+        public virtual void SolveCollision(Collider2D collided){}
+
         public virtual void InvokeOnCollision(GameObject collided) => OnCollision?.Invoke(this, new OnCollisionEnterEventArgs(collided));
     }
 }

@@ -14,6 +14,18 @@ namespace GameEngineProject.Source.Components
             if(other.TryGetComponent<CircleCollider>(out CircleCollider col) && dist < Radius + col.Radius)
             {
                 InvokeOnCollision(other);
+                SolveCollision(col);
+            }
+        }
+
+        public override void SolveCollision(Collider2D collided)
+        {
+            if(collided is CircleCollider)   
+            {
+                Vector3 dir = parent.transform.Position - collided.parent.transform.Position;
+                var delta = dir.Length();
+                parent.transform.Move( 0.01f * delta * Vector3.Normalize(dir));
+                collided.parent.transform.Move( -0.01f * delta * Vector3.Normalize(dir));
             }
         }
     }
