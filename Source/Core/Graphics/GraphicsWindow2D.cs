@@ -25,6 +25,11 @@ namespace GameEngineProject.Source.Core.Graphics
             camera.rotation = 0.0f;
             camera.zoom = 1.0f;
 
+            foreach (var obj in Globals.GameObjectsOnScene)
+                if (obj.TryGetComponent(out SpriteRenderer rend)) rend.texture = LoadTexture(rend.texturePath);
+
+            //Console.WriteLine(texture.width);
+
 
             SetTargetFPS(60);
 
@@ -75,7 +80,7 @@ namespace GameEngineProject.Source.Core.Graphics
             int j = 0;
             foreach (var obj in Globals.GameObjectsOnScene)
             {
-                if (obj.TryGetComponent<Renderer2D>(out Renderer2D rend)) rend.Render();
+                if (obj.TryGetComponent<SpriteRenderer>(out SpriteRenderer rend)) rend.Render();
                 j++;
             }
         }
