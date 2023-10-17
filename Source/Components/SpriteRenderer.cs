@@ -24,7 +24,7 @@ namespace GameEngineProject.Source.Components
         }
         public override void Render()
         {
-            if (texture != null) Raylib.DrawTexture(texture.Value, (int) transform.Position.X, (int)transform.Position.Y, Color.WHITE);
+            if (texture != null) Raylib.DrawTexture(texture.Value, (int) transform.Position.X - texture.Value.width/2, (int)transform.Position.Y - texture.Value.height/2, Color.WHITE);
             else Raylib.DrawCircle((int)transform.Position.X, (int)transform.Position.Y, 25, Color.BLUE);
         }
 
