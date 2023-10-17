@@ -1,7 +1,8 @@
 using GameEngineProject.Source.Core;
+using GameEngineProject.Source.Core.Graphics;
 using GameEngineProject.Source.Core.Types;
 using Raylib_cs;
-
+using System.Numerics;
 namespace GameEngineProject.Source.Entities
 {
     /// <summary>
@@ -24,6 +25,7 @@ namespace GameEngineProject.Source.Entities
         {
             camera.target = Conversions.XYFromVector3(transform.Position);
         }
+
 
         public override void Destroy()
         {

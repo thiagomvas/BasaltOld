@@ -13,6 +13,8 @@ namespace GameEngineProject.Source.Core
         {
             Camera2DObject camera = new Camera2DObject();
             GameObject obj = new GameObject(new Vector3(400, 400, 0));
+            camera.camera.target = Conversions.XYFromVector3(obj.transform.Position);
+            camera.transform.Position = obj.transform.Position;
             var rend = obj.AddComponent<SpriteRenderer>();
             obj.AddComponent<CircleCollider>();
             rend.texturePath =
