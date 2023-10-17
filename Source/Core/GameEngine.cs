@@ -15,14 +15,19 @@ namespace GameEngineProject.Source.Core
             Camera2DObject camera = new Camera2DObject();
             GameObject obj = new GameObject(new Vector3(400, 400, 0));
             var rend = obj.AddComponent<SpriteRenderer>();
+            obj.AddComponent<CircleCollider>();
             rend.texturePath = "C:\\Users\\Thiago\\source\\repos\\GameEngineProject\\Assets\\circleheadtest.png";
+            obj.AddChildren(camera);
             Instantiate(obj);
-            GameObject obj2 = new GameObject(new Vector3(430, 430, 0));
-            obj2.AddComponent<SpriteRenderer>();
-            obj2.AddChildren(obj);
-            obj2.AddChildren(camera);
-            Instantiate(obj2);
-            Player player = new Player(obj2);
+            Player player = new Player(obj);
+
+            GameObject obstacle = new GameObject(new Vector3(600, 600, 0));
+            obstacle.AddComponent<Renderer2D>();
+            var col = obstacle.AddComponent<CircleCollider>();
+            col.Radius = 25;
+            Instantiate(obstacle);
+
+
             GraphicsWindow2D.Init(800, 800, camera);
         }
     }

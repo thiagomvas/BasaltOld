@@ -27,7 +27,7 @@ namespace GameEngineProject.Source.Components
         /// <summary>
         /// The GameObject that owns this component.
         /// </summary>
-        public GameObject? parent;
+        public GameObject parent;
 
         public event EventHandler<TransformPositionUpdatedEventArgs>? OnPositionChanged;
 
