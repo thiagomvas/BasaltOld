@@ -111,5 +111,10 @@ namespace GameEngineProject.Source.Components
         /// </summary>
         /// <param name="transform">The transform to set as children</param>
         public void AddChildren(Transform transform) => Children.Add(transform);
+
+        public void Destroy()
+        {
+            foreach (Transform t in Children) t.Destroy();
+        }
     }
 }

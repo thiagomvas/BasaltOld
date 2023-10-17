@@ -1,5 +1,6 @@
 ﻿using GameEngine.Source.Attributes;
 using GameEngineProject.Source.Components;
+using GameEngineProject.Source.Core;
 using GameEngineProject.Source.Interfaces;
 using System.Numerics;
 
@@ -100,6 +101,12 @@ namespace GameEngineProject.Source.Entities
         {
             component = Components.OfType<T>().FirstOrDefault();
             return component != null;
+        }
+
+        public virtual void Destroy()
+        {
+            foreach (var component in Components) component.Destroy();
+            Globals.GameObjectsOnScene.Remove(this);
         }
     }
 
