@@ -30,7 +30,6 @@ namespace GameEngineProject.Source.Entities
         {
             transform = new Transform(position);
             Components.Add(transform);
-            Console.WriteLine(Components.Count);
         }
         
         public GameObject(Transform transform, List<IComponent> components, List<GameObject> children)

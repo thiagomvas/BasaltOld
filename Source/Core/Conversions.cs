@@ -2,7 +2,7 @@ using System.Numerics;
 
 namespace GameEngineProject.Source.Core
 {
-    public static class Utils
+    public static class Conversions
     {
         /// <summary>
         /// Converts a Vector3 into a Vector2 by removing the Z axis

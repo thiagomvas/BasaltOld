@@ -1,6 +1,6 @@
+using GameEngineProject.Source.Core;
 using GameEngineProject.Source.Core.Types;
 using Raylib_cs;
-using static GameEngineProject.Source.Core.Utils;
 
 namespace GameEngineProject.Source.Entities
 {
@@ -22,7 +22,7 @@ namespace GameEngineProject.Source.Entities
         }
         void UpdateCameraPosition(object? sender, TransformPositionUpdatedEventArgs e)
         {
-            camera.target = XYFromVector3(e.NewPosition);
+            camera.target = Conversions.XYFromVector3(e.NewPosition);
         }
     }
 }
