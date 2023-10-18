@@ -10,9 +10,11 @@ namespace GameEngineProject.Source.Core
 {
     public static class Engine
     {
+        public static Camera2D? Camera2D;
         public static void Setup()
         {
             Camera2DObject camera = new Camera2DObject();
+            Camera2D = camera.camera;
             GameObject obj = new GameObject(new Vector3(400, 400, 0));
             camera.camera.target = Conversions.XYFromVector3(obj.transform.Position);
             camera.transform.Position = obj.transform.Position;

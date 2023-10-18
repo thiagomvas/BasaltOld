@@ -116,5 +116,11 @@ namespace GameEngineProject.Source.Components
         {
             foreach (Transform t in Children) t.Destroy();
         }
+
+        public override string ToString()
+        {
+            string text = $"Transform\n  Position: {Position}\n  Rotation: {Rotation}";
+            return text;
+        }
     }
 }

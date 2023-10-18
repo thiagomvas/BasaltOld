@@ -56,6 +56,7 @@ namespace GameEngineProject.Source.Core.Graphics
                     EndMode2D();
 
                 DrawUI(); // Anything outside Mode2D will always be on screen
+                if (Debug.IsDebugEnabled) Debug.DrawDebugUI();
 
                 EndDrawing();
 
@@ -72,10 +73,15 @@ namespace GameEngineProject.Source.Core.Graphics
             //    i++;
             //}
 
-            foreach(var obj in Globals.GameObjectsOnScene)
+            //foreach(var obj in Globals.GameObjectsOnScene)
+            //{
+            //    DrawText($"Position of object #{i} {obj.transform.Position}", 12, 30 + 15 * i, 20, FontColor);
+            //    i++;
+            //}
+
+            if(Debug.IsDebugEnabled && Debug.SelectedObject != null)
             {
-                DrawText($"Position of object #{i} {obj.transform.Position}", 12, 30 + 15 * i, 20, FontColor);
-                i++;
+                DrawText(Debug.SelectedObject.ToString(), 12, 12, 20, FontColor);
             }
 
         }

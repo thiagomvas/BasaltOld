@@ -108,6 +108,15 @@ namespace GameEngineProject.Source.Entities
             foreach (var component in Components) component.Destroy();
             Globals.GameObjectsOnScene.Remove(this);
         }
+
+        public override string ToString()
+        {
+            string text = $"GameObject\n    Position: {transform.Position}\n    Rotation: {transform.Rotation}\n    Components:\n        ";
+            foreach (var component in Components)
+                text += "- " + component.GetType().Name + "\n        ";
+
+            return text;
+        }
     }
 
 }
