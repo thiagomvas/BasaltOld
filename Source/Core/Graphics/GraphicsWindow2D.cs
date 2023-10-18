@@ -1,4 +1,5 @@
 ﻿using GameEngineProject.Source.Components;
+using GameEngineProject.Source.Core.Utils;
 using GameEngineProject.Source.Entities;
 using Raylib_cs;
 using System.Numerics;
@@ -38,6 +39,10 @@ namespace GameEngineProject.Source.Core.Graphics
                 if (IsKeyDown(KeyboardKey.KEY_LEFT)) defaultCamera.target.X -= 5;
                 if (IsKeyDown(KeyboardKey.KEY_DOWN)) defaultCamera.target.Y += 5;
                 if (IsKeyDown(KeyboardKey.KEY_UP)) defaultCamera.target.Y -= 5;
+
+                if (IsKeyPressed(KeyboardKey.KEY_F1)) Debug.ToggleDebug(); // Temporary
+                if (Debug.IsDebugEnabled && IsMouseButtonPressed(MouseButton.MOUSE_BUTTON_LEFT))
+                    Debug.SelectedNearestGameObject(Conversions.XYToVector3(GetScreenToWorld2D(GetMousePosition(), cameraObject.camera)));
 
                 OnScreenRedraw?.Invoke(null, EventArgs.Empty);
                 
