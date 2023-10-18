@@ -15,7 +15,7 @@ namespace GameEngineProject.Source.Components
         public Collider2D() { }
         public void Destroy()
         {
-            throw new NotImplementedException();
+            GraphicsWindow2D.OnScreenRedraw -= CheckAllCollisions;
         }
 
         public void Initialize(GameObject gameObject)
