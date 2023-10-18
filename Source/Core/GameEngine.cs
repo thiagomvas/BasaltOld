@@ -1,5 +1,6 @@
 using GameEngineProject.Source.Components;
 using GameEngineProject.Source.Core.Graphics;
+using GameEngineProject.Source.Core.Utils;
 using GameEngineProject.Source.Entities;
 using Raylib_cs;
 using System.Numerics;
@@ -17,8 +18,7 @@ namespace GameEngineProject.Source.Core
             camera.transform.Position = obj.transform.Position;
             var rend = obj.AddComponent<SpriteRenderer>();
             obj.AddComponent<CircleCollider>();
-            rend.texturePath =
-                "C:\\Users\\lucii\\repos\\source\\GameEngine\\Assets\\circleheadtest.png";
+            rend.texturePath = Assets.GetAssetPath("circleheadtest.png");
             obj.AddChildren(camera);
             Instantiate(obj);
             Player player = new Player(obj);
