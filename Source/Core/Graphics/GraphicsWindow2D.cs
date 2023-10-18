@@ -26,6 +26,7 @@ namespace GameEngineProject.Source.Core.Graphics
             defaultCamera.rotation = 0.0f;
             defaultCamera.zoom = 1.0f;
 
+
             foreach (var obj in Globals.GameObjectsOnScene)
                 if (obj.TryGetComponent(out SpriteRenderer rend)) rend.texture = LoadTexture(rend.texturePath);
 
@@ -39,6 +40,7 @@ namespace GameEngineProject.Source.Core.Graphics
                 if (IsKeyDown(KeyboardKey.KEY_LEFT)) defaultCamera.target.X -= 5;
                 if (IsKeyDown(KeyboardKey.KEY_DOWN)) defaultCamera.target.Y += 5;
                 if (IsKeyDown(KeyboardKey.KEY_UP)) defaultCamera.target.Y -= 5;
+                Engine.Camera2D = cameraObject.camera;
 
                 if (IsKeyPressed(KeyboardKey.KEY_F1)) Debug.ToggleDebug(); // Temporary
                 if (Debug.IsDebugEnabled && IsMouseButtonPressed(MouseButton.MOUSE_BUTTON_LEFT))
@@ -48,6 +50,7 @@ namespace GameEngineProject.Source.Core.Graphics
                 
                 if(cameraObject is not null) cameraObject.camera.offset = new(Raylib.GetScreenWidth()/2, Raylib.GetScreenHeight()/2);
                 else defaultCamera.offset = new(Raylib.GetScreenWidth()/2, Raylib.GetScreenHeight()/2);
+
                 BeginDrawing();
                 ClearBackground(BackgroundColor);
 

@@ -20,6 +20,10 @@ namespace GameEngineProject.Source.Core.Utils
             if(SelectedObject != null)
             {
                 DrawText(SelectedObject.ToString(), 12, 12, 20, FontColor);
+
+                Vector2 topLeftScreenCornerRelativePos = Engine.Camera2D.Value.target - new Vector2((int)(GetScreenWidth()/2), (int)(GetScreenHeight()/2));
+                Vector2 finalPosition = Conversions.XYFromVector3(SelectedObject.transform.Position) - topLeftScreenCornerRelativePos;
+                DrawCircleLines((int)finalPosition.X, (int)finalPosition.Y, 25, Color.LIME);
             }
                 
         }
