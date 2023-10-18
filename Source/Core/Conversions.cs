@@ -10,5 +10,7 @@ namespace GameEngineProject.Source.Core
         /// <param name="vector">The vector to convert from</param>
         /// <returns></returns>
         public static Vector2 XYFromVector3(Vector3 vector) => new Vector2(vector.X, vector.Y);
+
+        public static Vector3 XYToVector3(Vector2 vector) => new Vector3(vector.X, vector.Y, 0);
     }
 }
