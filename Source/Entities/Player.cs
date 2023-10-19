@@ -3,6 +3,8 @@ using GameEngineProject.Source.Core.Graphics;
 using GameEngineProject.Source.Core.Utils;
 using Raylib_cs;
 using System.Numerics;
+using static GameEngineProject.Source.Core.Utils.VectorAndQuaternionMath;
+using static GameEngineProject.Source.Core.Utils.Conversions;
 
 namespace GameEngineProject.Source.Entities
 {
@@ -26,7 +28,10 @@ namespace GameEngineProject.Source.Entities
             if (Raylib.IsKeyDown(KeyboardKey.KEY_W)) gameObject.transform.Move(-Vector3.UnitY * MovementSpeed * Raylib.GetFrameTime());
             if (Raylib.IsKeyDown(KeyboardKey.KEY_S)) gameObject.transform.Move(Vector3.UnitY * MovementSpeed * Raylib.GetFrameTime());
             if (Raylib.IsKeyDown(KeyboardKey.KEY_R)) gameObject.transform.MoveTo(Vector3.Zero);
-            gameObject.transform.Rotation = VectorAndQuaternionMath.LookAtRotation(gameObject.transform.Position, Conversions.XYToVector3(Raylib.GetMousePosition()));
+
+            Vector3 mouseCoordsOnWorld = XYToVector3(ScreenToWorldPosition(Raylib.GetMousePosition(), Engine.Camera2D.Value));
+
+            gameObject.transform.Rotation = LookAtRotation(gameObject.transform.Position, mouseCoordsOnWorld);
         }
     }
 }
