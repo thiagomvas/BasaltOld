@@ -5,6 +5,12 @@ namespace GameEngineProject.Source.Core.Utils
 {
     public static class VectorAndQuaternionMath
     {
+        /// <summary>
+        /// Returns the rotation from the origin if it was looking at a target
+        /// </summary>
+        /// <param name="origin">The origin coordinates</param>
+        /// <param name="target">The target's position to rotate towards</param>
+        /// <returns>A rotation representing the direction an object is looking at</returns>
         public static Quaternion LookAtRotation(Vector3 origin, Vector3 target)
         {
             Vector2 direction = Vector2.Normalize(Conversions.XYFromVector3(target) - Conversions.XYFromVector3(origin));
@@ -13,6 +19,11 @@ namespace GameEngineProject.Source.Core.Utils
             return rotation;
         }
 
+        /// <summary>
+        /// Gets the forward vector of a rotation.
+        /// </summary>
+        /// <param name="rotation">The rotation</param>
+        /// <returns>The forward vector</returns>
         public static Vector2 GetForwardVector(Quaternion rotation)
         {
             Vector2 forward = new Vector2(1, 0);

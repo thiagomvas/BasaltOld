@@ -7,7 +7,7 @@ using System.Numerics;
 namespace GameEngineProject.Source.Entities
 {
     /// <summary>
-    /// The Object Class used by the entire engine. It represents any object and it's components that are in any world
+    /// The Object Class used by the entire engine. It represents any object and it's components that are in any world.
     /// </summary>
     public class GameObject
     {
@@ -16,9 +16,12 @@ namespace GameEngineProject.Source.Entities
         /// </summary>
         public Transform transform { get; private set; }
         /// <summary>
-        /// All the components currently included in this object
+        /// All the components currently included in this object.
         /// </summary>
         public List<IComponent> Components { get; private set; } = new();
+        /// <summary>
+        /// All the children attached to this object.
+        /// </summary>
         public List<GameObject> Children { get; private set; } = new();
 
         #region Constructors
@@ -49,6 +52,10 @@ namespace GameEngineProject.Source.Entities
 
         #endregion
 
+        /// <summary>
+        /// Attaches a children to this object
+        /// </summary>
+        /// <param name="obj">The object to attach</param>
         public void AddChildren(GameObject obj)
         {
             Children.Add(obj);
@@ -103,6 +110,9 @@ namespace GameEngineProject.Source.Entities
             return component != null;
         }
 
+        /// <summary>
+        /// Destroys the game object and their components, unsubscribing from any events and disconnecting from everything.
+        /// </summary>
         public virtual void Destroy()
         {
             foreach (var component in Components) component.Destroy();

@@ -8,6 +8,9 @@ namespace GameEngineProject.Source.Entities
     /// </summary>
     public class Camera2DObject : GameObject
     {
+        /// <summary>
+        /// The actual Camera2D used for rendering.
+        /// </summary>
         public Camera2D camera = new();
 
         public Camera2DObject()
@@ -19,6 +22,9 @@ namespace GameEngineProject.Source.Entities
 
             transform.OnPositionChanged += UpdateCameraPosition;
         }
+        /// <summary>
+        /// Updates the camera's focus position
+        /// </summary>
         void UpdateCameraPosition(object? sender, TransformPositionUpdatedEventArgs e)
         {
             camera.target = Conversions.XYFromVector3(transform.Position);

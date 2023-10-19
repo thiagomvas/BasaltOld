@@ -9,8 +9,19 @@ namespace GameEngineProject.Source.Core.Graphics
 {
     public static class GraphicsWindow2D
     {
+        /// <summary>
+        /// Background color for the world.
+        /// </summary>
         public static Color BackgroundColor = Color.BLACK;
+
+        /// <summary>
+        /// Font color used on UI;
+        /// </summary>
         public static Color FontColor = Color.WHITE;
+
+        /// <summary>
+        /// Event called every frame.
+        /// </summary>
         public static event EventHandler OnScreenRedraw;
         public static void Init(int Width = -1, int Height = -1, Camera2DObject cameraObject = null)
         {
@@ -67,6 +78,10 @@ namespace GameEngineProject.Source.Core.Graphics
 
         }
 
+
+        /// <summary>
+        /// Draws all the UI;
+        /// </summary>
         private static void DrawUI()
         {
             int i = 0;
@@ -89,6 +104,9 @@ namespace GameEngineProject.Source.Core.Graphics
 
         }
 
+        /// <summary>
+        /// Draws all the GameObjects in the world.
+        /// </summary>
         private static void DrawWorldSpace()
         {
             DrawRectangle(100, 100, 200, 200, Color.RED);

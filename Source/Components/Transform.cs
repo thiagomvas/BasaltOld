@@ -2,6 +2,8 @@
 using GameEngineProject.Source.Entities;
 using GameEngineProject.Source.Interfaces;
 using System.Numerics;
+using static GameEngineProject.Source.Core.Utils.VectorAndQuaternionMath;
+using static GameEngineProject.Source.Core.Utils.Conversions;
 
 namespace GameEngineProject.Source.Components
 {
@@ -11,13 +13,18 @@ namespace GameEngineProject.Source.Components
     public class Transform : IComponent
     {
         /// <summary>
-        /// This object's current position
+        /// This object's current position.
         /// </summary>
         public Vector3 Position { get; set; }
         /// <summary>
-        /// This object's current rotation
+        /// This object's current rotation.
         /// </summary>
         public Quaternion Rotation { get; set; }
+
+        /// <summary>
+        /// Returns a direction vector representing the direction this object is looking at.
+        /// </summary>
+        public Vector3 Forward { get { return XYToVector3(GetForwardVector(Rotation)); } }
 
         /// <summary>
         /// All the children of this transform. Children get moved and rotated with a pivot on this object's Position and Rotation.
@@ -27,7 +34,7 @@ namespace GameEngineProject.Source.Components
         /// <summary>
         /// The GameObject that owns this component.
         /// </summary>
-        public GameObject parent;
+        public GameObject? parent;
 
         public event EventHandler<TransformPositionUpdatedEventArgs>? OnPositionChanged;
 

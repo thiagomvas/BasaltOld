@@ -19,7 +19,7 @@ namespace GameEngineProject.Source.Interfaces
         void Update(float deltaTime);
 
         /// <summary>
-        /// Called when a game object gets destroyed. Used for unsubscribing to events and other stuff to run before deletion.
+        /// Called when a game object gets destroyed. Used for unsubscribing to events and disconnecting from everything to run before deletion.
         /// </summary>
         void Destroy();
     }
