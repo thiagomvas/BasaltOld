@@ -59,7 +59,6 @@ namespace GameEngineProject.Source.Core.Graphics
                     Debug.SelectedNearestGameObject(Conversions.XYToVector3(GetScreenToWorld2D(GetMousePosition(), cameraObject.camera)));
 
                 OnScreenRedraw?.Invoke();
-                Time.DeltaTime = GetFrameTime();
                 
                 if(cameraObject is not null) cameraObject.camera.offset = new(Raylib.GetScreenWidth()/2, Raylib.GetScreenHeight()/2);
                 else defaultCamera.offset = new(Raylib.GetScreenWidth()/2, Raylib.GetScreenHeight()/2);

@@ -3,6 +3,7 @@ using GameEngineProject.Source.Core.Graphics;
 using GameEngineProject.Source.Core.Types;
 using GameEngineProject.Source.Entities;
 using GameEngineProject.Source.Interfaces;
+using System.Numerics;
 
 namespace GameEngineProject.Source.Components
 {
@@ -20,9 +21,9 @@ namespace GameEngineProject.Source.Components
             GraphicsWindow2D.OnScreenRedraw -= CheckAllCollisions;
         }
 
-        public virtual void Initialize(GameObject gameObject)
+        public override void Start(GameObject gameObject)
         {
-            parent = gameObject;
+            base.Start(gameObject);
             GraphicsWindow2D.OnScreenRedraw += CheckAllCollisions;
         }
 
@@ -57,5 +58,14 @@ namespace GameEngineProject.Source.Components
         /// </summary>
         /// <param name="collided">The GameObject that collided with this object</param>
         public virtual void InvokeOnCollision(GameObject collided) => OnCollision?.Invoke(this, new OnCollisionEnterEventArgs(collided));
+
+        /// <summary>
+        /// Method used by the Debug System to draw the hitboxes on selection.
+        /// </summary>
+        /// <param name="screenPos">The on screen coordinates to use as center</param>
+        public virtual void DrawDebugHitbox(Vector2 screenPos)
+        {
+
+        }
     }
 }

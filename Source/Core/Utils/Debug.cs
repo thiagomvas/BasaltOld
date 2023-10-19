@@ -2,6 +2,7 @@ using GameEngineProject.Source.Entities;
 using static Raylib_cs.Raylib;
 using System.Numerics;
 using Raylib_cs;
+using GameEngineProject.Source.Components;
 
 namespace GameEngineProject.Source.Core.Utils
 {
@@ -12,6 +13,7 @@ namespace GameEngineProject.Source.Core.Utils
         /// </summary>
         public static bool IsDebugEnabled { get; private set; } = true;
 
+        private static Collider2D ObjectCollider;
         private const int MaxSelectionDistance = 50;
         private static Color FontColor = Color.WHITE;
         /// <summary>
@@ -33,11 +35,15 @@ namespace GameEngineProject.Source.Core.Utils
             {
                 DrawText(Conversions.StringifyGameObject(SelectedObject), 12, 12, 10, FontColor);
 
-                Vector2 topLeftScreenCornerRelativePos = Engine.Camera2D.Value.target - new Vector2((int)(GetScreenWidth()/2), (int)(GetScreenHeight()/2));
-                Vector2 finalPosition = Conversions.XYFromVector3(SelectedObject.transform.Position) - topLeftScreenCornerRelativePos;
-                DrawCircleLines((int)finalPosition.X, (int)finalPosition.Y, 25, Color.LIME);
+
+                Vector2 screenPosition = VectorAndQuaternionMath.WorldToScreenPosition(
+                    Conversions.XYFromVector3(SelectedObject.transform.Position), 
+                    Engine.Camera2D.Value);
+
+
+                ObjectCollider.DrawDebugHitbox(screenPosition);
                 Vector3 forward = SelectedObject.transform.Forward;
-                DrawLine((int)finalPosition.X, (int)finalPosition.Y, (int)(finalPosition.X + forward.X * 100), (int)(finalPosition.Y + forward.Y*100), Color.LIME);
+                DrawLine((int)screenPosition.X, (int)screenPosition.Y, (int)(screenPosition.X + forward.X * 100), (int)(screenPosition.Y + forward.Y*100), Color.LIME);
             }
                 
         }
@@ -65,6 +71,7 @@ namespace GameEngineProject.Source.Core.Utils
                 }
             }
             SelectedObject = nearest;
+            if (SelectedObject is not null && SelectedObject.TryGetComponent(out Collider2D col)) ObjectCollider = col;
         }
     }
 }
