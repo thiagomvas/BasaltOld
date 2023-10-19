@@ -113,6 +113,7 @@ namespace GameEngineProject.Source.Core.Graphics
                 if (obj.TryGetComponent<Renderer2D>(out Renderer2D rend)) rend.Render();
                 j++;
             }
+            CustomShapes.DrawFilledPoly(new Vector2[] { new Vector2(100, 50), new Vector2(200, 560), new Vector2(700, 560), new Vector2(700, 0), }, Color.WHITE);
         }
     }
 }
