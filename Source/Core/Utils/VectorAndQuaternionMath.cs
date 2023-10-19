@@ -1,3 +1,4 @@
+using Raylib_cs;
 using System.Numerics;
 
 namespace GameEngineProject.Source.Core.Utils
@@ -17,6 +18,20 @@ namespace GameEngineProject.Source.Core.Utils
             Vector2 forward = new Vector2(1, 0);
             Vector2 rotatedForward = Vector2.Transform(forward, Quaternion.Normalize(rotation));
             return rotatedForward;
+        }
+
+        public static Vector2 WorldToScreenPosition(Vector2 worldPosition, Camera2D camera)
+        {
+            Vector2 topLeftScreenCornerRelativePos = camera.target - new Vector2((int)(Raylib.GetScreenWidth() / 2), (int)(Raylib.GetScreenHeight() / 2));
+            Vector2 onScreenCoords = worldPosition - topLeftScreenCornerRelativePos;
+            return onScreenCoords;
+        }
+
+        public static Vector2 ScreenToWorldPosition(Vector2 position, Camera2D camera)
+        {
+            Vector2 topLeftScreenCornerRelativePos = camera.target - new Vector2((int)(Raylib.GetScreenWidth() / 2), (int)(Raylib.GetScreenHeight() / 2));
+            Vector2 worldPosition = topLeftScreenCornerRelativePos + position;
+            return worldPosition;
         }
     }
 }
