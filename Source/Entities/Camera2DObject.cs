@@ -1,8 +1,6 @@
-using GameEngineProject.Source.Core;
-using GameEngineProject.Source.Core.Graphics;
 using GameEngineProject.Source.Core.Types;
+using GameEngineProject.Source.Core.Utils;
 using Raylib_cs;
-using System.Numerics;
 namespace GameEngineProject.Source.Entities
 {
     /// <summary>
