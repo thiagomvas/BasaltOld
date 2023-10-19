@@ -1,4 +1,5 @@
 ﻿using GameEngineProject.Source.Components;
+using GameEngineProject.Source.Core.Utils;
 using GameEngineProject.Source.Entities;
 using Raylib_cs;
 using System.Numerics;
@@ -8,8 +9,19 @@ namespace GameEngineProject.Source.Core.Graphics
 {
     public static class GraphicsWindow2D
     {
+        /// <summary>
+        /// Background color for the world.
+        /// </summary>
         public static Color BackgroundColor = Color.BLACK;
+
+        /// <summary>
+        /// Font color used on UI;
+        /// </summary>
         public static Color FontColor = Color.WHITE;
+
+        /// <summary>
+        /// Event called every frame.
+        /// </summary>
         public static event EventHandler OnScreenRedraw;
         public static void Init(int Width = -1, int Height = -1, Camera2DObject cameraObject = null)
         {
@@ -21,30 +33,44 @@ namespace GameEngineProject.Source.Core.Graphics
             InitWindow(Width, Height, "New Game");
 
             // 2D Camera used on the game
-            Camera2D camera = new Camera2D();
-            camera.rotation = 0.0f;
-            camera.zoom = 1.0f;
+            Camera2D defaultCamera = new Camera2D();
+            defaultCamera.rotation = 0.0f;
+            defaultCamera.zoom = 1.0f;
 
 
-            SetTargetFPS(60);
+            foreach (var obj in Globals.GameObjectsOnScene)
+                if (obj.TryGetComponent(out SpriteRenderer rend)) rend.texture = LoadTexture(rend.texturePath);
+
+            //Console.WriteLine(texture.width);
+
+
 
             while (!WindowShouldClose())
             {
-                if (IsKeyDown(KeyboardKey.KEY_RIGHT)) camera.target.X += 5;
-                if (IsKeyDown(KeyboardKey.KEY_LEFT)) camera.target.X -= 5;
-                if (IsKeyDown(KeyboardKey.KEY_DOWN)) camera.target.Y += 5;
-                if (IsKeyDown(KeyboardKey.KEY_UP)) camera.target.Y -= 5;
+                if (IsKeyDown(KeyboardKey.KEY_RIGHT)) defaultCamera.target.X += 5;
+                if (IsKeyDown(KeyboardKey.KEY_LEFT)) defaultCamera.target.X -= 5;
+                if (IsKeyDown(KeyboardKey.KEY_DOWN)) defaultCamera.target.Y += 5;
+                if (IsKeyDown(KeyboardKey.KEY_UP)) defaultCamera.target.Y -= 5;
+                Engine.Camera2D = cameraObject.camera;
+
+                if (IsKeyPressed(KeyboardKey.KEY_F1)) Debug.ToggleDebug(); // Temporary
+                if (Debug.IsDebugEnabled && IsMouseButtonPressed(MouseButton.MOUSE_BUTTON_LEFT))
+                    Debug.SelectedNearestGameObject(Conversions.XYToVector3(GetScreenToWorld2D(GetMousePosition(), cameraObject.camera)));
 
                 OnScreenRedraw?.Invoke(null, EventArgs.Empty);
+                
+                if(cameraObject is not null) cameraObject.camera.offset = new(Raylib.GetScreenWidth()/2, Raylib.GetScreenHeight()/2);
+                else defaultCamera.offset = new(Raylib.GetScreenWidth()/2, Raylib.GetScreenHeight()/2);
 
                 BeginDrawing();
                 ClearBackground(BackgroundColor);
 
-                    BeginMode2D(cameraObject is not null ? cameraObject.camera : camera); // Setting the camera view | Anything drawn inside Mode2D will be affected by the camera's POV
+                    BeginMode2D(cameraObject is not null ? cameraObject.camera : defaultCamera); // Setting the camera view | Anything drawn inside Mode2D will be affected by the camera's POV
                     DrawWorldSpace();
                     EndMode2D();
 
                 DrawUI(); // Anything outside Mode2D will always be on screen
+                if (Debug.IsDebugEnabled) Debug.DrawDebugUI();
 
                 EndDrawing();
 
@@ -52,6 +78,10 @@ namespace GameEngineProject.Source.Core.Graphics
 
         }
 
+
+        /// <summary>
+        /// Draws all the UI;
+        /// </summary>
         private static void DrawUI()
         {
             int i = 0;
@@ -61,14 +91,18 @@ namespace GameEngineProject.Source.Core.Graphics
             //    i++;
             //}
 
-            foreach(var obj in Globals.GameObjectsOnScene)
-            {
-                DrawText($"Position of object #{i} {obj.transform.Position}", 12, 30 + 15 * i, 20, FontColor);
-                i++;
-            }
+            //foreach(var obj in Globals.GameObjectsOnScene)
+            //{
+            //    DrawText($"Position of object #{i} {obj.transform.Position}", 12, 30 + 15 * i, 20, FontColor);
+            //    i++;
+            //}
+
 
         }
 
+        /// <summary>
+        /// Draws all the GameObjects in the world.
+        /// </summary>
         private static void DrawWorldSpace()
         {
             DrawRectangle(100, 100, 200, 200, Color.RED);

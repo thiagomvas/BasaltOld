@@ -1,7 +1,6 @@
 using GameEngineProject.Source.Core.Types;
+using GameEngineProject.Source.Core.Utils;
 using Raylib_cs;
-using static GameEngineProject.Source.Core.Utils;
-
 namespace GameEngineProject.Source.Entities
 {
     /// <summary>
@@ -9,6 +8,9 @@ namespace GameEngineProject.Source.Entities
     /// </summary>
     public class Camera2DObject : GameObject
     {
+        /// <summary>
+        /// The actual Camera2D used for rendering.
+        /// </summary>
         public Camera2D camera = new();
 
         public Camera2DObject()
@@ -20,9 +22,19 @@ namespace GameEngineProject.Source.Entities
 
             transform.OnPositionChanged += UpdateCameraPosition;
         }
+        /// <summary>
+        /// Updates the camera's focus position
+        /// </summary>
         void UpdateCameraPosition(object? sender, TransformPositionUpdatedEventArgs e)
         {
-            camera.target = XYFromVector3(e.NewPosition);
+            camera.target = Conversions.XYFromVector3(transform.Position);
+        }
+
+
+        public override void Destroy()
+        {
+            transform.OnPositionChanged -= UpdateCameraPosition;
+            base.Destroy();
         }
     }
 }

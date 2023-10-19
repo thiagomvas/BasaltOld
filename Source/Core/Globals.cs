@@ -1,6 +1,7 @@
 using GameEngineProject.Source.Components;
 using GameEngineProject.Source.Entities;
 using GameEngineProject.Source.Interfaces;
+using Raylib_cs;
 
 namespace GameEngineProject.Source.Core
 {
@@ -34,9 +35,5 @@ namespace GameEngineProject.Source.Core
                 AllComponentsOnScene[componentType].Add(component);
             }
         }
-
-        
-
-
     }
 }

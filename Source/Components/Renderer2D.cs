@@ -20,7 +20,6 @@ namespace GameEngineProject.Source.Components
 
         public virtual void Update(float deltaTime)
         {
-            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -30,5 +29,10 @@ namespace GameEngineProject.Source.Components
         {
             Raylib.DrawCircle((int)transform.Position.X, (int)transform.Position.Y, 25, new Color(255, 0, 255, 255));
         }
+
+        public void Destroy()
+        {
+        }
+
     }
 }

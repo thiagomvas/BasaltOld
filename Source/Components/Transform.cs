@@ -1,12 +1,9 @@
 ﻿using GameEngineProject.Source.Core.Types;
 using GameEngineProject.Source.Entities;
 using GameEngineProject.Source.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
+using static GameEngineProject.Source.Core.Utils.VectorAndQuaternionMath;
+using static GameEngineProject.Source.Core.Utils.Conversions;
 
 namespace GameEngineProject.Source.Components
 {
@@ -16,13 +13,18 @@ namespace GameEngineProject.Source.Components
     public class Transform : IComponent
     {
         /// <summary>
-        /// This object's current position
+        /// This object's current position.
         /// </summary>
         public Vector3 Position { get; set; }
         /// <summary>
-        /// This object's current rotation
+        /// This object's current rotation.
         /// </summary>
         public Quaternion Rotation { get; set; }
+
+        /// <summary>
+        /// Returns a direction vector representing the direction this object is looking at.
+        /// </summary>
+        public Vector3 Forward { get { return XYToVector3(GetForwardVector(Rotation)); } }
 
         /// <summary>
         /// All the children of this transform. Children get moved and rotated with a pivot on this object's Position and Rotation.
@@ -32,15 +34,31 @@ namespace GameEngineProject.Source.Components
         /// <summary>
         /// The GameObject that owns this component.
         /// </summary>
-        public GameObject parent;
+        public GameObject? parent;
 
-        public event EventHandler<TransformPositionUpdatedEventArgs> OnPositionChanged;
+        public event EventHandler<TransformPositionUpdatedEventArgs>? OnPositionChanged;
 
         #region Constructors
         public Transform()
         {
             Position = Vector3.Zero;
             Rotation = Quaternion.Identity;
+        }
+
+        public Transform(Vector3 position, Quaternion rotation, List<Transform> children, GameObject? parent = null)
+        {
+            Position = position;
+            Rotation = rotation;
+            Children = children;
+            this.parent = parent;
+        }
+
+        public Transform(Transform other)
+        {
+            this.Position = other.Position;
+            this.Rotation = other.Rotation;
+            this.parent = other.parent;
+            this.Children = new List<Transform>(other.Children);
         }
 
         public Transform(Vector3 position)
@@ -100,5 +118,11 @@ namespace GameEngineProject.Source.Components
         /// </summary>
         /// <param name="transform">The transform to set as children</param>
         public void AddChildren(Transform transform) => Children.Add(transform);
+
+        public void Destroy()
+        {
+            foreach (Transform t in Children) t.Destroy();
+        }
+
     }
 }

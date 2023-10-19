@@ -1,13 +1,13 @@
 ﻿using GameEngine.Source.Attributes;
 using GameEngineProject.Source.Components;
-using GameEngineProject.Source.Core.Graphics;
+using GameEngineProject.Source.Core;
 using GameEngineProject.Source.Interfaces;
 using System.Numerics;
 
 namespace GameEngineProject.Source.Entities
 {
     /// <summary>
-    /// The Object Class used by the entire engine. It represents any object and it's components that are in any world
+    /// The Object Class used by the entire engine. It represents any object and it's components that are in any world.
     /// </summary>
     public class GameObject
     {
@@ -16,9 +16,12 @@ namespace GameEngineProject.Source.Entities
         /// </summary>
         public Transform transform { get; private set; }
         /// <summary>
-        /// All the components currently included in this object
+        /// All the components currently included in this object.
         /// </summary>
         public List<IComponent> Components { get; private set; } = new();
+        /// <summary>
+        /// All the children attached to this object.
+        /// </summary>
         public List<GameObject> Children { get; private set; } = new();
 
         #region Constructors
@@ -31,11 +34,28 @@ namespace GameEngineProject.Source.Entities
         {
             transform = new Transform(position);
             Components.Add(transform);
-            Console.WriteLine(Components.Count);
+        }
+        
+        public GameObject(Transform transform, List<IComponent> components, List<GameObject> children)
+        {
+            this.transform = transform;
+            this.Components = components;
+            this.Children = children;
+        }
+
+        public GameObject(GameObject other)
+        {
+            transform = other.transform;
+            Components = new List<IComponent>(other.Components);
+            Children = new List<GameObject>(other.Children);
         }
 
         #endregion
 
+        /// <summary>
+        /// Attaches a children to this object
+        /// </summary>
+        /// <param name="obj">The object to attach</param>
         public void AddChildren(GameObject obj)
         {
             Children.Add(obj);
@@ -89,6 +109,16 @@ namespace GameEngineProject.Source.Entities
             component = Components.OfType<T>().FirstOrDefault();
             return component != null;
         }
+
+        /// <summary>
+        /// Destroys the game object and their components, unsubscribing from any events and disconnecting from everything.
+        /// </summary>
+        public virtual void Destroy()
+        {
+            foreach (var component in Components) component.Destroy();
+            Globals.GameObjectsOnScene.Remove(this);
+        }
+
     }
 
 }

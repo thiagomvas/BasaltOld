@@ -17,6 +17,11 @@ namespace GameEngineProject.Source.Interfaces
         /// </summary>
         /// <param name="deltaTime">Time between ticks/frames</param>
         void Update(float deltaTime);
+
+        /// <summary>
+        /// Called when a game object gets destroyed. Used for unsubscribing to events and disconnecting from everything to run before deletion.
+        /// </summary>
+        void Destroy();
     }
 
 }
