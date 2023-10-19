@@ -24,6 +24,8 @@ namespace GameEngineProject.Source.Core.Utils
                 Vector2 topLeftScreenCornerRelativePos = Engine.Camera2D.Value.target - new Vector2((int)(GetScreenWidth()/2), (int)(GetScreenHeight()/2));
                 Vector2 finalPosition = Conversions.XYFromVector3(SelectedObject.transform.Position) - topLeftScreenCornerRelativePos;
                 DrawCircleLines((int)finalPosition.X, (int)finalPosition.Y, 25, Color.LIME);
+                Vector2 forward = VectorAndQuaternionMath.GetForwardVector(SelectedObject.transform.Rotation);
+                DrawLine((int)finalPosition.X, (int)finalPosition.Y, (int)(finalPosition.X + forward.X * 100), (int)(finalPosition.Y + forward.Y*100), Color.LIME);
             }
                 
         }
