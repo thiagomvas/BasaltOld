@@ -22,7 +22,7 @@ namespace GameEngineProject.Source.Core.Graphics
         /// <summary>
         /// Event called every frame.
         /// </summary>
-        public static event EventHandler OnScreenRedraw;
+        public static event Action OnScreenRedraw;
         public static void Init(int Width = -1, int Height = -1, Camera2DObject cameraObject = null)
         {
 
@@ -39,9 +39,10 @@ namespace GameEngineProject.Source.Core.Graphics
 
 
             foreach (var obj in Globals.GameObjectsOnScene)
-                if (obj.TryGetComponent(out SpriteRenderer rend)) rend.texture = LoadTexture(rend.texturePath);
+                foreach (var component in obj.Components) component.Awake(obj);
 
-            //Console.WriteLine(texture.width);
+            foreach (var obj in Globals.GameObjectsOnScene)
+                foreach (var component in obj.Components) component.Start(obj);
 
 
 
@@ -57,7 +58,7 @@ namespace GameEngineProject.Source.Core.Graphics
                 if (Debug.IsDebugEnabled && IsMouseButtonPressed(MouseButton.MOUSE_BUTTON_LEFT))
                     Debug.SelectedNearestGameObject(Conversions.XYToVector3(GetScreenToWorld2D(GetMousePosition(), cameraObject.camera)));
 
-                OnScreenRedraw?.Invoke(null, EventArgs.Empty);
+                OnScreenRedraw?.Invoke();
                 
                 if(cameraObject is not null) cameraObject.camera.offset = new(Raylib.GetScreenWidth()/2, Raylib.GetScreenHeight()/2);
                 else defaultCamera.offset = new(Raylib.GetScreenWidth()/2, Raylib.GetScreenHeight()/2);

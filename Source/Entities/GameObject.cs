@@ -67,7 +67,7 @@ namespace GameEngineProject.Source.Entities
         /// </summary>
         /// <typeparam name="T">The component type to be added</typeparam>
         /// <returns>The reference to the component added</returns>
-        public T AddComponent<T>() where T : IComponent, new()
+        public T AddComponent<T>() where T : Component, new()
         {
             T component = new();
 
@@ -77,8 +77,7 @@ namespace GameEngineProject.Source.Entities
 
             foreach (var requiredComponent in requiredComponents)
             {
-                var type = (IComponent?)Activator.CreateInstance(requiredComponent);
-                type.Initialize(this);
+                var type = (Component?)Activator.CreateInstance(requiredComponent);
                 bool hasComponent = false;
 
                 foreach (var existingComponent in Components)
@@ -86,7 +85,7 @@ namespace GameEngineProject.Source.Entities
 
                 if (!hasComponent && type != null) Components.Add(type);
             }
-            component.Initialize(this);
+
             Components.Add(component);
             return component;
         }

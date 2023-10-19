@@ -11,6 +11,10 @@ namespace GameEngineProject.Source.Components
     public class SpriteRenderer : Renderer2D
     {
         /// <summary>
+        /// Whether or not the texture has been loaded
+        /// </summary>
+        public static bool TextureHasLoaded;
+        /// <summary>
         /// The actual texture being rendered.
         /// </summary>
         public Texture2D? texture;
@@ -18,9 +22,11 @@ namespace GameEngineProject.Source.Components
         /// The file path to the texture.
         /// </summary>
         public string texturePath;
-        public override void Initialize(GameObject gameObject)
+
+        public override void Awake(GameObject gameObject)
         {
-            base.Initialize(gameObject);
+            base.Awake(gameObject);
+            texture = Raylib.LoadTexture(texturePath);
         }
         public override void Render()
         {

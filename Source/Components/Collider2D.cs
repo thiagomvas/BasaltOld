@@ -3,12 +3,12 @@ using GameEngineProject.Source.Core.Graphics;
 using GameEngineProject.Source.Core.Types;
 using GameEngineProject.Source.Entities;
 using GameEngineProject.Source.Interfaces;
+using System.Numerics;
 
 namespace GameEngineProject.Source.Components
 {
-    public class Collider2D : IComponent
+    public class Collider2D : Component
     {
-        public GameObject parent;
 
         /// <summary>
         /// Event triggered when this object collides with something.
@@ -16,30 +16,26 @@ namespace GameEngineProject.Source.Components
         public event EventHandler<OnCollisionEnterEventArgs> OnCollision;
 
         public Collider2D() { }
-        public void Destroy()
+        public override void Destroy()
         {
             GraphicsWindow2D.OnScreenRedraw -= CheckAllCollisions;
         }
 
-        public void Initialize(GameObject gameObject)
+        public override void Start(GameObject gameObject)
         {
-            parent = gameObject;
+            base.Start(gameObject);
             GraphicsWindow2D.OnScreenRedraw += CheckAllCollisions;
         }
 
         /// <summary>
         /// Method to be ran to check if object is colliding with something.
         /// </summary>
-        private void CheckAllCollisions(object? sender, EventArgs e)
+        private void CheckAllCollisions()
         {
             foreach(var obj in Globals.GameObjectsOnScene)
             {
                 if (obj != parent && obj.TryGetComponent(out Collider2D col)) CheckCollision(obj);
             }
-        }
-        public void Update(float deltaTime)
-        {
-
         }
 
         /// <summary>
@@ -62,5 +58,14 @@ namespace GameEngineProject.Source.Components
         /// </summary>
         /// <param name="collided">The GameObject that collided with this object</param>
         public virtual void InvokeOnCollision(GameObject collided) => OnCollision?.Invoke(this, new OnCollisionEnterEventArgs(collided));
+
+        /// <summary>
+        /// Method used by the Debug System to draw the hitboxes on selection.
+        /// </summary>
+        /// <param name="screenPos">The on screen coordinates to use as center</param>
+        public virtual void DrawDebugHitbox(Vector2 screenPos)
+        {
+
+        }
     }
 }
