@@ -6,9 +6,8 @@ using GameEngineProject.Source.Interfaces;
 
 namespace GameEngineProject.Source.Components
 {
-    public class Collider2D : IComponent
+    public class Collider2D : Component
     {
-        public GameObject parent;
 
         /// <summary>
         /// Event triggered when this object collides with something.
@@ -16,12 +15,12 @@ namespace GameEngineProject.Source.Components
         public event EventHandler<OnCollisionEnterEventArgs> OnCollision;
 
         public Collider2D() { }
-        public void Destroy()
+        public override void Destroy()
         {
             GraphicsWindow2D.OnScreenRedraw -= CheckAllCollisions;
         }
 
-        public void Initialize(GameObject gameObject)
+        public virtual void Initialize(GameObject gameObject)
         {
             parent = gameObject;
             GraphicsWindow2D.OnScreenRedraw += CheckAllCollisions;
@@ -30,16 +29,12 @@ namespace GameEngineProject.Source.Components
         /// <summary>
         /// Method to be ran to check if object is colliding with something.
         /// </summary>
-        private void CheckAllCollisions(object? sender, EventArgs e)
+        private void CheckAllCollisions()
         {
             foreach(var obj in Globals.GameObjectsOnScene)
             {
                 if (obj != parent && obj.TryGetComponent(out Collider2D col)) CheckCollision(obj);
             }
-        }
-        public void Update(float deltaTime)
-        {
-
         }
 
         /// <summary>

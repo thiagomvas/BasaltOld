@@ -10,7 +10,7 @@ namespace GameEngineProject.Source.Components
     /// <summary>
     /// Holds the object's positional data, like the Position and Rotation. It is always included in every Game Object
     /// </summary>
-    public class Transform : IComponent
+    public class Transform : Component
     {
         /// <summary>
         /// This object's current position.
@@ -30,11 +30,6 @@ namespace GameEngineProject.Source.Components
         /// All the children of this transform. Children get moved and rotated with a pivot on this object's Position and Rotation.
         /// </summary>
         public List<Transform> Children { get; private set; } = new();
-
-        /// <summary>
-        /// The GameObject that owns this component.
-        /// </summary>
-        public GameObject? parent;
 
         public event EventHandler<TransformPositionUpdatedEventArgs>? OnPositionChanged;
 
@@ -69,15 +64,7 @@ namespace GameEngineProject.Source.Components
 
         #endregion
 
-        public void Initialize(GameObject gameObject)
-        {
-            parent = gameObject;
-        }
 
-        public void Update(float deltaTime)
-        {
-
-        }
 
         /// <summary>
         /// Moves the transform and all it's children by an amount in each axis
@@ -119,7 +106,7 @@ namespace GameEngineProject.Source.Components
         /// <param name="transform">The transform to set as children</param>
         public void AddChildren(Transform transform) => Children.Add(transform);
 
-        public void Destroy()
+        public override void Destroy()
         {
             foreach (Transform t in Children) t.Destroy();
         }

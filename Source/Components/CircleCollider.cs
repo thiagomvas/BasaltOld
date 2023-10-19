@@ -7,6 +7,13 @@ namespace GameEngineProject.Source.Components
     public class CircleCollider : Collider2D
     {
         public int Radius = 25;
+
+        public override void Initialize(GameObject gameObject)
+        {
+            if(gameObject.TryGetComponent<SpriteRenderer>(out SpriteRenderer renderer)) 
+                Radius = (renderer.texture.Value.width + renderer.texture.Value.height)/2;
+            base.Initialize(gameObject);
+        }
         public override void CheckCollision(GameObject other)
         {
             Vector3 dir = parent.transform.Position - other.transform.Position;

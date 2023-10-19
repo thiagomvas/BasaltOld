@@ -20,7 +20,7 @@ namespace GameEngineProject.Source.Entities
             id = 0;
             GraphicsWindow2D.OnScreenRedraw += OnMovePlayer;
         }
-        public void OnMovePlayer(object? sender, EventArgs e) => MovePlayer();
+        public void OnMovePlayer() => MovePlayer();
         public void MovePlayer()
         {
             if (Raylib.IsKeyDown(KeyboardKey.KEY_A)) gameObject.transform.Move(-Vector3.UnitX * MovementSpeed * Raylib.GetFrameTime());
