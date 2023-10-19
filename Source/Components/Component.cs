@@ -20,12 +20,12 @@ namespace GameEngineProject.Source.Components
         }
 
 
-        public void Start(GameObject gameObject)
+        public virtual void Start(GameObject gameObject)
         {
 
         }
 
-        public void Update()
+        public virtual void Update()
         {
 
         }

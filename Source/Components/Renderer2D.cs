@@ -14,9 +14,6 @@ namespace GameEngineProject.Source.Components
         /// </summary>
         public Transform transform { get; private set; }
 
-        /// <summary>
-        /// How the object will be drawn by the GraphicsManager2D.
-        /// </summary>
 
         public override void Awake(GameObject gameObject)
         {
@@ -25,6 +22,9 @@ namespace GameEngineProject.Source.Components
         }
 
 
+        /// <summary>
+        /// How the object will be drawn by the GraphicsManager2D.
+        /// </summary>
         public virtual void Render()
         {
             Raylib.DrawCircle((int)transform.Position.X, (int)transform.Position.Y, 25, new Color(255, 0, 255, 255));
