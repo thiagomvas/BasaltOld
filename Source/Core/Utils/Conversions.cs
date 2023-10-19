@@ -1,4 +1,6 @@
+using GameEngineProject.Source.Entities;
 using System.Numerics;
+using System.Reflection;
 
 namespace GameEngineProject.Source.Core.Utils
 {
@@ -26,5 +28,22 @@ namespace GameEngineProject.Source.Core.Utils
         public static Vector3 ForwardDirectionFromQuaternion(Quaternion rotation) => Vector3.Normalize(new Vector3(2 * (rotation.X * rotation.Z - rotation.W * rotation.Y),
                                                                                                  2 * (rotation.Y * rotation.Z + rotation.W * rotation.X),
                                                                                                  1 - 2 * (rotation.X * rotation.X + rotation.Y * rotation.Y)));
+
+        public static string StringifyGameObject(GameObject obj)
+        {
+            string text = obj.GetType().Name;
+            text += "\n    Components:\n";
+            foreach(var component in obj.Components)
+            {
+                text += "        -" + component.GetType().Name + "\n";
+                foreach(var field in component.GetType().GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic))
+                {
+                    text += $"            {field.Name}: {field.GetValue(component)}\n";
+                }
+            }
+
+
+            return text;
+        }
     }
 }

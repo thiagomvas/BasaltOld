@@ -97,10 +97,6 @@ namespace GameEngineProject.Source.Core.Graphics
             //    i++;
             //}
 
-            if(Debug.IsDebugEnabled && Debug.SelectedObject != null)
-            {
-                DrawText(Debug.SelectedObject.ToString(), 12, 12, 20, FontColor);
-            }
 
         }
 
