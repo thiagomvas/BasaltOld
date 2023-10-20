@@ -32,6 +32,7 @@ namespace GameEngineProject.Source.Core.Utils
         public static string StringifyGameObject(GameObject obj)
         {
             string text = obj.GetType().Name;
+            text += $"\n    IsActive:{obj.IsActive}";
             text += "\n    Components:\n";
             foreach(var component in obj.Components)
             {
