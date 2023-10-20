@@ -24,6 +24,7 @@ namespace GameEngineProject.Source.Core.Graphics
         /// </summary>
         public static event Action OnScreenRedraw;
         public static event Action OnScreenResize;
+        public static event Action RenderWorldSpace;
         public static void Init(int Width = -1, int Height = -1, Camera2DObject cameraObject = null)
         {
 
@@ -49,7 +50,13 @@ namespace GameEngineProject.Source.Core.Graphics
                 element.UpdatePosition();
                 OnScreenResize += element.UpdatePosition;
             }
-                
+
+
+            foreach (var obj in Globals.GameObjectsOnScene)
+            {
+                if (obj.TryGetComponent<Renderer2D>(out Renderer2D rend)) RenderWorldSpace += rend.OnRender;
+            }
+
 
 
 
@@ -113,13 +120,7 @@ namespace GameEngineProject.Source.Core.Graphics
         /// </summary>
         private static void DrawWorldSpace()
         {
-            DrawRectangle(200, 200, 21, 21, Color.RED);
-            int j = 0;
-            foreach (var obj in Globals.GameObjectsOnScene)
-            {
-                if (obj.TryGetComponent<Renderer2D>(out Renderer2D rend)) rend.Render();
-                j++;
-            }
+            RenderWorldSpace?.Invoke();
         }
     }
 }

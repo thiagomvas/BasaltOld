@@ -11,7 +11,7 @@ namespace GameEngineProject.Source.Components
         public virtual void Awake(GameObject gameObject)
         {
             parent = gameObject;
-            GraphicsWindow2D.OnScreenRedraw += Update;
+            GraphicsWindow2D.OnScreenRedraw += OnUpdate;
         }
 
         public virtual void Destroy()
@@ -22,12 +22,17 @@ namespace GameEngineProject.Source.Components
 
         public virtual void Start(GameObject gameObject)
         {
-
+            
         }
 
-        public virtual void Update()
+        public void OnUpdate()
         {
             if (!parent.IsActive) return;
+            Update();
+        }
+        
+        public virtual void Update()
+        {
         }
     }
 }

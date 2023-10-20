@@ -98,7 +98,7 @@ namespace GameEngineProject.Source.Entities
         public T AddComponent<T>() where T : Component, new()
         {
             T component = new();
-
+            component.parent = this;
 
             var requiredComponents = component.GetType().GetCustomAttributes(typeof(RequiredComponentsAttribute), true)
                                                         .Cast<RequiredComponentsAttribute>()

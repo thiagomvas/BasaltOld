@@ -21,6 +21,14 @@ namespace GameEngineProject.Source.Components
             transform = gameObject.Transform;
         }
 
+        /// <summary>
+        /// Passes a few checks before calling <see cref="Render()"/>
+        /// </summary>
+        public void OnRender()
+        {
+            if(!parent.IsActive) return;
+            Render();
+        }
 
         /// <summary>
         /// How the object will be drawn by the GraphicsManager2D.
