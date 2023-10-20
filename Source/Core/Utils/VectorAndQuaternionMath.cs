@@ -31,6 +31,12 @@ namespace GameEngineProject.Source.Core.Utils
             return rotatedForward;
         }
 
+        /// <summary>
+        /// Converts a world coordinate into a screen coordinate
+        /// </summary>
+        /// <param name="worldPosition">The world position</param>
+        /// <param name="camera">The camera used</param>
+        /// <returns>The screen position equivalent to that world position</returns>
         public static Vector2 WorldToScreenPosition(Vector2 worldPosition, Camera2D camera)
         {
             Vector2 topLeftScreenCornerRelativePos = camera.target - new Vector2((int)(Raylib.GetScreenWidth() / 2), (int)(Raylib.GetScreenHeight() / 2));
@@ -38,6 +44,12 @@ namespace GameEngineProject.Source.Core.Utils
             return onScreenCoords;
         }
 
+        /// <summary>
+        /// Converts a screen position to world position
+        /// </summary>
+        /// <param name="position">The screen position</param>
+        /// <param name="camera">The camera used</param>
+        /// <returns>The world position equivalent to that screen position</returns>
         public static Vector2 ScreenToWorldPosition(Vector2 position, Camera2D camera)
         {
             Vector2 topLeftScreenCornerRelativePos = camera.target - new Vector2((int)(Raylib.GetScreenWidth() / 2), (int)(Raylib.GetScreenHeight() / 2));
@@ -45,6 +57,11 @@ namespace GameEngineProject.Source.Core.Utils
             return worldPosition;
         }
 
+        /// <summary>
+        /// Gets the rotation in the Z axis from a Quaternion
+        /// </summary>
+        /// <param name="quaternion">The rotation quaternion</param>
+        /// <returns>The angle in degrees</returns>
         public static float GetZRotation(Quaternion quaternion)
         {
             float angle = 2 * (float)Math.Acos(quaternion.W);
