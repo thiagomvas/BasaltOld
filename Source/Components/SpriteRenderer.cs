@@ -32,6 +32,7 @@ namespace GameEngineProject.Source.Components
         }
         public override void Render()
         {
+            base.Render();
             if (texture != null) Raylib.DrawTexturePro(texture.Value,
                                                        new Rectangle(0, 0, texture.Value.width, texture.Value.height),
                                                        new Rectangle(transform.Position.X,

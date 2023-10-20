@@ -27,7 +27,7 @@ namespace GameEngineProject.Source.Components
 
         public virtual void Update()
         {
-
+            if (!parent.IsActive) return;
         }
     }
 }

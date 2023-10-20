@@ -27,7 +27,7 @@ namespace GameEngineProject.Source.Components
         /// </summary>
         public virtual void Render()
         {
-            Raylib.DrawCircle((int)transform.Position.X, (int)transform.Position.Y, 25, new Color(255, 0, 255, 255));
+            if (!parent.IsActive) return;
         }
 
     }

@@ -17,6 +17,7 @@ namespace GameEngineProject.Source.Components
         }
         public override void CheckCollision(GameObject other)
         {
+            base.CheckCollision(other);
             Vector3 dir = parent.transform.Position - other.transform.Position;
             var dist = dir.Length();
             if(other.TryGetComponent<CircleCollider>(out CircleCollider col) && dist < Radius + col.Radius)
@@ -28,6 +29,7 @@ namespace GameEngineProject.Source.Components
 
         public override void SolveCollision(Collider2D collided)
         {
+            base.SolveCollision(collided);
             if(collided is CircleCollider)   
             {
                 Vector3 dir = parent.transform.Position - collided.parent.transform.Position;
@@ -39,6 +41,7 @@ namespace GameEngineProject.Source.Components
 
         public override void DrawDebugHitbox(Vector2 screenPos)
         {
+            base.DrawDebugHitbox(screenPos);
             Raylib.DrawCircleLines((int)screenPos.X, (int)screenPos.Y, Radius, Color.LIME);
         }
     }

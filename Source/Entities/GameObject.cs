@@ -24,6 +24,11 @@ namespace GameEngineProject.Source.Entities
         /// </summary>
         public List<GameObject> Children { get; private set; } = new();
 
+        /// <summary>
+        /// Whether or not an object is active. Defines if it will be drawn, interacted with or interact with something.
+        /// </summary>
+        public bool IsActive = true;
+
         #region Constructors
         public GameObject()
         {
