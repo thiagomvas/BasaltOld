@@ -3,7 +3,7 @@ using GameEngineProject.Source.Core.Graphics;
 using GameEngineProject.Source.Core.Utils;
 using Raylib_cs;
 using System.Numerics;
-using static GameEngineProject.Source.Core.Utils.VectorAndQuaternionMath;
+using static GameEngineProject.Source.Core.Utils.MathExtended;
 using static GameEngineProject.Source.Core.Utils.Conversions;
 
 namespace GameEngineProject.Source.Entities

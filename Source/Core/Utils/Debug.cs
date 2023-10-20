@@ -36,7 +36,7 @@ namespace GameEngineProject.Source.Core.Utils
                 DrawText(Conversions.StringifyGameObject(SelectedObject), 12, 12, 10, FontColor);
 
 
-                Vector2 screenPosition = VectorAndQuaternionMath.WorldToScreenPosition(
+                Vector2 screenPosition = MathExtended.WorldToScreenPosition(
                     Conversions.XYFromVector3(SelectedObject.transform.Position), 
                     Engine.Camera2D.Value);
 

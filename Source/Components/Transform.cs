@@ -2,7 +2,7 @@
 using GameEngineProject.Source.Entities;
 using GameEngineProject.Source.Interfaces;
 using System.Numerics;
-using static GameEngineProject.Source.Core.Utils.VectorAndQuaternionMath;
+using static GameEngineProject.Source.Core.Utils.MathExtended;
 using static GameEngineProject.Source.Core.Utils.Conversions;
 
 namespace GameEngineProject.Source.Components

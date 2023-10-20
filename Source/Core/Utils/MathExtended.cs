@@ -3,7 +3,7 @@ using System.Numerics;
 
 namespace GameEngineProject.Source.Core.Utils
 {
-    public static class VectorAndQuaternionMath
+    public static class MathExtended
     {
         /// <summary>
         /// Returns the rotation from the origin if it was looking at a target

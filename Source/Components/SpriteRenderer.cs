@@ -39,7 +39,7 @@ namespace GameEngineProject.Source.Components
                                                                      texture.Value.width,
                                                                      texture.Value.height),
                                                        new Vector2(texture.Value.width/2, texture.Value.height/2),
-                                                       VectorAndQuaternionMath.GetZRotation(transform.Rotation),
+                                                       MathExtended.GetZRotation(transform.Rotation),
                                                        Color.WHITE);
             else Raylib.DrawCircle((int)transform.Position.X, (int)transform.Position.Y, 25, Color.BLUE);
         }
