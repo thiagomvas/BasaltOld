@@ -13,7 +13,7 @@ namespace GameEngineProject.Source.Entities
     {
         public GameObject gameObject;
         public int id; 
-        public int MovementSpeed = 2500;
+        public int MovementSpeed = 250;
         Rigidbody rb;
         public Player(GameObject gameObject)
         {
@@ -25,12 +25,11 @@ namespace GameEngineProject.Source.Entities
         public void OnMovePlayer() => MovePlayer();
         public void MovePlayer()
         {
-            if (Raylib.IsKeyDown(KeyboardKey.KEY_A)) rb.AddForce(-Vector2.UnitX * MovementSpeed * Time.DeltaTime);
-            if (Raylib.IsKeyDown(KeyboardKey.KEY_D)) rb.AddForce(Vector2.UnitX * MovementSpeed * Time.DeltaTime);
-            if (Raylib.IsKeyDown(KeyboardKey.KEY_W)) rb.AddForce(-Vector2.UnitY * MovementSpeed * Time.DeltaTime);
-            if (Raylib.IsKeyDown(KeyboardKey.KEY_S)) rb.AddForce(Vector2.UnitY * MovementSpeed * Time.DeltaTime);
+            if (Raylib.IsKeyDown(KeyboardKey.KEY_A)) rb.Velocity.X = -MovementSpeed * Time.DeltaTime;
+            if (Raylib.IsKeyDown(KeyboardKey.KEY_D)) rb.Velocity.X = MovementSpeed * Time.DeltaTime;
+            if (Raylib.IsKeyDown(KeyboardKey.KEY_W)) rb.Velocity.Y = -MovementSpeed * Time.DeltaTime;
+            if (Raylib.IsKeyDown(KeyboardKey.KEY_S)) rb.Velocity.Y =MovementSpeed * Time.DeltaTime;
             if (Raylib.IsKeyDown(KeyboardKey.KEY_R)) gameObject.Transform.MoveTo(Vector2.Zero);
-            if (Raylib.IsKeyDown(KeyboardKey.KEY_T)) rb.AddForce(Vector2.UnitY * 25);
 
             Vector2 mouseCoordsOnWorld = ScreenToWorldPosition(Raylib.GetMousePosition(), Engine.Camera2D.Value);
 
