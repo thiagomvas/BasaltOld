@@ -35,8 +35,9 @@ namespace GameEngineProject.Source.Core
             }
 
 
-            Label label = new Label(UI.ScreenTop + new Vector2(200, -200));
+            Label label = new(UI.ScreenBottomLeft + new Vector2(200, -200));
             label.SetPivot(UIElement.PivotPoint.BottomLeft);
+            label.Text = "This is a label";
             label.FontSize = 24;
             label.TextColor = Color.GREEN;
             UI.Instantiate(label);

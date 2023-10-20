@@ -15,8 +15,9 @@ namespace GameEngineProject.Source.Entities
 
         /// <summary>
         /// The pivot point used to reposition this element whenever the screen resizes. <br/> <br/>
-        ///  <b>!!! NOTE</b>: To modify, use SetPivot().
+        /// To modify, use <see cref="SetPivot(PivotPoint)"/>
         /// </summary>
+        /// 
         public PivotPoint Pivot { get; private set; } = PivotPoint.Center;
         
         /// <summary>
@@ -66,6 +67,10 @@ namespace GameEngineProject.Source.Entities
             transform.Position = XYToVector3(newPos);
         }
 
+        /// <summary>
+        /// Changes the pivot point of this element.
+        /// </summary>
+        /// <param name="pivot"></param>
         public void SetPivot(PivotPoint pivot)
         {
             Pivot = pivot;
