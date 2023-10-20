@@ -44,5 +44,13 @@ namespace GameEngineProject.Source.Core.Utils
             Vector2 worldPosition = topLeftScreenCornerRelativePos + position;
             return worldPosition;
         }
+
+        public static float GetZRotation(Quaternion quaternion)
+        {
+            float angle = 2 * (float)Math.Acos(quaternion.W);
+            float degrees = angle * 180 / (float)Math.PI;
+            if (quaternion.Z > 0) return degrees + 90;
+            else return -degrees + 90;
+        }
     }
 }
