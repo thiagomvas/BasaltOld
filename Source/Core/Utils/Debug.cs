@@ -37,12 +37,12 @@ namespace GameEngineProject.Source.Core.Utils
 
 
                 Vector2 screenPosition = MathExtended.WorldToScreenPosition(
-                    Conversions.XYFromVector3(SelectedObject.transform.Position), 
+                    SelectedObject.transform.Position, 
                     Engine.Camera2D.Value);
 
 
                 ObjectCollider.DrawDebugHitbox(screenPosition);
-                Vector3 forward = SelectedObject.transform.Forward;
+                Vector2 forward = SelectedObject.transform.Forward;
                 DrawLine((int)screenPosition.X, (int)screenPosition.Y, (int)(screenPosition.X + forward.X * 100), (int)(screenPosition.Y + forward.Y*100), Color.LIME);
             }
                 
@@ -52,20 +52,20 @@ namespace GameEngineProject.Source.Core.Utils
         /// Selects the nearest GameObject to the cursor.
         /// </summary>
         /// <param name="mousePos">The Mouse Position</param>
-        public static void SelectedNearestGameObject(Vector3 mousePos)
+        public static void SelectedNearestGameObject(Vector2 mousePos)
         {
             GameObject? nearest = null;
             int i = 0;
             foreach(var obj in Globals.GameObjectsOnScene)
             {
-                float distanceToObject = Vector3.Distance(mousePos, obj.transform.Position);
+                float distanceToObject = Vector2.Distance(mousePos, obj.transform.Position);
                 if (distanceToObject > MaxSelectionDistance) continue;
                 if (nearest == null)
                 {
                     nearest = obj;
                     continue;
                 }
-                else if (distanceToObject < Vector3.Distance(nearest.transform.Position, mousePos))
+                else if (distanceToObject < Vector2.Distance(nearest.transform.Position, mousePos))
                 {
                     nearest = obj;
                 }

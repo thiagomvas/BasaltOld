@@ -38,7 +38,7 @@ namespace GameEngineProject.Source.Entities
             transform = new Transform();
             Components.Add(transform);
         }
-        public GameObject(Vector3 position)
+        public GameObject(Vector2 position)
         {
             transform = new Transform(position);
             Components.Add(transform);

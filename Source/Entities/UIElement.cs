@@ -64,7 +64,7 @@ namespace GameEngineProject.Source.Entities
                     break;
 
             }
-            transform.Position = XYToVector3(newPos);
+            transform.Position = newPos;
         }
 
         /// <summary>

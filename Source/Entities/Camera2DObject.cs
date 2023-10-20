@@ -27,7 +27,7 @@ namespace GameEngineProject.Source.Entities
         /// </summary>
         void UpdateCameraPosition(object? sender, TransformPositionUpdatedEventArgs e)
         {
-            camera.target = Conversions.XYFromVector3(transform.Position);
+            camera.target = transform.Position;
         }
 
 

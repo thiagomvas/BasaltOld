@@ -14,9 +14,9 @@ namespace GameEngineProject.Source.Core.Utils
         /// <param name="origin">The origin coordinates</param>
         /// <param name="target">The target's position to rotate towards</param>
         /// <returns>A rotation representing the direction an object is looking at</returns>
-        public static Quaternion LookAtRotation(Vector3 origin, Vector3 target)
+        public static Quaternion LookAtRotation(Vector2 origin, Vector2 target)
         {
-            Vector2 direction = Vector2.Normalize(Conversions.XYFromVector3(target) - Conversions.XYFromVector3(origin));
+            Vector2 direction = Vector2.Normalize(target - origin);
             float angleInRadians = MathF.Atan2(direction.Y, direction.X);
             Quaternion rotation = Quaternion.CreateFromAxisAngle(Vector3.UnitZ, angleInRadians);
             return rotation;

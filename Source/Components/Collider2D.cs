@@ -2,7 +2,6 @@ using GameEngineProject.Source.Core;
 using GameEngineProject.Source.Core.Graphics;
 using GameEngineProject.Source.Core.Types;
 using GameEngineProject.Source.Entities;
-using GameEngineProject.Source.Interfaces;
 using System.Numerics;
 
 namespace GameEngineProject.Source.Components

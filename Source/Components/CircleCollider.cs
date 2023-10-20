@@ -18,7 +18,7 @@ namespace GameEngineProject.Source.Components
         public override void CheckCollision(GameObject other)
         {
             base.CheckCollision(other);
-            Vector3 dir = parent.transform.Position - other.transform.Position;
+            Vector2 dir = parent.transform.Position - other.transform.Position;
             var dist = dir.Length();
             if(other.TryGetComponent<CircleCollider>(out CircleCollider col) && dist < Radius + col.Radius)
             {
@@ -32,10 +32,10 @@ namespace GameEngineProject.Source.Components
             base.SolveCollision(collided);
             if(collided is CircleCollider)   
             {
-                Vector3 dir = parent.transform.Position - collided.parent.transform.Position;
+                Vector2 dir = parent.transform.Position - collided.parent.transform.Position;
                 var delta = dir.Length();
-                parent.transform.Move( 0.01f * delta * Vector3.Normalize(dir));
-                collided.parent.transform.Move( -0.01f * delta * Vector3.Normalize(dir));
+                parent.transform.Move( 0.01f * delta * Vector2.Normalize(dir));
+                collided.parent.transform.Move( -0.01f * delta * Vector2.Normalize(dir));
             }
         }
 

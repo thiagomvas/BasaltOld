@@ -23,13 +23,13 @@ namespace GameEngineProject.Source.Entities
         public void OnMovePlayer() => MovePlayer();
         public void MovePlayer()
         {
-            if (Raylib.IsKeyDown(KeyboardKey.KEY_A)) gameObject.transform.Move(-Vector3.UnitX * MovementSpeed * Time.DeltaTime);
-            if (Raylib.IsKeyDown(KeyboardKey.KEY_D)) gameObject.transform.Move(Vector3.UnitX * MovementSpeed * Time.DeltaTime);
-            if (Raylib.IsKeyDown(KeyboardKey.KEY_W)) gameObject.transform.Move(-Vector3.UnitY * MovementSpeed * Time.DeltaTime);
-            if (Raylib.IsKeyDown(KeyboardKey.KEY_S)) gameObject.transform.Move(Vector3.UnitY * MovementSpeed * Time.DeltaTime);
-            if (Raylib.IsKeyDown(KeyboardKey.KEY_R)) gameObject.transform.MoveTo(Vector3.Zero);
+            if (Raylib.IsKeyDown(KeyboardKey.KEY_A)) gameObject.transform.Move(-Vector2.UnitX * MovementSpeed * Time.DeltaTime);
+            if (Raylib.IsKeyDown(KeyboardKey.KEY_D)) gameObject.transform.Move(Vector2.UnitX * MovementSpeed * Time.DeltaTime);
+            if (Raylib.IsKeyDown(KeyboardKey.KEY_W)) gameObject.transform.Move(-Vector2.UnitY * MovementSpeed * Time.DeltaTime);
+            if (Raylib.IsKeyDown(KeyboardKey.KEY_S)) gameObject.transform.Move(Vector2.UnitY * MovementSpeed * Time.DeltaTime);
+            if (Raylib.IsKeyDown(KeyboardKey.KEY_R)) gameObject.transform.MoveTo(Vector2.Zero);
 
-            Vector3 mouseCoordsOnWorld = XYToVector3(ScreenToWorldPosition(Raylib.GetMousePosition(), Engine.Camera2D.Value));
+            Vector2 mouseCoordsOnWorld = ScreenToWorldPosition(Raylib.GetMousePosition(), Engine.Camera2D.Value);
 
             gameObject.transform.Rotation = LookAtRotation(gameObject.transform.Position, mouseCoordsOnWorld);
         }
