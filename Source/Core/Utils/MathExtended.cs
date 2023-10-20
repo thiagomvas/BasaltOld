@@ -3,6 +3,9 @@ using System.Numerics;
 
 namespace GameEngineProject.Source.Core.Utils
 {
+    /// <summary>
+    /// A support math class with more methods and functions.
+    /// </summary>
     public static class MathExtended
     {
         /// <summary>

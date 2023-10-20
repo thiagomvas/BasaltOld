@@ -8,20 +8,23 @@ namespace GameEngineProject.Source.Entities.UI
     public class Label : UIElement
     {
         /// <summary>
-        /// The Label's text
+        /// The text for this label
         /// </summary>
         public string Text = "Lorem Ipsum";
 
         /// <summary>
-        /// Text's font size
+        /// The font size for this label's text
         /// </summary>
         public int FontSize = 24;
 
         /// <summary>
-        /// Text's color
+        /// The color of this label's text
         /// </summary>
         public Color TextColor = Color.WHITE;
 
+        /// <summary>
+        /// The spacing between each character in this label.
+        /// </summary>
         public int Spacing = 5;
         public Label(Vector2 position) : base(position)
         {
