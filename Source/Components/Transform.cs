@@ -98,7 +98,7 @@ namespace GameEngineProject.Source.Components
         /// Adds a children to this transform
         /// </summary>
         /// <param name="obj">The game object to set as children</param>
-        public void AddChildren(GameObject obj) => Children.Add(obj.transform);
+        public void AddChildren(GameObject obj) => Children.Add(obj.Transform);
 
         /// <summary>
         /// Adds a children to this transform

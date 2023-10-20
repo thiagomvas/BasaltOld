@@ -17,8 +17,8 @@ namespace GameEngineProject.Source.Core
             Camera2DObject camera = new Camera2DObject();
             Camera2D = camera.camera;
             GameObject obj = new GameObject(new Vector2(400, 400));
-            camera.camera.target = obj.transform.Position;
-            camera.transform.Position = obj.transform.Position;
+            camera.camera.target = obj.Transform.Position;
+            camera.Transform.Position = obj.Transform.Position;
             var rend = obj.AddComponent<SpriteRenderer>();
             obj.AddComponent<CircleCollider>();
             obj.AddComponent<Rigidbody>();

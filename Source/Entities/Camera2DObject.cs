@@ -20,20 +20,20 @@ namespace GameEngineProject.Source.Entities
             camera.zoom = 1.0f;
 
 
-            transform.OnPositionChanged += UpdateCameraPosition;
+            Transform.OnPositionChanged += UpdateCameraPosition;
         }
         /// <summary>
         /// Updates the camera's focus position
         /// </summary>
         void UpdateCameraPosition(object? sender, TransformPositionUpdatedEventArgs e)
         {
-            camera.target = transform.Position;
+            camera.target = Transform.Position;
         }
 
 
         public override void Destroy()
         {
-            transform.OnPositionChanged -= UpdateCameraPosition;
+            Transform.OnPositionChanged -= UpdateCameraPosition;
             base.Destroy();
         }
     }

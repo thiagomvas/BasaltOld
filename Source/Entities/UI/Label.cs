@@ -35,9 +35,9 @@ namespace GameEngineProject.Source.Entities.UI
             base.Render();
             DrawTextPro(GetFontDefault(),
                         Text,
-                        transform.Position,
+                        Transform.Position,
                         MeasureTextEx(GetFontDefault(), Text, FontSize, Spacing)/2,
-                        MathExtended.GetZRotation(transform.Rotation) - 90,
+                        MathExtended.GetZRotation(Transform.Rotation) - 90,
                         FontSize,
                         Spacing,
                         TextColor);

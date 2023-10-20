@@ -18,7 +18,7 @@ namespace GameEngineProject.Source.Components
         public override void Awake(GameObject gameObject)
         {
             base.Awake(gameObject);
-            transform = gameObject.transform;
+            transform = gameObject.Transform;
         }
 
 

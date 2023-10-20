@@ -17,7 +17,10 @@ namespace GameEngineProject.Source.Entities
         /// <summary>
         /// The object's transforms.
         /// </summary>
-        public Transform transform { get; private set; }
+        public Transform Transform { get; private set; }
+
+        public Rigidbody Rigidbody { get; private set; }
+
         /// <summary>
         /// All the components currently included in this object.
         /// </summary>
@@ -35,25 +38,25 @@ namespace GameEngineProject.Source.Entities
         #region Constructors
         public GameObject()
         {
-            transform = new Transform();
-            Components.Add(transform);
+            Transform = new Transform();
+            Components.Add(Transform);
         }
         public GameObject(Vector2 position)
         {
-            transform = new Transform(position);
-            Components.Add(transform);
+            Transform = new Transform(position);
+            Components.Add(Transform);
         }
         
         public GameObject(Transform transform, List<IComponent> components, List<GameObject> children)
         {
-            this.transform = transform;
+            this.Transform = transform;
             this.Components = components;
             this.Children = children;
         }
 
         public GameObject(GameObject other)
         {
-            transform = other.transform;
+            Transform = other.Transform;
             Components = new List<IComponent>(other.Components);
             Children = new List<GameObject>(other.Children);
         }
@@ -67,7 +70,7 @@ namespace GameEngineProject.Source.Entities
         public void AddChildren(GameObject obj)
         {
             Children.Add(obj);
-            transform.AddChildren(obj);
+            Transform.AddChildren(obj);
         }
 
         /// <summary>
@@ -96,6 +99,7 @@ namespace GameEngineProject.Source.Entities
         {
             T component = new();
 
+
             var requiredComponents = component.GetType().GetCustomAttributes(typeof(RequiredComponentsAttribute), true)
                                                         .Cast<RequiredComponentsAttribute>()
                                                         .SelectMany(attr => attr.RequiredTypes);
@@ -112,6 +116,7 @@ namespace GameEngineProject.Source.Entities
             }
 
             Components.Add(component);
+            if (Rigidbody != null && component.GetType() == typeof(Rigidbody)) Rigidbody = GetComponent<Rigidbody>();
             return component;
         }
 

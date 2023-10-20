@@ -28,7 +28,6 @@ namespace GameEngineProject.Source.Core.Graphics
         {
 
             SetConfigFlags(ConfigFlags.FLAG_WINDOW_RESIZABLE);
-            SetConfigFlags(ConfigFlags.FLAG_WINDOW_ALWAYS_RUN);
             SetConfigFlags(ConfigFlags.FLAG_WINDOW_MAXIMIZED);
 
             InitWindow(Width, Height, "New Game");

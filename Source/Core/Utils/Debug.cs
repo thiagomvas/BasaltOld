@@ -37,12 +37,12 @@ namespace GameEngineProject.Source.Core.Utils
 
 
                 Vector2 screenPosition = MathExtended.WorldToScreenPosition(
-                    SelectedObject.transform.Position, 
+                    SelectedObject.Transform.Position, 
                     Engine.Camera2D.Value);
 
 
                 ObjectCollider.DrawDebugHitbox(screenPosition);
-                Vector2 forward = SelectedObject.transform.Forward;
+                Vector2 forward = SelectedObject.Transform.Forward;
                 DrawLine((int)screenPosition.X, (int)screenPosition.Y, (int)(screenPosition.X + forward.X * 100), (int)(screenPosition.Y + forward.Y*100), Color.LIME);
             }
                 
@@ -58,14 +58,14 @@ namespace GameEngineProject.Source.Core.Utils
             int i = 0;
             foreach(var obj in Globals.GameObjectsOnScene)
             {
-                float distanceToObject = Vector2.Distance(mousePos, obj.transform.Position);
+                float distanceToObject = Vector2.Distance(mousePos, obj.Transform.Position);
                 if (distanceToObject > MaxSelectionDistance) continue;
                 if (nearest == null)
                 {
                     nearest = obj;
                     continue;
                 }
-                else if (distanceToObject < Vector2.Distance(nearest.transform.Position, mousePos))
+                else if (distanceToObject < Vector2.Distance(nearest.Transform.Position, mousePos))
                 {
                     nearest = obj;
                 }
