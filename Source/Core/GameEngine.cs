@@ -35,12 +35,18 @@ namespace GameEngineProject.Source.Core
             }
 
 
-            Label label = new(UI.ScreenBottomLeft + new Vector2(200, -200));
+            ProgressBar bar = new(UI.ScreenBottomLeft + new Vector2(400, -200));
+            bar.SetPivot(UIElement.PivotPoint.BottomLeft);
+            bar.OffsetFromCorner = bar.CenteredOffset();
+            UI.Instantiate(bar);
+
+            Label label = new(UI.ScreenBottomLeft + new Vector2(400, -200));
             label.SetPivot(UIElement.PivotPoint.BottomLeft);
             label.Text = "This is a label";
             label.FontSize = 24;
             label.TextColor = Color.GREEN;
             UI.Instantiate(label);
+
 
 
 
