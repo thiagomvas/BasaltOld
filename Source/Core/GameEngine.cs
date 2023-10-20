@@ -16,33 +16,29 @@ namespace GameEngineProject.Source.Core
         {
             Camera2DObject camera = new Camera2DObject();
             Camera2D = camera.camera;
-            GameObject obj = new GameObject(new Vector3(400, 400, 0));
-            camera.camera.target = Conversions.XYFromVector3(obj.transform.Position);
+            GameObject obj = new GameObject(new Vector2(400, 400));
+            camera.camera.target = obj.transform.Position;
             camera.transform.Position = obj.transform.Position;
             var rend = obj.AddComponent<SpriteRenderer>();
             obj.AddComponent<CircleCollider>();
+            obj.AddComponent<Rigidbody>();
             rend.texturePath = Assets.GetAssetPath("circleheadtest.png");
             obj.AddChildren(camera);
             Instantiate(obj);
             Player player = new Player(obj);
             for (int i = 0; i < 5; i++)
             {
-                GameObject obstacle = new GameObject(new Vector3(100 + i * 50, 0, 0));
-                obstacle.AddComponent<Renderer2D>();
+                GameObject obstacle = new GameObject(new Vector2(100 + i * 50, 0));
+                obstacle.AddComponent<CircleRenderer>();
                 var col = obstacle.AddComponent<CircleCollider>();
                 col.Radius = 25;
                 Instantiate(obstacle);
             }
 
 
-            ProgressBar bar = new(UI.ScreenBottomLeft + new Vector2(400, -200));
-            bar.SetPivot(UIElement.PivotPoint.BottomLeft);
-            bar.OffsetFromCorner = bar.CenteredOffset();
-            UI.Instantiate(bar);
-
-            Label label = new(UI.ScreenBottomLeft + new Vector2(400, -200));
-            label.SetPivot(UIElement.PivotPoint.BottomLeft);
-            label.Text = "This is a label";
+            Label label = new(UI.ScreenBottom + new Vector2(0, -25));
+            label.SetPivot(UIElement.PivotPoint.Bottom);
+            label.Text = "PROTOTYPE ENGINE TEST";
             label.FontSize = 24;
             label.TextColor = Color.GREEN;
             UI.Instantiate(label);
