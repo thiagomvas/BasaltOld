@@ -11,6 +11,9 @@ namespace GameEngineProject.Source.Entities
     /// </summary>
     public class GameObject
     {
+        private bool AwakeCalled = false;
+        private bool StartCalled = false;
+
         /// <summary>
         /// The object's transforms.
         /// </summary>
@@ -65,6 +68,23 @@ namespace GameEngineProject.Source.Entities
         {
             Children.Add(obj);
             transform.AddChildren(obj);
+        }
+
+        /// <summary>
+        /// Ran whenever a game object is instantiated.
+        /// </summary>
+        public virtual void Awake() {
+            if (AwakeCalled) return;
+            AwakeCalled = true;
+        }
+
+        /// <summary>
+        /// Ran on the first frame of its existance.
+        /// </summary>
+        public virtual void Start() 
+        {
+            if(StartCalled) return; 
+            StartCalled = true;
         }
 
         /// <summary>
