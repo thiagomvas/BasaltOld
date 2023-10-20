@@ -11,6 +11,7 @@ namespace GameEngineProject.Source.Core
         /// The list of all Game Objects currently in the world.
         /// </summary>
         public static List<GameObject> GameObjectsOnScene { get; private set; } = new();
+        public static List<UIElement> UIElementsOnScene { get; private set; } = new();
 
         /// <summary>
         /// The list of all components currently in the world. Mostly used for debugging.

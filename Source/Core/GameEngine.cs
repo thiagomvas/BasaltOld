@@ -2,6 +2,7 @@ using GameEngineProject.Source.Components;
 using GameEngineProject.Source.Core.Graphics;
 using GameEngineProject.Source.Core.Utils;
 using GameEngineProject.Source.Entities;
+using GameEngineProject.Source.Entities.UI;
 using Raylib_cs;
 using System.Numerics;
 using static GameEngineProject.Source.Core.Globals;
@@ -32,6 +33,16 @@ namespace GameEngineProject.Source.Core
                 col.Radius = 25;
                 Instantiate(obstacle);
             }
+
+
+            Label label = new Label(UI.ScreenTop + new Vector2(200, -200));
+            label.SetPivot(UIElement.PivotPoint.BottomLeft);
+            label.FontSize = 24;
+            label.TextColor = Color.GREEN;
+            UI.Instantiate(label);
+
+
+
 
             GraphicsWindow2D.Init(800, 800, camera);
         }

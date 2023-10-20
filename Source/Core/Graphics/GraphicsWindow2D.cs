@@ -23,6 +23,7 @@ namespace GameEngineProject.Source.Core.Graphics
         /// Event called every frame.
         /// </summary>
         public static event Action OnScreenRedraw;
+        public static event Action OnScreenResize;
         public static void Init(int Width = -1, int Height = -1, Camera2DObject cameraObject = null)
         {
 
@@ -44,14 +45,18 @@ namespace GameEngineProject.Source.Core.Graphics
             foreach (var obj in Globals.GameObjectsOnScene)
                 foreach (var component in obj.Components) component.Start(obj);
 
+            foreach (var element in Globals.UIElementsOnScene)
+            {
+                element.UpdatePosition();
+                OnScreenResize += element.UpdatePosition;
+            }
+                
+
 
 
             while (!WindowShouldClose())
             {
-                if (IsKeyDown(KeyboardKey.KEY_RIGHT)) defaultCamera.target.X += 5;
-                if (IsKeyDown(KeyboardKey.KEY_LEFT)) defaultCamera.target.X -= 5;
-                if (IsKeyDown(KeyboardKey.KEY_DOWN)) defaultCamera.target.Y += 5;
-                if (IsKeyDown(KeyboardKey.KEY_UP)) defaultCamera.target.Y -= 5;
+                if (IsWindowResized()) OnScreenResize?.Invoke();
                 Engine.Camera2D = cameraObject.camera;
 
                 if (IsKeyPressed(KeyboardKey.KEY_F1)) Debug.ToggleDebug(); // Temporary
@@ -98,6 +103,9 @@ namespace GameEngineProject.Source.Core.Graphics
             //    i++;
             //}
 
+            foreach(var element in Globals.UIElementsOnScene)
+                element.Render();
+
 
         }
 
@@ -106,7 +114,7 @@ namespace GameEngineProject.Source.Core.Graphics
         /// </summary>
         private static void DrawWorldSpace()
         {
-            DrawRectangle(100, 100, 200, 200, Color.RED);
+            DrawRectangle(200, 200, 21, 21, Color.RED);
             int j = 0;
             foreach (var obj in Globals.GameObjectsOnScene)
             {
