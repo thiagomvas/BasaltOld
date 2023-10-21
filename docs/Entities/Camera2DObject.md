@@ -56,9 +56,9 @@ private Void UpdateCameraPosition(Object sender, TransformPositionUpdatedEventAr
 
 
 ## `Method` Destroy
-
+Updates the camera's focus position
 ```csharp
-public Void Destroy()
+public override Void Destroy()
 ```
 
 
@@ -77,14 +77,14 @@ public Void AddChildren(GameObject obj)
 ## `Method` Awake
 
 ```csharp
-public Void Awake()
+public override Void Awake()
 ```
 
 
 ## `Method` Start
 
 ```csharp
-public Void Start()
+public override Void Start()
 ```
 
 
@@ -124,28 +124,28 @@ public Type GetType()
 ## `Method` MemberwiseClone
 
 ```csharp
-private Object MemberwiseClone()
+Object MemberwiseClone()
 ```
 
 
 ## `Method` Finalize
 
 ```csharp
-private Void Finalize()
+override Void Finalize()
 ```
 
 
 ## `Method` ToString
 
 ```csharp
-public String ToString()
+public override String ToString()
 ```
 
 
 ## `Method` Equals
 
 ```csharp
-public Boolean Equals(Object obj)
+public override Boolean Equals(Object obj)
 ```
 ### Parameters
 
@@ -157,6 +157,6 @@ public Boolean Equals(Object obj)
 ## `Method` GetHashCode
 
 ```csharp
-public Int32 GetHashCode()
+public override Int32 GetHashCode()
 ```
 

@@ -78,9 +78,9 @@ public List`1 Children { public get;  set; }
 
 
 ## `Method` Render
-
+The spacing between each character in this label.
 ```csharp
-public Void Render()
+public override Void Render()
 ```
 
 
@@ -118,14 +118,14 @@ public Void AddChildren(GameObject obj)
 ## `Method` Awake
 
 ```csharp
-public Void Awake()
+public override Void Awake()
 ```
 
 
 ## `Method` Start
 
 ```csharp
-public Void Start()
+public override Void Start()
 ```
 
 
@@ -158,7 +158,7 @@ public Boolean TryGetComponent(T& component)
 ## `Method` Destroy
 
 ```csharp
-public Void Destroy()
+public override Void Destroy()
 ```
 
 
@@ -172,28 +172,28 @@ public Type GetType()
 ## `Method` MemberwiseClone
 
 ```csharp
-private Object MemberwiseClone()
+Object MemberwiseClone()
 ```
 
 
 ## `Method` Finalize
 
 ```csharp
-private Void Finalize()
+override Void Finalize()
 ```
 
 
 ## `Method` ToString
 
 ```csharp
-public String ToString()
+public override String ToString()
 ```
 
 
 ## `Method` Equals
 
 ```csharp
-public Boolean Equals(Object obj)
+public override Boolean Equals(Object obj)
 ```
 ### Parameters
 
@@ -205,6 +205,6 @@ public Boolean Equals(Object obj)
 ## `Method` GetHashCode
 
 ```csharp
-public Int32 GetHashCode()
+public override Int32 GetHashCode()
 ```
 

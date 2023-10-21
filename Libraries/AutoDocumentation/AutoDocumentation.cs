@@ -1,5 +1,7 @@
 using GameEngineProject.Source.Components;
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
 
 namespace GameEngineProject.Libraries.AutoDocumentation
 {
@@ -227,10 +229,21 @@ namespace GameEngineProject.Libraries.AutoDocumentation
                 DocsMember doc = new();
                 doc.type = DocsMember.DocType.Method;
                 doc.Title = method.Name;
-                string text = $"{(method.IsPublic ? "public" : "private")}{(method.IsStatic ? " static" : "")} {method.ReturnType.Name} {method.Name}(";
+                StringBuilder sig = new();
+                if (method.IsPublic) sig.Append("public ");
+                if (method.IsPrivate) sig.Append("private ");
+                if (method.IsStatic) sig.Append("static ");
+                if (method.IsVirtual && method.GetBaseDefinition() == method) sig.Append("virtual ");
+                if (method.GetBaseDefinition() != method) sig.Append("override ");
+                sig.Append($"{method.ReturnType.Name} ");
+                sig.Append($"{method.Name}(");
+          
                 var parameters = method.GetParameters();
                 foreach (var param in parameters)
-                    text += $"{param.ParameterType.Name} {param.Name}, ";
+                {
+                    sig.Append($"{param.ParameterType.Name} {param.Name}, ");
+                }
+                string text = sig.ToString();
                 if (parameters.Length > 0) text = text.Substring(0, text.Length - 2);
                 text += ")";
 

@@ -36,9 +36,9 @@ public Transform transform { public get;  set; }
 
 
 ## `Method` Awake
-
+The file path to the texture.
 ```csharp
-public Void Awake(GameObject gameObject)
+public override Void Awake(GameObject gameObject)
 ```
 ### Parameters
 
@@ -48,9 +48,9 @@ public Void Awake(GameObject gameObject)
 
 
 ## `Method` Render
-
+The file path to the texture.
 ```csharp
-public Void Render()
+public override Void Render()
 ```
 
 
@@ -64,14 +64,14 @@ public Void OnRender()
 ## `Method` Destroy
 
 ```csharp
-public Void Destroy()
+public override Void Destroy()
 ```
 
 
 ## `Method` Start
 
 ```csharp
-public Void Start(GameObject gameObject)
+public override Void Start(GameObject gameObject)
 ```
 ### Parameters
 
@@ -90,7 +90,7 @@ public Void OnUpdate()
 ## `Method` Update
 
 ```csharp
-public Void Update()
+public override Void Update()
 ```
 
 
@@ -104,28 +104,28 @@ public Type GetType()
 ## `Method` MemberwiseClone
 
 ```csharp
-private Object MemberwiseClone()
+Object MemberwiseClone()
 ```
 
 
 ## `Method` Finalize
 
 ```csharp
-private Void Finalize()
+override Void Finalize()
 ```
 
 
 ## `Method` ToString
 
 ```csharp
-public String ToString()
+public override String ToString()
 ```
 
 
 ## `Method` Equals
 
 ```csharp
-public Boolean Equals(Object obj)
+public override Boolean Equals(Object obj)
 ```
 ### Parameters
 
@@ -137,6 +137,6 @@ public Boolean Equals(Object obj)
 ## `Method` GetHashCode
 
 ```csharp
-public Int32 GetHashCode()
+public override Int32 GetHashCode()
 ```
 

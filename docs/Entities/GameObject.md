@@ -62,16 +62,16 @@ public Void AddChildren(GameObject obj)
 
 
 ## `Method` Awake
-
+Ran whenever a game object is instantiated.
 ```csharp
-public Void Awake()
+public virtual Void Awake()
 ```
 
 
 ## `Method` Start
-
+Ran on the first frame of its existance.
 ```csharp
-public Void Start()
+public virtual Void Start()
 ```
 
 
@@ -102,9 +102,9 @@ public Boolean TryGetComponent(T& component)
 
 
 ## `Method` Destroy
-
+Destroys the game object and their components, unsubscribing from any events and disconnecting from everything.
 ```csharp
-public Void Destroy()
+public virtual Void Destroy()
 ```
 
 
@@ -118,28 +118,28 @@ public Type GetType()
 ## `Method` MemberwiseClone
 
 ```csharp
-private Object MemberwiseClone()
+Object MemberwiseClone()
 ```
 
 
 ## `Method` Finalize
 
 ```csharp
-private Void Finalize()
+override Void Finalize()
 ```
 
 
 ## `Method` ToString
 
 ```csharp
-public String ToString()
+public override String ToString()
 ```
 
 
 ## `Method` Equals
 
 ```csharp
-public Boolean Equals(Object obj)
+public override Boolean Equals(Object obj)
 ```
 ### Parameters
 
@@ -151,6 +151,6 @@ public Boolean Equals(Object obj)
 ## `Method` GetHashCode
 
 ```csharp
-public Int32 GetHashCode()
+public override Int32 GetHashCode()
 ```
 

@@ -15,9 +15,9 @@ public GameObject parent
 
 
 ## `Method` Start
-
+The radius of the collision circle.
 ```csharp
-public Void Start(GameObject gameObject)
+public override Void Start(GameObject gameObject)
 ```
 ### Parameters
 
@@ -27,9 +27,9 @@ public Void Start(GameObject gameObject)
 
 
 ## `Method` CheckCollision
-
+The radius of the collision circle.
 ```csharp
-public Void CheckCollision(GameObject other)
+public override Void CheckCollision(GameObject other)
 ```
 ### Parameters
 
@@ -39,9 +39,9 @@ public Void CheckCollision(GameObject other)
 
 
 ## `Method` SolveCollision
-
+The radius of the collision circle.
 ```csharp
-public Void SolveCollision(Collider2D collided)
+public override Void SolveCollision(Collider2D collided)
 ```
 ### Parameters
 
@@ -51,9 +51,9 @@ public Void SolveCollision(Collider2D collided)
 
 
 ## `Method` DrawDebugHitbox
-
+The radius of the collision circle.
 ```csharp
-public Void DrawDebugHitbox(Vector2 screenPos)
+public override Void DrawDebugHitbox(Vector2 screenPos)
 ```
 ### Parameters
 
@@ -65,7 +65,7 @@ public Void DrawDebugHitbox(Vector2 screenPos)
 ## `Method` Destroy
 
 ```csharp
-public Void Destroy()
+public override Void Destroy()
 ```
 
 
@@ -84,7 +84,7 @@ public Void InvokeOnCollision(GameObject collided)
 ## `Method` Awake
 
 ```csharp
-public Void Awake(GameObject gameObject)
+public override Void Awake(GameObject gameObject)
 ```
 ### Parameters
 
@@ -103,7 +103,7 @@ public Void OnUpdate()
 ## `Method` Update
 
 ```csharp
-public Void Update()
+public override Void Update()
 ```
 
 
@@ -117,28 +117,28 @@ public Type GetType()
 ## `Method` MemberwiseClone
 
 ```csharp
-private Object MemberwiseClone()
+Object MemberwiseClone()
 ```
 
 
 ## `Method` Finalize
 
 ```csharp
-private Void Finalize()
+override Void Finalize()
 ```
 
 
 ## `Method` ToString
 
 ```csharp
-public String ToString()
+public override String ToString()
 ```
 
 
 ## `Method` Equals
 
 ```csharp
-public Boolean Equals(Object obj)
+public override Boolean Equals(Object obj)
 ```
 ### Parameters
 
@@ -150,6 +150,6 @@ public Boolean Equals(Object obj)
 ## `Method` GetHashCode
 
 ```csharp
-public Int32 GetHashCode()
+public override Int32 GetHashCode()
 ```
 

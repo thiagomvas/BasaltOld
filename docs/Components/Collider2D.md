@@ -15,16 +15,16 @@ public GameObject parent
 
 
 ## `Method` Destroy
-
+Event triggered when this object collides with something.
 ```csharp
-public Void Destroy()
+public override Void Destroy()
 ```
 
 
 ## `Method` Start
-
+Event triggered when this object collides with something.
 ```csharp
-public Void Start(GameObject gameObject)
+public override Void Start(GameObject gameObject)
 ```
 ### Parameters
 
@@ -41,27 +41,27 @@ private Void CheckAllCollisions()
 
 
 ## `Method` CheckCollision
-
+The method used to check if an object is colliding with this object.
 ```csharp
-public Void CheckCollision(GameObject other)
+public virtual Void CheckCollision(GameObject other)
 ```
 ### Parameters
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| other | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | No description. |
+| other | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | The other object to check collisions with |
 
 
 ## `Method` SolveCollision
-
+The method used to solve the collision (Offset the position so it's not inside the object or do something else)
 ```csharp
-public Void SolveCollision(Collider2D collided)
+public virtual Void SolveCollision(Collider2D collided)
 ```
 ### Parameters
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| collided | [Collider2D](https://thiagomvas.github.io/GameEngine/Components/Collider2D.html) | No description. |
+| collided | [Collider2D](https://thiagomvas.github.io/GameEngine/Components/Collider2D.html) | The object that collided with this |
 
 
 ## `Method` InvokeOnCollision
@@ -77,21 +77,21 @@ public Void InvokeOnCollision(GameObject collided)
 
 
 ## `Method` DrawDebugHitbox
-
+Method used by the Debug System to draw the hitboxes on selection.
 ```csharp
-public Void DrawDebugHitbox(Vector2 screenPos)
+public virtual Void DrawDebugHitbox(Vector2 screenPos)
 ```
 ### Parameters
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| screenPos | Vector2 | No description. |
+| screenPos | Vector2 | The on screen coordinates to use as center |
 
 
 ## `Method` Awake
 
 ```csharp
-public Void Awake(GameObject gameObject)
+public override Void Awake(GameObject gameObject)
 ```
 ### Parameters
 
@@ -110,7 +110,7 @@ public Void OnUpdate()
 ## `Method` Update
 
 ```csharp
-public Void Update()
+public override Void Update()
 ```
 
 
@@ -124,28 +124,28 @@ public Type GetType()
 ## `Method` MemberwiseClone
 
 ```csharp
-private Object MemberwiseClone()
+Object MemberwiseClone()
 ```
 
 
 ## `Method` Finalize
 
 ```csharp
-private Void Finalize()
+override Void Finalize()
 ```
 
 
 ## `Method` ToString
 
 ```csharp
-public String ToString()
+public override String ToString()
 ```
 
 
 ## `Method` Equals
 
 ```csharp
-public Boolean Equals(Object obj)
+public override Boolean Equals(Object obj)
 ```
 ### Parameters
 
@@ -157,6 +157,6 @@ public Boolean Equals(Object obj)
 ## `Method` GetHashCode
 
 ```csharp
-public Int32 GetHashCode()
+public override Int32 GetHashCode()
 ```
 

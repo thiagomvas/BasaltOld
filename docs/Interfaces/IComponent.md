@@ -3,7 +3,7 @@
 ## `Method` Awake
 
 ```csharp
-public Void Awake(GameObject gameObject)
+public virtual Void Awake(GameObject gameObject)
 ```
 ### Parameters
 
@@ -15,7 +15,7 @@ public Void Awake(GameObject gameObject)
 ## `Method` Start
 
 ```csharp
-public Void Start(GameObject gameObject)
+public virtual Void Start(GameObject gameObject)
 ```
 ### Parameters
 
@@ -27,13 +27,13 @@ public Void Start(GameObject gameObject)
 ## `Method` Update
 
 ```csharp
-public Void Update()
+public virtual Void Update()
 ```
 
 
 ## `Method` Destroy
 
 ```csharp
-public Void Destroy()
+public virtual Void Destroy()
 ```
 
