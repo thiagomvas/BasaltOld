@@ -1,44 +1,44 @@
 # OnCollisionEnterEventArgs
 
 ## `Field` Collision
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+The GameObject collided with.
 ```csharp
 public GameObject Collision
 ```
 
 
 ## `Method` GetType
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Type GetType ()
+public Type GetType()
 ```
 
 
 ## `Method` MemberwiseClone
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-private Object MemberwiseClone ()
+private Object MemberwiseClone()
 ```
 
 
 ## `Method` Finalize
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-private Void Finalize ()
+private Void Finalize()
 ```
 
 
 ## `Method` ToString
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public String ToString ()
+public String ToString()
 ```
 
 
 ## `Method` Equals
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Boolean Equals (Object obj)
+public Boolean Equals(Object obj)
 ```
 ### Parameters
 
@@ -48,8 +48,8 @@ public Boolean Equals (Object obj)
 
 
 ## `Method` GetHashCode
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Int32 GetHashCode ()
+public Int32 GetHashCode()
 ```
 

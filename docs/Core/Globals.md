@@ -1,70 +1,70 @@
 # Globals
 
 ## `Field` <GameObjectsOnScene>k__BackingField
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
 private static List`1 <GameObjectsOnScene>k__BackingField
 ```
 
 
 ## `Field` <UIElementsOnScene>k__BackingField
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
 private static List`1 <UIElementsOnScene>k__BackingField
 ```
 
 
 ## `Field` <AllComponentsOnScene>k__BackingField
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
 private static Dictionary`2 <AllComponentsOnScene>k__BackingField
 ```
 
 
 ## `Method` Instantiate
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+Adds a new Game Object to the world.
 ```csharp
-public Void Instantiate (GameObject gameObject)
+public static Void Instantiate(GameObject gameObject)
 ```
 ### Parameters
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| gameObject | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| gameObject | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | The object to be added to the world |
 
 
 ## `Method` GetType
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Type GetType ()
+public Type GetType()
 ```
 
 
 ## `Method` MemberwiseClone
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-private Object MemberwiseClone ()
+private Object MemberwiseClone()
 ```
 
 
 ## `Method` Finalize
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-private Void Finalize ()
+private Void Finalize()
 ```
 
 
 ## `Method` ToString
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public String ToString ()
+public String ToString()
 ```
 
 
 ## `Method` Equals
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Boolean Equals (Object obj)
+public Boolean Equals(Object obj)
 ```
 ### Parameters
 
@@ -74,8 +74,8 @@ public Boolean Equals (Object obj)
 
 
 ## `Method` GetHashCode
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Int32 GetHashCode ()
+public Int32 GetHashCode()
 ```
 

@@ -1,9 +1,9 @@
 # IComponent
 
 ## `Method` Awake
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void Awake (GameObject gameObject)
+public Void Awake(GameObject gameObject)
 ```
 ### Parameters
 
@@ -13,9 +13,9 @@ public Void Awake (GameObject gameObject)
 
 
 ## `Method` Start
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void Start (GameObject gameObject)
+public Void Start(GameObject gameObject)
 ```
 ### Parameters
 
@@ -25,15 +25,15 @@ public Void Start (GameObject gameObject)
 
 
 ## `Method` Update
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void Update ()
+public Void Update()
 ```
 
 
 ## `Method` Destroy
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void Destroy ()
+public Void Destroy()
 ```
 

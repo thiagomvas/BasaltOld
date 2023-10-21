@@ -1,23 +1,23 @@
 # Collider2D
 
 ## `Field` OnCollision
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
 private EventHandler`1 OnCollision
 ```
 
 
 ## `Field` parent
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
 public GameObject parent
 ```
 
 
 ## `Method` add_OnCollision
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void add_OnCollision (EventHandler`1 value)
+public Void add_OnCollision(EventHandler`1 value)
 ```
 ### Parameters
 
@@ -27,9 +27,9 @@ public Void add_OnCollision (EventHandler`1 value)
 
 
 ## `Method` remove_OnCollision
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void remove_OnCollision (EventHandler`1 value)
+public Void remove_OnCollision(EventHandler`1 value)
 ```
 ### Parameters
 
@@ -39,16 +39,16 @@ public Void remove_OnCollision (EventHandler`1 value)
 
 
 ## `Method` Destroy
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void Destroy ()
+public Void Destroy()
 ```
 
 
 ## `Method` Start
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void Start (GameObject gameObject)
+public Void Start(GameObject gameObject)
 ```
 ### Parameters
 
@@ -58,16 +58,16 @@ public Void Start (GameObject gameObject)
 
 
 ## `Method` CheckAllCollisions
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+Method to be ran to check if object is colliding with something.
 ```csharp
-private Void CheckAllCollisions ()
+private Void CheckAllCollisions()
 ```
 
 
 ## `Method` CheckCollision
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void CheckCollision (GameObject other)
+public Void CheckCollision(GameObject other)
 ```
 ### Parameters
 
@@ -77,9 +77,9 @@ public Void CheckCollision (GameObject other)
 
 
 ## `Method` SolveCollision
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void SolveCollision (Collider2D collided)
+public Void SolveCollision(Collider2D collided)
 ```
 ### Parameters
 
@@ -89,21 +89,21 @@ public Void SolveCollision (Collider2D collided)
 
 
 ## `Method` InvokeOnCollision
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+Invokes the OnCollisionEvent event.
 ```csharp
-public Void InvokeOnCollision (GameObject collided)
+public Void InvokeOnCollision(GameObject collided)
 ```
 ### Parameters
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| collided | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| collided | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | The GameObject that collided with this object |
 
 
 ## `Method` DrawDebugHitbox
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void DrawDebugHitbox (Vector2 screenPos)
+public Void DrawDebugHitbox(Vector2 screenPos)
 ```
 ### Parameters
 
@@ -113,9 +113,9 @@ public Void DrawDebugHitbox (Vector2 screenPos)
 
 
 ## `Method` Awake
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void Awake (GameObject gameObject)
+public Void Awake(GameObject gameObject)
 ```
 ### Parameters
 
@@ -125,51 +125,51 @@ public Void Awake (GameObject gameObject)
 
 
 ## `Method` OnUpdate
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void OnUpdate ()
+public Void OnUpdate()
 ```
 
 
 ## `Method` Update
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void Update ()
+public Void Update()
 ```
 
 
 ## `Method` GetType
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Type GetType ()
+public Type GetType()
 ```
 
 
 ## `Method` MemberwiseClone
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-private Object MemberwiseClone ()
+private Object MemberwiseClone()
 ```
 
 
 ## `Method` Finalize
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-private Void Finalize ()
+private Void Finalize()
 ```
 
 
 ## `Method` ToString
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public String ToString ()
+public String ToString()
 ```
 
 
 ## `Method` Equals
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Boolean Equals (Object obj)
+public Boolean Equals(Object obj)
 ```
 ### Parameters
 
@@ -179,8 +179,8 @@ public Boolean Equals (Object obj)
 
 
 ## `Method` GetHashCode
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Int32 GetHashCode ()
+public Int32 GetHashCode()
 ```
 

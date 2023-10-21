@@ -1,23 +1,51 @@
 # Camera2DObject
 
 ## `Field` camera
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+The actual Camera2D used for rendering.
 ```csharp
 public Camera2D camera
 ```
 
 
 ## `Field` IsActive
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
 public Boolean IsActive
 ```
 
 
-## `Method` UpdateCameraPosition
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+## `Property` Transform
+
 ```csharp
-private Void UpdateCameraPosition (Object sender, TransformPositionUpdatedEventArgs e)
+public Transform Transform { public get;  }
+```
+
+
+## `Property` Rigidbody
+
+```csharp
+public Rigidbody Rigidbody { public get;  }
+```
+
+
+## `Property` Components
+
+```csharp
+public List`1 Components { public get;  }
+```
+
+
+## `Property` Children
+
+```csharp
+public List`1 Children { public get;  }
+```
+
+
+## `Method` UpdateCameraPosition
+
+```csharp
+private Void UpdateCameraPosition(Object sender, TransformPositionUpdatedEventArgs e)
 ```
 ### Parameters
 
@@ -28,16 +56,16 @@ private Void UpdateCameraPosition (Object sender, TransformPositionUpdatedEventA
 
 
 ## `Method` Destroy
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void Destroy ()
+public Void Destroy()
 ```
 
 
 ## `Method` AddChildren
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void AddChildren (GameObject obj)
+public Void AddChildren(GameObject obj)
 ```
 ### Parameters
 
@@ -47,37 +75,37 @@ public Void AddChildren (GameObject obj)
 
 
 ## `Method` Awake
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void Awake ()
+public Void Awake()
 ```
 
 
 ## `Method` Start
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void Start ()
+public Void Start()
 ```
 
 
 ## `Method` AddComponent
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public T AddComponent ()
+public T AddComponent()
 ```
 
 
 ## `Method` GetComponent
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public T GetComponent ()
+public T GetComponent()
 ```
 
 
 ## `Method` TryGetComponent
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Boolean TryGetComponent (T& component)
+public Boolean TryGetComponent(T& component)
 ```
 ### Parameters
 
@@ -87,37 +115,37 @@ public Boolean TryGetComponent (T& component)
 
 
 ## `Method` GetType
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Type GetType ()
+public Type GetType()
 ```
 
 
 ## `Method` MemberwiseClone
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-private Object MemberwiseClone ()
+private Object MemberwiseClone()
 ```
 
 
 ## `Method` Finalize
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-private Void Finalize ()
+private Void Finalize()
 ```
 
 
 ## `Method` ToString
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public String ToString ()
+public String ToString()
 ```
 
 
 ## `Method` Equals
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Boolean Equals (Object obj)
+public Boolean Equals(Object obj)
 ```
 ### Parameters
 
@@ -127,8 +155,8 @@ public Boolean Equals (Object obj)
 
 
 ## `Method` GetHashCode
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Int32 GetHashCode ()
+public Int32 GetHashCode()
 ```
 

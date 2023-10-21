@@ -1,45 +1,45 @@
 # Conversions
 
 ## `Method` XYFromVector3
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+Converts a Vector3 into a Vector2 by removing the Z axis
 ```csharp
-public Vector2 XYFromVector3 (Vector3 vector)
+public static Vector2 XYFromVector3(Vector3 vector)
 ```
 ### Parameters
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| vector | Vector3 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| vector | Vector3 | The vector to convert from |
 
 
 ## `Method` XYToVector3
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+Converts a Vector2 into a Vector3 using it for X and Y axis
 ```csharp
-public Vector3 XYToVector3 (Vector2 vector)
+public static Vector3 XYToVector3(Vector2 vector)
 ```
 ### Parameters
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| vector | Vector2 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| vector | Vector2 | The Vector to convert from |
 
 
 ## `Method` ForwardDirectionFromQuaternion
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+Gets the forward normalized vector from a rotation.
 ```csharp
-public Vector3 ForwardDirectionFromQuaternion (Quaternion rotation)
+public static Vector3 ForwardDirectionFromQuaternion(Quaternion rotation)
 ```
 ### Parameters
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| rotation | Quaternion | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| rotation | Quaternion | The rotation quaternionn |
 
 
 ## `Method` StringifyGameObject
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+Gets the forward normalized vector from a rotation.
 ```csharp
-public String StringifyGameObject (GameObject obj)
+public static String StringifyGameObject(GameObject obj)
 ```
 ### Parameters
 
@@ -49,37 +49,37 @@ public String StringifyGameObject (GameObject obj)
 
 
 ## `Method` GetType
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Type GetType ()
+public Type GetType()
 ```
 
 
 ## `Method` MemberwiseClone
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-private Object MemberwiseClone ()
+private Object MemberwiseClone()
 ```
 
 
 ## `Method` Finalize
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-private Void Finalize ()
+private Void Finalize()
 ```
 
 
 ## `Method` ToString
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public String ToString ()
+public String ToString()
 ```
 
 
 ## `Method` Equals
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Boolean Equals (Object obj)
+public Boolean Equals(Object obj)
 ```
 ### Parameters
 
@@ -89,8 +89,8 @@ public Boolean Equals (Object obj)
 
 
 ## `Method` GetHashCode
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Int32 GetHashCode ()
+public Int32 GetHashCode()
 ```
 

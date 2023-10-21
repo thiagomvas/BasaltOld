@@ -7,10 +7,12 @@
     {
         public Type type;
         public string relativePathToDocs;
-        public DocTypeInfo(Type type, string relativePathToDocs)
+        public string originalFilePath;
+        public DocTypeInfo(Type type, string relativePathToDocs, string originalFilePath)
         {
             this.type = type;
             this.relativePathToDocs = relativePathToDocs;
+            this.originalFilePath = originalFilePath;
         }
     }
 

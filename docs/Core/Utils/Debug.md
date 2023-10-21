@@ -1,98 +1,98 @@
 # Debug
 
 ## `Field` <IsDebugEnabled>k__BackingField
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
 private static Boolean <IsDebugEnabled>k__BackingField
 ```
 
 
 ## `Field` ObjectCollider
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+Whether or not the Debug System is enabled.
 ```csharp
 private static Collider2D ObjectCollider
 ```
 
 
 ## `Field` FontColor
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+Whether or not the Debug System is enabled.
 ```csharp
 private static Color FontColor
 ```
 
 
 ## `Field` SelectedObject
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
 public static GameObject SelectedObject
 ```
 
 
 ## `Field` MaxSelectionDistance
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
 private static Int32 MaxSelectionDistance
 ```
 
 
 ## `Method` ToggleDebug
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+Toggles the Debug System.
 ```csharp
-public Void ToggleDebug ()
+public static Void ToggleDebug()
 ```
 
 
 ## `Method` DrawDebugUI
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+Draws all the Debug UI.
 ```csharp
-public Void DrawDebugUI ()
+public static Void DrawDebugUI()
 ```
 
 
 ## `Method` SelectedNearestGameObject
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+Selects the nearest GameObject to the cursor.
 ```csharp
-public Void SelectedNearestGameObject (Vector2 mousePos)
+public static Void SelectedNearestGameObject(Vector2 mousePos)
 ```
 ### Parameters
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| mousePos | Vector2 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| mousePos | Vector2 | The Mouse Position |
 
 
 ## `Method` GetType
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Type GetType ()
+public Type GetType()
 ```
 
 
 ## `Method` MemberwiseClone
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-private Object MemberwiseClone ()
+private Object MemberwiseClone()
 ```
 
 
 ## `Method` Finalize
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-private Void Finalize ()
+private Void Finalize()
 ```
 
 
 ## `Method` ToString
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public String ToString ()
+public String ToString()
 ```
 
 
 ## `Method` Equals
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Boolean Equals (Object obj)
+public Boolean Equals(Object obj)
 ```
 ### Parameters
 
@@ -102,8 +102,8 @@ public Boolean Equals (Object obj)
 
 
 ## `Method` GetHashCode
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Int32 GetHashCode ()
+public Int32 GetHashCode()
 ```
 

@@ -1,60 +1,60 @@
 # MathExtended
 
 ## `Method` LookAtRotation
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+Returns the rotation from the origin if it was looking at a target
 ```csharp
-public Quaternion LookAtRotation (Vector2 origin, Vector2 target)
+public static Quaternion LookAtRotation(Vector2 origin, Vector2 target)
 ```
 ### Parameters
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| origin | Vector2 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| target | Vector2 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| origin | Vector2 | The origin coordinates |
+| target | Vector2 | The target's position to rotate towards |
 
 
 ## `Method` GetForwardVector
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+Gets the forward vector of a rotation.
 ```csharp
-public Vector2 GetForwardVector (Quaternion rotation)
+public static Vector2 GetForwardVector(Quaternion rotation)
 ```
 ### Parameters
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| rotation | Quaternion | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| rotation | Quaternion | The rotation |
 
 
 ## `Method` WorldToScreenPosition
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+Converts a world coordinate into a screen coordinate
 ```csharp
-public Vector2 WorldToScreenPosition (Vector2 worldPosition, Camera2D camera)
+public static Vector2 WorldToScreenPosition(Vector2 worldPosition, Camera2D camera)
 ```
 ### Parameters
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| worldPosition | Vector2 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| camera | Camera2D | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| worldPosition | Vector2 | The world position |
+| camera | Camera2D | The camera used |
 
 
 ## `Method` ScreenToWorldPosition
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+Converts a screen position to world position
 ```csharp
-public Vector2 ScreenToWorldPosition (Vector2 position, Camera2D camera)
+public static Vector2 ScreenToWorldPosition(Vector2 position, Camera2D camera)
 ```
 ### Parameters
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| position | Vector2 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| camera | Camera2D | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| position | Vector2 | The screen position |
+| camera | Camera2D | The camera used |
 
 
 ## `Method` GetZRotation
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Single GetZRotation (Quaternion quaternion)
+public static Single GetZRotation(Quaternion quaternion)
 ```
 ### Parameters
 
@@ -64,37 +64,37 @@ public Single GetZRotation (Quaternion quaternion)
 
 
 ## `Method` GetType
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Type GetType ()
+public Type GetType()
 ```
 
 
 ## `Method` MemberwiseClone
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-private Object MemberwiseClone ()
+private Object MemberwiseClone()
 ```
 
 
 ## `Method` Finalize
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-private Void Finalize ()
+private Void Finalize()
 ```
 
 
 ## `Method` ToString
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public String ToString ()
+public String ToString()
 ```
 
 
 ## `Method` Equals
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Boolean Equals (Object obj)
+public Boolean Equals(Object obj)
 ```
 ### Parameters
 
@@ -104,8 +104,8 @@ public Boolean Equals (Object obj)
 
 
 ## `Method` GetHashCode
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Int32 GetHashCode ()
+public Int32 GetHashCode()
 ```
 

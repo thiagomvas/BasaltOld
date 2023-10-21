@@ -1,93 +1,135 @@
 # ProgressBar
 
 ## `Field` BackgroundWidth
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
 public Int32 BackgroundWidth
 ```
 
 
 ## `Field` BackgroundHeight
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
 public Int32 BackgroundHeight
 ```
 
 
 ## `Field` BackgroundColor
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+The color of the background of the progress bar.
 ```csharp
 public Color BackgroundColor
 ```
 
 
 ## `Field` BarWidth
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
 public Int32 BarWidth
 ```
 
 
 ## `Field` BarHeight
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
 public Int32 BarHeight
 ```
 
 
 ## `Field` BarColor
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+The color of the progress bar.
 ```csharp
 public Color BarColor
 ```
 
 
 ## `Field` OffsetFromCorner
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+The offset from the top-left corner of the progress bar's parent element.
 ```csharp
 public Vector2 OffsetFromCorner
 ```
 
 
 ## `Field` Progress
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
 public Single Progress
 ```
 
 
 ## `Field` IsActive
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
 public Boolean IsActive
 ```
 
 
-## `Method` CenteredOffset
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+## `Property` Pivot
+
 ```csharp
-public Vector2 CenteredOffset ()
+public PivotPoint Pivot { public get;  }
+```
+
+
+## `Property` OriginalPosition
+
+```csharp
+public Vector2 OriginalPosition { public get; public }
+```
+
+
+## `Property` Transform
+
+```csharp
+public Transform Transform { public get;  }
+```
+
+
+## `Property` Rigidbody
+
+```csharp
+public Rigidbody Rigidbody { public get;  }
+```
+
+
+## `Property` Components
+
+```csharp
+public List`1 Components { public get;  }
+```
+
+
+## `Property` Children
+
+```csharp
+public List`1 Children { public get;  }
+```
+
+
+## `Method` CenteredOffset
+Calculates and returns the offset required to center the progress bar within its background.
+```csharp
+public Vector2 CenteredOffset()
 ```
 
 
 ## `Method` Render
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void Render ()
+public Void Render()
 ```
 
 
 ## `Method` UpdatePosition
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void UpdatePosition ()
+public Void UpdatePosition()
 ```
 
 
 ## `Method` SetPivot
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void SetPivot (PivotPoint pivot)
+public Void SetPivot(PivotPoint pivot)
 ```
 ### Parameters
 
@@ -97,9 +139,9 @@ public Void SetPivot (PivotPoint pivot)
 
 
 ## `Method` AddChildren
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void AddChildren (GameObject obj)
+public Void AddChildren(GameObject obj)
 ```
 ### Parameters
 
@@ -109,37 +151,37 @@ public Void AddChildren (GameObject obj)
 
 
 ## `Method` Awake
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void Awake ()
+public Void Awake()
 ```
 
 
 ## `Method` Start
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void Start ()
+public Void Start()
 ```
 
 
 ## `Method` AddComponent
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public T AddComponent ()
+public T AddComponent()
 ```
 
 
 ## `Method` GetComponent
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public T GetComponent ()
+public T GetComponent()
 ```
 
 
 ## `Method` TryGetComponent
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Boolean TryGetComponent (T& component)
+public Boolean TryGetComponent(T& component)
 ```
 ### Parameters
 
@@ -149,44 +191,44 @@ public Boolean TryGetComponent (T& component)
 
 
 ## `Method` Destroy
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void Destroy ()
+public Void Destroy()
 ```
 
 
 ## `Method` GetType
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Type GetType ()
+public Type GetType()
 ```
 
 
 ## `Method` MemberwiseClone
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-private Object MemberwiseClone ()
+private Object MemberwiseClone()
 ```
 
 
 ## `Method` Finalize
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-private Void Finalize ()
+private Void Finalize()
 ```
 
 
 ## `Method` ToString
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public String ToString ()
+public String ToString()
 ```
 
 
 ## `Method` Equals
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Boolean Equals (Object obj)
+public Boolean Equals(Object obj)
 ```
 ### Parameters
 
@@ -196,8 +238,8 @@ public Boolean Equals (Object obj)
 
 
 ## `Method` GetHashCode
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Int32 GetHashCode ()
+public Int32 GetHashCode()
 ```
 

@@ -1,58 +1,100 @@
 # Label
 
 ## `Field` Text
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+The text for this label
 ```csharp
 public String Text
 ```
 
 
 ## `Field` FontSize
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
 public Int32 FontSize
 ```
 
 
 ## `Field` TextColor
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+The color of this label's text
 ```csharp
 public Color TextColor
 ```
 
 
 ## `Field` Spacing
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
 public Int32 Spacing
 ```
 
 
 ## `Field` IsActive
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
 public Boolean IsActive
 ```
 
 
-## `Method` Render
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+## `Property` Pivot
+
 ```csharp
-public Void Render ()
+public PivotPoint Pivot { public get;  }
+```
+
+
+## `Property` OriginalPosition
+
+```csharp
+public Vector2 OriginalPosition { public get; public }
+```
+
+
+## `Property` Transform
+
+```csharp
+public Transform Transform { public get;  }
+```
+
+
+## `Property` Rigidbody
+
+```csharp
+public Rigidbody Rigidbody { public get;  }
+```
+
+
+## `Property` Components
+
+```csharp
+public List`1 Components { public get;  }
+```
+
+
+## `Property` Children
+
+```csharp
+public List`1 Children { public get;  }
+```
+
+
+## `Method` Render
+
+```csharp
+public Void Render()
 ```
 
 
 ## `Method` UpdatePosition
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void UpdatePosition ()
+public Void UpdatePosition()
 ```
 
 
 ## `Method` SetPivot
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void SetPivot (PivotPoint pivot)
+public Void SetPivot(PivotPoint pivot)
 ```
 ### Parameters
 
@@ -62,9 +104,9 @@ public Void SetPivot (PivotPoint pivot)
 
 
 ## `Method` AddChildren
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void AddChildren (GameObject obj)
+public Void AddChildren(GameObject obj)
 ```
 ### Parameters
 
@@ -74,37 +116,37 @@ public Void AddChildren (GameObject obj)
 
 
 ## `Method` Awake
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void Awake ()
+public Void Awake()
 ```
 
 
 ## `Method` Start
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void Start ()
+public Void Start()
 ```
 
 
 ## `Method` AddComponent
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public T AddComponent ()
+public T AddComponent()
 ```
 
 
 ## `Method` GetComponent
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public T GetComponent ()
+public T GetComponent()
 ```
 
 
 ## `Method` TryGetComponent
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Boolean TryGetComponent (T& component)
+public Boolean TryGetComponent(T& component)
 ```
 ### Parameters
 
@@ -114,44 +156,44 @@ public Boolean TryGetComponent (T& component)
 
 
 ## `Method` Destroy
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void Destroy ()
+public Void Destroy()
 ```
 
 
 ## `Method` GetType
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Type GetType ()
+public Type GetType()
 ```
 
 
 ## `Method` MemberwiseClone
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-private Object MemberwiseClone ()
+private Object MemberwiseClone()
 ```
 
 
 ## `Method` Finalize
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-private Void Finalize ()
+private Void Finalize()
 ```
 
 
 ## `Method` ToString
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public String ToString ()
+public String ToString()
 ```
 
 
 ## `Method` Equals
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Boolean Equals (Object obj)
+public Boolean Equals(Object obj)
 ```
 ### Parameters
 
@@ -161,8 +203,8 @@ public Boolean Equals (Object obj)
 
 
 ## `Method` GetHashCode
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Int32 GetHashCode ()
+public Int32 GetHashCode()
 ```
 

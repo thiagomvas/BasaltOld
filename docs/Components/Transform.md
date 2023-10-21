@@ -1,44 +1,72 @@
 # Transform
 
 ## `Field` <Position>k__BackingField
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
 private Vector2 <Position>k__BackingField
 ```
 
 
 ## `Field` <Rotation>k__BackingField
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
 private Quaternion <Rotation>k__BackingField
 ```
 
 
 ## `Field` <Children>k__BackingField
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
 private List`1 <Children>k__BackingField
 ```
 
 
 ## `Field` OnPositionChanged
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
 private EventHandler`1 OnPositionChanged
 ```
 
 
 ## `Field` parent
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
 public GameObject parent
 ```
 
 
-## `Method` add_OnPositionChanged
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+## `Property` Position
+
 ```csharp
-public Void add_OnPositionChanged (EventHandler`1 value)
+public Vector2 Position { public get; public }
+```
+
+
+## `Property` Rotation
+
+```csharp
+public Quaternion Rotation { public get; public }
+```
+
+
+## `Property` Forward
+
+```csharp
+public Vector2 Forward { public get;  }
+```
+
+
+## `Property` Children
+
+```csharp
+public List`1 Children { public get;  }
+```
+
+
+## `Method` add_OnPositionChanged
+
+```csharp
+public Void add_OnPositionChanged(EventHandler`1 value)
 ```
 ### Parameters
 
@@ -48,9 +76,9 @@ public Void add_OnPositionChanged (EventHandler`1 value)
 
 
 ## `Method` remove_OnPositionChanged
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void remove_OnPositionChanged (EventHandler`1 value)
+public Void remove_OnPositionChanged(EventHandler`1 value)
 ```
 ### Parameters
 
@@ -60,64 +88,64 @@ public Void remove_OnPositionChanged (EventHandler`1 value)
 
 
 ## `Method` Move
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+Moves the transform and all it's children by an amount in each axis
 ```csharp
-public Void Move (Vector2 units)
+public Void Move(Vector2 units)
 ```
 ### Parameters
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| units | Vector2 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| units | Vector2 | The amount to move in each axis |
 
 
 ## `Method` MoveTo
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+Moves the transform and all it's chidren to a point
 ```csharp
-public Void MoveTo (Vector2 point)
+public Void MoveTo(Vector2 point)
 ```
 ### Parameters
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| point | Vector2 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| point | Vector2 | The point to set the position as |
 
 
 ## `Method` AddChildren
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+Adds a children to this transform
 ```csharp
-public Void AddChildren (GameObject obj)
+public Void AddChildren(GameObject obj)
 ```
 ### Parameters
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| obj | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| obj | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | The game object to set as children |
 
 
 ## `Method` AddChildren
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+Adds a children to this transform
 ```csharp
-public Void AddChildren (Transform transform)
+public Void AddChildren(Transform transform)
 ```
 ### Parameters
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| transform | [Transform](https://thiagomvas.github.io/GameEngine/Components/Transform.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| transform | [Transform](https://thiagomvas.github.io/GameEngine/Components/Transform.html) | The transform to set as children |
 
 
 ## `Method` Destroy
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void Destroy ()
+public Void Destroy()
 ```
 
 
 ## `Method` Awake
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void Awake (GameObject gameObject)
+public Void Awake(GameObject gameObject)
 ```
 ### Parameters
 
@@ -127,9 +155,9 @@ public Void Awake (GameObject gameObject)
 
 
 ## `Method` Start
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void Start (GameObject gameObject)
+public Void Start(GameObject gameObject)
 ```
 ### Parameters
 
@@ -139,51 +167,51 @@ public Void Start (GameObject gameObject)
 
 
 ## `Method` OnUpdate
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void OnUpdate ()
+public Void OnUpdate()
 ```
 
 
 ## `Method` Update
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Void Update ()
+public Void Update()
 ```
 
 
 ## `Method` GetType
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Type GetType ()
+public Type GetType()
 ```
 
 
 ## `Method` MemberwiseClone
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-private Object MemberwiseClone ()
+private Object MemberwiseClone()
 ```
 
 
 ## `Method` Finalize
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-private Void Finalize ()
+private Void Finalize()
 ```
 
 
 ## `Method` ToString
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public String ToString ()
+public String ToString()
 ```
 
 
 ## `Method` Equals
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Boolean Equals (Object obj)
+public Boolean Equals(Object obj)
 ```
 ### Parameters
 
@@ -193,8 +221,8 @@ public Boolean Equals (Object obj)
 
 
 ## `Method` GetHashCode
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. 
+
 ```csharp
-public Int32 GetHashCode ()
+public Int32 GetHashCode()
 ```
 

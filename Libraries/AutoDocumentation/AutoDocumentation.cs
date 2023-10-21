@@ -1,5 +1,4 @@
 using System.Reflection;
-using System.Text;
 
 namespace GameEngineProject.Libraries.AutoDocumentation
 {
@@ -20,50 +19,83 @@ namespace GameEngineProject.Libraries.AutoDocumentation
         {
             typesFound.Clear();
             ReflectFolders(SourceDirectory);
-            IterateFilesAndFolders(SourceDirectory);
+            FetchAllTypes(SourceDirectory, "");
+
+            foreach(var type in typesFound)
+            {
+                string documentation = "# " + type.type.Name + "\n";
+                string text = File.ReadAllText(type.originalFilePath);
+                var members = ClassDoc(type.type, typesFound);
+                var lines = text.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
+                foreach(var member in members)
+                {
+                    ExtractSummary(lines, member);
+
+                    //Extract Param Description
+                    ExtractParamDescriptions(lines, member);
+
+                    documentation += member;
+
+                }
+                WriteTextToFile(documentation, Path.Combine(DocsRootDirectory, type.relativePathToDocs));
+            }
         }
 
-        public static List<DocTypeInfo> GetAllTypes(string directoryPath, string currentPath = "")
+        private static void ExtractParamDescriptions(string[] lines, DocsMember member)
         {
-            List<DocTypeInfo> types = new();
-            try
+            int lineIndex = 0;
+            foreach (var line in lines)
             {
-                // Process files in the current directory
-                string[] files = Directory.GetFiles(directoryPath);
-                foreach (string file in files)
+                if (line.ToLower().Replace(" ", "").Contains(member.Signature.ToLower().Replace(" ", "")))
                 {
-                    if (file.Substring(file.IndexOf('.') + 1) != "cs") continue;
-                    string fileName = Path.GetFileName(file.Substring(0, file.IndexOf('.')));
-                    string path = Path.Combine(new string[] { Path.GetFileName(DocsRootDirectory), currentPath, $"{fileName}.md" });
-
-                    Type type = Type.GetType($"{SourceNamespace}.{currentPath.Replace('\\', '.')}.{fileName}");
-                    if (type != null)
-                    {
-                        types.Add(new(type, path));
-                    }
-
+                    lineIndex = Array.IndexOf(lines, line);
+                    break;
                 }
+            }
 
-                // Recursively process subdirectories
-                string[] subdirectories = Directory.GetDirectories(directoryPath);
-                foreach (string subdirectory in subdirectories)
+            foreach (var param in member.Parameters)
+            {
+                for (int i = lineIndex; i > 0; i--)
                 {
-                    string subdirectoryName = Path.GetFileName(subdirectory);
-
-                    // Skip specific folders (e.g., "obj", "bin", ".vs")
-                    if (!ShouldSkipFolder(subdirectoryName))
+                    if (lines[i].Contains("<summary>")) break;
+                    else if (lines[i].Contains($"<param name=\"{param.Name}\">"))
                     {
-                        var path = Path.Combine(DocsRootDirectory, Path.Combine(currentPath, subdirectoryName));
-                        if (!Directory.Exists(path)) Directory.CreateDirectory(path);
-                        GetAllTypes(subdirectory, Path.Combine(currentPath, subdirectoryName));
+                        string desc = lines[i].Replace($"<param name=\"{param.Name}\">", "").Replace("</param>", "").Replace("///", "").TrimStart();
+                        param.Description = desc;
                     }
                 }
             }
-            catch (Exception e)
+        }
+
+        private static void ExtractSummary(string[] lines, DocsMember member)
+        {
+            int lineIndex = 0;
+            foreach (var line in lines)
             {
-                Console.WriteLine($"An error occurred: {e.Message}");
+                if (line.ToLower().Replace(" ", "").Contains(member.Signature.ToLower().Replace(" ", "")))
+                {
+                    lineIndex = Array.IndexOf(lines, line);
+                    break;
+                }
             }
-            return types;
+            List<string> summaryLines = new();
+            bool insideSummary = false;
+            for (int i = lineIndex; i > 0; i--)
+            {
+                if (lines[i].Contains("<summary>")) break;
+                else if (insideSummary) summaryLines.Add(lines[i]);
+                else if (lines[i].Contains("</summary>")) insideSummary = true;
+            }
+
+            summaryLines.Reverse();
+
+
+
+            if (summaryLines.Count > 0)
+            {
+                var summary = summaryLines.Aggregate((a, b) => a + b).Replace("///", "").TrimStart();
+                member.Summary = summary;
+            }
         }
 
         private static void ReflectFolders(string directoryPath, string currentPath = "")
@@ -77,14 +109,13 @@ namespace GameEngineProject.Libraries.AutoDocumentation
                 if (!ShouldSkipFolder(subdirectoryName))
                 {
                     var path = Path.Combine(DocsRootDirectory, Path.Combine(currentPath,subdirectoryName));
-                    Console.WriteLine(Directory.Exists(path));
                     if (!Directory.Exists(path)) Directory.CreateDirectory(path);
                     ReflectFolders(subdirectory, Path.Combine(currentPath, subdirectoryName));
                 }
             }
         }
 
-        private static void IterateFilesAndFolders(string directoryPath, string currentPath = "")
+        private static void FetchAllTypes(string directoryPath, string currentPath)
         {
             try
             {
@@ -96,10 +127,12 @@ namespace GameEngineProject.Libraries.AutoDocumentation
                     string fileName = Path.GetFileName(file.Substring(0, file.IndexOf('.')));
                     string path = Path.Combine(new string[] { Path.GetFileName(DocsRootDirectory), currentPath, $"{fileName}.md" });
 
+
+
                     Type type = Type.GetType($"{SourceNamespace}.{currentPath.Replace('\\', '.')}.{fileName}");
                     if (type != null)
                     {
-                        typesFound.Add(new(type, path));
+                        typesFound.Add(new(type, path, file));
                     }
 
                 }
@@ -115,7 +148,7 @@ namespace GameEngineProject.Libraries.AutoDocumentation
                     {
                         var path = Path.Combine(DocsRootDirectory, Path.Combine(currentPath, subdirectoryName));
                         if (!Directory.Exists(path)) Directory.CreateDirectory(path);
-                        IterateFilesAndFolders(subdirectory, Path.Combine(currentPath, subdirectoryName));
+                        FetchAllTypes(subdirectory, Path.Combine(currentPath, subdirectoryName));
                     }
                 }
             }
@@ -124,10 +157,7 @@ namespace GameEngineProject.Libraries.AutoDocumentation
                 Console.WriteLine($"An error occurred: {e.Message}");
             }
 
-            foreach (DocTypeInfo type in typesFound)
-            {
-                WriteDocumentationForType(type.type, type.relativePathToDocs, typesFound);
-            }
+            typesFound = typesFound.GroupBy(x => x.type).Select(y => y.First()).OrderBy(e => e.type.Name).ToList();
         }
 
         // Method to determine whether to skip a folder
@@ -144,6 +174,76 @@ namespace GameEngineProject.Libraries.AutoDocumentation
             }
             return false;
         }
+
+        public static List<DocsMember> ClassDoc(Type type, List<DocTypeInfo> typesToLink)
+        {
+            List<DocsMember> members = new();
+            // Get all fields
+            FieldInfo[] fields = type.GetFields(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static);
+            foreach (FieldInfo field in fields)
+            {
+                DocsMember doc = new();
+                doc.Title = $"{field.Name}";
+                doc.Signature = $"{(field.IsPublic ? "public" : "private")}{(field.IsStatic ? " static" : "")} {field.FieldType.Name} {field.Name}";
+                members.Add(doc);
+            }
+
+            // Get all properties
+            PropertyInfo[] properties = type.GetProperties(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+            foreach (PropertyInfo property in properties)
+            {
+                DocsMember doc = new();
+                doc.type = DocsMember.DocType.Property;
+                doc.Title = property.Name;
+
+                var getMethod = property.GetGetMethod();
+                var setMethod = property.GetSetMethod();
+                if (getMethod != null)
+                {
+                    string getText = $"{(getMethod.IsPublic ? "public" : "private")} get;";
+                    string setText = $"{(setMethod != null ? (setMethod.IsPublic ? "public" : "private") : "")}";
+                    doc.Signature = $"{(getMethod.IsPublic ? "public" : "private")} {property.PropertyType.Name} {property.Name} {{ {getText} {setText} }}";
+                }
+                members.Add(doc);
+
+            }
+
+            // Get all methods
+            MethodInfo[] methods = type.GetMethods(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static);
+            foreach (MethodInfo method in methods)
+            {
+                if (method.Name.StartsWith("get_") || method.Name.StartsWith("set_")) continue;
+                DocsMember doc = new();
+                doc.type = DocsMember.DocType.Method;
+                doc.Title = method.Name;
+                string text = $"{(method.IsPublic ? "public" : "private")}{(method.IsStatic ? " static" : "")} {method.ReturnType.Name} {method.Name}(";
+                var parameters = method.GetParameters();
+                foreach (var param in parameters)
+                    text += $"{param.ParameterType.Name} {param.Name}, ";
+                if (parameters.Length > 0) text = text.Substring(0, text.Length - 2);
+                text += ")";
+
+                doc.Signature = text;
+
+                foreach (var param in method.GetParameters())
+                {
+                    string link = string.Empty;
+                    foreach (var t in typesToLink)
+                    {
+                        if (t.type == param.ParameterType)
+                        {
+                            link = Path.Combine(GithubPagesLink, t.relativePathToDocs.Split("docs\\")[0].Replace('\\', '/').Replace(".md", ".html"));
+                            break;
+                        }
+
+                    }
+                    doc.Parameters.Add(new(param.Name, param.ParameterType, link));
+                }
+                members.Add(doc);
+            }
+            return members;
+        }
+
 
         /// <summary>
         /// Generates documentation for a given Type
@@ -242,47 +342,6 @@ namespace GameEngineProject.Libraries.AutoDocumentation
                 Console.WriteLine("An error occurred: " + e.Message);
             }
         }
-    }
-
-    /// <summary>
-    /// Base class for holding elements for automatic documentation
-    /// </summary>
-    public class DocsMember
-    {
-        public string Title { get; set; }
-        public string Summary { get; set; } = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet euismod risus, vitae iaculis libero placerat vitae. ";
-        public string Signature { get; set; }
-        public List<ParameterInfo> Parameters { get; set; } = new();
-        public enum DocType { Field, Property, Method }
-        public DocType type = DocType.Field;
-
-
-        public override string ToString()
-        {
-            StringBuilder doc = new();
-            doc.AppendLine();
-            doc.AppendLine($"## `{type}` {Title}");
-            doc.AppendLine(Summary);
-            doc.AppendLine("```csharp");
-            doc.AppendLine(Signature);
-            doc.AppendLine("```");
-
-            if (Parameters.Count > 0)
-            {
-                doc.AppendLine("### Parameters");
-                doc.AppendLine("");
-                doc.AppendLine("| Parameter Name | Type | Description |");
-                doc.AppendLine("| --------- | --------- | --------- |");
-            }
-            foreach (ParameterInfo param in Parameters)
-            {
-                doc.AppendLine($"| {param.Name} | {(!string.IsNullOrWhiteSpace(param.LinkPath) ? $"[{param.Type.Name}]({param.LinkPath})" : param.Type.Name)} | {param.Description} |");
-            }
-
-            doc.AppendLine();
-            return doc.ToString();
-        }
-
     }
 
 }
