@@ -31,6 +31,9 @@ namespace GameEngineProject.Source.Components
         /// </summary>
         public List<Transform> Children { get; private set; } = new();
 
+        /// <summary>
+        /// Event triggered whenever this object is moved.
+        /// </summary>
         public event EventHandler<TransformPositionUpdatedEventArgs>? OnPositionChanged;
 
         #region Constructors

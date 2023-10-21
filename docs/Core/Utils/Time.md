@@ -37,7 +37,7 @@ public Boolean Equals(Object obj)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| obj | Object | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| obj | Object | No description. |
 
 
 ## `Method` GetHashCode

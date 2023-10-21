@@ -9,12 +9,35 @@ using GameEngineProject.Source.Components;
 
 namespace GameEngineProject.Source.Entities
 {
+    /// <summary>
+    /// Represents a player in the game.
+    /// </summary>
     public class Player
     {
+        /// <summary>
+        /// Gets or sets the GameObject associated with the player.
+        /// </summary>
         public GameObject gameObject;
-        public int id; 
+
+        /// <summary>
+        /// Gets the unique identifier for the player.
+        /// </summary>
+        public int id;
+
+        /// <summary>
+        /// Gets or sets the movement speed of the player.
+        /// </summary>
         public int MovementSpeed = 250;
+
+        /// <summary>
+        /// Gets the Rigidbody component associated with the player's GameObject.
+        /// </summary>
         Rigidbody rb;
+
+        /// <summary>
+        /// Initializes a new instance of the Player class with the provided GameObject.
+        /// </summary>
+        /// <param name="gameObject">The GameObject associated with the player.</param>
         public Player(GameObject gameObject)
         {
             this.gameObject = gameObject;
@@ -22,7 +45,15 @@ namespace GameEngineProject.Source.Entities
             GraphicsWindow2D.OnScreenRedraw += OnMovePlayer;
             rb = gameObject.GetComponent<Rigidbody>();
         }
+
+        /// <summary>
+        /// Callback method for handling player movement.
+        /// </summary>
         public void OnMovePlayer() => MovePlayer();
+
+        /// <summary>
+        /// Moves the player based on input controls and mouse position.
+        /// </summary>
         public void MovePlayer()
         {
             if (Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE)) gameObject.IsActive = !gameObject.IsActive;
@@ -32,7 +63,7 @@ namespace GameEngineProject.Source.Entities
             if (Raylib.IsKeyDown(KeyboardKey.KEY_A)) rb.Velocity.X = -MovementSpeed * Time.DeltaTime;
             if (Raylib.IsKeyDown(KeyboardKey.KEY_D)) rb.Velocity.X = MovementSpeed * Time.DeltaTime;
             if (Raylib.IsKeyDown(KeyboardKey.KEY_W)) rb.Velocity.Y = -MovementSpeed * Time.DeltaTime;
-            if (Raylib.IsKeyDown(KeyboardKey.KEY_S)) rb.Velocity.Y =MovementSpeed * Time.DeltaTime;
+            if (Raylib.IsKeyDown(KeyboardKey.KEY_S)) rb.Velocity.Y = MovementSpeed * Time.DeltaTime;
             if (Raylib.IsKeyDown(KeyboardKey.KEY_R)) gameObject.Transform.MoveTo(Vector2.Zero);
 
             Vector2 mouseCoordsOnWorld = ScreenToWorldPosition(Raylib.GetMousePosition(), Engine.Camera2D.Value);
@@ -40,4 +71,5 @@ namespace GameEngineProject.Source.Entities
             gameObject.Transform.Rotation = LookAtRotation(gameObject.Transform.Position, mouseCoordsOnWorld);
         }
     }
+
 }

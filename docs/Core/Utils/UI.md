@@ -9,7 +9,7 @@ public static Void Instantiate(UIElement uiElement)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| uiElement | [UIElement](https://thiagomvas.github.io/GameEngine/Entities/UIElement.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| uiElement | [UIElement](https://thiagomvas.github.io/GameEngine/Entities/UIElement.html) | No description. |
 
 
 ## `Method` GetType
@@ -49,7 +49,7 @@ public Boolean Equals(Object obj)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| obj | Object | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| obj | Object | No description. |
 
 
 ## `Method` GetHashCode

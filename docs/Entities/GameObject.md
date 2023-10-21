@@ -14,34 +14,6 @@ private Boolean StartCalled
 ```
 
 
-## `Field` <Transform>k__BackingField
-
-```csharp
-private Transform <Transform>k__BackingField
-```
-
-
-## `Field` <Rigidbody>k__BackingField
-
-```csharp
-private Rigidbody <Rigidbody>k__BackingField
-```
-
-
-## `Field` <Components>k__BackingField
-
-```csharp
-private List`1 <Components>k__BackingField
-```
-
-
-## `Field` <Children>k__BackingField
-
-```csharp
-private List`1 <Children>k__BackingField
-```
-
-
 ## `Field` IsActive
 
 ```csharp
@@ -50,30 +22,30 @@ public Boolean IsActive
 
 
 ## `Property` Transform
-
+The object's transforms.
 ```csharp
-public Transform Transform { public get;  }
+public Transform Transform { public get;  set; }
 ```
 
 
 ## `Property` Rigidbody
-
+The object's transforms.
 ```csharp
-public Rigidbody Rigidbody { public get;  }
+public Rigidbody Rigidbody { public get;  set; }
 ```
 
 
 ## `Property` Components
 
 ```csharp
-public List`1 Components { public get;  }
+public List`1 Components { public get;  set; }
 ```
 
 
 ## `Property` Children
 
 ```csharp
-public List`1 Children { public get;  }
+public List`1 Children { public get;  set; }
 ```
 
 
@@ -126,7 +98,7 @@ public Boolean TryGetComponent(T& component)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| component | T& | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| component | T& | No description. |
 
 
 ## `Method` Destroy
@@ -173,7 +145,7 @@ public Boolean Equals(Object obj)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| obj | Object | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| obj | Object | No description. |
 
 
 ## `Method` GetHashCode

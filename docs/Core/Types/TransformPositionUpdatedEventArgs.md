@@ -1,16 +1,9 @@
 # TransformPositionUpdatedEventArgs
 
-## `Field` <NewPosition>k__BackingField
-
-```csharp
-private Vector2 <NewPosition>k__BackingField
-```
-
-
 ## `Property` NewPosition
-
+The new position after moving.
 ```csharp
-public Vector2 NewPosition { public get;  }
+public Vector2 NewPosition { public get;  set; }
 ```
 
 
@@ -51,7 +44,7 @@ public Boolean Equals(Object obj)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| obj | Object | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| obj | Object | No description. |
 
 
 ## `Method` GetHashCode

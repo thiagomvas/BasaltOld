@@ -1,3 +1,4 @@
+using GameEngineProject.Source.Components;
 using System.Reflection;
 
 namespace GameEngineProject.Libraries.AutoDocumentation
@@ -21,13 +22,14 @@ namespace GameEngineProject.Libraries.AutoDocumentation
             ReflectFolders(SourceDirectory);
             FetchAllTypes(SourceDirectory, "");
 
-            foreach(var type in typesFound)
+            foreach(DocTypeInfo type in typesFound)
             {
                 string documentation = "# " + type.type.Name + "\n";
                 string text = File.ReadAllText(type.originalFilePath);
                 var members = ClassDoc(type.type, typesFound);
                 var lines = text.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
-                foreach(var member in members)
+             
+                foreach (var member in members)
                 {
                     ExtractSummary(lines, member);
 
@@ -39,6 +41,7 @@ namespace GameEngineProject.Libraries.AutoDocumentation
                 }
                 WriteTextToFile(documentation, Path.Combine(DocsRootDirectory, type.relativePathToDocs));
             }
+            
         }
 
         private static void ExtractParamDescriptions(string[] lines, DocsMember member)
@@ -70,9 +73,15 @@ namespace GameEngineProject.Libraries.AutoDocumentation
         private static void ExtractSummary(string[] lines, DocsMember member)
         {
             int lineIndex = 0;
+            int x = 0;
             foreach (var line in lines)
             {
                 if (line.ToLower().Replace(" ", "").Contains(member.Signature.ToLower().Replace(" ", "")))
+                {
+                    lineIndex = Array.IndexOf(lines, line);
+                    break;
+                }
+                else if (member.type == DocsMember.DocType.Property && line.ToLower().Replace(" ", "").Contains(member.BasicSignature.ToLower().Replace(" ", "")))
                 {
                     lineIndex = Array.IndexOf(lines, line);
                     break;
@@ -182,6 +191,7 @@ namespace GameEngineProject.Libraries.AutoDocumentation
             FieldInfo[] fields = type.GetFields(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static);
             foreach (FieldInfo field in fields)
             {
+                if (field.Name.Contains("k__BackingField")) continue;
                 DocsMember doc = new();
                 doc.Title = $"{field.Name}";
                 doc.Signature = $"{(field.IsPublic ? "public" : "private")}{(field.IsStatic ? " static" : "")} {field.FieldType.Name} {field.Name}";
@@ -201,8 +211,9 @@ namespace GameEngineProject.Libraries.AutoDocumentation
                 if (getMethod != null)
                 {
                     string getText = $"{(getMethod.IsPublic ? "public" : "private")} get;";
-                    string setText = $"{(setMethod != null ? (setMethod.IsPublic ? "public" : "private") : "")}";
+                    string setText = $"{(setMethod != null ? (setMethod.IsPublic ? "public" : "private") : "")} set;";
                     doc.Signature = $"{(getMethod.IsPublic ? "public" : "private")} {property.PropertyType.Name} {property.Name} {{ {getText} {setText} }}";
+                    doc.BasicSignature = $"{(getMethod.IsPublic ? "public" : "private")} {property.PropertyType.Name} {property.Name}";
                 }
                 members.Add(doc);
 
@@ -212,7 +223,7 @@ namespace GameEngineProject.Libraries.AutoDocumentation
             MethodInfo[] methods = type.GetMethods(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static);
             foreach (MethodInfo method in methods)
             {
-                if (method.Name.StartsWith("get_") || method.Name.StartsWith("set_")) continue;
+                if (BlacklistedMethod(method)) continue;
                 DocsMember doc = new();
                 doc.type = DocsMember.DocType.Method;
                 doc.Title = method.Name;
@@ -242,6 +253,13 @@ namespace GameEngineProject.Libraries.AutoDocumentation
                 members.Add(doc);
             }
             return members;
+        }
+
+        private static bool BlacklistedMethod(MethodInfo method)
+        {
+            string[] blacklist = new string[] { "get_", "set_", "add_", "remove_" };
+            foreach (string black in blacklist) if(method.Name.Contains(black)) return true;
+            return false;
         }
 
 

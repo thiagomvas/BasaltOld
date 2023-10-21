@@ -11,15 +11,50 @@ namespace GameEngineProject.Source.Core.Utils
     public static class UI
     {
         #region Screen Coordinates
-        public static Vector2 ScreenCenter          { get { return new Vector2(GetScreenWidth()/2, GetScreenHeight()/2); } }
-        public static Vector2 ScreenTopLeft         { get { return Vector2.Zero; } }
-        public static Vector2 ScreenLeft            { get { return new(0, GetScreenHeight() / 2); } }
-        public static Vector2 ScreenBottomLeft      { get { return new(0, GetScreenHeight()); } }
-        public static Vector2 ScreenBottom          { get { return new(GetScreenWidth() / 2, GetScreenHeight()); } }
-        public static Vector2 ScreenBottomRight     { get { return new(GetScreenWidth(), GetScreenHeight()); } }
-        public static Vector2 ScreenRight           { get { return new(GetScreenWidth(), GetScreenHeight() / 2); } }
-        public static Vector2 ScreenTopRight        { get { return new (GetScreenWidth(), 0); } }
-        public static Vector2 ScreenTop             { get { return new(GetScreenWidth()/2, 0); } }
+        /// <summary>
+        /// Gets the center of the screen as a Vector2.
+        /// </summary>
+        public static Vector2 ScreenCenter { get; }
+
+        /// <summary>
+        /// Gets the top-left corner of the screen as a Vector2.
+        /// </summary>
+        public static Vector2 ScreenTopLeft { get; }
+
+        /// <summary>
+        /// Gets the left-center of the screen as a Vector2.
+        /// </summary>
+        public static Vector2 ScreenLeft { get; }
+
+        /// <summary>
+        /// Gets the bottom-left corner of the screen as a Vector2.
+        /// </summary>
+        public static Vector2 ScreenBottomLeft { get; }
+
+        /// <summary>
+        /// Gets the bottom-center of the screen as a Vector2.
+        /// </summary>
+        public static Vector2 ScreenBottom { get; }
+
+        /// <summary>
+        /// Gets the bottom-right corner of the screen as a Vector2.
+        /// </summary>
+        public static Vector2 ScreenBottomRight { get; }
+
+        /// <summary>
+        /// Gets the right-center of the screen as a Vector2.
+        /// </summary>
+        public static Vector2 ScreenRight { get; }
+
+        /// <summary>
+        /// Gets the top-right corner of the screen as a Vector2.
+        /// </summary>
+        public static Vector2 ScreenTopRight { get; }
+
+        /// <summary>
+        /// Gets the top-center of the screen as a Vector2.
+        /// </summary>
+        public static Vector2 ScreenTop { get; }
         #endregion
 
 

@@ -6,7 +6,14 @@ namespace GameEngineProject.Source.Components
 {
     public class CircleRenderer : Renderer2D
     {
+        /// <summary>
+        /// The radius of the rendered circle.
+        /// </summary>
         public int Radius = 25;
+
+        /// <summary>
+        /// The fill color of the rendered circle.
+        /// </summary>
         public Color Color = Color.WHITE;
 
         public override void Start(GameObject gameObject)

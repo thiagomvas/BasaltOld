@@ -11,7 +11,7 @@
         public Type Type { get; set; }
         public string LinkPath { get; set; }
 
-        public ParameterInfo(string name, Type type, string linkPath = "", string description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
+        public ParameterInfo(string name, Type type, string linkPath = "", string description = "No description.")
         {
             Name = name;
             Description = description;

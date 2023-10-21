@@ -17,28 +17,28 @@ public Boolean IsActive
 ## `Property` Transform
 
 ```csharp
-public Transform Transform { public get;  }
+public Transform Transform { public get;  set; }
 ```
 
 
 ## `Property` Rigidbody
 
 ```csharp
-public Rigidbody Rigidbody { public get;  }
+public Rigidbody Rigidbody { public get;  set; }
 ```
 
 
 ## `Property` Components
 
 ```csharp
-public List`1 Components { public get;  }
+public List`1 Components { public get;  set; }
 ```
 
 
 ## `Property` Children
 
 ```csharp
-public List`1 Children { public get;  }
+public List`1 Children { public get;  set; }
 ```
 
 
@@ -51,8 +51,8 @@ private Void UpdateCameraPosition(Object sender, TransformPositionUpdatedEventAr
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| sender | Object | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| e | [TransformPositionUpdatedEventArgs](https://thiagomvas.github.io/GameEngine/Core/Types/TransformPositionUpdatedEventArgs.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| sender | Object | No description. |
+| e | [TransformPositionUpdatedEventArgs](https://thiagomvas.github.io/GameEngine/Core/Types/TransformPositionUpdatedEventArgs.html) | No description. |
 
 
 ## `Method` Destroy
@@ -71,7 +71,7 @@ public Void AddChildren(GameObject obj)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| obj | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| obj | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | No description. |
 
 
 ## `Method` Awake
@@ -111,7 +111,7 @@ public Boolean TryGetComponent(T& component)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| component | T& | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| component | T& | No description. |
 
 
 ## `Method` GetType
@@ -151,7 +151,7 @@ public Boolean Equals(Object obj)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| obj | Object | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| obj | Object | No description. |
 
 
 ## `Method` GetHashCode

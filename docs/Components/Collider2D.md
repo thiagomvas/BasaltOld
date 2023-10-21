@@ -14,30 +14,6 @@ public GameObject parent
 ```
 
 
-## `Method` add_OnCollision
-
-```csharp
-public Void add_OnCollision(EventHandler`1 value)
-```
-### Parameters
-
-| Parameter Name | Type | Description |
-| --------- | --------- | --------- |
-| value | EventHandler`1 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-
-
-## `Method` remove_OnCollision
-
-```csharp
-public Void remove_OnCollision(EventHandler`1 value)
-```
-### Parameters
-
-| Parameter Name | Type | Description |
-| --------- | --------- | --------- |
-| value | EventHandler`1 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-
-
 ## `Method` Destroy
 
 ```csharp
@@ -54,7 +30,7 @@ public Void Start(GameObject gameObject)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| gameObject | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| gameObject | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | No description. |
 
 
 ## `Method` CheckAllCollisions
@@ -73,7 +49,7 @@ public Void CheckCollision(GameObject other)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| other | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| other | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | No description. |
 
 
 ## `Method` SolveCollision
@@ -85,7 +61,7 @@ public Void SolveCollision(Collider2D collided)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| collided | [Collider2D](https://thiagomvas.github.io/GameEngine/Components/Collider2D.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| collided | [Collider2D](https://thiagomvas.github.io/GameEngine/Components/Collider2D.html) | No description. |
 
 
 ## `Method` InvokeOnCollision
@@ -109,7 +85,7 @@ public Void DrawDebugHitbox(Vector2 screenPos)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| screenPos | Vector2 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| screenPos | Vector2 | No description. |
 
 
 ## `Method` Awake
@@ -121,7 +97,7 @@ public Void Awake(GameObject gameObject)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| gameObject | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| gameObject | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | No description. |
 
 
 ## `Method` OnUpdate
@@ -175,7 +151,7 @@ public Boolean Equals(Object obj)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| obj | Object | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| obj | Object | No description. |
 
 
 ## `Method` GetHashCode

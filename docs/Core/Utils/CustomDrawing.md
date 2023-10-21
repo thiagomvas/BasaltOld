@@ -9,9 +9,9 @@ public static Void DrawCircle(Vector2 position, Single radius, Color color)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| position | Vector2 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| radius | Single | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| color | Color | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| position | Vector2 | No description. |
+| radius | Single | No description. |
+| color | Color | No description. |
 
 
 ## `Method` DrawText
@@ -23,10 +23,10 @@ public static Void DrawText(String text, Vector2 position, Int32 fontSize, Color
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| text | String | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| position | Vector2 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| fontSize | Int32 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| color | Color | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| text | String | No description. |
+| position | Vector2 | No description. |
+| fontSize | Int32 | No description. |
+| color | Color | No description. |
 
 
 ## `Method` GetType
@@ -66,7 +66,7 @@ public Boolean Equals(Object obj)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| obj | Object | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| obj | Object | No description. |
 
 
 ## `Method` GetHashCode

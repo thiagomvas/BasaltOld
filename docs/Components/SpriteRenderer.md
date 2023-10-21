@@ -31,7 +31,7 @@ public GameObject parent
 ## `Property` transform
 
 ```csharp
-public Transform transform { public get;  }
+public Transform transform { public get;  set; }
 ```
 
 
@@ -44,7 +44,7 @@ public Void Awake(GameObject gameObject)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| gameObject | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| gameObject | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | No description. |
 
 
 ## `Method` Render
@@ -77,7 +77,7 @@ public Void Start(GameObject gameObject)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| gameObject | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| gameObject | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | No description. |
 
 
 ## `Method` OnUpdate
@@ -131,7 +131,7 @@ public Boolean Equals(Object obj)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| obj | Object | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| obj | Object | No description. |
 
 
 ## `Method` GetHashCode

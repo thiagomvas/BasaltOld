@@ -1,26 +1,5 @@
 # Globals
 
-## `Field` <GameObjectsOnScene>k__BackingField
-
-```csharp
-private static List`1 <GameObjectsOnScene>k__BackingField
-```
-
-
-## `Field` <UIElementsOnScene>k__BackingField
-
-```csharp
-private static List`1 <UIElementsOnScene>k__BackingField
-```
-
-
-## `Field` <AllComponentsOnScene>k__BackingField
-
-```csharp
-private static Dictionary`2 <AllComponentsOnScene>k__BackingField
-```
-
-
 ## `Method` Instantiate
 Adds a new Game Object to the world.
 ```csharp
@@ -70,7 +49,7 @@ public Boolean Equals(Object obj)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| obj | Object | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| obj | Object | No description. |
 
 
 ## `Method` GetHashCode

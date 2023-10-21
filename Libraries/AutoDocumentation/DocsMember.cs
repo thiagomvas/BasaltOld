@@ -13,6 +13,7 @@ namespace GameEngineProject.Libraries.AutoDocumentation
         public List<ParameterInfo> Parameters { get; set; } = new();
         public enum DocType { Field, Property, Method }
         public DocType type = DocType.Field;
+        public string BasicSignature = "";
 
 
         public override string ToString()

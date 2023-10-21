@@ -38,42 +38,42 @@ public Boolean IsActive
 ## `Property` Pivot
 
 ```csharp
-public PivotPoint Pivot { public get;  }
+public PivotPoint Pivot { public get;  set; }
 ```
 
 
 ## `Property` OriginalPosition
 
 ```csharp
-public Vector2 OriginalPosition { public get; public }
+public Vector2 OriginalPosition { public get; public set; }
 ```
 
 
 ## `Property` Transform
 
 ```csharp
-public Transform Transform { public get;  }
+public Transform Transform { public get;  set; }
 ```
 
 
 ## `Property` Rigidbody
 
 ```csharp
-public Rigidbody Rigidbody { public get;  }
+public Rigidbody Rigidbody { public get;  set; }
 ```
 
 
 ## `Property` Components
 
 ```csharp
-public List`1 Components { public get;  }
+public List`1 Components { public get;  set; }
 ```
 
 
 ## `Property` Children
 
 ```csharp
-public List`1 Children { public get;  }
+public List`1 Children { public get;  set; }
 ```
 
 
@@ -100,7 +100,7 @@ public Void SetPivot(PivotPoint pivot)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| pivot | PivotPoint | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| pivot | PivotPoint | No description. |
 
 
 ## `Method` AddChildren
@@ -112,7 +112,7 @@ public Void AddChildren(GameObject obj)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| obj | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| obj | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | No description. |
 
 
 ## `Method` Awake
@@ -152,7 +152,7 @@ public Boolean TryGetComponent(T& component)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| component | T& | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| component | T& | No description. |
 
 
 ## `Method` Destroy
@@ -199,7 +199,7 @@ public Boolean Equals(Object obj)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| obj | Object | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| obj | Object | No description. |
 
 
 ## `Method` GetHashCode

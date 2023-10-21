@@ -1,26 +1,5 @@
 # Transform
 
-## `Field` <Position>k__BackingField
-
-```csharp
-private Vector2 <Position>k__BackingField
-```
-
-
-## `Field` <Rotation>k__BackingField
-
-```csharp
-private Quaternion <Rotation>k__BackingField
-```
-
-
-## `Field` <Children>k__BackingField
-
-```csharp
-private List`1 <Children>k__BackingField
-```
-
-
 ## `Field` OnPositionChanged
 
 ```csharp
@@ -36,55 +15,31 @@ public GameObject parent
 
 
 ## `Property` Position
-
+This object's current position.
 ```csharp
-public Vector2 Position { public get; public }
+public Vector2 Position { public get; public set; }
 ```
 
 
 ## `Property` Rotation
-
+This object's current rotation.
 ```csharp
-public Quaternion Rotation { public get; public }
+public Quaternion Rotation { public get; public set; }
 ```
 
 
 ## `Property` Forward
-
+Returns a direction vector representing the direction this object is looking at.
 ```csharp
-public Vector2 Forward { public get;  }
+public Vector2 Forward { public get;  set; }
 ```
 
 
 ## `Property` Children
 
 ```csharp
-public List`1 Children { public get;  }
+public List`1 Children { public get;  set; }
 ```
-
-
-## `Method` add_OnPositionChanged
-
-```csharp
-public Void add_OnPositionChanged(EventHandler`1 value)
-```
-### Parameters
-
-| Parameter Name | Type | Description |
-| --------- | --------- | --------- |
-| value | EventHandler`1 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-
-
-## `Method` remove_OnPositionChanged
-
-```csharp
-public Void remove_OnPositionChanged(EventHandler`1 value)
-```
-### Parameters
-
-| Parameter Name | Type | Description |
-| --------- | --------- | --------- |
-| value | EventHandler`1 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
 
 
 ## `Method` Move
@@ -151,7 +106,7 @@ public Void Awake(GameObject gameObject)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| gameObject | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| gameObject | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | No description. |
 
 
 ## `Method` Start
@@ -163,7 +118,7 @@ public Void Start(GameObject gameObject)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| gameObject | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| gameObject | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | No description. |
 
 
 ## `Method` OnUpdate
@@ -217,7 +172,7 @@ public Boolean Equals(Object obj)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| obj | Object | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| obj | Object | No description. |
 
 
 ## `Method` GetHashCode

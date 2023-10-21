@@ -1,7 +1,7 @@
 # Player
 
 ## `Field` gameObject
-
+Gets or sets the GameObject associated with the player.
 ```csharp
 public GameObject gameObject
 ```
@@ -29,14 +29,14 @@ private Rigidbody rb
 
 
 ## `Method` OnMovePlayer
-
+Callback method for handling player movement.
 ```csharp
 public Void OnMovePlayer()
 ```
 
 
 ## `Method` MovePlayer
-
+Moves the player based on input controls and mouse position.
 ```csharp
 public Void MovePlayer()
 ```
@@ -79,7 +79,7 @@ public Boolean Equals(Object obj)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| obj | Object | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| obj | Object | No description. |
 
 
 ## `Method` GetHashCode

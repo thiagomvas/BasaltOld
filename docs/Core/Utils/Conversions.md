@@ -37,7 +37,7 @@ public static Vector3 ForwardDirectionFromQuaternion(Quaternion rotation)
 
 
 ## `Method` StringifyGameObject
-Gets the forward normalized vector from a rotation.
+Turns a game object and all it's components into readable text.
 ```csharp
 public static String StringifyGameObject(GameObject obj)
 ```
@@ -45,7 +45,7 @@ public static String StringifyGameObject(GameObject obj)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| obj | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| obj | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | The game object to convert |
 
 
 ## `Method` GetType
@@ -85,7 +85,7 @@ public Boolean Equals(Object obj)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| obj | Object | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| obj | Object | No description. |
 
 
 ## `Method` GetHashCode

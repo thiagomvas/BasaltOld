@@ -1,12 +1,5 @@
 # Debug
 
-## `Field` <IsDebugEnabled>k__BackingField
-
-```csharp
-private static Boolean <IsDebugEnabled>k__BackingField
-```
-
-
 ## `Field` ObjectCollider
 Whether or not the Debug System is enabled.
 ```csharp
@@ -98,7 +91,7 @@ public Boolean Equals(Object obj)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| obj | Object | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| obj | Object | No description. |
 
 
 ## `Method` GetHashCode

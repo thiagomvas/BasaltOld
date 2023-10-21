@@ -1,7 +1,7 @@
 # CustomShapes
 
 ## `Method` DrawFilledPoly
-
+Draws a filled polygon using Raylib library.
 ```csharp
 public static Void DrawFilledPoly(Vector2[] points, Color color)
 ```
@@ -9,8 +9,8 @@ public static Void DrawFilledPoly(Vector2[] points, Color color)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| points | Vector2[] | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| color | Color | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| points | Vector2[] | An array of Vector2 representing the polygon's vertices. |
+| color | Color | The fill color of the polygon. |
 
 
 ## `Method` GetType
@@ -50,7 +50,7 @@ public Boolean Equals(Object obj)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| obj | Object | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| obj | Object | No description. |
 
 
 ## `Method` GetHashCode

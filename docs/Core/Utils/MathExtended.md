@@ -60,7 +60,7 @@ public static Single GetZRotation(Quaternion quaternion)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| quaternion | Quaternion | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| quaternion | Quaternion | No description. |
 
 
 ## `Method` GetType
@@ -100,7 +100,7 @@ public Boolean Equals(Object obj)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| obj | Object | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| obj | Object | No description. |
 
 
 ## `Method` GetHashCode

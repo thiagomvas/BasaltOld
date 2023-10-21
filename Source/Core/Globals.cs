@@ -8,9 +8,13 @@ namespace GameEngineProject.Source.Core
     public static class Globals
     {
         /// <summary>
-        /// The list of all Game Objects currently in the world.
+        /// Gets the list of all Game Objects present on the scene.
         /// </summary>
         public static List<GameObject> GameObjectsOnScene { get; private set; } = new();
+
+        /// <summary>
+        /// Gets the list of all UIElements present on the scene.
+        /// </summary>
         public static List<UIElement> UIElementsOnScene { get; private set; } = new();
 
         /// <summary>

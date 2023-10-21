@@ -35,78 +35,6 @@ private static Action RenderWorldSpace
 ```
 
 
-## `Method` add_OnScreenRedraw
-
-```csharp
-public static Void add_OnScreenRedraw(Action value)
-```
-### Parameters
-
-| Parameter Name | Type | Description |
-| --------- | --------- | --------- |
-| value | Action | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-
-
-## `Method` remove_OnScreenRedraw
-
-```csharp
-public static Void remove_OnScreenRedraw(Action value)
-```
-### Parameters
-
-| Parameter Name | Type | Description |
-| --------- | --------- | --------- |
-| value | Action | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-
-
-## `Method` add_OnScreenResize
-
-```csharp
-public static Void add_OnScreenResize(Action value)
-```
-### Parameters
-
-| Parameter Name | Type | Description |
-| --------- | --------- | --------- |
-| value | Action | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-
-
-## `Method` remove_OnScreenResize
-
-```csharp
-public static Void remove_OnScreenResize(Action value)
-```
-### Parameters
-
-| Parameter Name | Type | Description |
-| --------- | --------- | --------- |
-| value | Action | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-
-
-## `Method` add_RenderWorldSpace
-
-```csharp
-public static Void add_RenderWorldSpace(Action value)
-```
-### Parameters
-
-| Parameter Name | Type | Description |
-| --------- | --------- | --------- |
-| value | Action | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-
-
-## `Method` remove_RenderWorldSpace
-
-```csharp
-public static Void remove_RenderWorldSpace(Action value)
-```
-### Parameters
-
-| Parameter Name | Type | Description |
-| --------- | --------- | --------- |
-| value | Action | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-
-
 ## `Method` Init
 
 ```csharp
@@ -116,9 +44,9 @@ public static Void Init(Int32 Width, Int32 Height, Camera2DObject cameraObject)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| Width | Int32 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| Height | Int32 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| cameraObject | [Camera2DObject](https://thiagomvas.github.io/GameEngine/Entities/Camera2DObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| Width | Int32 | No description. |
+| Height | Int32 | No description. |
+| cameraObject | [Camera2DObject](https://thiagomvas.github.io/GameEngine/Entities/Camera2DObject.html) | No description. |
 
 
 ## `Method` DrawUI
@@ -172,7 +100,7 @@ public Boolean Equals(Object obj)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| obj | Object | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| obj | Object | No description. |
 
 
 ## `Method` GetHashCode

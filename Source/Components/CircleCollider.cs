@@ -7,6 +7,9 @@ namespace GameEngineProject.Source.Components
 {
     public class CircleCollider : Collider2D
     {
+        /// <summary>
+        /// The radius of the collision circle.
+        /// </summary>
         public int Radius = 25;
 
         public override void Start(GameObject gameObject)
