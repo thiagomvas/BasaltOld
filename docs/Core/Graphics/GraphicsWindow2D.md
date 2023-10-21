@@ -118,7 +118,7 @@ public Void Init (Int32 Width, Int32 Height, Camera2DObject cameraObject)
 | --------- | --------- | --------- |
 | Width | Int32 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
 | Height | Int32 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| cameraObject | [Camera2DObject](https://thiagomvas.github.io/AutoDocumentation/Entities/Camera2DObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| cameraObject | [Camera2DObject](https://thiagomvas.github.io/GameEngine/Entities/Camera2DObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
 
 
 ## `Method` DrawUI

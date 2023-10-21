@@ -30,7 +30,7 @@ public Void Start (GameObject gameObject)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| gameObject | [GameObject](https://thiagomvas.github.io/AutoDocumentation/Entities/GameObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| gameObject | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
 
 
 ## `Method` Render
@@ -49,7 +49,7 @@ public Void Awake (GameObject gameObject)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| gameObject | [GameObject](https://thiagomvas.github.io/AutoDocumentation/Entities/GameObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| gameObject | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
 
 
 ## `Method` OnRender

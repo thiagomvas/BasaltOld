@@ -24,7 +24,7 @@ private Void UpdateCameraPosition (Object sender, TransformPositionUpdatedEventA
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
 | sender | Object | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| e | [TransformPositionUpdatedEventArgs](https://thiagomvas.github.io/AutoDocumentation/Core/Types/TransformPositionUpdatedEventArgs.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| e | [TransformPositionUpdatedEventArgs](https://thiagomvas.github.io/GameEngine/Core/Types/TransformPositionUpdatedEventArgs.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
 
 
 ## `Method` Destroy
@@ -43,7 +43,7 @@ public Void AddChildren (GameObject obj)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| obj | [GameObject](https://thiagomvas.github.io/AutoDocumentation/Entities/GameObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| obj | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
 
 
 ## `Method` Awake

@@ -213,7 +213,7 @@ namespace GameEngineProject.Libraries.AutoDocumentation
                     {
                         if (t.type == param.ParameterType)
                         {
-                            link = Path.Combine("https://thiagomvas.github.io/AutoDocumentation/", t.relativePathToDocs.Split("docs\\")[0].Replace('\\', '/').Replace(".md", ".html"));
+                            link = Path.Combine(GithubPagesLink, t.relativePathToDocs.Split("docs\\")[0].Replace('\\', '/').Replace(".md", ".html"));
                             break;
                         }
 

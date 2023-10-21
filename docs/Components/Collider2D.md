@@ -54,7 +54,7 @@ public Void Start (GameObject gameObject)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| gameObject | [GameObject](https://thiagomvas.github.io/AutoDocumentation/Entities/GameObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| gameObject | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
 
 
 ## `Method` CheckAllCollisions
@@ -73,7 +73,7 @@ public Void CheckCollision (GameObject other)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| other | [GameObject](https://thiagomvas.github.io/AutoDocumentation/Entities/GameObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| other | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
 
 
 ## `Method` SolveCollision
@@ -85,7 +85,7 @@ public Void SolveCollision (Collider2D collided)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| collided | [Collider2D](https://thiagomvas.github.io/AutoDocumentation/Components/Collider2D.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| collided | [Collider2D](https://thiagomvas.github.io/GameEngine/Components/Collider2D.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
 
 
 ## `Method` InvokeOnCollision
@@ -97,7 +97,7 @@ public Void InvokeOnCollision (GameObject collided)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| collided | [GameObject](https://thiagomvas.github.io/AutoDocumentation/Entities/GameObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| collided | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
 
 
 ## `Method` DrawDebugHitbox
@@ -121,7 +121,7 @@ public Void Awake (GameObject gameObject)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| gameObject | [GameObject](https://thiagomvas.github.io/AutoDocumentation/Entities/GameObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| gameObject | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
 
 
 ## `Method` OnUpdate
