@@ -3,7 +3,7 @@
 ## `Field` OnPositionChanged
 
 ```csharp
-private EventHandler`1 OnPositionChanged
+private EventHandler OnPositionChanged
 ```
 
 
@@ -31,21 +31,21 @@ public Quaternion Rotation { public get; public set; }
 ## `Property` Forward
 Returns a direction vector representing the direction this object is looking at.
 ```csharp
-public Vector2 Forward { public get;  set; }
+public Vector2 Forward { public get; set; }
 ```
 
 
 ## `Property` Children
 
 ```csharp
-public List`1 Children { public get;  set; }
+public List`1 Children { public get; set; }
 ```
 
 
 ## `Method` Move
 Moves the transform and all it's children by an amount in each axis
 ```csharp
-public Void Move(Vector2 units)
+public void Move(Vector2 units)
 ```
 ### Parameters
 
@@ -57,7 +57,7 @@ public Void Move(Vector2 units)
 ## `Method` MoveTo
 Moves the transform and all it's chidren to a point
 ```csharp
-public Void MoveTo(Vector2 point)
+public void MoveTo(Vector2 point)
 ```
 ### Parameters
 
@@ -69,7 +69,7 @@ public Void MoveTo(Vector2 point)
 ## `Method` AddChildren
 Adds a children to this transform
 ```csharp
-public Void AddChildren(GameObject obj)
+public void AddChildren(GameObject obj)
 ```
 ### Parameters
 
@@ -81,7 +81,7 @@ public Void AddChildren(GameObject obj)
 ## `Method` AddChildren
 Adds a children to this transform
 ```csharp
-public Void AddChildren(Transform transform)
+public void AddChildren(Transform transform)
 ```
 ### Parameters
 
@@ -93,14 +93,14 @@ public Void AddChildren(Transform transform)
 ## `Method` Destroy
 Adds a children to this transform
 ```csharp
-public override Void Destroy()
+public override void Destroy()
 ```
 
 
 ## `Method` Awake
 
 ```csharp
-public override Void Awake(GameObject gameObject)
+public override void Awake(GameObject gameObject)
 ```
 ### Parameters
 
@@ -112,7 +112,7 @@ public override Void Awake(GameObject gameObject)
 ## `Method` Start
 
 ```csharp
-public override Void Start(GameObject gameObject)
+public override void Start(GameObject gameObject)
 ```
 ### Parameters
 
@@ -124,14 +124,14 @@ public override Void Start(GameObject gameObject)
 ## `Method` OnUpdate
 
 ```csharp
-public Void OnUpdate()
+public void OnUpdate()
 ```
 
 
 ## `Method` Update
 
 ```csharp
-public override Void Update()
+public override void Update()
 ```
 
 
@@ -152,21 +152,21 @@ Object MemberwiseClone()
 ## `Method` Finalize
 
 ```csharp
-override Void Finalize()
+override void Finalize()
 ```
 
 
 ## `Method` ToString
 
 ```csharp
-public override String ToString()
+public override string ToString()
 ```
 
 
 ## `Method` Equals
 
 ```csharp
-public override Boolean Equals(Object obj)
+public override bool Equals(Object obj)
 ```
 ### Parameters
 
@@ -178,6 +178,6 @@ public override Boolean Equals(Object obj)
 ## `Method` GetHashCode
 
 ```csharp
-public override Int32 GetHashCode()
+public override int GetHashCode()
 ```
 

@@ -10,14 +10,14 @@ public Nullable`1 texture
 ## `Field` texturePath
 The file path to the texture.
 ```csharp
-public String texturePath
+public string texturePath
 ```
 
 
 ## `Field` TextureHasLoaded
-
+Whether or not the texture has been loaded
 ```csharp
-public static Boolean TextureHasLoaded
+public static bool TextureHasLoaded
 ```
 
 
@@ -31,14 +31,14 @@ public GameObject parent
 ## `Property` transform
 
 ```csharp
-public Transform transform { public get;  set; }
+public Transform transform { public get; set; }
 ```
 
 
 ## `Method` Awake
 The file path to the texture.
 ```csharp
-public override Void Awake(GameObject gameObject)
+public override void Awake(GameObject gameObject)
 ```
 ### Parameters
 
@@ -50,28 +50,28 @@ public override Void Awake(GameObject gameObject)
 ## `Method` Render
 The file path to the texture.
 ```csharp
-public override Void Render()
+public override void Render()
 ```
 
 
 ## `Method` OnRender
 
 ```csharp
-public Void OnRender()
+public void OnRender()
 ```
 
 
 ## `Method` Destroy
 
 ```csharp
-public override Void Destroy()
+public override void Destroy()
 ```
 
 
 ## `Method` Start
 
 ```csharp
-public override Void Start(GameObject gameObject)
+public override void Start(GameObject gameObject)
 ```
 ### Parameters
 
@@ -83,14 +83,14 @@ public override Void Start(GameObject gameObject)
 ## `Method` OnUpdate
 
 ```csharp
-public Void OnUpdate()
+public void OnUpdate()
 ```
 
 
 ## `Method` Update
 
 ```csharp
-public override Void Update()
+public override void Update()
 ```
 
 
@@ -111,21 +111,21 @@ Object MemberwiseClone()
 ## `Method` Finalize
 
 ```csharp
-override Void Finalize()
+override void Finalize()
 ```
 
 
 ## `Method` ToString
 
 ```csharp
-public override String ToString()
+public override string ToString()
 ```
 
 
 ## `Method` Equals
 
 ```csharp
-public override Boolean Equals(Object obj)
+public override bool Equals(Object obj)
 ```
 ### Parameters
 
@@ -137,6 +137,6 @@ public override Boolean Equals(Object obj)
 ## `Method` GetHashCode
 
 ```csharp
-public override Int32 GetHashCode()
+public override int GetHashCode()
 ```
 

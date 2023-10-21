@@ -3,7 +3,7 @@
 ## `Field` OnCollision
 
 ```csharp
-private EventHandler`1 OnCollision
+private EventHandler OnCollision
 ```
 
 
@@ -17,14 +17,14 @@ public GameObject parent
 ## `Method` Destroy
 Event triggered when this object collides with something.
 ```csharp
-public override Void Destroy()
+public override void Destroy()
 ```
 
 
 ## `Method` Start
 Event triggered when this object collides with something.
 ```csharp
-public override Void Start(GameObject gameObject)
+public override void Start(GameObject gameObject)
 ```
 ### Parameters
 
@@ -36,14 +36,14 @@ public override Void Start(GameObject gameObject)
 ## `Method` CheckAllCollisions
 Method to be ran to check if object is colliding with something.
 ```csharp
-private Void CheckAllCollisions()
+private void CheckAllCollisions()
 ```
 
 
 ## `Method` CheckCollision
 The method used to check if an object is colliding with this object.
 ```csharp
-public virtual Void CheckCollision(GameObject other)
+public virtual void CheckCollision(GameObject other)
 ```
 ### Parameters
 
@@ -55,7 +55,7 @@ public virtual Void CheckCollision(GameObject other)
 ## `Method` SolveCollision
 The method used to solve the collision (Offset the position so it's not inside the object or do something else)
 ```csharp
-public virtual Void SolveCollision(Collider2D collided)
+public virtual void SolveCollision(Collider2D collided)
 ```
 ### Parameters
 
@@ -67,7 +67,7 @@ public virtual Void SolveCollision(Collider2D collided)
 ## `Method` InvokeOnCollision
 Invokes the OnCollisionEvent event.
 ```csharp
-public Void InvokeOnCollision(GameObject collided)
+public void InvokeOnCollision(GameObject collided)
 ```
 ### Parameters
 
@@ -79,7 +79,7 @@ public Void InvokeOnCollision(GameObject collided)
 ## `Method` DrawDebugHitbox
 Method used by the Debug System to draw the hitboxes on selection.
 ```csharp
-public virtual Void DrawDebugHitbox(Vector2 screenPos)
+public virtual void DrawDebugHitbox(Vector2 screenPos)
 ```
 ### Parameters
 
@@ -91,7 +91,7 @@ public virtual Void DrawDebugHitbox(Vector2 screenPos)
 ## `Method` Awake
 
 ```csharp
-public override Void Awake(GameObject gameObject)
+public override void Awake(GameObject gameObject)
 ```
 ### Parameters
 
@@ -103,14 +103,14 @@ public override Void Awake(GameObject gameObject)
 ## `Method` OnUpdate
 
 ```csharp
-public Void OnUpdate()
+public void OnUpdate()
 ```
 
 
 ## `Method` Update
 
 ```csharp
-public override Void Update()
+public override void Update()
 ```
 
 
@@ -131,21 +131,21 @@ Object MemberwiseClone()
 ## `Method` Finalize
 
 ```csharp
-override Void Finalize()
+override void Finalize()
 ```
 
 
 ## `Method` ToString
 
 ```csharp
-public override String ToString()
+public override string ToString()
 ```
 
 
 ## `Method` Equals
 
 ```csharp
-public override Boolean Equals(Object obj)
+public override bool Equals(Object obj)
 ```
 ### Parameters
 
@@ -157,6 +157,6 @@ public override Boolean Equals(Object obj)
 ## `Method` GetHashCode
 
 ```csharp
-public override Int32 GetHashCode()
+public override int GetHashCode()
 ```
 

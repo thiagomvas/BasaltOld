@@ -1,9 +1,9 @@
 # CircleCollider
 
 ## `Field` Radius
-
+The radius of the collision circle.
 ```csharp
-public Int32 Radius
+public int Radius
 ```
 
 
@@ -17,7 +17,7 @@ public GameObject parent
 ## `Method` Start
 The radius of the collision circle.
 ```csharp
-public override Void Start(GameObject gameObject)
+public override void Start(GameObject gameObject)
 ```
 ### Parameters
 
@@ -29,7 +29,7 @@ public override Void Start(GameObject gameObject)
 ## `Method` CheckCollision
 The radius of the collision circle.
 ```csharp
-public override Void CheckCollision(GameObject other)
+public override void CheckCollision(GameObject other)
 ```
 ### Parameters
 
@@ -41,7 +41,7 @@ public override Void CheckCollision(GameObject other)
 ## `Method` SolveCollision
 The radius of the collision circle.
 ```csharp
-public override Void SolveCollision(Collider2D collided)
+public override void SolveCollision(Collider2D collided)
 ```
 ### Parameters
 
@@ -53,7 +53,7 @@ public override Void SolveCollision(Collider2D collided)
 ## `Method` DrawDebugHitbox
 The radius of the collision circle.
 ```csharp
-public override Void DrawDebugHitbox(Vector2 screenPos)
+public override void DrawDebugHitbox(Vector2 screenPos)
 ```
 ### Parameters
 
@@ -65,14 +65,14 @@ public override Void DrawDebugHitbox(Vector2 screenPos)
 ## `Method` Destroy
 
 ```csharp
-public override Void Destroy()
+public override void Destroy()
 ```
 
 
 ## `Method` InvokeOnCollision
 
 ```csharp
-public Void InvokeOnCollision(GameObject collided)
+public void InvokeOnCollision(GameObject collided)
 ```
 ### Parameters
 
@@ -84,7 +84,7 @@ public Void InvokeOnCollision(GameObject collided)
 ## `Method` Awake
 
 ```csharp
-public override Void Awake(GameObject gameObject)
+public override void Awake(GameObject gameObject)
 ```
 ### Parameters
 
@@ -96,14 +96,14 @@ public override Void Awake(GameObject gameObject)
 ## `Method` OnUpdate
 
 ```csharp
-public Void OnUpdate()
+public void OnUpdate()
 ```
 
 
 ## `Method` Update
 
 ```csharp
-public override Void Update()
+public override void Update()
 ```
 
 
@@ -124,21 +124,21 @@ Object MemberwiseClone()
 ## `Method` Finalize
 
 ```csharp
-override Void Finalize()
+override void Finalize()
 ```
 
 
 ## `Method` ToString
 
 ```csharp
-public override String ToString()
+public override string ToString()
 ```
 
 
 ## `Method` Equals
 
 ```csharp
-public override Boolean Equals(Object obj)
+public override bool Equals(Object obj)
 ```
 ### Parameters
 
@@ -150,6 +150,6 @@ public override Boolean Equals(Object obj)
 ## `Method` GetHashCode
 
 ```csharp
-public override Int32 GetHashCode()
+public override int GetHashCode()
 ```
 

@@ -3,14 +3,14 @@
 ## `Method` GetAssetsFolder
 Gets the (expected) Assets folder used by the engine.
 ```csharp
-public static String GetAssetsFolder()
+public static string GetAssetsFolder()
 ```
 
 
 ## `Method` GetAssetPath
 Gets the full path for an asset.
 ```csharp
-public static String GetAssetPath(String fileName)
+public static string GetAssetPath(string fileName)
 ```
 ### Parameters
 
@@ -22,7 +22,7 @@ public static String GetAssetPath(String fileName)
 ## `Method` GetTexture2DFromAssets
 Loads a Texture2D from the assets folder
 ```csharp
-public static Texture2D GetTexture2DFromAssets(String fileName)
+public static Texture2D GetTexture2DFromAssets(string fileName)
 ```
 ### Parameters
 
@@ -48,21 +48,21 @@ Object MemberwiseClone()
 ## `Method` Finalize
 
 ```csharp
-override Void Finalize()
+override void Finalize()
 ```
 
 
 ## `Method` ToString
 
 ```csharp
-public override String ToString()
+public override string ToString()
 ```
 
 
 ## `Method` Equals
 
 ```csharp
-public override Boolean Equals(Object obj)
+public override bool Equals(Object obj)
 ```
 ### Parameters
 
@@ -74,6 +74,6 @@ public override Boolean Equals(Object obj)
 ## `Method` GetHashCode
 
 ```csharp
-public override Int32 GetHashCode()
+public override int GetHashCode()
 ```
 

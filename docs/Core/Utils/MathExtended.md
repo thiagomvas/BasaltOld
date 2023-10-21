@@ -52,15 +52,15 @@ public static Vector2 ScreenToWorldPosition(Vector2 position, Camera2D camera)
 
 
 ## `Method` GetZRotation
-
+Gets the rotation in the Z axis from a Quaternion
 ```csharp
-public static Single GetZRotation(Quaternion quaternion)
+public static float GetZRotation(Quaternion quaternion)
 ```
 ### Parameters
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| quaternion | Quaternion | No description. |
+| quaternion | Quaternion | The rotation quaternion |
 
 
 ## `Method` GetType
@@ -80,21 +80,21 @@ Object MemberwiseClone()
 ## `Method` Finalize
 
 ```csharp
-override Void Finalize()
+override void Finalize()
 ```
 
 
 ## `Method` ToString
 
 ```csharp
-public override String ToString()
+public override string ToString()
 ```
 
 
 ## `Method` Equals
 
 ```csharp
-public override Boolean Equals(Object obj)
+public override bool Equals(Object obj)
 ```
 ### Parameters
 
@@ -106,6 +106,6 @@ public override Boolean Equals(Object obj)
 ## `Method` GetHashCode
 
 ```csharp
-public override Int32 GetHashCode()
+public override int GetHashCode()
 ```
 

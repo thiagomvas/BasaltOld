@@ -3,14 +3,14 @@
 ## `Field` Text
 The text for this label
 ```csharp
-public String Text
+public string Text
 ```
 
 
 ## `Field` FontSize
-
+The font size for this label's text
 ```csharp
-public Int32 FontSize
+public int FontSize
 ```
 
 
@@ -22,23 +22,23 @@ public Color TextColor
 
 
 ## `Field` Spacing
-
+The spacing between each character in this label.
 ```csharp
-public Int32 Spacing
+public int Spacing
 ```
 
 
 ## `Field` IsActive
 
 ```csharp
-public Boolean IsActive
+public bool IsActive
 ```
 
 
 ## `Property` Pivot
 
 ```csharp
-public PivotPoint Pivot { public get;  set; }
+public PivotPoint Pivot { public get; set; }
 ```
 
 
@@ -52,49 +52,49 @@ public Vector2 OriginalPosition { public get; public set; }
 ## `Property` Transform
 
 ```csharp
-public Transform Transform { public get;  set; }
+public Transform Transform { public get; set; }
 ```
 
 
 ## `Property` Rigidbody
 
 ```csharp
-public Rigidbody Rigidbody { public get;  set; }
+public Rigidbody Rigidbody { public get; set; }
 ```
 
 
 ## `Property` Components
 
 ```csharp
-public List`1 Components { public get;  set; }
+public List`1 Components { public get; set; }
 ```
 
 
 ## `Property` Children
 
 ```csharp
-public List`1 Children { public get;  set; }
+public List`1 Children { public get; set; }
 ```
 
 
 ## `Method` Render
 The spacing between each character in this label.
 ```csharp
-public override Void Render()
+public override void Render()
 ```
 
 
 ## `Method` UpdatePosition
 
 ```csharp
-public Void UpdatePosition()
+public void UpdatePosition()
 ```
 
 
 ## `Method` SetPivot
 
 ```csharp
-public Void SetPivot(PivotPoint pivot)
+public void SetPivot(PivotPoint pivot)
 ```
 ### Parameters
 
@@ -106,7 +106,7 @@ public Void SetPivot(PivotPoint pivot)
 ## `Method` AddChildren
 
 ```csharp
-public Void AddChildren(GameObject obj)
+public void AddChildren(GameObject obj)
 ```
 ### Parameters
 
@@ -118,14 +118,14 @@ public Void AddChildren(GameObject obj)
 ## `Method` Awake
 
 ```csharp
-public override Void Awake()
+public override void Awake()
 ```
 
 
 ## `Method` Start
 
 ```csharp
-public override Void Start()
+public override void Start()
 ```
 
 
@@ -146,7 +146,7 @@ public T GetComponent()
 ## `Method` TryGetComponent
 
 ```csharp
-public Boolean TryGetComponent(T& component)
+public bool TryGetComponent(T& component)
 ```
 ### Parameters
 
@@ -158,7 +158,7 @@ public Boolean TryGetComponent(T& component)
 ## `Method` Destroy
 
 ```csharp
-public override Void Destroy()
+public override void Destroy()
 ```
 
 
@@ -179,21 +179,21 @@ Object MemberwiseClone()
 ## `Method` Finalize
 
 ```csharp
-override Void Finalize()
+override void Finalize()
 ```
 
 
 ## `Method` ToString
 
 ```csharp
-public override String ToString()
+public override string ToString()
 ```
 
 
 ## `Method` Equals
 
 ```csharp
-public override Boolean Equals(Object obj)
+public override bool Equals(Object obj)
 ```
 ### Parameters
 
@@ -205,6 +205,6 @@ public override Boolean Equals(Object obj)
 ## `Method` GetHashCode
 
 ```csharp
-public override Int32 GetHashCode()
+public override int GetHashCode()
 ```
 

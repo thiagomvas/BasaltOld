@@ -17,28 +17,28 @@ public static Color FontColor
 ## `Field` OnScreenRedraw
 
 ```csharp
-private static Action OnScreenRedraw
+private static event Action OnScreenRedraw
 ```
 
 
 ## `Field` OnScreenResize
 
 ```csharp
-private static Action OnScreenResize
+private static event Action OnScreenResize
 ```
 
 
 ## `Field` RenderWorldSpace
 
 ```csharp
-private static Action RenderWorldSpace
+private static event Action RenderWorldSpace
 ```
 
 
 ## `Method` Init
 
 ```csharp
-public static Void Init(Int32 Width, Int32 Height, Camera2DObject cameraObject)
+public static void Init(int Width, int Height, Camera2DObject cameraObject)
 ```
 ### Parameters
 
@@ -52,14 +52,14 @@ public static Void Init(Int32 Width, Int32 Height, Camera2DObject cameraObject)
 ## `Method` DrawUI
 Draws all the UI;
 ```csharp
-private static Void DrawUI()
+private static void DrawUI()
 ```
 
 
 ## `Method` DrawWorldSpace
 Draws all the GameObjects in the world.
 ```csharp
-private static Void DrawWorldSpace()
+private static void DrawWorldSpace()
 ```
 
 
@@ -80,21 +80,21 @@ Object MemberwiseClone()
 ## `Method` Finalize
 
 ```csharp
-override Void Finalize()
+override void Finalize()
 ```
 
 
 ## `Method` ToString
 
 ```csharp
-public override String ToString()
+public override string ToString()
 ```
 
 
 ## `Method` Equals
 
 ```csharp
-public override Boolean Equals(Object obj)
+public override bool Equals(Object obj)
 ```
 ### Parameters
 
@@ -106,6 +106,6 @@ public override Boolean Equals(Object obj)
 ## `Method` GetHashCode
 
 ```csharp
-public override Int32 GetHashCode()
+public override int GetHashCode()
 ```
 

@@ -1,16 +1,16 @@
 # ProgressBar
 
 ## `Field` BackgroundWidth
-
+The width of the background of the progress bar.
 ```csharp
-public Int32 BackgroundWidth
+public int BackgroundWidth
 ```
 
 
 ## `Field` BackgroundHeight
-
+The height of the background of the progress bar.
 ```csharp
-public Int32 BackgroundHeight
+public int BackgroundHeight
 ```
 
 
@@ -22,16 +22,16 @@ public Color BackgroundColor
 
 
 ## `Field` BarWidth
-
+The width of the progress bar itself.
 ```csharp
-public Int32 BarWidth
+public int BarWidth
 ```
 
 
 ## `Field` BarHeight
-
+The height of the progress bar itself.
 ```csharp
-public Int32 BarHeight
+public int BarHeight
 ```
 
 
@@ -50,23 +50,23 @@ public Vector2 OffsetFromCorner
 
 
 ## `Field` Progress
-
+The progress value, ranging from 0 to 1, indicating the completion status.
 ```csharp
-public Single Progress
+public float Progress
 ```
 
 
 ## `Field` IsActive
 
 ```csharp
-public Boolean IsActive
+public bool IsActive
 ```
 
 
 ## `Property` Pivot
 
 ```csharp
-public PivotPoint Pivot { public get;  set; }
+public PivotPoint Pivot { public get; set; }
 ```
 
 
@@ -80,28 +80,28 @@ public Vector2 OriginalPosition { public get; public set; }
 ## `Property` Transform
 
 ```csharp
-public Transform Transform { public get;  set; }
+public Transform Transform { public get; set; }
 ```
 
 
 ## `Property` Rigidbody
 
 ```csharp
-public Rigidbody Rigidbody { public get;  set; }
+public Rigidbody Rigidbody { public get; set; }
 ```
 
 
 ## `Property` Components
 
 ```csharp
-public List`1 Components { public get;  set; }
+public List`1 Components { public get; set; }
 ```
 
 
 ## `Property` Children
 
 ```csharp
-public List`1 Children { public get;  set; }
+public List`1 Children { public get; set; }
 ```
 
 
@@ -115,21 +115,21 @@ public Vector2 CenteredOffset()
 ## `Method` Render
 Calculates and returns the offset required to center the progress bar within its background.
 ```csharp
-public override Void Render()
+public override void Render()
 ```
 
 
 ## `Method` UpdatePosition
 
 ```csharp
-public Void UpdatePosition()
+public void UpdatePosition()
 ```
 
 
 ## `Method` SetPivot
 
 ```csharp
-public Void SetPivot(PivotPoint pivot)
+public void SetPivot(PivotPoint pivot)
 ```
 ### Parameters
 
@@ -141,7 +141,7 @@ public Void SetPivot(PivotPoint pivot)
 ## `Method` AddChildren
 
 ```csharp
-public Void AddChildren(GameObject obj)
+public void AddChildren(GameObject obj)
 ```
 ### Parameters
 
@@ -153,14 +153,14 @@ public Void AddChildren(GameObject obj)
 ## `Method` Awake
 
 ```csharp
-public override Void Awake()
+public override void Awake()
 ```
 
 
 ## `Method` Start
 
 ```csharp
-public override Void Start()
+public override void Start()
 ```
 
 
@@ -181,7 +181,7 @@ public T GetComponent()
 ## `Method` TryGetComponent
 
 ```csharp
-public Boolean TryGetComponent(T& component)
+public bool TryGetComponent(T& component)
 ```
 ### Parameters
 
@@ -193,7 +193,7 @@ public Boolean TryGetComponent(T& component)
 ## `Method` Destroy
 
 ```csharp
-public override Void Destroy()
+public override void Destroy()
 ```
 
 
@@ -214,21 +214,21 @@ Object MemberwiseClone()
 ## `Method` Finalize
 
 ```csharp
-override Void Finalize()
+override void Finalize()
 ```
 
 
 ## `Method` ToString
 
 ```csharp
-public override String ToString()
+public override string ToString()
 ```
 
 
 ## `Method` Equals
 
 ```csharp
-public override Boolean Equals(Object obj)
+public override bool Equals(Object obj)
 ```
 ### Parameters
 
@@ -240,6 +240,6 @@ public override Boolean Equals(Object obj)
 ## `Method` GetHashCode
 
 ```csharp
-public override Int32 GetHashCode()
+public override int GetHashCode()
 ```
 

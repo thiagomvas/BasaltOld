@@ -10,42 +10,42 @@ public Camera2D camera
 ## `Field` IsActive
 
 ```csharp
-public Boolean IsActive
+public bool IsActive
 ```
 
 
 ## `Property` Transform
 
 ```csharp
-public Transform Transform { public get;  set; }
+public Transform Transform { public get; set; }
 ```
 
 
 ## `Property` Rigidbody
 
 ```csharp
-public Rigidbody Rigidbody { public get;  set; }
+public Rigidbody Rigidbody { public get; set; }
 ```
 
 
 ## `Property` Components
 
 ```csharp
-public List`1 Components { public get;  set; }
+public List`1 Components { public get; set; }
 ```
 
 
 ## `Property` Children
 
 ```csharp
-public List`1 Children { public get;  set; }
+public List`1 Children { public get; set; }
 ```
 
 
 ## `Method` UpdateCameraPosition
 
 ```csharp
-private Void UpdateCameraPosition(Object sender, TransformPositionUpdatedEventArgs e)
+private void UpdateCameraPosition(Object sender, TransformPositionUpdatedEventArgs e)
 ```
 ### Parameters
 
@@ -58,14 +58,14 @@ private Void UpdateCameraPosition(Object sender, TransformPositionUpdatedEventAr
 ## `Method` Destroy
 Updates the camera's focus position
 ```csharp
-public override Void Destroy()
+public override void Destroy()
 ```
 
 
 ## `Method` AddChildren
 
 ```csharp
-public Void AddChildren(GameObject obj)
+public void AddChildren(GameObject obj)
 ```
 ### Parameters
 
@@ -77,14 +77,14 @@ public Void AddChildren(GameObject obj)
 ## `Method` Awake
 
 ```csharp
-public override Void Awake()
+public override void Awake()
 ```
 
 
 ## `Method` Start
 
 ```csharp
-public override Void Start()
+public override void Start()
 ```
 
 
@@ -105,7 +105,7 @@ public T GetComponent()
 ## `Method` TryGetComponent
 
 ```csharp
-public Boolean TryGetComponent(T& component)
+public bool TryGetComponent(T& component)
 ```
 ### Parameters
 
@@ -131,21 +131,21 @@ Object MemberwiseClone()
 ## `Method` Finalize
 
 ```csharp
-override Void Finalize()
+override void Finalize()
 ```
 
 
 ## `Method` ToString
 
 ```csharp
-public override String ToString()
+public override string ToString()
 ```
 
 
 ## `Method` Equals
 
 ```csharp
-public override Boolean Equals(Object obj)
+public override bool Equals(Object obj)
 ```
 ### Parameters
 
@@ -157,6 +157,6 @@ public override Boolean Equals(Object obj)
 ## `Method` GetHashCode
 
 ```csharp
-public override Int32 GetHashCode()
+public override int GetHashCode()
 ```
 

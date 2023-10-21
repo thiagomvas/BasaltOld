@@ -1,16 +1,16 @@
 # Rigidbody
 
 ## `Field` Mass
-
+Mass of the rigidbody (default: 1f).
 ```csharp
-public Single Mass
+public float Mass
 ```
 
 
 ## `Field` Drag
-
+Linear drag coefficient (default: 10f).
 ```csharp
-public Single Drag
+public float Drag
 ```
 
 
@@ -29,16 +29,16 @@ public Vector2 Acceleration
 
 
 ## `Field` IsKinematic
-
+Determines if the rigidbody is kinematic (doesn't respond to forces).
 ```csharp
-public Boolean IsKinematic
+public bool IsKinematic
 ```
 
 
 ## `Field` StoppingThreshold
-
+Threshold for stopping velocity to avoid small drifting (default: 0.001f).
 ```csharp
-public Single StoppingThreshold
+public float StoppingThreshold
 ```
 
 
@@ -52,14 +52,14 @@ public GameObject parent
 ## `Method` Update
 Threshold for stopping velocity to avoid small drifting (default: 0.001f).
 ```csharp
-public override Void Update()
+public override void Update()
 ```
 
 
 ## `Method` AddForce
 Add a force to the rigidbody's acceleration.
 ```csharp
-public Void AddForce(Vector2 force)
+public void AddForce(Vector2 force)
 ```
 ### Parameters
 
@@ -71,7 +71,7 @@ public Void AddForce(Vector2 force)
 ## `Method` Awake
 
 ```csharp
-public override Void Awake(GameObject gameObject)
+public override void Awake(GameObject gameObject)
 ```
 ### Parameters
 
@@ -83,14 +83,14 @@ public override Void Awake(GameObject gameObject)
 ## `Method` Destroy
 
 ```csharp
-public override Void Destroy()
+public override void Destroy()
 ```
 
 
 ## `Method` Start
 
 ```csharp
-public override Void Start(GameObject gameObject)
+public override void Start(GameObject gameObject)
 ```
 ### Parameters
 
@@ -102,7 +102,7 @@ public override Void Start(GameObject gameObject)
 ## `Method` OnUpdate
 
 ```csharp
-public Void OnUpdate()
+public void OnUpdate()
 ```
 
 
@@ -123,21 +123,21 @@ Object MemberwiseClone()
 ## `Method` Finalize
 
 ```csharp
-override Void Finalize()
+override void Finalize()
 ```
 
 
 ## `Method` ToString
 
 ```csharp
-public override String ToString()
+public override string ToString()
 ```
 
 
 ## `Method` Equals
 
 ```csharp
-public override Boolean Equals(Object obj)
+public override bool Equals(Object obj)
 ```
 ### Parameters
 
@@ -149,6 +149,6 @@ public override Boolean Equals(Object obj)
 ## `Method` GetHashCode
 
 ```csharp
-public override Int32 GetHashCode()
+public override int GetHashCode()
 ```
 

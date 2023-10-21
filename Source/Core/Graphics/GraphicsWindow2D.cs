@@ -23,7 +23,15 @@ namespace GameEngineProject.Source.Core.Graphics
         /// Event called every frame.
         /// </summary>
         public static event Action OnScreenRedraw;
+
+        /// <summary>
+        /// Event called whenever the screen is resized.
+        /// </summary>
         public static event Action OnScreenResize;
+
+        /// <summary>
+        /// Event called whenever the world is rendered.
+        /// </summary>
         public static event Action RenderWorldSpace;
         public static void Init(int Width = -1, int Height = -1, Camera2DObject cameraObject = null)
         {

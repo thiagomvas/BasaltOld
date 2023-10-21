@@ -1,58 +1,58 @@
 # GameObject
 
 ## `Field` AwakeCalled
-
+The Object Class used by the entire engine. It represents any object and it's components that are in any world.
 ```csharp
-private Boolean AwakeCalled
+private bool AwakeCalled
 ```
 
 
 ## `Field` StartCalled
-
+The Object Class used by the entire engine. It represents any object and it's components that are in any world.
 ```csharp
-private Boolean StartCalled
+private bool StartCalled
 ```
 
 
 ## `Field` IsActive
-
+Whether or not an object is active. Defines if it will be drawn, interacted with or interact with something.
 ```csharp
-public Boolean IsActive
+public bool IsActive
 ```
 
 
 ## `Property` Transform
 The object's transforms.
 ```csharp
-public Transform Transform { public get;  set; }
+public Transform Transform { public get; set; }
 ```
 
 
 ## `Property` Rigidbody
 The object's transforms.
 ```csharp
-public Rigidbody Rigidbody { public get;  set; }
+public Rigidbody Rigidbody { public get; set; }
 ```
 
 
 ## `Property` Components
 
 ```csharp
-public List`1 Components { public get;  set; }
+public List`1 Components { public get; set; }
 ```
 
 
 ## `Property` Children
 
 ```csharp
-public List`1 Children { public get;  set; }
+public List`1 Children { public get; set; }
 ```
 
 
 ## `Method` AddChildren
 Attaches a children to this object
 ```csharp
-public Void AddChildren(GameObject obj)
+public void AddChildren(GameObject obj)
 ```
 ### Parameters
 
@@ -64,14 +64,14 @@ public Void AddChildren(GameObject obj)
 ## `Method` Awake
 Ran whenever a game object is instantiated.
 ```csharp
-public virtual Void Awake()
+public virtual void Awake()
 ```
 
 
 ## `Method` Start
 Ran on the first frame of its existance.
 ```csharp
-public virtual Void Start()
+public virtual void Start()
 ```
 
 
@@ -92,7 +92,7 @@ public T GetComponent()
 ## `Method` TryGetComponent
 
 ```csharp
-public Boolean TryGetComponent(T& component)
+public bool TryGetComponent(T& component)
 ```
 ### Parameters
 
@@ -104,7 +104,7 @@ public Boolean TryGetComponent(T& component)
 ## `Method` Destroy
 Destroys the game object and their components, unsubscribing from any events and disconnecting from everything.
 ```csharp
-public virtual Void Destroy()
+public virtual void Destroy()
 ```
 
 
@@ -125,21 +125,21 @@ Object MemberwiseClone()
 ## `Method` Finalize
 
 ```csharp
-override Void Finalize()
+override void Finalize()
 ```
 
 
 ## `Method` ToString
 
 ```csharp
-public override String ToString()
+public override string ToString()
 ```
 
 
 ## `Method` Equals
 
 ```csharp
-public override Boolean Equals(Object obj)
+public override bool Equals(Object obj)
 ```
 ### Parameters
 
@@ -151,6 +151,6 @@ public override Boolean Equals(Object obj)
 ## `Method` GetHashCode
 
 ```csharp
-public override Int32 GetHashCode()
+public override int GetHashCode()
 ```
 

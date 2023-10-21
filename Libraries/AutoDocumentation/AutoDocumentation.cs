@@ -196,7 +196,14 @@ namespace GameEngineProject.Libraries.AutoDocumentation
                 if (field.Name.Contains("k__BackingField")) continue;
                 DocsMember doc = new();
                 doc.Title = $"{field.Name}";
-                doc.Signature = $"{(field.IsPublic ? "public" : "private")}{(field.IsStatic ? " static" : "")} {field.FieldType.Name} {field.Name}";
+
+                StringBuilder sig = new();
+                if (field.IsPublic) sig.Append("public ");
+                if (field.IsPrivate) sig.Append("private ");
+                if (field.IsStatic) sig.Append("static ");
+                sig.Append($"{FormatTypes(field.FieldType.Name)} ");
+                sig.Append(field.Name);
+                doc.Signature = sig.ToString();
                 members.Add(doc);
             }
 
@@ -213,9 +220,9 @@ namespace GameEngineProject.Libraries.AutoDocumentation
                 if (getMethod != null)
                 {
                     string getText = $"{(getMethod.IsPublic ? "public" : "private")} get;";
-                    string setText = $"{(setMethod != null ? (setMethod.IsPublic ? "public" : "private") : "")} set;";
+                    string setText = $"{(setMethod != null ? (setMethod.IsPublic ? "public " : "private ") : "")}set;";
                     doc.Signature = $"{(getMethod.IsPublic ? "public" : "private")} {property.PropertyType.Name} {property.Name} {{ {getText} {setText} }}";
-                    doc.BasicSignature = $"{(getMethod.IsPublic ? "public" : "private")} {property.PropertyType.Name} {property.Name}";
+                    doc.BasicSignature = $"{(getMethod.IsPublic ? "public" : "private")} {FormatTypes(property.PropertyType.Name)} {property.Name}";
                 }
                 members.Add(doc);
 
@@ -233,15 +240,16 @@ namespace GameEngineProject.Libraries.AutoDocumentation
                 if (method.IsPublic) sig.Append("public ");
                 if (method.IsPrivate) sig.Append("private ");
                 if (method.IsStatic) sig.Append("static ");
-                if (method.IsVirtual && method.GetBaseDefinition() == method) sig.Append("virtual ");
+                if (method.IsVirtual && method.GetBaseDefinition() == method && !type.IsAbstract) sig.Append("virtual ");
+                if (method.IsVirtual && method.GetBaseDefinition() == method && type.IsAbstract) sig.Append("abstract ");
                 if (method.GetBaseDefinition() != method) sig.Append("override ");
-                sig.Append($"{method.ReturnType.Name} ");
+                sig.Append($"{FormatTypes(method.ReturnType.Name)} ");
                 sig.Append($"{method.Name}(");
           
                 var parameters = method.GetParameters();
                 foreach (var param in parameters)
                 {
-                    sig.Append($"{param.ParameterType.Name} {param.Name}, ");
+                    sig.Append($"{FormatTypes(param.ParameterType.Name)} {param.Name}, ");
                 }
                 string text = sig.ToString();
                 if (parameters.Length > 0) text = text.Substring(0, text.Length - 2);
@@ -274,89 +282,29 @@ namespace GameEngineProject.Libraries.AutoDocumentation
             foreach (string black in blacklist) if(method.Name.Contains(black)) return true;
             return false;
         }
+        public static bool IsNullable<T>(T? t) where T : struct { return true; }
 
-
-        /// <summary>
-        /// Generates documentation for a given Type
-        /// </summary>
-        /// <param name="type">The type to write documentation for</param>
-        /// <param name="fileName">The FULL file path, including the end file + extension</param>
-        /// <param name="typesToLink">List of all custom types</param>
-        public static void WriteDocumentationForType(Type type, string fileName, List<DocTypeInfo> typesToLink)
+        private static string FormatTypes(string text)
         {
-            Console.WriteLine($"Analyzing type: {type.FullName}");
-
-            string documentation = "# " + type.Name + "\n";
-
-            int i = 0;
-
-            // Get all fields
-            FieldInfo[] fields = type.GetFields(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static);
-            foreach (FieldInfo field in fields)
+            Dictionary<string, string> typeConversions = new()
             {
-                DocsMember doc = new();
-                doc.Title = $"{field.Name}";
-                doc.Signature = $"{(field.IsPublic ? "public" : "private")}{(field.IsStatic ? " static" : "")} {field.FieldType.Name} {field.Name}";
-                documentation += doc;
-                i++;
-            }
+                {"Single", "float" },
+                {"Boolean", "bool"},
+                {"String", "string" },
+                {"Void", "void" },
+                {"Int32", "int" },     
+                {"Int64", "long" },    
+                {"Decimal", "decimal"},
+                {"Char", "char"},
+                {"EventHandler`1", "EventHandler" },
+                {"Action", "event Action" } //Bandaid Fix for getting event actions
 
-            // Get all properties
-            PropertyInfo[] properties = type.GetProperties(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-            foreach (PropertyInfo property in properties)
-            {
-                DocsMember doc = new();
-                doc.type = DocsMember.DocType.Property;
-                doc.Title = property.Name;
+            };
 
-                var getMethod = property.GetGetMethod();
-                var setMethod = property.GetSetMethod();
-                if (getMethod != null)
-                {
-                    string getText = $"{(getMethod.IsPublic ? "public" : "private")} get;";
-                    string setText = $"{(setMethod != null ? (setMethod.IsPublic ? "public" : "private") : "")}";
-                    doc.Summary = $"{(getMethod.IsPublic ? "public" : "private")} {property.PropertyType.Name} {property.Name} {{ {getText} {setText} }}";
-                }
-
-            }
-
-            // Get all methods
-            MethodInfo[] methods = type.GetMethods(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static);
-            foreach (MethodInfo method in methods)
-            {
-                if (method.Name.StartsWith("get_") || method.Name.StartsWith("set_")) continue;
-                DocsMember doc = new();
-                doc.type = DocsMember.DocType.Method;
-                doc.Title = method.Name;
-                string text = $"{(method.IsPublic ? "public" : "private")} {method.ReturnType.Name} {method.Name} (";
-                var parameters = method.GetParameters();
-                foreach (var param in parameters)
-                    text += $"{param.ParameterType.Name} {param.Name}, ";
-                if (parameters.Length > 0) text = text.Substring(0, text.Length - 2);
-                text += ")";
-
-                doc.Signature = text;
-
-                foreach (var param in method.GetParameters())
-                {
-                    string link = string.Empty;
-                    foreach (var t in typesToLink)
-                    {
-                        if (t.type == param.ParameterType)
-                        {
-                            link = Path.Combine(GithubPagesLink, t.relativePathToDocs.Split("docs\\")[0].Replace('\\', '/').Replace(".md", ".html"));
-                            break;
-                        }
-
-                    }
-                    doc.Parameters.Add(new(param.Name, param.ParameterType, link));
-                }
-
-                documentation += doc;
-
-            }
-            WriteTextToFile(documentation, fileName);
+            if (typeConversions.ContainsKey(text)) return typeConversions[text];
+            else return text;
         }
+
 
         static void WriteTextToFile(string text, string fileName)
         {

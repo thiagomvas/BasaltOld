@@ -3,7 +3,7 @@
 ## `Method` Instantiate
 Adds a new UIElement to the screen.
 ```csharp
-public static Void Instantiate(UIElement uiElement)
+public static void Instantiate(UIElement uiElement)
 ```
 ### Parameters
 
@@ -29,21 +29,21 @@ Object MemberwiseClone()
 ## `Method` Finalize
 
 ```csharp
-override Void Finalize()
+override void Finalize()
 ```
 
 
 ## `Method` ToString
 
 ```csharp
-public override String ToString()
+public override string ToString()
 ```
 
 
 ## `Method` Equals
 
 ```csharp
-public override Boolean Equals(Object obj)
+public override bool Equals(Object obj)
 ```
 ### Parameters
 
@@ -55,6 +55,6 @@ public override Boolean Equals(Object obj)
 ## `Method` GetHashCode
 
 ```csharp
-public override Int32 GetHashCode()
+public override int GetHashCode()
 ```
 

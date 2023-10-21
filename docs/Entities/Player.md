@@ -8,16 +8,16 @@ public GameObject gameObject
 
 
 ## `Field` id
-
+Gets the unique identifier for the player.
 ```csharp
-public Int32 id
+public int id
 ```
 
 
 ## `Field` MovementSpeed
-
+Gets or sets the movement speed of the player.
 ```csharp
-public Int32 MovementSpeed
+public int MovementSpeed
 ```
 
 
@@ -31,14 +31,14 @@ private Rigidbody rb
 ## `Method` OnMovePlayer
 Callback method for handling player movement.
 ```csharp
-public Void OnMovePlayer()
+public void OnMovePlayer()
 ```
 
 
 ## `Method` MovePlayer
 Moves the player based on input controls and mouse position.
 ```csharp
-public Void MovePlayer()
+public void MovePlayer()
 ```
 
 
@@ -59,21 +59,21 @@ Object MemberwiseClone()
 ## `Method` Finalize
 
 ```csharp
-override Void Finalize()
+override void Finalize()
 ```
 
 
 ## `Method` ToString
 
 ```csharp
-public override String ToString()
+public override string ToString()
 ```
 
 
 ## `Method` Equals
 
 ```csharp
-public override Boolean Equals(Object obj)
+public override bool Equals(Object obj)
 ```
 ### Parameters
 
@@ -85,6 +85,6 @@ public override Boolean Equals(Object obj)
 ## `Method` GetHashCode
 
 ```csharp
-public override Int32 GetHashCode()
+public override int GetHashCode()
 ```
 

@@ -39,7 +39,7 @@ public static Vector3 ForwardDirectionFromQuaternion(Quaternion rotation)
 ## `Method` StringifyGameObject
 Turns a game object and all it's components into readable text.
 ```csharp
-public static String StringifyGameObject(GameObject obj)
+public static string StringifyGameObject(GameObject obj)
 ```
 ### Parameters
 
@@ -65,21 +65,21 @@ Object MemberwiseClone()
 ## `Method` Finalize
 
 ```csharp
-override Void Finalize()
+override void Finalize()
 ```
 
 
 ## `Method` ToString
 
 ```csharp
-public override String ToString()
+public override string ToString()
 ```
 
 
 ## `Method` Equals
 
 ```csharp
-public override Boolean Equals(Object obj)
+public override bool Equals(Object obj)
 ```
 ### Parameters
 
@@ -91,6 +91,6 @@ public override Boolean Equals(Object obj)
 ## `Method` GetHashCode
 
 ```csharp
-public override Int32 GetHashCode()
+public override int GetHashCode()
 ```
 

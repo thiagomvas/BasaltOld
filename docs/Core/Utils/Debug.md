@@ -24,28 +24,28 @@ public static GameObject SelectedObject
 ## `Field` MaxSelectionDistance
 
 ```csharp
-private static Int32 MaxSelectionDistance
+private static int MaxSelectionDistance
 ```
 
 
 ## `Method` ToggleDebug
 Toggles the Debug System.
 ```csharp
-public static Void ToggleDebug()
+public static void ToggleDebug()
 ```
 
 
 ## `Method` DrawDebugUI
 Draws all the Debug UI.
 ```csharp
-public static Void DrawDebugUI()
+public static void DrawDebugUI()
 ```
 
 
 ## `Method` SelectedNearestGameObject
 Selects the nearest GameObject to the cursor.
 ```csharp
-public static Void SelectedNearestGameObject(Vector2 mousePos)
+public static void SelectedNearestGameObject(Vector2 mousePos)
 ```
 ### Parameters
 
@@ -71,21 +71,21 @@ Object MemberwiseClone()
 ## `Method` Finalize
 
 ```csharp
-override Void Finalize()
+override void Finalize()
 ```
 
 
 ## `Method` ToString
 
 ```csharp
-public override String ToString()
+public override string ToString()
 ```
 
 
 ## `Method` Equals
 
 ```csharp
-public override Boolean Equals(Object obj)
+public override bool Equals(Object obj)
 ```
 ### Parameters
 
@@ -97,6 +97,6 @@ public override Boolean Equals(Object obj)
 ## `Method` GetHashCode
 
 ```csharp
-public override Int32 GetHashCode()
+public override int GetHashCode()
 ```
 

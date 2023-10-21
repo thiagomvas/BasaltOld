@@ -11,7 +11,7 @@ namespace GameEngineProject.Source.Core.Utils
         /// <summary>
         /// Draws a circle with a Vector2 as position
         /// </summary>
-        /// <param name="position">he position to draw in</param>
+        /// <param name="position">The position to draw in</param>
         /// <param name="radius">The circle radius</param>
         /// <param name="color">The color used</param>
         public static void DrawCircle(Vector2 position, float radius, Color color) => Raylib.DrawCircle((int)position.X, (int)position.Y, radius, color);
