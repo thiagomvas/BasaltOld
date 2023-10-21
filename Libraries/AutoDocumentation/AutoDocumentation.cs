@@ -15,6 +15,18 @@ namespace GameEngineProject.Libraries.AutoDocumentation
 
         private static List<DocTypeInfo> typesFound = new();
 
+        public static string GetListOfTypes()
+        {
+            typesFound.Clear();
+            FetchAllTypes(SourceDirectory, "");
+            StringBuilder sb = new();
+            foreach(var type in typesFound)
+            {
+                sb.AppendLine($" - [{type.type.Name}]({GithubPagesLink.Replace('\\','/')}{type.relativePathToDocs.Replace('\\', '/').Replace(".md",".html")})");
+            }
+            return sb.ToString();
+        }
+
         /// <summary>
         /// Generates markdown documentation for every single class in the SourceDirectory. Do keep in mind this replaces the files, so any modifications made by you will be lost.
         /// </summary>

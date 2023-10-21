@@ -22,14 +22,14 @@ public bool IsActive
 
 
 ## `Property` Transform
-The object's transforms.
+The object's transform.
 ```csharp
 public Transform Transform { public get; set; }
 ```
 
 
 ## `Property` Rigidbody
-The object's transforms.
+The object's rigidbody
 ```csharp
 public Rigidbody Rigidbody { public get; set; }
 ```

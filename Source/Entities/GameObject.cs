@@ -15,10 +15,13 @@ namespace GameEngineProject.Source.Entities
         private bool StartCalled = false;
 
         /// <summary>
-        /// The object's transforms.
+        /// The object's transform.
         /// </summary>
         public Transform Transform { get; private set; }
 
+        /// <summary>
+        /// The object's rigidbody
+        /// </summary>
         public Rigidbody Rigidbody { get; private set; }
 
         /// <summary>
