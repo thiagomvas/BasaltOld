@@ -8,11 +8,11 @@ namespace GameEngineProject.Source.Core.Types
         /// <summary>
         /// The GameObject collided with.
         /// </summary>
-        public GameObject collision { get; }
+        public GameObject Collision;
 
         public OnCollisionEnterEventArgs(GameObject collision)
         {
-            this.collision = collision;
+            this.Collision = collision;
         }
     }
 }

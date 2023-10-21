@@ -1,4 +1,6 @@
-﻿using GameEngineProject.Source.Core;
+﻿using GameEngineProject.Libraries.AutoDocumentation;
+using GameEngineProject.Source.Core;
+using GameEngineProject.Source.Entities;
 
 namespace GameEngineProject
 {
@@ -6,7 +8,13 @@ namespace GameEngineProject
     {
         static void Main(string[] args)
         {
-            Engine.Setup();
+            AutoDocumentation.SourceNamespace = "GameEngineProject.Source";
+            AutoDocumentation.SourceDirectory = "C:\\Users\\Thiago\\source\\repos\\GameEngineProject\\Source\\";
+            AutoDocumentation.DocsRootDirectory = "C:\\Users\\Thiago\\source\\repos\\GameEngineProject\\docs\\";
+            AutoDocumentation.GenerateAutoDocumentation();
+            //Engine.Setup();
+
+
         }
     }
 }

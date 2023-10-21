@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Libraries\" />
+    <Folder Include="docs\" />
     <Folder Include="Source\Models\" />
   </ItemGroup>
 
