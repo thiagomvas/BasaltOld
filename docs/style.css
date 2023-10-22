@@ -1,8 +1,11 @@
 /* Reset some default styles */
 body, h1, h2, h3, p, ul, li, code, pre, p, table, tr, th, td {
-    margin: 0 20px;
     padding: 0;
+    overflow-x: hidden; /* Enable horizontal scroll if needed */
+    position: relative;
+    max-width: 82.5%;
 }
+
 p {
     font-size: 16px; /* Font size */
     line-height: 1.5; /* Line height */
@@ -32,29 +35,40 @@ body {
     overflow-x: hidden;
 }
 
-.sidebar h2 {
-    color: #fff;
-    font-size: 20px;
-    margin-bottom: 10px;
-}
 
-.sidebar ul {
-    list-style: none;
-}
+    .sidebar h2 {
+        color: #fff;
+        font-size: 20px;
+        padding: 20px 20% 0 0;
+        overflow-x: hidden;
+        margin-bottom: 10px;
+    }
 
-.sidebar li {
-    margin: 10px 0;
-}
+    .sidebar ul {
+        list-style: none;
+        padding: 20px 20% 0 0;
+        overflow-x: hidden;
+    }
 
-.sidebar a {
-    color: #fff;
-    text-decoration: none;
-}
+    .sidebar li {
+        margin: 10px 0;
+        padding: 0px 20% 0 0;
+        overflow-x: hidden;
+    }
+
+    .sidebar a {
+        color: #fff;
+        text-decoration: none;
+        padding: 20px 20% 0 0;
+        overflow-x: hidden;
+    }
 
 /* Style the content area */
 .content {
-    margin-left: 270px; /* Adjust this value to match your sidebar width */
-    padding: 20px;
+    position: relative;
+    left: 17.5%; /* Set the distance from the left side of the screen */
+    width: 65%; /* Adjust the width as needed (100% - 17.5% - 17.5%) */
+    margin: 0 auto; /* Center the container horizontally on the screen */
 }
 
 /* Style headings */
@@ -62,14 +76,16 @@ h1 {
     font-size: 42px;
     color: #FFF;
 }
-h2{
-  font-size 30;
-  color: #FFF;
+
+h2 {
+    font-size 30;
+    color: #FFF;
 }
-h3{
-  font-size 21;
-  color: #FFF;
-  margin: 20px 20px;
+
+h3 {
+    font-size 21;
+    color: #FFF;
+    margin: 20px 20px;
 }
 
 
@@ -79,9 +95,9 @@ a {
     text-decoration: none;
 }
 
-a:hover {
-    text-decoration: underline;
-}
+    a:hover {
+        text-decoration: underline;
+    }
 
 /* Style the custom "memberType" tag to look like a code block with minimal square size */
 memberType {
@@ -98,7 +114,7 @@ memberType {
 /* Style the table */
 table {
     border-collapse: collapse;
-    width: 96%;
+    width: 65%;
     margin: 20px 20px;
 }
 
@@ -126,6 +142,7 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
     background-color: #333;
 }
+
 pre {
     background-color: #1e1e1e; /* Background color */
     color: #F8F8F2; /* Text color */
@@ -134,7 +151,8 @@ pre {
     border-radius: 5px; /* Rounded corners */
     font-family: 'Courier New', monospace; /* Font style */
     white-space: pre-wrap; /* Wrap long lines */
-    overflow-x: auto; /* Enable horizontal scroll if needed */
+    overflow-x: hidden; /* Enable horizontal scroll if needed */
+    max-width: 82.5%;
 }
 
 /* Style the code text */
@@ -145,25 +163,25 @@ code {
 
 /* Define your custom code highlighting styles */
 .code-keyword {
-    color: #8d9dcb; 
+    color: #8d9dcb;
 }
 
 .code-class-name {
-    color: #B10DC9; 
+    color: #B10DC9;
 }
 
 .code-class {
-    color: #FF851B; 
+    color: #FF851B;
 }
 
 .code-method {
-    color: #ddddaa; 
+    color: #ddddaa;
 }
 
 .code-type {
-    color: #8ed28d; 
+    color: #8ed28d;
 }
 
 .code-comment {
-    color: #888; 
+    color: #888;
 }
