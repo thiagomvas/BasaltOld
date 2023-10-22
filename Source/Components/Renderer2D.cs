@@ -1,3 +1,4 @@
+using GameEngineProject.Source.Core.Graphics;
 using GameEngineProject.Source.Entities;
 using GameEngineProject.Source.Interfaces;
 using Raylib_cs;
@@ -19,6 +20,7 @@ namespace GameEngineProject.Source.Components
         {
             base.Awake(gameObject);
             transform = gameObject.Transform;
+            GraphicsWindow2D.RenderWorldSpace += OnRender;
         }
 
         /// <summary>
@@ -35,7 +37,6 @@ namespace GameEngineProject.Source.Components
         /// </summary>
         public virtual void Render()
         {
-            if (!parent.IsActive) return;
         }
 
     }
