@@ -9,7 +9,7 @@ namespace GameEngineProject.Source.Components
     /// <summary>
     /// Generic renderer component used for rendering Game Objects.
     /// </summary>
-    public class Renderer2D : Component
+    public class Renderer : Component
     {
         /// <summary>
         /// The parent's transform.

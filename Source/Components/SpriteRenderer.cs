@@ -10,7 +10,7 @@ namespace GameEngineProject.Source.Components
     /// 
     /// * Note: A file path to the <b>MUST BE SET</b> to render a texture.
     /// </summary>
-    public class SpriteRenderer : Renderer2D
+    public class SpriteRenderer : Renderer
     {
         /// <summary>
         /// Whether or not the texture has been loaded

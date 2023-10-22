@@ -39,7 +39,7 @@ namespace GameEngineProject.Source.Core.Graphics
 
             foreach (var obj in Globals.GameObjectsOnScene)
             {
-                if (obj.TryGetComponent<Renderer2D>(out Renderer2D rend)) RenderWorldSpace += rend.OnRender;
+                if (obj.TryGetComponent<Renderer>(out Renderer rend)) RenderWorldSpace += rend.OnRender;
             }
 
 

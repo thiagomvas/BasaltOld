@@ -9,6 +9,7 @@
 <h2>Documentation</h2>
 <ul>
 <li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Assets.html'>Assets</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Types/Camera.html'>Camera</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Entities/Camera2DObject.html'>Camera2DObject</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Components/CircleCollider.html'>CircleCollider</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Components/CircleRenderer.html'>CircleRenderer</a></li>
@@ -20,7 +21,9 @@
 <li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Debug.html'>Debug</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Entities/GameObject.html'>GameObject</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Core/Globals.html'>Globals</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Graphics/GraphicsWindow.html'>GraphicsWindow</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Core/Graphics/GraphicsWindow2D.html'>GraphicsWindow2D</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Graphics/GraphicsWindow3D.html'>GraphicsWindow3D</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Interfaces/IComponent.html'>IComponent</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Entities/UI/Label.html'>Label</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/MathExtended.html'>MathExtended</a></li>
@@ -29,7 +32,7 @@
 <li><a href='https://thiagomvas.github.io/GameEngine/Entities/Player.html'>Player</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Entities/UI/ProgressBar.html'>ProgressBar</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Components/Projectile.html'>Projectile</a></li>
-<li><a href='https://thiagomvas.github.io/GameEngine/Components/Renderer2D.html'>Renderer2D</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Renderer.html'>Renderer</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Components/Rigidbody.html'>Rigidbody</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Components/SpriteRenderer.html'>SpriteRenderer</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Time.html'>Time</a></li>
@@ -56,12 +59,12 @@
 
 <div class='member'>
 <h2><memberType>Field</memberType> Velocity</h3><p>Current velocity of the rigidbody (initialized as zero).</p>
-<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>Vector2</span> <span class='code-method'>Velocity</span></code></pre>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>Vector3</span> <span class='code-method'>Velocity</span></code></pre>
 </div>
 
 <div class='member'>
 <h2><memberType>Field</memberType> Acceleration</h3><p>Current acceleration of the rigidbody (initialized as zero).</p>
-<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>Vector2</span> <span class='code-method'>Acceleration</span></code></pre>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>Vector3</span> <span class='code-method'>Acceleration</span></code></pre>
 </div>
 
 <div class='member'>
@@ -86,7 +89,7 @@
 
 <div class='member'>
 <h2><memberType>Method</memberType> AddForce</h3><p>Add a force to the rigidbody's acceleration.</p>
-<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>void</span> <span class='code-method'>AddForce</span>(Vector2 force)</code></pre>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>void</span> <span class='code-method'>AddForce</span>(Vector3 force)</code></pre>
 <h3>Parameters</h3>
 <table>
 <tr>
@@ -96,7 +99,7 @@
         </tr>
 <tr>
 <td>force</td>
-<td>Vector2</td>
+<td>Vector3</td>
 <td>The force to be applied to the acceleration.</td>
 </tr>
 </table>

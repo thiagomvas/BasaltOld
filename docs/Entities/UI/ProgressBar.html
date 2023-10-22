@@ -9,6 +9,7 @@
 <h2>Documentation</h2>
 <ul>
 <li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Assets.html'>Assets</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Types/Camera.html'>Camera</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Entities/Camera2DObject.html'>Camera2DObject</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Components/CircleCollider.html'>CircleCollider</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Components/CircleRenderer.html'>CircleRenderer</a></li>
@@ -20,7 +21,9 @@
 <li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Debug.html'>Debug</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Entities/GameObject.html'>GameObject</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Core/Globals.html'>Globals</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Graphics/GraphicsWindow.html'>GraphicsWindow</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Core/Graphics/GraphicsWindow2D.html'>GraphicsWindow2D</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Graphics/GraphicsWindow3D.html'>GraphicsWindow3D</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Interfaces/IComponent.html'>IComponent</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Entities/UI/Label.html'>Label</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/MathExtended.html'>MathExtended</a></li>
@@ -29,7 +32,7 @@
 <li><a href='https://thiagomvas.github.io/GameEngine/Entities/Player.html'>Player</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Entities/UI/ProgressBar.html'>ProgressBar</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Components/Projectile.html'>Projectile</a></li>
-<li><a href='https://thiagomvas.github.io/GameEngine/Components/Renderer2D.html'>Renderer2D</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Renderer.html'>Renderer</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Components/Rigidbody.html'>Rigidbody</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Components/SpriteRenderer.html'>SpriteRenderer</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Time.html'>Time</a></li>
@@ -95,28 +98,18 @@
 </div>
 
 <div class='member'>
+<h2><memberType>Property</memberType> Position</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>Vector2</span> <span class='code-method'>Position</span> { <span class='code-keyword'>public</span> get; set; }</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Property</memberType> Rotation</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>Quaternion</span> <span class='code-method'>Rotation</span> { <span class='code-keyword'>public</span> get; set; }</code></pre>
+</div>
+
+<div class='member'>
 <h2><memberType>Property</memberType> OriginalPosition</h3><p></p>
 <pre><code> <span class='code-keyword'>public</span> <span class='code-type'>Vector2</span> <span class='code-method'>OriginalPosition</span> { <span class='code-keyword'>public</span> get; <span class='code-keyword'>public</span> set; }</code></pre>
-</div>
-
-<div class='member'>
-<h2><memberType>Property</memberType> Transform</h3><p></p>
-<pre><code> <span class='code-keyword'>public</span> <span class='code-method'><span class='code-type'>Transform</span></span> <span class='code-method'><span class='code-type'>Transform</span></span> { <span class='code-keyword'>public</span> get; set; }</code></pre>
-</div>
-
-<div class='member'>
-<h2><memberType>Property</memberType> Rigidbody</h3><p></p>
-<pre><code> <span class='code-keyword'>public</span> <span class='code-method'><span class='code-type'>Rigidbody</span></span> <span class='code-method'><span class='code-type'>Rigidbody</span></span> { <span class='code-keyword'>public</span> get; set; }</code></pre>
-</div>
-
-<div class='member'>
-<h2><memberType>Property</memberType> Components</h3><p></p>
-<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>List`1</span> <span class='code-method'>Components</span> { <span class='code-keyword'>public</span> get; set; }</code></pre>
-</div>
-
-<div class='member'>
-<h2><memberType>Property</memberType> Children</h3><p></p>
-<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>List`1</span> <span class='code-method'>Children</span> { <span class='code-keyword'>public</span> get; set; }</code></pre>
 </div>
 
 <div class='member'>
@@ -150,67 +143,6 @@
 <td>No description.</td>
 </tr>
 </table>
-</div>
-
-<div class='member'>
-<h2><memberType>Method</memberType> AddChildren</h3><p></p>
-<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>void</span> <span class='code-method'>AddChildren</span>(GameObject obj)</code></pre>
-<h3>Parameters</h3>
-<table>
-<tr>
-            <th>Parameter Name</th>
-            <th>Type</th>
-            <th>Description</th>
-        </tr>
-<tr>
-<td>obj</td>
-<td>GameObject</td>
-<td>No description.</td>
-</tr>
-</table>
-</div>
-
-<div class='member'>
-<h2><memberType>Method</memberType> Awake</h3><p></p>
-<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> <span class='code-keyword'>void</span> <span class='code-method'>Awake</span>()</code></pre>
-</div>
-
-<div class='member'>
-<h2><memberType>Method</memberType> Start</h3><p></p>
-<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> <span class='code-keyword'>void</span> <span class='code-method'>Start</span>()</code></pre>
-</div>
-
-<div class='member'>
-<h2><memberType>Method</memberType> AddComponent</h3><p></p>
-<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>T</span> <span class='code-method'>AddComponent</span>()</code></pre>
-</div>
-
-<div class='member'>
-<h2><memberType>Method</memberType> GetComponent</h3><p></p>
-<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>T</span> <span class='code-method'>GetComponent</span>()</code></pre>
-</div>
-
-<div class='member'>
-<h2><memberType>Method</memberType> TryGetComponent</h3><p></p>
-<pre><code> <span class='code-keyword'>public</span> bool <span class='code-method'>TryGetComponent</span>(T& component)</code></pre>
-<h3>Parameters</h3>
-<table>
-<tr>
-            <th>Parameter Name</th>
-            <th>Type</th>
-            <th>Description</th>
-        </tr>
-<tr>
-<td>component</td>
-<td>T&</td>
-<td>No description.</td>
-</tr>
-</table>
-</div>
-
-<div class='member'>
-<h2><memberType>Method</memberType> Destroy</h3><p></p>
-<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> <span class='code-keyword'>void</span> <span class='code-method'>Destroy</span>()</code></pre>
 </div>
 
 <div class='member'>

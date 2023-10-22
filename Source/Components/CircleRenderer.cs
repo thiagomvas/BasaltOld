@@ -4,7 +4,7 @@ using Raylib_cs;
 using static Raylib_cs.Raylib;
 namespace GameEngineProject.Source.Components
 {
-    public class CircleRenderer : Renderer2D
+    public class CircleRenderer : Renderer
     {
         /// <summary>
         /// The radius of the rendered circle.

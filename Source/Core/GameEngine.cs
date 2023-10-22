@@ -6,7 +6,6 @@ using GameEngineProject.Source.Entities;
 using GameEngineProject.Source.Entities.UI;
 using Raylib_cs;
 using System.Numerics;
-using System.Runtime.CompilerServices;
 using static GameEngineProject.Source.Core.Globals;
 
 namespace GameEngineProject.Source.Core
@@ -16,6 +15,11 @@ namespace GameEngineProject.Source.Core
         public static Camera Camera = new(Camera.RenderType.Camera2D);
         public static GraphicsWindow window;
         public static void Setup()
+        {
+            Example2DSetup();
+        }
+
+        private static void Example3DSetup()
         {
             window = new GraphicsWindow3D();
             window.Init(800, 800, new Camera(Camera.RenderType.Camera3D));

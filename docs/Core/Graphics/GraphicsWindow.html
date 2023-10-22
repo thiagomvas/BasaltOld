@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Player</title>
-<link rel='stylesheet' type='text/css' href='../style.css'>
+<title>GraphicsWindow</title>
+<link rel='stylesheet' type='text/css' href='../../style.css'>
 </head>
 <body>
 <div class='sidebar'>
@@ -43,43 +43,86 @@
 </ul>
 </div>
 <div class='content'>
-<h1>Player</h1>
+<h1>GraphicsWindow</h1>
 </section>
 <section id='members'>
 <h3>Members</h2>
 <div class='member'>
-<h2><memberType>Field</memberType> gameObject</h3><p>Gets or sets the GameObject associated with the player.</p>
-<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>GameObject</span> <span class='code-method'>gameObject</span></code></pre>
+<h2><memberType>Field</memberType> BackgroundColor</h3><p>Background color for the world.</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>Color</span> <span class='code-method'>Background<span class='code-type'>Color</span></span></code></pre>
 </div>
 
 <div class='member'>
-<h2><memberType>Field</memberType> id</h3><p>Gets the unique identifier for the player.</p>
-<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>int</span> <span class='code-method'>id</span></code></pre>
+<h2><memberType>Field</memberType> FontColor</h3><p>Font color used on UI;</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>Color</span> <span class='code-method'>Font<span class='code-type'>Color</span></span></code></pre>
 </div>
 
 <div class='member'>
-<h2><memberType>Field</memberType> MovementSpeed</h3><p>Gets or sets the movement speed of the player.</p>
-<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>int</span> <span class='code-method'>MovementSpeed</span></code></pre>
+<h2><memberType>Field</memberType> OnScreenRedraw</h3><p></p>
+<pre><code> <span class='code-keyword'>private</span> event <span class='code-type'>Action</span> <span class='code-method'>OnScreenRedraw</span></code></pre>
 </div>
 
 <div class='member'>
-<h2><memberType>Field</memberType> rb</h3><p></p>
-<pre><code> <span class='code-keyword'>private</span> <span class='code-type'>Rigidbody</span> <span class='code-method'>rb</span></code></pre>
+<h2><memberType>Field</memberType> OnScreenResize</h3><p></p>
+<pre><code> <span class='code-keyword'>private</span> event <span class='code-type'>Action</span> <span class='code-method'>OnScreenResize</span></code></pre>
 </div>
 
 <div class='member'>
-<h2><memberType>Field</memberType> pool</h3><p></p>
-<pre><code> <span class='code-keyword'>private</span> <span class='code-type'>ObjectPooling</span> <span class='code-method'>pool</span></code></pre>
+<h2><memberType>Field</memberType> RenderWorldSpace</h3><p></p>
+<pre><code> <span class='code-keyword'>private</span> event <span class='code-type'>Action</span> <span class='code-method'>RenderWorldSpace</span></code></pre>
 </div>
 
 <div class='member'>
-<h2><memberType>Method</memberType> OnMovePlayer</h3><p>Callback method for handling player movement.</p>
-<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>void</span> <span class='code-method'>OnMovePlayer</span>()</code></pre>
+<h2><memberType>Field</memberType> RenderUI</h3><p></p>
+<pre><code> <span class='code-keyword'>private</span> event <span class='code-type'>Action</span> <span class='code-method'>RenderUI</span></code></pre>
 </div>
 
 <div class='member'>
-<h2><memberType>Method</memberType> MovePlayer</h3><p>Moves the player based on input controls and mouse position.</p>
-<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>void</span> <span class='code-method'>MovePlayer</span>()</code></pre>
+<h2><memberType>Method</memberType> Init</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>virtual</span> <span class='code-keyword'>void</span> <span class='code-method'>Init</span>(int Width, <span class='code-keyword'>int</span> Height, Camera cameraObject)</code></pre>
+<h3>Parameters</h3>
+<table>
+<tr>
+            <th>Parameter Name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+<tr>
+<td>Width</td>
+<td>Int32</td>
+<td>No description.</td>
+</tr>
+<tr>
+<td>Height</td>
+<td>Int32</td>
+<td>No description.</td>
+</tr>
+<tr>
+<td>cameraObject</td>
+<td>Camera</td>
+<td>No description.</td>
+</tr>
+</table>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> CallOnRedraw</h3><p>Event called whenever the UI is rendered.</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>void</span> <span class='code-method'>CallOnRedraw</span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> CallOnResize</h3><p>Event called whenever the UI is rendered.</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>void</span> <span class='code-method'>CallOnResize</span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> CallRenderWorldSpace</h3><p>Event called whenever the UI is rendered.</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>void</span> <span class='code-method'>CallRenderWorldSpace</span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> CallRenderUI</h3><p>Event called whenever the UI is rendered.</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>void</span> <span class='code-method'>CallRenderUI</span>()</code></pre>
 </div>
 
 <div class='member'>
