@@ -1,0 +1,169 @@
+/* Reset some default styles */
+body, h1, h2, h3, p, ul, li, code, pre, p, table, tr, th, td {
+    margin: 0 20px;
+    padding: 0;
+}
+p {
+    font-size: 16px; /* Font size */
+    line-height: 1.5; /* Line height */
+    margin: 10px 20px; /* Margin above and below the paragraph */
+    color: #e7e7e7; /* Text color */
+    font-family: Arial, sans-serif; /* Font family */
+}
+/* Set dark background color and font styles */
+body {
+    background-color: #121212;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0 10px;
+}
+
+/* Style the sidebar */
+.sidebar {
+    background-color: #101010;
+    color: #101010;
+    width: 17.5%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.sidebar h2 {
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    margin: 10px 0;
+}
+
+.sidebar a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Style the content area */
+.content {
+    margin-left: 270px; /* Adjust this value to match your sidebar width */
+    padding: 20px;
+}
+
+/* Style headings */
+h1 {
+    font-size: 42px;
+    color: #FFF;
+}
+h2{
+  font-size 30;
+  color: #FFF;
+}
+h3{
+  font-size 21;
+  color: #FFF;
+  margin: 20px 20px;
+}
+
+
+/* Style links */
+a {
+    color: #0077b6;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Style the custom "memberType" tag to look like a code block with minimal square size */
+memberType {
+    display: inline-block;
+    background-color: #2a2a2a;
+    color: #8d9dcb;
+    font-family: 'Courier New', monospace;
+    padding: 3px 8px; /* Adjust the padding for the desired size */
+    border-radius: 4px;
+    margin: 5px; /* Adjust the margin for spacing */
+    white-space: pre-wrap;
+}
+/* Style the table */
+/* Style the table */
+table {
+    border-collapse: collapse;
+    width: 96%;
+    margin: 20px 20px;
+}
+
+/* Style the table headers (th) */
+th {
+    background-color: #333;
+    color: #fff;
+    font-weight: bold;
+    text-align: left;
+    padding: 8px;
+}
+
+/* Style the table cells (td) */
+td {
+    padding: 8px;
+    width: 33%; /* Set an equal width for each cell, making sure it adds up to 100% */
+}
+
+/* Add alternate row background color for better readability */
+tr:nth-child(even) {
+    background-color: #222;
+}
+
+/* Highlight the first row for headers */
+tr:nth-child(odd) {
+    background-color: #333;
+}
+pre {
+    background-color: #1e1e1e; /* Background color */
+    color: #F8F8F2; /* Text color */
+    padding: 10px 10px; /* Padding around the code block */
+    border: 1px solid #2a2a2a; /* Border */
+    border-radius: 5px; /* Rounded corners */
+    font-family: 'Courier New', monospace; /* Font style */
+    white-space: pre-wrap; /* Wrap long lines */
+    overflow-x: auto; /* Enable horizontal scroll if needed */
+}
+
+/* Style the code text */
+code {
+    font-size: 14px; /* Font size */
+    line-height: 1.5; /* Line height */
+}
+
+/* Define your custom code highlighting styles */
+.code-keyword {
+    color: #8d9dcb; 
+}
+
+.code-class-name {
+    color: #B10DC9; 
+}
+
+.code-class {
+    color: #FF851B; 
+}
+
+.code-method {
+    color: #ddddaa; 
+}
+
+.code-type {
+    color: #8ed28d; 
+}
+
+.code-comment {
+    color: #888; 
+}

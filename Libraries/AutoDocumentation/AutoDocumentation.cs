@@ -36,26 +36,25 @@ namespace GameEngineProject.Libraries.AutoDocumentation
             ReflectFolders(SourceDirectory);
             FetchAllTypes(SourceDirectory, "");
 
-            foreach(DocTypeInfo type in typesFound)
+            //DocTypeInfo type = typesFound[25];
+            foreach (DocTypeInfo type in typesFound)
             {
                 string documentation = "# " + type.type.Name + "\n";
                 string text = File.ReadAllText(type.originalFilePath);
-                var members = ClassDoc(type.type, typesFound);
                 var lines = text.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
              
-                foreach (var member in members)
+                foreach (var member in type.members)
                 {
                     ExtractSummary(lines, member);
 
                     //Extract Param Description
                     ExtractParamDescriptions(lines, member);
 
-                    documentation += member;
 
                 }
-                WriteTextToFile(documentation, Path.Combine(DocsRootDirectory, type.relativePathToDocs));
+            //Console.WriteLine(type.ToHTML(typesFound, GithubPagesLink));
+            WriteTextToFile(type.ToHTML(typesFound, GithubPagesLink), Path.Combine(DocsRootDirectory, type.relativePathToDocs.Replace(".md", ".html")));
             }
-            
         }
 
         private static void ExtractParamDescriptions(string[] lines, DocsMember member)
@@ -153,6 +152,7 @@ namespace GameEngineProject.Libraries.AutoDocumentation
 
 
                     Type type = Type.GetType($"{SourceNamespace}.{currentPath.Replace('\\', '.')}.{fileName}");
+
                     if (type != null)
                     {
                         typesFound.Add(new(type, path, file));
@@ -181,6 +181,11 @@ namespace GameEngineProject.Libraries.AutoDocumentation
             }
 
             typesFound = typesFound.GroupBy(x => x.type).Select(y => y.First()).OrderBy(e => e.type.Name).ToList();
+
+            foreach(var t in typesFound)
+            {
+                t.members = ClassDoc(t.type, typesFound);
+            }
         }
 
         // Method to determine whether to skip a folder
@@ -208,7 +213,7 @@ namespace GameEngineProject.Libraries.AutoDocumentation
                 if (field.Name.Contains("k__BackingField")) continue;
                 DocsMember doc = new();
                 doc.Title = $"{field.Name}";
-
+                doc.ReturnType = field.FieldType;
                 StringBuilder sig = new();
                 if (field.IsPublic) sig.Append("public ");
                 if (field.IsPrivate) sig.Append("private ");
@@ -226,7 +231,7 @@ namespace GameEngineProject.Libraries.AutoDocumentation
                 DocsMember doc = new();
                 doc.type = DocsMember.DocType.Property;
                 doc.Title = property.Name;
-
+                doc.ReturnType = property.PropertyType;
                 var getMethod = property.GetGetMethod();
                 var setMethod = property.GetSetMethod();
                 if (getMethod != null)
@@ -248,6 +253,7 @@ namespace GameEngineProject.Libraries.AutoDocumentation
                 DocsMember doc = new();
                 doc.type = DocsMember.DocType.Method;
                 doc.Title = method.Name;
+                doc.ReturnType = method.ReturnType;
                 StringBuilder sig = new();
                 if (method.IsPublic) sig.Append("public ");
                 if (method.IsPrivate) sig.Append("private ");

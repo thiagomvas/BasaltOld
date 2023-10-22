@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rigidbody</title>
+<link rel='stylesheet' type='text/css' href='../style.css'>
+</head>
+<body>
+<div class='sidebar'>
+<h2>Documentation</h2>
+<ul>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Assets.html'>Assets</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/Camera2DObject.html'>Camera2DObject</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/CircleCollider.html'>CircleCollider</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/CircleRenderer.html'>CircleRenderer</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Collider2D.html'>Collider2D</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Component.html'>Component</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Conversions.html'>Conversions</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/CustomDrawing.html'>CustomDrawing</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/CustomShapes.html'>CustomShapes</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Debug.html'>Debug</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/GameObject.html'>GameObject</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Globals.html'>Globals</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Graphics/GraphicsWindow2D.html'>GraphicsWindow2D</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Interfaces/IComponent.html'>IComponent</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/UI/Label.html'>Label</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/MathExtended.html'>MathExtended</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Types/ObjectPooling.html'>ObjectPooling</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Types/OnCollisionEnterEventArgs.html'>OnCollisionEnterEventArgs</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/Player.html'>Player</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/UI/ProgressBar.html'>ProgressBar</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Projectile.html'>Projectile</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Renderer2D.html'>Renderer2D</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Rigidbody.html'>Rigidbody</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/SpriteRenderer.html'>SpriteRenderer</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Time.html'>Time</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Transform.html'>Transform</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Types/TransformPositionUpdatedEventArgs.html'>TransformPositionUpdatedEventArgs</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/UI.html'>UI</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/UIElement.html'>UIElement</a></li>
+</ul>
+</div>
+<div class='content'>
+<h1>Rigidbody</h1>
+</section>
+<section id='members'>
+<h3>Members</h2>
+<div class='member'>
+<h2><memberType>Field</memberType> Mass</h3><p>Mass of the rigidbody (default: 1f).</p>
+<pre><code> <span class='code-keyword'>public</span> float <span class='code-method'>Mass</span></code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Field</memberType> Drag</h3><p>Linear drag coefficient (default: 10f).</p>
+<pre><code> <span class='code-keyword'>public</span> float <span class='code-method'>Drag</span></code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Field</memberType> Velocity</h3><p>Current velocity of the rigidbody (initialized as zero).</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>Vector2</span> <span class='code-method'>Velocity</span></code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Field</memberType> Acceleration</h3><p>Current acceleration of the rigidbody (initialized as zero).</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>Vector2</span> <span class='code-method'>Acceleration</span></code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Field</memberType> IsKinematic</h3><p>Determines if the rigidbody is kinematic (doesn't respond to forces).</p>
+<pre><code> <span class='code-keyword'>public</span> bool <span class='code-method'>IsKinematic</span></code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Field</memberType> StoppingThreshold</h3><p>Threshold for stopping velocity to avoid small drifting (default: 0.001f).</p>
+<pre><code> <span class='code-keyword'>public</span> float <span class='code-method'>StoppingThreshold</span></code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Field</memberType> parent</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>GameObject</span> <span class='code-method'>parent</span></code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> Update</h3><p>Threshold for stopping velocity to avoid small drifting (default: 0.001f).</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> <span class='code-keyword'>void</span> <span class='code-method'>Update</span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> AddForce</h3><p>Add a force to the rigidbody's acceleration.</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>void</span> <span class='code-method'>AddForce</span>(Vector2 force)</code></pre>
+<h3>Parameters</h3>
+<table>
+<tr>
+            <th>Parameter Name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+<tr>
+<td>force</td>
+<td>Vector2</td>
+<td>The force to be applied to the acceleration.</td>
+</tr>
+</table>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> Awake</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> <span class='code-keyword'>void</span> <span class='code-method'>Awake</span>(GameObject gameObject)</code></pre>
+<h3>Parameters</h3>
+<table>
+<tr>
+            <th>Parameter Name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+<tr>
+<td>gameObject</td>
+<td>GameObject</td>
+<td>No description.</td>
+</tr>
+</table>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> Destroy</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> <span class='code-keyword'>void</span> <span class='code-method'>Destroy</span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> Start</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> <span class='code-keyword'>void</span> <span class='code-method'>Start</span>(GameObject gameObject)</code></pre>
+<h3>Parameters</h3>
+<table>
+<tr>
+            <th>Parameter Name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+<tr>
+<td>gameObject</td>
+<td>GameObject</td>
+<td>No description.</td>
+</tr>
+</table>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> OnUpdate</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>void</span> <span class='code-method'>OnUpdate</span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> GetType</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>Type</span> <span class='code-method'>Get<span class='code-type'>Type</span></span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> MemberwiseClone</h3><p></p>
+<pre><code> <span class='code-type'>Object</span> <span class='code-method'>MemberwiseClone</span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> Finalize</h3><p></p>
+<pre><code> <span class='code-keyword'>override</span> <span class='code-keyword'>void</span> <span class='code-method'>Finalize</span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> ToString</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> string <span class='code-method'>To<span class='code-type'>String</span></span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> Equals</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> bool <span class='code-method'>Equals</span>(Object obj)</code></pre>
+<h3>Parameters</h3>
+<table>
+<tr>
+            <th>Parameter Name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+<tr>
+<td>obj</td>
+<td>Object</td>
+<td>No description.</td>
+</tr>
+</table>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> GetHashCode</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> <span class='code-keyword'>int</span> <span class='code-method'>GetHashCode</span>()</code></pre>
+</div>
+
+</section>
+</div>
+</body>
+</html>

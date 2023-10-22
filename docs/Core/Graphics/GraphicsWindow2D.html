@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GraphicsWindow2D</title>
+<link rel='stylesheet' type='text/css' href='../../style.css'>
+</head>
+<body>
+<div class='sidebar'>
+<h2>Documentation</h2>
+<ul>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Assets.html'>Assets</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/Camera2DObject.html'>Camera2DObject</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/CircleCollider.html'>CircleCollider</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/CircleRenderer.html'>CircleRenderer</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Collider2D.html'>Collider2D</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Component.html'>Component</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Conversions.html'>Conversions</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/CustomDrawing.html'>CustomDrawing</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/CustomShapes.html'>CustomShapes</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Debug.html'>Debug</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/GameObject.html'>GameObject</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Globals.html'>Globals</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Graphics/GraphicsWindow2D.html'>GraphicsWindow2D</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Interfaces/IComponent.html'>IComponent</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/UI/Label.html'>Label</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/MathExtended.html'>MathExtended</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Types/ObjectPooling.html'>ObjectPooling</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Types/OnCollisionEnterEventArgs.html'>OnCollisionEnterEventArgs</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/Player.html'>Player</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/UI/ProgressBar.html'>ProgressBar</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Projectile.html'>Projectile</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Renderer2D.html'>Renderer2D</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Rigidbody.html'>Rigidbody</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/SpriteRenderer.html'>SpriteRenderer</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Time.html'>Time</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Transform.html'>Transform</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Types/TransformPositionUpdatedEventArgs.html'>TransformPositionUpdatedEventArgs</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/UI.html'>UI</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/UIElement.html'>UIElement</a></li>
+</ul>
+</div>
+<div class='content'>
+<h1>GraphicsWindow2D</h1>
+</section>
+<section id='members'>
+<h3>Members</h2>
+<div class='member'>
+<h2><memberType>Field</memberType> BackgroundColor</h3><p>Background color for the world.</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>static</span> <span class='code-type'>Color</span> <span class='code-method'>Background<span class='code-type'>Color</span></span></code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Field</memberType> FontColor</h3><p>Font color used on UI;</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>static</span> <span class='code-type'>Color</span> <span class='code-method'>Font<span class='code-type'>Color</span></span></code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Field</memberType> OnScreenRedraw</h3><p></p>
+<pre><code> <span class='code-keyword'>private</span> <span class='code-keyword'>static</span> event <span class='code-type'>Action</span> <span class='code-method'>OnScreenRedraw</span></code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Field</memberType> OnScreenResize</h3><p></p>
+<pre><code> <span class='code-keyword'>private</span> <span class='code-keyword'>static</span> event <span class='code-type'>Action</span> <span class='code-method'>OnScreenResize</span></code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Field</memberType> RenderWorldSpace</h3><p></p>
+<pre><code> <span class='code-keyword'>private</span> <span class='code-keyword'>static</span> event <span class='code-type'>Action</span> <span class='code-method'>RenderWorldSpace</span></code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Field</memberType> RenderUI</h3><p></p>
+<pre><code> <span class='code-keyword'>private</span> <span class='code-keyword'>static</span> event <span class='code-type'>Action</span> <span class='code-method'>RenderUI</span></code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> Init</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>static</span> <span class='code-keyword'>void</span> <span class='code-method'>Init</span>(int Width, <span class='code-keyword'>int</span> Height, Camera2DObject cameraObject)</code></pre>
+<h3>Parameters</h3>
+<table>
+<tr>
+            <th>Parameter Name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+<tr>
+<td>Width</td>
+<td>Int32</td>
+<td>No description.</td>
+</tr>
+<tr>
+<td>Height</td>
+<td>Int32</td>
+<td>No description.</td>
+</tr>
+<tr>
+<td>cameraObject</td>
+<td>Camera2DObject</td>
+<td>No description.</td>
+</tr>
+</table>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> DrawUI</h3><p>Draws all the UI;</p>
+<pre><code> <span class='code-keyword'>private</span> <span class='code-keyword'>static</span> <span class='code-keyword'>void</span> <span class='code-method'>DrawUI</span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> DrawWorldSpace</h3><p>Draws all the GameObjects in the world.</p>
+<pre><code> <span class='code-keyword'>private</span> <span class='code-keyword'>static</span> <span class='code-keyword'>void</span> <span class='code-method'>DrawWorldSpace</span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> GetType</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>Type</span> <span class='code-method'>Get<span class='code-type'>Type</span></span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> MemberwiseClone</h3><p></p>
+<pre><code> <span class='code-type'>Object</span> <span class='code-method'>MemberwiseClone</span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> Finalize</h3><p></p>
+<pre><code> <span class='code-keyword'>override</span> <span class='code-keyword'>void</span> <span class='code-method'>Finalize</span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> ToString</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> string <span class='code-method'>To<span class='code-type'>String</span></span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> Equals</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> bool <span class='code-method'>Equals</span>(Object obj)</code></pre>
+<h3>Parameters</h3>
+<table>
+<tr>
+            <th>Parameter Name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+<tr>
+<td>obj</td>
+<td>Object</td>
+<td>No description.</td>
+</tr>
+</table>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> GetHashCode</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> <span class='code-keyword'>int</span> <span class='code-method'>GetHashCode</span>()</code></pre>
+</div>
+
+</section>
+</div>
+</body>
+</html>
