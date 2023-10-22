@@ -1,12 +1,5 @@
 # CircleCollider
 
-## `Field` Radius
-The radius of the collision circle.
-```csharp
-public int Radius
-```
-
-
 ## `Field` parent
 
 ```csharp
@@ -14,8 +7,15 @@ public GameObject parent
 ```
 
 
+## `Property` Radius
+Gets or sets the radius of the collision circle.
+```csharp
+public Int32 Radius { public get; public set; }
+```
+
+
 ## `Method` Start
-The radius of the collision circle.
+Initializes the collider when a GameObject is started. 
 ```csharp
 public override void Start(GameObject gameObject)
 ```
@@ -23,11 +23,11 @@ public override void Start(GameObject gameObject)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| gameObject | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | No description. |
+| gameObject | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | The GameObject to which this collider is attached. |
 
 
 ## `Method` CheckCollision
-The radius of the collision circle.
+Checks for collisions with another GameObject.
 ```csharp
 public override void CheckCollision(GameObject other)
 ```
@@ -35,11 +35,11 @@ public override void CheckCollision(GameObject other)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| other | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | No description. |
+| other | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | The GameObject to check for collision with. |
 
 
 ## `Method` SolveCollision
-The radius of the collision circle.
+Solves a collision with another Collider2D, if it is a CircleCollider.
 ```csharp
 public override void SolveCollision(Collider2D collided)
 ```
@@ -47,11 +47,11 @@ public override void SolveCollision(Collider2D collided)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| collided | [Collider2D](https://thiagomvas.github.io/GameEngine/Components/Collider2D.html) | No description. |
+| collided | [Collider2D](https://thiagomvas.github.io/GameEngine/Components/Collider2D.html) | The collider with which this collider has collided. |
 
 
 ## `Method` DrawDebugHitbox
-The radius of the collision circle.
+Draws the debug hitbox of the collider on the screen.
 ```csharp
 public override void DrawDebugHitbox(Vector2 screenPos)
 ```
@@ -59,7 +59,7 @@ public override void DrawDebugHitbox(Vector2 screenPos)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| screenPos | Vector2 | No description. |
+| screenPos | Vector2 | The position on the screen where the hitbox should be drawn. |
 
 
 ## `Method` Destroy

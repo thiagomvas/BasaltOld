@@ -103,6 +103,13 @@ public void SetPivot(PivotPoint pivot)
 | pivot | PivotPoint | No description. |
 
 
+## `Method` OnRender
+
+```csharp
+public void OnRender()
+```
+
+
 ## `Method` AddChildren
 
 ```csharp

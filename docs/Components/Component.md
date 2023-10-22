@@ -1,14 +1,14 @@
 # Component
 
 ## `Field` parent
-
+The GameObject to which this component is attached.
 ```csharp
 public GameObject parent
 ```
 
 
 ## `Method` Awake
-
+Initializes the component when a GameObject is awakened.
 ```csharp
 public virtual void Awake(GameObject gameObject)
 ```
@@ -16,18 +16,18 @@ public virtual void Awake(GameObject gameObject)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| gameObject | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | No description. |
+| gameObject | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | The GameObject to which this component is attached. |
 
 
 ## `Method` Destroy
-
+Destroys the component, performing any necessary cleanup.
 ```csharp
 public virtual void Destroy()
 ```
 
 
 ## `Method` Start
-
+Initializes the component when a GameObject is started.
 ```csharp
 public virtual void Start(GameObject gameObject)
 ```
@@ -35,18 +35,18 @@ public virtual void Start(GameObject gameObject)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| gameObject | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | No description. |
+| gameObject | [GameObject](https://thiagomvas.github.io/GameEngine/Entities/GameObject.html) | The GameObject to which this component is attached. |
 
 
 ## `Method` OnUpdate
-
+Event handler for the screen redraw event, which triggers the component's Update method.
 ```csharp
 public void OnUpdate()
 ```
 
 
 ## `Method` Update
-
+Updates the component's behavior. Override this method to implement custom functionality.
 ```csharp
 public virtual void Update()
 ```

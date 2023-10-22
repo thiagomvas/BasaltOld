@@ -35,6 +35,13 @@ private static event Action RenderWorldSpace
 ```
 
 
+## `Field` RenderUI
+
+```csharp
+private static event Action RenderUI
+```
+
+
 ## `Method` Init
 
 ```csharp
@@ -53,13 +60,6 @@ public static void Init(int Width, int Height, Camera2DObject cameraObject)
 Draws all the UI;
 ```csharp
 private static void DrawUI()
-```
-
-
-## `Method` DrawWorldSpace
-Draws all the GameObjects in the world.
-```csharp
-private static void DrawWorldSpace()
 ```
 
 

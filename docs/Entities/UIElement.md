@@ -1,7 +1,7 @@
 # UIElement
 
 ## `Field` Delta
-The element's original position.
+Gets the original position of the UI element.
 ```csharp
 private Vector2 Delta
 ```
@@ -15,14 +15,14 @@ public bool IsActive
 
 
 ## `Property` Pivot
-The pivot point used to reposition this element whenever the screen resizes. <br/> <br/>         To modify, use <see cref="SetPivot(PivotPoint)"/>
+Gets or sets the pivot point used to reposition this element whenever the screen resizes.         To modify, use the <see cref="SetPivot(PivotPoint)"/> method.
 ```csharp
 public PivotPoint Pivot { public get; set; }
 ```
 
 
 ## `Property` OriginalPosition
-The element's original position.
+Gets the original position of the UI element.
 ```csharp
 public Vector2 OriginalPosition { public get; public set; }
 ```
@@ -57,7 +57,7 @@ public List`1 Children { public get; set; }
 
 
 ## `Method` UpdatePosition
-Updates the element's position whenever its resized.
+Updates the element's position whenever the screen resizes.
 ```csharp
 public void UpdatePosition()
 ```
@@ -72,11 +72,18 @@ public void SetPivot(PivotPoint pivot)
 
 | Parameter Name | Type | Description |
 | --------- | --------- | --------- |
-| pivot | PivotPoint |  |
+| pivot | PivotPoint | The new pivot point to set. |
+
+
+## `Method` OnRender
+Event handler for rendering the UI element on the screen.
+```csharp
+public void OnRender()
+```
 
 
 ## `Method` Render
-Draws the UIElement on screen. Override the method to change how it will be drawn.
+Draws the UIElement on screen. Override this method to change how it will be drawn.
 ```csharp
 public virtual void Render()
 ```
