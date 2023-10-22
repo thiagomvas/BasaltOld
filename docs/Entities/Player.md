@@ -28,6 +28,13 @@ private Rigidbody rb
 ```
 
 
+## `Field` pool
+
+```csharp
+private ObjectPooling pool
+```
+
+
 ## `Method` OnMovePlayer
 Callback method for handling player movement.
 ```csharp

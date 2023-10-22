@@ -1,7 +1,7 @@
 # Debug
 
 ## `Field` ObjectCollider
-Whether or not the Debug System is enabled.
+
 ```csharp
 private static Collider2D ObjectCollider
 ```
@@ -21,6 +21,13 @@ public static GameObject SelectedObject
 ```
 
 
+## `Field` label
+Toggles the Debug System.
+```csharp
+private static Label label
+```
+
+
 ## `Field` MaxSelectionDistance
 
 ```csharp
@@ -32,6 +39,13 @@ private static int MaxSelectionDistance
 Toggles the Debug System.
 ```csharp
 public static void ToggleDebug()
+```
+
+
+## `Method` Setup
+Toggles the Debug System.
+```csharp
+public static void Setup()
 ```
 
 

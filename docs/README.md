@@ -22,7 +22,7 @@ Currently, no actual documentation besides method and field summaries exist, how
 - There is a simple Player object which also inherits GameObject with basic top down controls.
 
 ## All Classes
- - [Assets](https://thiagomvas.github.io/GameEngine/Core/Utils/Assets.html)
+  - [Assets](https://thiagomvas.github.io/GameEngine/Core/Utils/Assets.html)
  - [Camera2DObject](https://thiagomvas.github.io/GameEngine/Entities/Camera2DObject.html)
  - [CircleCollider](https://thiagomvas.github.io/GameEngine/Components/CircleCollider.html)
  - [CircleRenderer](https://thiagomvas.github.io/GameEngine/Components/CircleRenderer.html)
@@ -38,9 +38,11 @@ Currently, no actual documentation besides method and field summaries exist, how
  - [IComponent](https://thiagomvas.github.io/GameEngine/Interfaces/IComponent.html)
  - [Label](https://thiagomvas.github.io/GameEngine/Entities/UI/Label.html)
  - [MathExtended](https://thiagomvas.github.io/GameEngine/Core/Utils/MathExtended.html)
+ - [ObjectPooling](https://thiagomvas.github.io/GameEngine/Core/Types/ObjectPooling.html)
  - [OnCollisionEnterEventArgs](https://thiagomvas.github.io/GameEngine/Core/Types/OnCollisionEnterEventArgs.html)
  - [Player](https://thiagomvas.github.io/GameEngine/Entities/Player.html)
  - [ProgressBar](https://thiagomvas.github.io/GameEngine/Entities/UI/ProgressBar.html)
+ - [Projectile](https://thiagomvas.github.io/GameEngine/Components/Projectile.html)
  - [Renderer2D](https://thiagomvas.github.io/GameEngine/Components/Renderer2D.html)
  - [Rigidbody](https://thiagomvas.github.io/GameEngine/Components/Rigidbody.html)
  - [SpriteRenderer](https://thiagomvas.github.io/GameEngine/Components/SpriteRenderer.html)
