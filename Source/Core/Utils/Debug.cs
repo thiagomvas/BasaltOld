@@ -31,7 +31,8 @@ namespace GameEngineProject.Source.Core.Utils
         
         public static void Setup()
         {
-            label = new(UI.ScreenLeft + new Vector2(600, 600));
+            label = new(UI.ScreenLeft + new Vector2(600, 0));
+            label.Text = "";
             label.SetPivot(UIElement.PivotPoint.Left);
             label.FontSize = 12;
             UI.Instantiate(label);
@@ -42,6 +43,11 @@ namespace GameEngineProject.Source.Core.Utils
         /// </summary>
         public static void DrawDebugUI()
         {
+            if (!IsDebugEnabled)
+            {
+                label.Text = "";
+                return;
+            }
             if(SelectedObject != null)
             {
                 label.Text = Conversions.StringifyGameObject(SelectedObject);

@@ -36,7 +36,7 @@ namespace GameEngineProject.Source.Core
             }
 
 
-            Label label = new(UI.ScreenBottom + new Vector2(0, -25));
+            Label label = new(UI.ScreenBottom + new Vector2(0, -50));
             label.SetPivot(UIElement.PivotPoint.Bottom);
             label.Text = "PROTOTYPE ENGINE TEST";
             label.FontSize = 24;

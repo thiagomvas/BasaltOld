@@ -33,6 +33,10 @@ namespace GameEngineProject.Source.Core.Graphics
         /// Event called whenever the world is rendered.
         /// </summary>
         public static event Action RenderWorldSpace;
+        /// <summary>
+        /// Event called whenever the UI is rendered.
+        /// </summary>
+        public static event Action RenderUI;
         public static void Init(int Width = -1, int Height = -1, Camera2DObject cameraObject = null)
         {
             Debug.Setup();
@@ -85,12 +89,12 @@ namespace GameEngineProject.Source.Core.Graphics
                 BeginDrawing();
                 ClearBackground(BackgroundColor);
 
-                    BeginMode2D(cameraObject is not null ? cameraObject.camera : defaultCamera); // Setting the camera view | Anything drawn inside Mode2D will be affected by the camera's POV
-                    DrawWorldSpace();
-                    EndMode2D();
+                BeginMode2D(cameraObject is not null ? cameraObject.camera : defaultCamera); // Setting the camera view | Anything drawn inside Mode2D will be affected by the camera's POV
+                RenderWorldSpace?.Invoke();
+                EndMode2D();
 
-                DrawUI(); // Anything outside Mode2D will always be on screen
-                if (Debug.IsDebugEnabled) Debug.DrawDebugUI();
+                RenderUI?.Invoke();
+                Debug.DrawDebugUI();
 
                 EndDrawing();
 

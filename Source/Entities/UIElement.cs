@@ -3,6 +3,7 @@ using System.Numerics;
 using static GameEngineProject.Source.Core.Utils.UI;
 using static GameEngineProject.Source.Core.Utils.Conversions;
 using static Raylib_cs.Raylib;
+using GameEngineProject.Source.Core.Graphics;
 
 namespace GameEngineProject.Source.Entities
 {
@@ -25,7 +26,12 @@ namespace GameEngineProject.Source.Entities
         /// </summary>
         public Vector2 OriginalPosition { get; init; }
         private Vector2 Delta = Vector2.Zero;
-        public UIElement(Vector2 position) => OriginalPosition = position;
+        public UIElement(Vector2 position)
+        {
+            OriginalPosition = position;
+            GraphicsWindow2D.RenderUI += Render;
+        }
+
 
         /// <summary>
         /// Updates the element's position whenever its resized.

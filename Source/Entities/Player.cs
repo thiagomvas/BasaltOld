@@ -54,6 +54,7 @@ namespace GameEngineProject.Source.Entities
                 proj.Transform.Rotation = gameObject.Transform.Rotation;
                 proj.AddComponent<Projectile>().Velocity = gameObject.Transform.Forward * 10;
                 var rend = proj.AddComponent<CircleRenderer>();
+                proj.AddComponent<CircleCollider>();
                 Globals.Instantiate(proj);
                 pool.Populate(proj);
             }
