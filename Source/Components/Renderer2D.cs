@@ -1,3 +1,4 @@
+using GameEngineProject.Source.Core;
 using GameEngineProject.Source.Core.Graphics;
 using GameEngineProject.Source.Entities;
 using GameEngineProject.Source.Interfaces;
@@ -20,7 +21,7 @@ namespace GameEngineProject.Source.Components
         {
             base.Awake(gameObject);
             transform = gameObject.Transform;
-            GraphicsWindow2D.RenderWorldSpace += OnRender;
+            Engine.window.RenderWorldSpace += OnRender;
         }
 
         /// <summary>

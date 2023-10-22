@@ -24,7 +24,7 @@ namespace GameEngineProject.Source.Components
 
         public override void Render()
         {
-            CustomDrawing.DrawCircle(transform.Position, Radius, Color);
+            CustomDrawing.DrawCircle(Conversions.XYFromVector3(transform.Position), Radius, Color);
         }
     }
 }

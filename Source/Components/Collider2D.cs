@@ -17,13 +17,13 @@ namespace GameEngineProject.Source.Components
         public Collider2D() { }
         public override void Destroy()
         {
-            GraphicsWindow2D.OnScreenRedraw -= CheckAllCollisions;
+            Engine.window.OnScreenRedraw -= CheckAllCollisions;
         }
 
         public override void Start(GameObject gameObject)
         {
             base.Start(gameObject);
-            GraphicsWindow2D.OnScreenRedraw += CheckAllCollisions;
+            Engine.window.OnScreenRedraw += CheckAllCollisions;
         }
 
         /// <summary>

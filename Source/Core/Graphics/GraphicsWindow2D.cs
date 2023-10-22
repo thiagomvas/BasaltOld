@@ -1,4 +1,5 @@
 ﻿using GameEngineProject.Source.Components;
+using GameEngineProject.Source.Core.Types;
 using GameEngineProject.Source.Core.Utils;
 using GameEngineProject.Source.Entities;
 using Raylib_cs;
@@ -7,37 +8,9 @@ using static Raylib_cs.Raylib;
 
 namespace GameEngineProject.Source.Core.Graphics
 {
-    public static class GraphicsWindow2D
+    public class GraphicsWindow2D : GraphicsWindow
     {
-        /// <summary>
-        /// Background color for the world.
-        /// </summary>
-        public static Color BackgroundColor = Color.BLACK;
-
-        /// <summary>
-        /// Font color used on UI;
-        /// </summary>
-        public static Color FontColor = Color.WHITE;
-
-        /// <summary>
-        /// Event called every frame.
-        /// </summary>
-        public static event Action OnScreenRedraw;
-
-        /// <summary>
-        /// Event called whenever the screen is resized.
-        /// </summary>
-        public static event Action OnScreenResize;
-
-        /// <summary>
-        /// Event called whenever the world is rendered.
-        /// </summary>
-        public static event Action RenderWorldSpace;
-        /// <summary>
-        /// Event called whenever the UI is rendered.
-        /// </summary>
-        public static event Action RenderUI;
-        public static void Init(int Width = -1, int Height = -1, Camera2DObject cameraObject = null)
+        public override void Init(int Width, int Height, Camera cameraObject)
         {
             Debug.Setup();
             SetConfigFlags(ConfigFlags.FLAG_WINDOW_RESIZABLE);
@@ -74,26 +47,23 @@ namespace GameEngineProject.Source.Core.Graphics
 
             while (!WindowShouldClose())
             {
-                if (IsWindowResized()) OnScreenResize?.Invoke();
-                Engine.Camera2D = cameraObject.camera;
+                if (IsWindowResized()) CallOnResize();
 
                 if (IsKeyPressed(KeyboardKey.KEY_F1)) Debug.ToggleDebug(); // Temporary
                 if (Debug.IsDebugEnabled && IsMouseButtonPressed(MouseButton.MOUSE_BUTTON_LEFT))
-                    Debug.SelectedNearestGameObject(GetScreenToWorld2D(GetMousePosition(), cameraObject.camera));
+                    Debug.SelectedNearestGameObject(GetScreenToWorld2D(GetMousePosition(), cameraObject.Camera2D));
 
-                OnScreenRedraw.Invoke();
-                
-                if(cameraObject is not null) cameraObject.camera.offset = new(Raylib.GetScreenWidth()/2, Raylib.GetScreenHeight()/2);
-                else defaultCamera.offset = new(Raylib.GetScreenWidth()/2, Raylib.GetScreenHeight()/2);
+                CallOnRedraw();
 
                 BeginDrawing();
                 ClearBackground(BackgroundColor);
 
-                BeginMode2D(cameraObject is not null ? cameraObject.camera : defaultCamera); // Setting the camera view | Anything drawn inside Mode2D will be affected by the camera's POV
-                RenderWorldSpace?.Invoke();
+                BeginMode2D(cameraObject.Camera2D); // Setting the camera view | Anything drawn inside Mode2D will be affected by the camera's POV
+           
+                CallRenderWorldSpace();
                 EndMode2D();
 
-                RenderUI?.Invoke();
+                CallRenderUI();
                 Debug.DrawDebugUI();
 
                 EndDrawing();
@@ -106,7 +76,7 @@ namespace GameEngineProject.Source.Core.Graphics
         /// <summary>
         /// Draws all the UI;
         /// </summary>
-        private static void DrawUI()
+        private void DrawUI()
         {
             int i = 0;
             //foreach (var pair in Globals.AllComponentsOnScene)
@@ -127,12 +97,5 @@ namespace GameEngineProject.Source.Core.Graphics
 
         }
 
-        /// <summary>
-        /// Draws all the GameObjects in the world.
-        /// </summary>
-        private static void DrawWorldSpace()
-        {
-            RenderWorldSpace?.Invoke();
-        }
     }
 }

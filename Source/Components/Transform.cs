@@ -4,6 +4,7 @@ using GameEngineProject.Source.Interfaces;
 using System.Numerics;
 using static GameEngineProject.Source.Core.Utils.MathExtended;
 using static GameEngineProject.Source.Core.Utils.Conversions;
+using GameEngineProject.Source.Core.Utils;
 
 namespace GameEngineProject.Source.Components
 {
@@ -15,7 +16,7 @@ namespace GameEngineProject.Source.Components
         /// <summary>
         /// This object's current position.
         /// </summary>
-        public Vector2 Position { get; set; }
+        public Vector3 Position { get; set; }
         /// <summary>
         /// This object's current rotation.
         /// </summary>
@@ -24,7 +25,7 @@ namespace GameEngineProject.Source.Components
         /// <summary>
         /// Returns a direction vector representing the direction this object is looking at.
         /// </summary>
-        public Vector2 Forward { get { return GetForwardVector(Rotation); } }
+        public Vector3 Forward { get { return GetForwardVector(Rotation); } }
 
         /// <summary>
         /// All the children of this transform. Children get moved and rotated with a pivot on this object's Position and Rotation.
@@ -39,11 +40,11 @@ namespace GameEngineProject.Source.Components
         #region Constructors
         public Transform()
         {
-            Position = Vector2.Zero;
+            Position = Vector3.Zero;
             Rotation = Quaternion.Identity;
         }
 
-        public Transform(Vector2 position, Quaternion rotation, List<Transform> children, GameObject? parent = null)
+        public Transform(Vector3 position, Quaternion rotation, List<Transform> children, GameObject? parent = null)
         {
             Position = position;
             Rotation = rotation;
@@ -59,12 +60,12 @@ namespace GameEngineProject.Source.Components
             this.Children = new List<Transform>(other.Children);
         }
 
-        public Transform(Vector2 position)
+        public Transform(Vector3 position)
         {
             Position = position;
             Rotation = Quaternion.Identity;
         }
-        public Transform(Vector2 position, Quaternion rotation)
+        public Transform(Vector3 position, Quaternion rotation)
         {
             Position = position;
             Rotation = rotation;
@@ -78,7 +79,7 @@ namespace GameEngineProject.Source.Components
         /// Moves the transform and all it's children by an amount in each axis
         /// </summary>
         /// <param name="units">The amount to move in each axis</param>
-        public void Move(Vector2 units)
+        public void Move(Vector3 units)
         {
             foreach(Transform t in Children)
                 t.Move(units);
@@ -91,11 +92,11 @@ namespace GameEngineProject.Source.Components
         /// Moves the transform and all it's chidren to a point
         /// </summary>
         /// <param name="point">The point to set the position as</param>
-        public void MoveTo(Vector2 point)
+        public void MoveTo(Vector3 point)
         {
             foreach(Transform t in Children)
             {
-                Vector2 offset = t.Position - Position;
+                Vector3 offset = t.Position - Position;
                 t.MoveTo(point + offset);
             }
             Position = point;

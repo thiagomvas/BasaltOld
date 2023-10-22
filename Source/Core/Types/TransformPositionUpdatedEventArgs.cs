@@ -7,9 +7,9 @@ namespace GameEngineProject.Source.Core.Types
         /// <summary>
         /// The new position after moving.
         /// </summary>
-        public Vector2 NewPosition { get; }
+        public Vector3 NewPosition { get; }
 
-        public TransformPositionUpdatedEventArgs(Vector2 data)
+        public TransformPositionUpdatedEventArgs(Vector3 data)
         {
             NewPosition = data;
         }

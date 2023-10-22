@@ -5,7 +5,7 @@ namespace GameEngineProject.Source.Components
 {
     public class Projectile : Component
     {
-        public Vector2 Velocity;
+        public Vector3 Velocity;
 
         public override void Update()
         {

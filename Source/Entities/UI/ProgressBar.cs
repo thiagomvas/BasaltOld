@@ -63,8 +63,8 @@ namespace GameEngineProject.Source.Entities.UI
         public override void Render()
         {
             base.Render();
-            float rotation = MathExtended.GetZRotation(Transform.Rotation) - 90;
-            Vector2 backgroundPosition = Transform.Position - new Vector2(BackgroundWidth, BackgroundHeight) / 2;
+            float rotation = MathExtended.GetZRotation(Rotation) - 90;
+            Vector2 backgroundPosition = Position - new Vector2(BackgroundWidth, BackgroundHeight) / 2;
             Rectangle backgroundRect = new Rectangle(backgroundPosition.X, backgroundPosition.Y, BackgroundWidth, BackgroundHeight);
             Rectangle barRect = new Rectangle(backgroundPosition.X, backgroundPosition.Y, BarWidth * Progress, BarHeight);
             DrawRectanglePro(backgroundRect, new Vector2(BackgroundWidth, BackgroundHeight) / 2, rotation, BackgroundColor);

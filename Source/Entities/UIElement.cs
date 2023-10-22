@@ -4,10 +4,11 @@ using static GameEngineProject.Source.Core.Utils.UI;
 using static GameEngineProject.Source.Core.Utils.Conversions;
 using static Raylib_cs.Raylib;
 using GameEngineProject.Source.Core.Graphics;
+using GameEngineProject.Source.Core;
 
 namespace GameEngineProject.Source.Entities
 {
-    public class UIElement : GameObject
+    public class UIElement
     {
         /// <summary>
         /// Screen Pivot Points enum
@@ -20,6 +21,11 @@ namespace GameEngineProject.Source.Entities
         /// </summary>
         /// 
         public PivotPoint Pivot { get; private set; } = PivotPoint.Center;
+
+        public bool IsActive = true;
+    
+        public Vector2 Position { get; private set; }
+        public Quaternion Rotation { get; private set; } = Quaternion.Zero;
         
         /// <summary>
         /// The element's original position.
@@ -29,7 +35,7 @@ namespace GameEngineProject.Source.Entities
         public UIElement(Vector2 position)
         {
             OriginalPosition = position;
-            GraphicsWindow2D.RenderUI += Render;
+            Engine.window.RenderUI += Render;
         }
 
 
@@ -70,7 +76,7 @@ namespace GameEngineProject.Source.Entities
                     break;
 
             }
-            Transform.Position = newPos;
+            Position = newPos;
         }
 
         /// <summary>

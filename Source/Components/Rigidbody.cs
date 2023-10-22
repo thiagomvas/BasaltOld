@@ -21,12 +21,12 @@ namespace GameEngineProject.Source.Components
         /// <summary>
         /// Current velocity of the rigidbody (initialized as zero).
         /// </summary>
-        public Vector2 Velocity = Vector2.Zero;
+        public Vector3 Velocity = Vector3.Zero;
 
         /// <summary>
         /// Current acceleration of the rigidbody (initialized as zero).
         /// </summary>
-        public Vector2 Acceleration = Vector2.Zero;
+        public Vector3 Acceleration = Vector3.Zero;
 
         /// <summary>
         /// Determines if the rigidbody is kinematic (doesn't respond to forces).
@@ -52,12 +52,12 @@ namespace GameEngineProject.Source.Components
             Velocity += -Velocity * Drag * Time.DeltaTime;
 
             // Reset the acceleration
-            Acceleration = Vector2.Zero;
+            Acceleration = Vector3.Zero;
 
             // Check if velocity is close to zero and clamp it to avoid small drifting
             if (Velocity.LengthSquared() < StoppingThreshold * StoppingThreshold)
             {
-                Velocity = Vector2.Zero;
+                Velocity = Vector3.Zero;
             }
 
             // Move the parent object using the updated velocity
@@ -68,7 +68,7 @@ namespace GameEngineProject.Source.Components
         /// Add a force to the rigidbody's acceleration.
         /// </summary>
         /// <param name="force">The force to be applied to the acceleration.</param>
-        public void AddForce(Vector2 force)
+        public void AddForce(Vector3 force)
         {
             Acceleration += force / Mass;
         }

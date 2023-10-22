@@ -1,3 +1,4 @@
+using GameEngineProject.Source.Core;
 using GameEngineProject.Source.Core.Graphics;
 using GameEngineProject.Source.Entities;
 using GameEngineProject.Source.Interfaces;
@@ -21,7 +22,7 @@ namespace GameEngineProject.Source.Components
         public virtual void Awake(GameObject gameObject)
         {
             parent = gameObject;
-            GraphicsWindow2D.OnScreenRedraw += OnUpdate;
+            Engine.window.OnScreenRedraw += OnUpdate;
         }
 
         /// <summary>

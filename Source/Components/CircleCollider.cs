@@ -1,4 +1,5 @@
 using GameEngineProject.Source.Core;
+using GameEngineProject.Source.Core.Utils;
 using GameEngineProject.Source.Entities;
 using Raylib_cs;
 using System.Numerics;
@@ -35,7 +36,7 @@ namespace GameEngineProject.Source.Components
         public override void CheckCollision(GameObject other)
         {
             base.CheckCollision(other);
-            Vector2 direction = parent.Transform.Position - other.Transform.Position;
+            Vector2 direction = Conversions.XYFromVector3(parent.Transform.Position - other.Transform.Position);
             var distance = direction.Length();
             if (other.TryGetComponent<CircleCollider>(out CircleCollider collider) && distance < Radius + collider.Radius)
             {
@@ -53,10 +54,10 @@ namespace GameEngineProject.Source.Components
             base.SolveCollision(collided);
             if (collided is CircleCollider circleCollider)
             {
-                Vector2 direction = parent.Transform.Position - circleCollider.parent.Transform.Position;
+                Vector2 direction = Conversions.XYFromVector3(parent.Transform.Position - circleCollider.parent.Transform.Position);
                 var delta = direction.Length();
-                parent.Transform.Move(0.01f * delta * Vector2.Normalize(direction));
-                circleCollider.parent.Transform.Move(-0.01f * delta * Vector2.Normalize(direction));
+                parent.Transform.Move(Conversions.XYToVector3(0.01f * delta * Vector2.Normalize(direction)));
+                circleCollider.parent.Transform.Move(Conversions.XYToVector3(-0.01f * delta * Vector2.Normalize(direction)));
             }
         }
 

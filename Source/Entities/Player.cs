@@ -45,7 +45,7 @@ namespace GameEngineProject.Source.Entities
         {
             this.gameObject = gameObject;
             id = 0;
-            GraphicsWindow2D.OnScreenRedraw += OnMovePlayer;
+            Engine.window.OnScreenRedraw += OnMovePlayer;
             rb = gameObject.GetComponent<Rigidbody>();
 
             for (int i = 0; i < 10; i++)
@@ -79,7 +79,7 @@ namespace GameEngineProject.Source.Entities
             if (Raylib.IsKeyDown(KeyboardKey.KEY_D)) rb.Velocity.X = MovementSpeed * Time.DeltaTime;
             if (Raylib.IsKeyDown(KeyboardKey.KEY_W)) rb.Velocity.Y = -MovementSpeed * Time.DeltaTime;
             if (Raylib.IsKeyDown(KeyboardKey.KEY_S)) rb.Velocity.Y = MovementSpeed * Time.DeltaTime;
-            if (Raylib.IsKeyDown(KeyboardKey.KEY_R)) gameObject.Transform.MoveTo(Vector2.Zero);
+            if (Raylib.IsKeyDown(KeyboardKey.KEY_R)) gameObject.Transform.MoveTo(Vector3.Zero);
 
             if(Raylib.IsMouseButtonPressed(MouseButton.MOUSE_BUTTON_RIGHT))
             {
@@ -89,9 +89,9 @@ namespace GameEngineProject.Source.Entities
                 obj.Transform.Rotation = gameObject.Transform.Rotation;
             }
 
-            Vector2 mouseCoordsOnWorld = ScreenToWorldPosition(Raylib.GetMousePosition(), Engine.Camera2D.Value);
+            Vector2 mouseCoordsOnWorld = ScreenToWorldPosition(Raylib.GetMousePosition(), Engine.Camera.Camera2D);
 
-            gameObject.Transform.Rotation = LookAtRotation(gameObject.Transform.Position, mouseCoordsOnWorld);
+            gameObject.Transform.Rotation = LookAtRotation(gameObject.Transform.Position, Conversions.XYToVector3(mouseCoordsOnWorld), Vector3.UnitY);
         }
     }
 
