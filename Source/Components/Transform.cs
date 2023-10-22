@@ -51,11 +51,11 @@ namespace GameEngineProject.Source.Components
             this.parent = parent;
         }
 
-        public Transform(Transform other)
+        public Transform(Transform other, GameObject parent)
         {
             this.Position = other.Position;
             this.Rotation = other.Rotation;
-            this.parent = other.parent;
+            this.parent = parent;
             this.Children = new List<Transform>(other.Children);
         }
 
@@ -63,6 +63,11 @@ namespace GameEngineProject.Source.Components
         {
             Position = position;
             Rotation = Quaternion.Identity;
+        }
+        public Transform(Vector2 position, Quaternion rotation)
+        {
+            Position = position;
+            Rotation = rotation;
         }
 
         #endregion

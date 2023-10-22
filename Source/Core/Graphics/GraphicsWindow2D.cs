@@ -35,7 +35,7 @@ namespace GameEngineProject.Source.Core.Graphics
         public static event Action RenderWorldSpace;
         public static void Init(int Width = -1, int Height = -1, Camera2DObject cameraObject = null)
         {
-
+            Debug.Setup();
             SetConfigFlags(ConfigFlags.FLAG_WINDOW_RESIZABLE);
             SetConfigFlags(ConfigFlags.FLAG_WINDOW_MAXIMIZED);
 
@@ -77,7 +77,7 @@ namespace GameEngineProject.Source.Core.Graphics
                 if (Debug.IsDebugEnabled && IsMouseButtonPressed(MouseButton.MOUSE_BUTTON_LEFT))
                     Debug.SelectedNearestGameObject(GetScreenToWorld2D(GetMousePosition(), cameraObject.camera));
 
-                OnScreenRedraw?.Invoke();
+                OnScreenRedraw.Invoke();
                 
                 if(cameraObject is not null) cameraObject.camera.offset = new(Raylib.GetScreenWidth()/2, Raylib.GetScreenHeight()/2);
                 else defaultCamera.offset = new(Raylib.GetScreenWidth()/2, Raylib.GetScreenHeight()/2);
@@ -111,13 +111,13 @@ namespace GameEngineProject.Source.Core.Graphics
             //    i++;
             //}
 
-            //foreach(var obj in Globals.GameObjectsOnScene)
-            //{
-            //    DrawText($"Position of object #{i} {obj.transform.Position}", 12, 30 + 15 * i, 20, FontColor);
-            //    i++;
-            //}
+            foreach (var obj in Globals.GameObjectsOnScene)
+            {
+                DrawText($"Position of object #{i} {obj.Transform.Position}", 400, 30 + 15 * i, 20, FontColor);
+                i++;
+            }
 
-            foreach(var element in Globals.UIElementsOnScene)
+            foreach (var element in Globals.UIElementsOnScene)
                 element.Render();
 
 

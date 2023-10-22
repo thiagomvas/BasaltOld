@@ -14,6 +14,7 @@ namespace GameEngineProject.Source.Components
             GraphicsWindow2D.OnScreenRedraw += OnUpdate;
         }
 
+
         public virtual void Destroy()
         {
 

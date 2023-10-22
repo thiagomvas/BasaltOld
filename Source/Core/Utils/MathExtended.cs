@@ -30,7 +30,7 @@ namespace GameEngineProject.Source.Core.Utils
         public static Vector2 GetForwardVector(Quaternion rotation)
         {
             Vector2 forward = new Vector2(1, 0);
-            Vector2 rotatedForward = Vector2.Transform(forward, Quaternion.Normalize(rotation));
+            Vector2 rotatedForward = Vector2.Normalize(Vector2.Transform(forward, Quaternion.Normalize(rotation)));
             return rotatedForward;
         }
 

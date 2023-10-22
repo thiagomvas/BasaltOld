@@ -29,7 +29,7 @@ namespace GameEngineProject.Source.Core
             for (int i = 0; i < 5; i++)
             {
                 GameObject obstacle = new GameObject(new Vector2(100 + i * 50, 0));
-                obstacle.AddComponent<CircleRenderer>();
+                obstacle.AddComponent<SpriteRenderer>().texturePath = Assets.GetAssetPath("circleheadtest.png");
                 var col = obstacle.AddComponent<CircleCollider>();
                 col.Radius = 25;
                 Instantiate(obstacle);

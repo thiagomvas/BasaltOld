@@ -27,7 +27,7 @@ namespace GameEngineProject.Source.Entities
         /// <summary>
         /// All the components currently included in this object.
         /// </summary>
-        public List<IComponent> Components { get; private set; } = new();
+        public List<Component> Components { get; private set; } = new();
         /// <summary>
         /// All the children attached to this object.
         /// </summary>
@@ -50,7 +50,7 @@ namespace GameEngineProject.Source.Entities
             Components.Add(Transform);
         }
         
-        public GameObject(Transform transform, List<IComponent> components, List<GameObject> children)
+        public GameObject(Transform transform, List<Component> components, List<GameObject> children)
         {
             this.Transform = transform;
             this.Components = components;
@@ -59,8 +59,8 @@ namespace GameEngineProject.Source.Entities
 
         public GameObject(GameObject other)
         {
-            Transform = other.Transform;
-            Components = new List<IComponent>(other.Components);
+            Transform = new Transform(other.Transform.Position, other.Transform.Rotation); 
+            Components = new List<Component>(other.Components);
             Children = new List<GameObject>(other.Children);
         }
 
@@ -117,7 +117,7 @@ namespace GameEngineProject.Source.Entities
 
                 if (!hasComponent && type != null) Components.Add(type);
             }
-
+            component.Awake(this);
             Components.Add(component);
             if (Rigidbody != null && component.GetType() == typeof(Rigidbody)) Rigidbody = GetComponent<Rigidbody>();
             return component;
@@ -141,6 +141,7 @@ namespace GameEngineProject.Source.Entities
             component = Components.OfType<T>().FirstOrDefault();
             return component != null;
         }
+
 
         /// <summary>
         /// Destroys the game object and their components, unsubscribing from any events and disconnecting from everything.

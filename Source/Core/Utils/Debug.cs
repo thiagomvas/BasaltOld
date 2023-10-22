@@ -3,6 +3,7 @@ using static Raylib_cs.Raylib;
 using System.Numerics;
 using Raylib_cs;
 using GameEngineProject.Source.Components;
+using GameEngineProject.Source.Entities.UI;
 
 namespace GameEngineProject.Source.Core.Utils
 {
@@ -13,7 +14,7 @@ namespace GameEngineProject.Source.Core.Utils
         /// </summary>
         public static bool IsDebugEnabled { get; private set; } = true;
 
-        private static Collider2D ObjectCollider;
+        private static Collider2D? ObjectCollider;
         private const int MaxSelectionDistance = 50;
         private static Color FontColor = Color.WHITE;
         /// <summary>
@@ -26,6 +27,16 @@ namespace GameEngineProject.Source.Core.Utils
         /// </summary>
         public static void ToggleDebug() => IsDebugEnabled = !IsDebugEnabled;
 
+        private static Label label;
+        
+        public static void Setup()
+        {
+            label = new(UI.ScreenLeft + new Vector2(600, 600));
+            label.SetPivot(UIElement.PivotPoint.Left);
+            label.FontSize = 12;
+            UI.Instantiate(label);
+        }
+
         /// <summary>
         /// Draws all the Debug UI.
         /// </summary>
@@ -33,7 +44,7 @@ namespace GameEngineProject.Source.Core.Utils
         {
             if(SelectedObject != null)
             {
-                DrawText(Conversions.StringifyGameObject(SelectedObject), 12, 12, 10, FontColor);
+                label.Text = Conversions.StringifyGameObject(SelectedObject);
 
 
                 Vector2 screenPosition = MathExtended.WorldToScreenPosition(
@@ -41,7 +52,7 @@ namespace GameEngineProject.Source.Core.Utils
                     Engine.Camera2D.Value);
 
 
-                ObjectCollider.DrawDebugHitbox(screenPosition);
+                if(ObjectCollider != null) ObjectCollider.DrawDebugHitbox(screenPosition);
                 Vector2 forward = SelectedObject.Transform.Forward;
                 DrawLine((int)screenPosition.X, (int)screenPosition.Y, (int)(screenPosition.X + forward.X * 100), (int)(screenPosition.Y + forward.Y*100), Color.LIME);
             }
