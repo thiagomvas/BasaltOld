@@ -13,8 +13,8 @@ namespace GameEngineProject
             AutoDocumentation.SourceDirectory = "C:\\Users\\Thiago\\source\\repos\\GameEngineProject\\Source\\";
             AutoDocumentation.DocsRootDirectory = "C:\\Users\\Thiago\\source\\repos\\GameEngineProject\\docs\\";
             AutoDocumentation.GithubPagesLink = "https://thiagomvas.github.io/GameEngine/";
-            Console.WriteLine(AutoDocumentation.GetListOfTypes());
-            //Engine.Setup();
+            //Console.WriteLine(AutoDocumentation.GetListOfTypes());
+            Engine.Setup();
 
 
         }

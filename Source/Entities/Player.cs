@@ -6,6 +6,7 @@ using System.Numerics;
 using static GameEngineProject.Source.Core.Utils.MathExtended;
 using static GameEngineProject.Source.Core.Utils.Conversions;
 using GameEngineProject.Source.Components;
+using GameEngineProject.Source.Core.Types;
 
 namespace GameEngineProject.Source.Entities
 {
@@ -34,6 +35,8 @@ namespace GameEngineProject.Source.Entities
         /// </summary>
         Rigidbody rb;
 
+        ObjectPooling pool = new();
+
         /// <summary>
         /// Initializes a new instance of the Player class with the provided GameObject.
         /// </summary>
@@ -44,6 +47,17 @@ namespace GameEngineProject.Source.Entities
             id = 0;
             GraphicsWindow2D.OnScreenRedraw += OnMovePlayer;
             rb = gameObject.GetComponent<Rigidbody>();
+
+            for (int i = 0; i < 10; i++)
+            {
+                GameObject proj = new GameObject();
+                proj.Transform.Rotation = gameObject.Transform.Rotation;
+                proj.AddComponent<Projectile>().Velocity = gameObject.Transform.Forward * 10;
+                var rend = proj.AddComponent<CircleRenderer>();
+                Globals.Instantiate(proj);
+                pool.Populate(proj);
+            }
+
         }
 
         /// <summary>
@@ -65,6 +79,14 @@ namespace GameEngineProject.Source.Entities
             if (Raylib.IsKeyDown(KeyboardKey.KEY_W)) rb.Velocity.Y = -MovementSpeed * Time.DeltaTime;
             if (Raylib.IsKeyDown(KeyboardKey.KEY_S)) rb.Velocity.Y = MovementSpeed * Time.DeltaTime;
             if (Raylib.IsKeyDown(KeyboardKey.KEY_R)) gameObject.Transform.MoveTo(Vector2.Zero);
+
+            if(Raylib.IsMouseButtonPressed(MouseButton.MOUSE_BUTTON_RIGHT))
+            {
+                var obj = pool.Get();
+                obj.Transform.Position = gameObject.Transform.Position + gameObject.Transform.Forward * 25;
+                obj.GetComponent<Projectile>().Velocity = gameObject.Transform.Forward * 10;
+                obj.Transform.Rotation = gameObject.Transform.Rotation;
+            }
 
             Vector2 mouseCoordsOnWorld = ScreenToWorldPosition(Raylib.GetMousePosition(), Engine.Camera2D.Value);
 
