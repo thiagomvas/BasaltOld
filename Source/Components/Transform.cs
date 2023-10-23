@@ -81,8 +81,8 @@ namespace GameEngineProject.Source.Components
         /// <param name="units">The amount to move in each axis</param>
         public void Move(Vector3 units)
         {
-            //foreach(Transform t in Children)
-            //    t.Move(units);
+            foreach(Transform t in Children)
+                t.Move(units);
 
             Position += units;
             OnPositionChanged?.Invoke(this, new TransformPositionUpdatedEventArgs(Position));

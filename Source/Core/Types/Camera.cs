@@ -62,6 +62,21 @@ namespace GameEngineProject.Source.Core.Types
             }
         }
 
+        public Vector3 Up
+        { 
+            get
+            {
+                if (Type == RenderType.Camera2D)
+                {
+                    throw new NotImplementedException();
+                }
+                else
+                {
+                    return Vector3.Cross(Forward, Right);
+                }
+            }
+        }
+
         public Camera(RenderType type)
         {
             Transform.OnPositionChanged += UpdateCameraPosition;

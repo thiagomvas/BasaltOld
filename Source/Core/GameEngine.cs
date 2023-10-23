@@ -14,7 +14,7 @@ namespace GameEngineProject.Source.Core
     {
         public static Camera Camera = new(Camera.RenderType.Camera3D);
         public static GraphicsWindow window;
-        public static Player p1;
+        public static Player Player;
         public static void Setup()
         {
             Example3DSetup();
@@ -27,9 +27,8 @@ namespace GameEngineProject.Source.Core
             Camera.Camera3D.target = new(50, 0, 0);
             GameObject obj = new();
             obj.AddComponent<Rigidbody>();
-            obj.AddChildren(Camera);
             Player player = new(obj);
-            p1 = player;
+            Player = player;
             Instantiate(obj);
             window.Init(1000, 1000, Camera);
 
