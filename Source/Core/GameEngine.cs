@@ -12,12 +12,12 @@ namespace GameEngineProject.Source.Core
 {
     public static class Engine
     {
-        public static Camera Camera = new(Camera.RenderType.Camera3D);
+        public static Camera Camera = new(Camera.RenderType.Camera2D);
         public static GraphicsWindow window;
         public static Player Player;
         public static void Setup()
         {
-            Example3DSetup();
+            Example2DSetup();
         }
 
         private static void Example3DSetup()
@@ -54,12 +54,15 @@ namespace GameEngineProject.Source.Core
                 Instantiate(obstacle);
             }
 
+            Button button = new Button(UI.ScreenBottom + new Vector2(0, -150), 200, 50);
+            button.SetPivot(UIElement.PivotPoint.Bottom);
 
             Label label = new(UI.ScreenBottom + new Vector2(0, -50));
             label.SetPivot(UIElement.PivotPoint.Bottom);
             label.Text = "PROTOTYPE ENGINE TEST";
             label.FontSize = 24;
             label.TextColor = Color.GREEN;
+            UI.Instantiate(button);
             UI.Instantiate(label);
 
 

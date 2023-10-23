@@ -5,14 +5,27 @@ using System.Numerics;
 
 namespace GameEngineProject.Source.Core.Types
 {
+    /// <summary>
+    /// Represents a camera for rendering in a 2D or 3D space.
+    /// </summary>
     public class Camera : GameObject
     {
-        public enum RenderType { Camera2D,  Camera3D }
-        public RenderType Type;
         /// <summary>
-        /// The actual Camera2D used for rendering.
+        /// Specifies the type of rendering for the camera: 2D or 3D.
+        /// </summary>
+        public enum RenderType { Camera2D,  Camera3D }
+        /// <summary>
+        /// Gets the render type of the camera (2D or 3D).
+        /// </summary>
+        public RenderType Type { get; init; }
+        /// <summary>
+        /// The actual Camera2D instance used for 2D rendering.
         /// </summary>
         public Camera2D Camera2D = new();
+
+        /// <summary>
+        /// The actual Camera3D instance used for 3D rendering.
+        /// </summary>
         public Camera3D Camera3D = new();
 
         /// <summary>
@@ -61,6 +74,9 @@ namespace GameEngineProject.Source.Core.Types
                 }
             }
         }
+        /// <summary>
+        /// Gets the up vector of the object's orientation.
+        /// </summary>
 
         public Vector3 Up
         { 

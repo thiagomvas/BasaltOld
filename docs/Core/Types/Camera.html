@@ -9,8 +9,8 @@
 <h2>Documentation</h2>
 <ul>
 <li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Assets.html'>Assets</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/UI/Button.html'>Button</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Core/Types/Camera.html'>Camera</a></li>
-<li><a href='https://thiagomvas.github.io/GameEngine/Entities/Camera2DObject.html'>Camera2DObject</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Components/CircleCollider.html'>CircleCollider</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Components/CircleRenderer.html'>CircleRenderer</a></li>
 <li><a href='https://thiagomvas.github.io/GameEngine/Components/Collider2D.html'>Collider2D</a></li>
@@ -48,23 +48,38 @@
 <section id='members'>
 <h3>Members</h2>
 <div class='member'>
-<h2><memberType>Field</memberType> Type</h3><p></p>
-<pre><code> <span class='code-keyword'>public</span> Render<span class='code-method'>Type</span> <span class='code-method'>Type</span></code></pre>
-</div>
-
-<div class='member'>
-<h2><memberType>Field</memberType> Camera2D</h3><p>The actual Camera2D used for rendering.</p>
+<h2><memberType>Field</memberType> Camera2D</h3><p>The actual Camera2D instance used for 2D rendering.</p>
 <pre><code> <span class='code-keyword'>public</span> <span class='code-method'><span class='code-type'>Camera2D</span></span> <span class='code-method'><span class='code-type'>Camera2D</span></span></code></pre>
 </div>
 
 <div class='member'>
-<h2><memberType>Field</memberType> Camera3D</h3><p>The actual Camera2D used for rendering.</p>
+<h2><memberType>Field</memberType> Camera3D</h3><p>The actual Camera3D instance used for 3D rendering.</p>
 <pre><code> <span class='code-keyword'>public</span> <span class='code-method'><span class='code-type'>Camera3D</span></span> <span class='code-method'><span class='code-type'>Camera3D</span></span></code></pre>
 </div>
 
 <div class='member'>
 <h2><memberType>Field</memberType> IsActive</h3><p></p>
 <pre><code> <span class='code-keyword'>public</span> bool <span class='code-method'>IsActive</span></code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Property</memberType> Type</h3><p>Gets the render type of the camera (2D or 3D).</p>
+<pre><code> <span class='code-keyword'>public</span> Render<span class='code-method'>Type</span> <span class='code-method'>Type</span> { <span class='code-keyword'>public</span> get; <span class='code-keyword'>public</span> set; }</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Property</memberType> Forward</h3><p>Gets the forward vector of the object's orientation.</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>Vector3</span> <span class='code-method'>Forward</span> { <span class='code-keyword'>public</span> get; set; }</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Property</memberType> Right</h3><p>Gets the right vector of the object's orientation.</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>Vector3</span> <span class='code-method'>Right</span> { <span class='code-keyword'>public</span> get; set; }</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Property</memberType> Up</h3><p>Gets the up vector of the object's orientation.</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>Vector3</span> <span class='code-method'>Up</span> { <span class='code-keyword'>public</span> get; set; }</code></pre>
 </div>
 
 <div class='member'>

@@ -36,6 +36,7 @@ namespace GameEngineProject.Source.Entities
         {
             OriginalPosition = position;
             Engine.window.RenderUI += Render;
+            Engine.window.RenderUI += Update;
         }
 
 
@@ -83,7 +84,7 @@ namespace GameEngineProject.Source.Entities
         /// Changes the pivot point of this element.
         /// </summary>
         /// <param name="pivot"></param>
-        public void SetPivot(PivotPoint pivot)
+        public virtual void SetPivot(PivotPoint pivot)
         {
             Pivot = pivot;
             switch (Pivot)
@@ -117,6 +118,13 @@ namespace GameEngineProject.Source.Entities
                     break;
 
             }
+        }
+        /// <summary>
+        /// Called every frame/tick.
+        /// </summary>
+        public virtual void Update()
+        {
+
         }
 
         /// <summary>
