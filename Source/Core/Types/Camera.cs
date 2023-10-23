@@ -33,6 +33,8 @@ namespace GameEngineProject.Source.Core.Types
         {
             Camera2D.target = Conversions.XYFromVector3(Transform.Position);
             Camera2D.offset = new(Raylib.GetScreenWidth() / 2, Raylib.GetScreenHeight() / 2);
+            Camera3D.target = Transform.Position + Transform.Forward;
+            Camera3D.position = Transform.Position;
         }
 
 

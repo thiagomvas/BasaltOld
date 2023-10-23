@@ -20,6 +20,8 @@ namespace GameEngineProject.Source.Entities
         /// </summary>
         public GameObject gameObject;
 
+        public Vector3 Movement;
+
         /// <summary>
         /// Gets the unique identifier for the player.
         /// </summary>
@@ -28,7 +30,7 @@ namespace GameEngineProject.Source.Entities
         /// <summary>
         /// Gets or sets the movement speed of the player.
         /// </summary>
-        public int MovementSpeed = 250;
+        public int MovementSpeed = 25;
 
         /// <summary>
         /// Gets the Rigidbody component associated with the player's GameObject.
@@ -74,11 +76,12 @@ namespace GameEngineProject.Source.Entities
             if (Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE)) gameObject.IsActive = !gameObject.IsActive;
 
             if (!gameObject.IsActive) return;
-
-            if (Raylib.IsKeyDown(KeyboardKey.KEY_A)) rb.Velocity.X = -MovementSpeed * Time.DeltaTime;
-            if (Raylib.IsKeyDown(KeyboardKey.KEY_D)) rb.Velocity.X = MovementSpeed * Time.DeltaTime;
-            if (Raylib.IsKeyDown(KeyboardKey.KEY_W)) rb.Velocity.Y = -MovementSpeed * Time.DeltaTime;
-            if (Raylib.IsKeyDown(KeyboardKey.KEY_S)) rb.Velocity.Y = MovementSpeed * Time.DeltaTime;
+            Movement = new Vector3((Raylib.IsKeyDown(KeyboardKey.KEY_W) || Raylib.IsKeyDown(KeyboardKey.KEY_UP) ? 1 : 0) * MovementSpeed * Time.DeltaTime -      // Move forward-backward
+                                (Raylib.IsKeyDown(KeyboardKey.KEY_S)    || Raylib.IsKeyDown(KeyboardKey.KEY_DOWN) ? 1 : 0) * MovementSpeed * Time.DeltaTime,
+                                (Raylib.IsKeyDown(KeyboardKey.KEY_D)    || Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT) ? 1 : 0) * MovementSpeed * Time.DeltaTime -   // Move right-left
+                                (Raylib.IsKeyDown(KeyboardKey.KEY_A)    || Raylib.IsKeyDown(KeyboardKey.KEY_LEFT) ? 1 : 0) * MovementSpeed * Time.DeltaTime,
+                                0.0f);
+            gameObject.Transform.Move(Movement);
             if (Raylib.IsKeyDown(KeyboardKey.KEY_R)) gameObject.Transform.MoveTo(Vector3.Zero);
 
             if(Raylib.IsMouseButtonPressed(MouseButton.MOUSE_BUTTON_RIGHT))

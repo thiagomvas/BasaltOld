@@ -12,17 +12,27 @@ namespace GameEngineProject.Source.Core
 {
     public static class Engine
     {
-        public static Camera Camera = new(Camera.RenderType.Camera2D);
+        public static Camera Camera = new(Camera.RenderType.Camera3D);
         public static GraphicsWindow window;
+        public static Player p1;
         public static void Setup()
         {
-            Example2DSetup();
+            Example3DSetup();
         }
 
         private static void Example3DSetup()
         {
+            int cubeSize = 5;
             window = new GraphicsWindow3D();
-            window.Init(800, 800, new Camera(Camera.RenderType.Camera3D));
+            Camera.Camera3D.target = new(50, 0, 0);
+            GameObject obj = new();
+            obj.AddComponent<Rigidbody>();
+            obj.AddChildren(Camera);
+            Player player = new(obj);
+            p1 = player;
+            Instantiate(obj);
+            window.Init(1000, 1000, Camera);
+
         }
 
         private static void Example2DSetup()
@@ -34,7 +44,7 @@ namespace GameEngineProject.Source.Core
             obj.AddComponent<CircleCollider>();
             obj.AddComponent<Rigidbody>();
             obj.AddChildren(Camera);
-            Instantiate(obj);
+            //Instantiate(obj);
             Player player = new Player(obj);
             for (int i = 0; i < 5; i++)
             {

@@ -34,7 +34,7 @@ namespace GameEngineProject.Source.Core.Graphics
                                        0.0f);                                             // Rotation: roll
 
                 UpdateCameraPro(ref Engine.Camera.Camera3D,
-                                movement,
+                                Engine.p1.Movement,
                                 rotation,
                                 GetMouseWheelMove() * 2.0f);
 
