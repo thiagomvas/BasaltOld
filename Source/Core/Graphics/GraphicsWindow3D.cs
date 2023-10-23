@@ -23,12 +23,19 @@ namespace GameEngineProject.Source.Core.Graphics
             {
                 // Update
                 // You can add your game logic here.
-                    UpdateCamera(ref cameraObject.Camera3D, CameraMode.CAMERA_FIRST_PERSON);
+                CallOnRedraw();
+                UpdateCamera(ref Engine.Camera.Camera3D, CameraMode.CAMERA_FIRST_PERSON);
+
+                
                 if (IsKeyDown(KeyboardKey.KEY_J))
                 {
                     cameraObject.Camera3D.position += Vector3.UnitY * Time.DeltaTime;
                     cameraObject.Camera3D.target += Vector3.UnitY * Time.DeltaTime;
                 }
+
+
+                Engine.Camera.Camera3D.position = Engine.p1.gameObject.Transform.Position;
+                Engine.p1.gameObject.Transform.Rotation = MathExtended.LookAtRotation(Engine.p1.gameObject.Transform.Position, Engine.Camera.Camera3D.target, Vector3.UnitY);
                 // Draw
                 BeginDrawing();
                 {
@@ -44,7 +51,9 @@ namespace GameEngineProject.Source.Core.Graphics
                     DrawSphere(new Vector3(0, -25, 0), 5, Color.BLUE);
                     DrawSphere(new Vector3(0, 0, 25), 5, Color.GREEN);
                     DrawSphere(new Vector3(0, 0, -25), 5, Color.GREEN);
+                    DrawSphere(Engine.p1.gameObject.Transform.Position + Engine.p1.gameObject.Transform.Forward * 5, 0.1f, Color.YELLOW);
                     EndMode3D();
+                    DrawText($"Player Pos: {Engine.p1.gameObject.Transform.Position}\n Camera Pos: {Engine.Camera.Camera3D.position}\n Rotation: {Engine.p1.gameObject.Transform.Rotation}\n {Engine.p1.gameObject.Transform.Position + Engine.p1.gameObject.Transform.Forward * 5}", 20, 10, 10, Color.GREEN);
                     DrawFPS(10, 10);
 
                     // End the drawing
