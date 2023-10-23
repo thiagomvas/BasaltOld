@@ -104,6 +104,14 @@ namespace GameEngineProject.Source.Core.Types
                 Camera2D.rotation = 0;
             }
 
+            if(type == RenderType.Camera3D)
+            {
+                Camera3D.target = Vector3.UnitX;
+                Camera3D.up = Vector3.UnitY;
+                Camera3D.fovy = 70;
+
+            }
+
         }
         /// <summary>
         /// Updates the camera's focus position

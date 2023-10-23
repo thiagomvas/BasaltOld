@@ -12,12 +12,12 @@ namespace GameEngineProject.Source.Core
 {
     public static class Engine
     {
-        public static Camera Camera = new(Camera.RenderType.Camera2D);
+        public static Camera Camera = new(Camera.RenderType.Camera3D);
         public static GraphicsWindow window;
         public static Player Player;
         public static void Setup()
         {
-            Example2DSetup();
+            Example3DSetup();
         }
 
         private static void Example3DSetup()

@@ -6,25 +6,41 @@ using GameEngineProject.Source.Core.Utils;
 using GameEngineProject.Source.Entities;
 using System;
 using System.Text;
+using GameEngineProject.Libraries;
 
 namespace GameEngineProject.Source.Core.Graphics
 {
     public class GraphicsWindow3D : GraphicsWindow
     {
-        public override void Init(int Width = -1, int Height = -1, Camera cameraObject = null)
+        public unsafe override void Init(int Width = -1, int Height = -1, Camera cameraObject = null)
         {
-            SetConfigFlags(ConfigFlags.FLAG_WINDOW_MAXIMIZED);
-
+            Configuration.PreInitConfiguration();
             InitWindow(1920, 1080, "3D Game");
-
-            cameraObject.Camera3D.target = Vector3.UnitX;
-            cameraObject.Camera3D.up = Vector3.UnitY;
-            cameraObject.Camera3D.fovy = 70;
-            SetTargetFPS(120);
-            HideCursor();
-            DisableCursor();
+            Configuration.PostInitConfiguration();
             int cubeSize = 1;
             int cubeWidth = 1;
+
+            Model plane = LoadModelFromMesh(GenMeshPlane(25, 25, 3, 3));
+            Model cube = LoadModelFromMesh(GenMeshCube(4, 4, 4));
+
+            plane.materials[0].shader = Assets.LightingShader;
+            cube.materials[0].shader = Assets.LightingShader;
+
+            Light[] lights = new Light[2];
+
+            lights[0] = Rlights.CreateLight(0,
+                LightType.Point,
+                new Vector3(25, 0, 0),
+                Vector3.Zero,
+                Color.WHITE,
+                Assets.LightingShader);
+            lights[1] = Rlights.CreateLight(1,
+                LightType.Point,
+                new Vector3(-25, 0, 0),
+                Vector3.Zero,
+                Color.WHITE,
+                Assets.LightingShader);
+
 
             List<GameObject> cubes = new();
 
@@ -64,7 +80,18 @@ namespace GameEngineProject.Source.Core.Graphics
                         }
                     }
                 }
-
+                Rlights.UpdateLightValues(Assets.LightingShader, lights[0]);
+                SetShaderValue(
+                    Assets.LightingShader,
+                    Assets.LightingShader.locs[(int)ShaderLocationIndex.SHADER_LOC_VECTOR_VIEW],
+                    Engine.Camera.Camera3D.position,
+                    ShaderUniformDataType.SHADER_UNIFORM_VEC3);
+                Rlights.UpdateLightValues(Assets.LightingShader, lights[1]);
+                SetShaderValue(
+                    Assets.LightingShader,
+                    Assets.LightingShader.locs[(int)ShaderLocationIndex.SHADER_LOC_VECTOR_VIEW],
+                    Engine.Camera.Camera3D.position,
+                    ShaderUniformDataType.SHADER_UNIFORM_VEC3);
 
                 BeginDrawing();
                 {
@@ -74,27 +101,21 @@ namespace GameEngineProject.Source.Core.Graphics
 
                     // Draw a 3D cube
                     BeginMode3D(Engine.Camera.Camera3D);
-                    DrawSphere(new Vector3(25, 0, 0), 5, Color.RED);
-                    DrawSphere(new Vector3(-25, 0, 0), 5, Color.RED);
-                    DrawSphere(new Vector3(0, 25, 0), 5, Color.BLUE);
-                    DrawSphere(new Vector3(0, -25, 0), 5, Color.BLUE);
-                    DrawSphere(new Vector3(0, 0, 25), 5, Color.GREEN);
-                    DrawSphere(new Vector3(0, 0, -25), 5, Color.GREEN);
+                    DrawSphere(new Vector3(25, 0, 0), 1, Color.RED);
+                    DrawSphere(new Vector3(-25, 0, 0), 1, Color.RED);
+                    DrawSphere(new Vector3(0, 25, 0), 1, Color.BLUE);
+                    DrawSphere(new Vector3(0, -25, 0), 1, Color.BLUE);
+                    DrawSphere(new Vector3(0, 0, 25), 1, Color.GREEN);
+                    DrawSphere(new Vector3(0, 0, -25), 1, Color.GREEN);
 
-
-
-
-
-
-
-
+                    DrawModel(plane, Vector3.Zero - Vector3.UnitY * 5, 1, Color.WHITE);
                     int renders = 0;
 
                     foreach(var obj in cubes)
                     {
                         if (PassByCulling(Engine.Camera, obj))
-                        {   
-                            DrawCube(obj.Transform.Position, cubeWidth, cubeWidth, cubeWidth, Color.GREEN);
+                        {
+                            DrawModel(cube, obj.Transform.Position, 1, Color.ORANGE);
                             renders++;
                         }
                     }
@@ -102,18 +123,19 @@ namespace GameEngineProject.Source.Core.Graphics
                     int totalObjs = cubeSize * cubeSize * cubeSize;
                     DrawText($"{totalObjs} objects", 20, 60, 15, Color.GREEN);
                     DrawText($"{renders} rendered", 20, 100, 15, Color.GREEN);
-                    DrawText($"{Engine.Camera.Camera3D.target - Engine.Camera.Camera3D.position}", 20, 140, 15, Color.GREEN);
+                    DrawText($"{Engine.Camera.Camera3D.position}", 20, 140, 15, Color.GREEN);
                     DrawFPS(10, 10);
 
                     // End the drawing
                     EndDrawing();
                 }
             }
+            Configuration.Deinitialize();
         }
 
         bool PassByCulling(Camera origin, GameObject target)
         {
-            if (Vector3.Dot(Vector3.Normalize(origin.Forward), Vector3.Normalize(target.Transform.Position)) > 0.5) return true;
+            if (Vector3.Dot(Vector3.Normalize(origin.Forward), Vector3.Normalize(target.Transform.Position - origin.Camera3D.position)) > 0.5) return true;
             else return false;
 
             // Crappy attempt at using frustum (or whatever the hell this is)

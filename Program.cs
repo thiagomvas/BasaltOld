@@ -4,6 +4,7 @@ using GameEngineProject.Source.Entities;
 using static Raylib_cs.Raylib;
 using System.Numerics;
 using Raylib_cs;
+using GameEngineProject.Source.Core.Utils;
 
 namespace GameEngineProject
 {
@@ -16,6 +17,7 @@ namespace GameEngineProject
             //AutoDocumentation.DocsRootDirectory = "C:\\Users\\Thiago\\source\\repos\\GameEngineProject\\docs\\";
             //AutoDocumentation.GithubPagesLink = "https://thiagomvas.github.io/GameEngine/";
             //AutoDocumentation.GenerateAutoDocumentation();
+            
             Engine.Setup();
 
 
