@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Collider2D</title>
+<link rel='stylesheet' type='text/css' href='../style.css'>
+</head>
+<body>
+<div class='sidebar'>
+<h2>Documentation</h2>
+<ul>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Assets.html'>Assets</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/UI/Button.html'>Button</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Types/Camera.html'>Camera</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/CircleCollider.html'>CircleCollider</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/CircleRenderer.html'>CircleRenderer</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Collider2D.html'>Collider2D</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Component.html'>Component</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Conversions.html'>Conversions</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/CustomDrawing.html'>CustomDrawing</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/CustomShapes.html'>CustomShapes</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Debug.html'>Debug</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/GameObject.html'>GameObject</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Globals.html'>Globals</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Graphics/GraphicsWindow.html'>GraphicsWindow</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Graphics/GraphicsWindow2D.html'>GraphicsWindow2D</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Graphics/GraphicsWindow3D.html'>GraphicsWindow3D</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Interfaces/IComponent.html'>IComponent</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/UI/Label.html'>Label</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/MathExtended.html'>MathExtended</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Types/ObjectPooling.html'>ObjectPooling</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Types/OnCollisionEnterEventArgs.html'>OnCollisionEnterEventArgs</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/Player.html'>Player</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/UI/ProgressBar.html'>ProgressBar</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Projectile.html'>Projectile</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Renderer.html'>Renderer</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Rigidbody.html'>Rigidbody</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/SpriteRenderer.html'>SpriteRenderer</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Time.html'>Time</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Transform.html'>Transform</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Types/TransformPositionUpdatedEventArgs.html'>TransformPositionUpdatedEventArgs</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/UI.html'>UI</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/UIElement.html'>UIElement</a></li>
+</ul>
+</div>
+<div class='content'>
+<h1>Collider2D</h1>
+</section>
+<section id='members'>
+<h3>Members</h2>
+<div class='member'>
+<h2><memberType>Field</memberType> OnCollision</h3><p></p>
+<pre><code> <span class='code-keyword'>private</span> EventHandler <span class='code-method'>OnCollision</span></code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Field</memberType> parent</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>GameObject</span> <span class='code-method'>parent</span></code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> Destroy</h3><p>Event triggered when this object collides with something.</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> <span class='code-keyword'>void</span> <span class='code-method'>Destroy</span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> Start</h3><p>Event triggered when this object collides with something.</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> <span class='code-keyword'>void</span> <span class='code-method'>Start</span>(GameObject gameObject)</code></pre>
+<h3>Parameters</h3>
+<table>
+<tr>
+            <th>Parameter Name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+<tr>
+<td>gameObject</td>
+<td>GameObject</td>
+<td>No description.</td>
+</tr>
+</table>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> CheckAllCollisions</h3><p>Method to be ran to check if object is colliding with something.</p>
+<pre><code> <span class='code-keyword'>private</span> <span class='code-keyword'>void</span> <span class='code-method'>CheckAllCollisions</span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> CheckCollision</h3><p>The method used to check if an object is colliding with this object.</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>virtual</span> <span class='code-keyword'>void</span> <span class='code-method'>CheckCollision</span>(GameObject other)</code></pre>
+<h3>Parameters</h3>
+<table>
+<tr>
+            <th>Parameter Name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+<tr>
+<td>other</td>
+<td>GameObject</td>
+<td>The other object to check collisions with</td>
+</tr>
+</table>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> SolveCollision</h3><p>The method used to solve the collision (Offset the position so it's not inside the object or do something else)</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>virtual</span> <span class='code-keyword'>void</span> <span class='code-method'>SolveCollision</span>(Collider2D collided)</code></pre>
+<h3>Parameters</h3>
+<table>
+<tr>
+            <th>Parameter Name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+<tr>
+<td>collided</td>
+<td>Collider2D</td>
+<td>The object that collided with this</td>
+</tr>
+</table>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> InvokeOnCollision</h3><p>Invokes the OnCollisionEvent event.</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>void</span> <span class='code-method'>InvokeOnCollision</span>(GameObject collided)</code></pre>
+<h3>Parameters</h3>
+<table>
+<tr>
+            <th>Parameter Name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+<tr>
+<td>collided</td>
+<td>GameObject</td>
+<td>The GameObject that collided with this object</td>
+</tr>
+</table>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> DrawDebugHitbox</h3><p>Method used by the Debug System to draw the hitboxes on selection.</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>virtual</span> <span class='code-keyword'>void</span> <span class='code-method'>DrawDebugHitbox</span>(Vector2 screenPos)</code></pre>
+<h3>Parameters</h3>
+<table>
+<tr>
+            <th>Parameter Name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+<tr>
+<td>screenPos</td>
+<td>Vector2</td>
+<td>The on screen coordinates to use as center</td>
+</tr>
+</table>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> Awake</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> <span class='code-keyword'>void</span> <span class='code-method'>Awake</span>(GameObject gameObject)</code></pre>
+<h3>Parameters</h3>
+<table>
+<tr>
+            <th>Parameter Name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+<tr>
+<td>gameObject</td>
+<td>GameObject</td>
+<td>No description.</td>
+</tr>
+</table>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> OnUpdate</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>void</span> <span class='code-method'>OnUpdate</span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> Update</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> <span class='code-keyword'>void</span> <span class='code-method'>Update</span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> GetType</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>Type</span> <span class='code-method'>Get<span class='code-type'>Type</span></span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> MemberwiseClone</h3><p></p>
+<pre><code> <span class='code-type'>Object</span> <span class='code-method'>MemberwiseClone</span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> Finalize</h3><p></p>
+<pre><code> <span class='code-keyword'>override</span> <span class='code-keyword'>void</span> <span class='code-method'>Finalize</span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> ToString</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> string <span class='code-method'>To<span class='code-type'>String</span></span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> Equals</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> bool <span class='code-method'>Equals</span>(Object obj)</code></pre>
+<h3>Parameters</h3>
+<table>
+<tr>
+            <th>Parameter Name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+<tr>
+<td>obj</td>
+<td>Object</td>
+<td>No description.</td>
+</tr>
+</table>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> GetHashCode</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> <span class='code-keyword'>int</span> <span class='code-method'>GetHashCode</span>()</code></pre>
+</div>
+
+</section>
+</div>
+</body>
+</html>

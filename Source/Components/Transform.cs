@@ -2,8 +2,9 @@
 using GameEngineProject.Source.Entities;
 using GameEngineProject.Source.Interfaces;
 using System.Numerics;
-using static GameEngineProject.Source.Core.Utils.VectorAndQuaternionMath;
+using static GameEngineProject.Source.Core.Utils.MathExtended;
 using static GameEngineProject.Source.Core.Utils.Conversions;
+using GameEngineProject.Source.Core.Utils;
 
 namespace GameEngineProject.Source.Components
 {
@@ -24,13 +25,16 @@ namespace GameEngineProject.Source.Components
         /// <summary>
         /// Returns a direction vector representing the direction this object is looking at.
         /// </summary>
-        public Vector3 Forward { get { return XYToVector3(GetForwardVector(Rotation)); } }
+        public Vector3 Forward { get { return GetForwardVector(Rotation); } }
 
         /// <summary>
         /// All the children of this transform. Children get moved and rotated with a pivot on this object's Position and Rotation.
         /// </summary>
         public List<Transform> Children { get; private set; } = new();
 
+        /// <summary>
+        /// Event triggered whenever this object is moved.
+        /// </summary>
         public event EventHandler<TransformPositionUpdatedEventArgs>? OnPositionChanged;
 
         #region Constructors
@@ -48,11 +52,11 @@ namespace GameEngineProject.Source.Components
             this.parent = parent;
         }
 
-        public Transform(Transform other)
+        public Transform(Transform other, GameObject parent)
         {
             this.Position = other.Position;
             this.Rotation = other.Rotation;
-            this.parent = other.parent;
+            this.parent = parent;
             this.Children = new List<Transform>(other.Children);
         }
 
@@ -60,6 +64,11 @@ namespace GameEngineProject.Source.Components
         {
             Position = position;
             Rotation = Quaternion.Identity;
+        }
+        public Transform(Vector3 position, Quaternion rotation)
+        {
+            Position = position;
+            Rotation = rotation;
         }
 
         #endregion
@@ -98,7 +107,7 @@ namespace GameEngineProject.Source.Components
         /// Adds a children to this transform
         /// </summary>
         /// <param name="obj">The game object to set as children</param>
-        public void AddChildren(GameObject obj) => Children.Add(obj.transform);
+        public void AddChildren(GameObject obj) => Children.Add(obj.Transform);
 
         /// <summary>
         /// Adds a children to this transform

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ProgressBar</title>
+<link rel='stylesheet' type='text/css' href='../../style.css'>
+</head>
+<body>
+<div class='sidebar'>
+<h2>Documentation</h2>
+<ul>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Assets.html'>Assets</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/UI/Button.html'>Button</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Types/Camera.html'>Camera</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/CircleCollider.html'>CircleCollider</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/CircleRenderer.html'>CircleRenderer</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Collider2D.html'>Collider2D</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Component.html'>Component</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Conversions.html'>Conversions</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/CustomDrawing.html'>CustomDrawing</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/CustomShapes.html'>CustomShapes</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Debug.html'>Debug</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/GameObject.html'>GameObject</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Globals.html'>Globals</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Graphics/GraphicsWindow.html'>GraphicsWindow</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Graphics/GraphicsWindow2D.html'>GraphicsWindow2D</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Graphics/GraphicsWindow3D.html'>GraphicsWindow3D</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Interfaces/IComponent.html'>IComponent</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/UI/Label.html'>Label</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/MathExtended.html'>MathExtended</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Types/ObjectPooling.html'>ObjectPooling</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Types/OnCollisionEnterEventArgs.html'>OnCollisionEnterEventArgs</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/Player.html'>Player</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/UI/ProgressBar.html'>ProgressBar</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Projectile.html'>Projectile</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Renderer.html'>Renderer</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Rigidbody.html'>Rigidbody</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/SpriteRenderer.html'>SpriteRenderer</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Time.html'>Time</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Transform.html'>Transform</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Types/TransformPositionUpdatedEventArgs.html'>TransformPositionUpdatedEventArgs</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/UI.html'>UI</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/UIElement.html'>UIElement</a></li>
+</ul>
+</div>
+<div class='content'>
+<h1>ProgressBar</h1>
+</section>
+<section id='members'>
+<h3>Members</h2>
+<div class='member'>
+<h2><memberType>Field</memberType> BackgroundWidth</h3><p>The width of the background of the progress bar.</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>int</span> <span class='code-method'>BackgroundWidth</span></code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Field</memberType> BackgroundHeight</h3><p>The height of the background of the progress bar.</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>int</span> <span class='code-method'>BackgroundHeight</span></code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Field</memberType> BackgroundColor</h3><p>The color of the background of the progress bar.</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>Color</span> <span class='code-method'>Background<span class='code-type'>Color</span></span></code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Field</memberType> BarWidth</h3><p>The width of the progress bar itself.</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>int</span> <span class='code-method'>BarWidth</span></code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Field</memberType> BarHeight</h3><p>The height of the progress bar itself.</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>int</span> <span class='code-method'>BarHeight</span></code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Field</memberType> BarColor</h3><p>The color of the progress bar.</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>Color</span> <span class='code-method'>Bar<span class='code-type'>Color</span></span></code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Field</memberType> OffsetFromCorner</h3><p>The offset from the top-left corner of the progress bar's parent element.</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>Vector2</span> <span class='code-method'>OffsetFromCorner</span></code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Field</memberType> Progress</h3><p>The progress value, ranging from 0 to 1, indicating the completion status.</p>
+<pre><code> <span class='code-keyword'>public</span> float <span class='code-method'>Progress</span></code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Field</memberType> IsActive</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> bool <span class='code-method'>IsActive</span></code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Property</memberType> Pivot</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-method'>Pivot</span>Point <span class='code-method'>Pivot</span> { <span class='code-keyword'>public</span> get; set; }</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Property</memberType> Position</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>Vector2</span> <span class='code-method'>Position</span> { <span class='code-keyword'>public</span> get; set; }</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Property</memberType> Rotation</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>Quaternion</span> <span class='code-method'>Rotation</span> { <span class='code-keyword'>public</span> get; set; }</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Property</memberType> OriginalPosition</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>Vector2</span> <span class='code-method'>OriginalPosition</span> { <span class='code-keyword'>public</span> get; <span class='code-keyword'>public</span> set; }</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> CenteredOffset</h3><p>Calculates and returns the offset required to center the progress bar within its background.</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>Vector2</span> <span class='code-method'>CenteredOffset</span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> Render</h3><p>Calculates and returns the offset required to center the progress bar within its background.</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> <span class='code-keyword'>void</span> <span class='code-method'>Render</span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> UpdatePosition</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>void</span> <span class='code-method'>UpdatePosition</span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> SetPivot</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> <span class='code-keyword'>void</span> <span class='code-method'>SetPivot</span>(PivotPoint pivot)</code></pre>
+<h3>Parameters</h3>
+<table>
+<tr>
+            <th>Parameter Name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+<tr>
+<td>pivot</td>
+<td>PivotPoint</td>
+<td>No description.</td>
+</tr>
+</table>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> Update</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> <span class='code-keyword'>void</span> <span class='code-method'>Update</span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> GetType</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>Type</span> <span class='code-method'>Get<span class='code-type'>Type</span></span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> MemberwiseClone</h3><p></p>
+<pre><code> <span class='code-type'>Object</span> <span class='code-method'>MemberwiseClone</span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> Finalize</h3><p></p>
+<pre><code> <span class='code-keyword'>override</span> <span class='code-keyword'>void</span> <span class='code-method'>Finalize</span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> ToString</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> string <span class='code-method'>To<span class='code-type'>String</span></span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> Equals</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> bool <span class='code-method'>Equals</span>(Object obj)</code></pre>
+<h3>Parameters</h3>
+<table>
+<tr>
+            <th>Parameter Name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+<tr>
+<td>obj</td>
+<td>Object</td>
+<td>No description.</td>
+</tr>
+</table>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> GetHashCode</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> <span class='code-keyword'>int</span> <span class='code-method'>GetHashCode</span>()</code></pre>
+</div>
+
+</section>
+</div>
+</body>
+</html>

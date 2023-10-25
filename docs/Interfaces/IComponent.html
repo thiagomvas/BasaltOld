@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>IComponent</title>
+<link rel='stylesheet' type='text/css' href='../style.css'>
+</head>
+<body>
+<div class='sidebar'>
+<h2>Documentation</h2>
+<ul>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Assets.html'>Assets</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/UI/Button.html'>Button</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Types/Camera.html'>Camera</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/CircleCollider.html'>CircleCollider</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/CircleRenderer.html'>CircleRenderer</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Collider2D.html'>Collider2D</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Component.html'>Component</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Conversions.html'>Conversions</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/CustomDrawing.html'>CustomDrawing</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/CustomShapes.html'>CustomShapes</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Debug.html'>Debug</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/GameObject.html'>GameObject</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Globals.html'>Globals</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Graphics/GraphicsWindow.html'>GraphicsWindow</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Graphics/GraphicsWindow2D.html'>GraphicsWindow2D</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Graphics/GraphicsWindow3D.html'>GraphicsWindow3D</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Interfaces/IComponent.html'>IComponent</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/UI/Label.html'>Label</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/MathExtended.html'>MathExtended</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Types/ObjectPooling.html'>ObjectPooling</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Types/OnCollisionEnterEventArgs.html'>OnCollisionEnterEventArgs</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/Player.html'>Player</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/UI/ProgressBar.html'>ProgressBar</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Projectile.html'>Projectile</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Renderer.html'>Renderer</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Rigidbody.html'>Rigidbody</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/SpriteRenderer.html'>SpriteRenderer</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Time.html'>Time</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Transform.html'>Transform</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Types/TransformPositionUpdatedEventArgs.html'>TransformPositionUpdatedEventArgs</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/UI.html'>UI</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/UIElement.html'>UIElement</a></li>
+</ul>
+</div>
+<div class='content'>
+<h1>IComponent</h1>
+</section>
+<section id='members'>
+<h3>Members</h2>
+<div class='member'>
+<h2><memberType>Method</memberType> Awake</h3><p>Called whenever an object is created/instantiated. Usually used for setting up the component and its values.</p>
+<pre><code> <span class='code-keyword'>public</span> abstract <span class='code-keyword'>void</span> <span class='code-method'>Awake</span>(GameObject gameObject)</code></pre>
+<h3>Parameters</h3>
+<table>
+<tr>
+            <th>Parameter Name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+<tr>
+<td>gameObject</td>
+<td>GameObject</td>
+<td>The parent object that contains this component</td>
+</tr>
+</table>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> Start</h3><p>Called on the first frame of the game.</p>
+<pre><code> <span class='code-keyword'>public</span> abstract <span class='code-keyword'>void</span> <span class='code-method'>Start</span>(GameObject gameObject)</code></pre>
+<h3>Parameters</h3>
+<table>
+<tr>
+            <th>Parameter Name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+<tr>
+<td>gameObject</td>
+<td>GameObject</td>
+<td>The parent object that contains this component</td>
+</tr>
+</table>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> Update</h3><p>Method called every tick/frame</p>
+<pre><code> <span class='code-keyword'>public</span> abstract <span class='code-keyword'>void</span> <span class='code-method'>Update</span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> Destroy</h3><p>Called when a game object gets destroyed. Used for unsubscribing to events and disconnecting from everything to run before deletion.</p>
+<pre><code> <span class='code-keyword'>public</span> abstract <span class='code-keyword'>void</span> <span class='code-method'>Destroy</span>()</code></pre>
+</div>
+
+</section>
+</div>
+</body>
+</html>

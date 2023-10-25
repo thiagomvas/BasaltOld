@@ -11,42 +11,56 @@ namespace GameEngineProject.Source.Entities
     /// </summary>
     public class GameObject
     {
+        private bool AwakeCalled = false;
+        private bool StartCalled = false;
+
         /// <summary>
-        /// The object's transforms.
+        /// The object's transform.
         /// </summary>
-        public Transform transform { get; private set; }
+        public Transform Transform { get; private set; }
+
+        /// <summary>
+        /// The object's rigidbody
+        /// </summary>
+        public Rigidbody Rigidbody { get; private set; }
+
         /// <summary>
         /// All the components currently included in this object.
         /// </summary>
-        public List<IComponent> Components { get; private set; } = new();
+        public List<Component> Components { get; private set; } = new();
         /// <summary>
         /// All the children attached to this object.
         /// </summary>
         public List<GameObject> Children { get; private set; } = new();
 
+        /// <summary>
+        /// Whether or not an object is active. Defines if it will be drawn, interacted with or interact with something.
+        /// </summary>
+        public bool IsActive = true;
+
         #region Constructors
         public GameObject()
         {
-            transform = new Transform();
-            Components.Add(transform);
+            Transform = new Transform();
+            Components.Add(Transform);
         }
         public GameObject(Vector3 position)
         {
-            transform = new Transform(position);
-            Components.Add(transform);
+            Transform = new Transform(position);
+            Components.Add(Transform);
         }
         
-        public GameObject(Transform transform, List<IComponent> components, List<GameObject> children)
+        public GameObject(Transform transform, List<Component> components, List<GameObject> children)
         {
-            this.transform = transform;
+            this.Transform = transform;
             this.Components = components;
             this.Children = children;
         }
 
         public GameObject(GameObject other)
         {
-            transform = other.transform;
-            Components = new List<IComponent>(other.Components);
+            Transform = new Transform(other.Transform.Position, other.Transform.Rotation); 
+            Components = new List<Component>(other.Components);
             Children = new List<GameObject>(other.Children);
         }
 
@@ -59,7 +73,24 @@ namespace GameEngineProject.Source.Entities
         public void AddChildren(GameObject obj)
         {
             Children.Add(obj);
-            transform.AddChildren(obj);
+            Transform.AddChildren(obj);
+        }
+
+        /// <summary>
+        /// Ran whenever a game object is instantiated.
+        /// </summary>
+        public virtual void Awake() {
+            if (AwakeCalled) return;
+            AwakeCalled = true;
+        }
+
+        /// <summary>
+        /// Ran on the first frame of its existance.
+        /// </summary>
+        public virtual void Start() 
+        {
+            if(StartCalled) return; 
+            StartCalled = true;
         }
 
         /// <summary>
@@ -70,6 +101,7 @@ namespace GameEngineProject.Source.Entities
         public T AddComponent<T>() where T : Component, new()
         {
             T component = new();
+            component.parent = this;
 
             var requiredComponents = component.GetType().GetCustomAttributes(typeof(RequiredComponentsAttribute), true)
                                                         .Cast<RequiredComponentsAttribute>()
@@ -85,8 +117,9 @@ namespace GameEngineProject.Source.Entities
 
                 if (!hasComponent && type != null) Components.Add(type);
             }
-
+            component.Awake(this);
             Components.Add(component);
+            if (Rigidbody != null && component.GetType() == typeof(Rigidbody)) Rigidbody = GetComponent<Rigidbody>();
             return component;
         }
 
@@ -108,6 +141,7 @@ namespace GameEngineProject.Source.Entities
             component = Components.OfType<T>().FirstOrDefault();
             return component != null;
         }
+
 
         /// <summary>
         /// Destroys the game object and their components, unsubscribing from any events and disconnecting from everything.

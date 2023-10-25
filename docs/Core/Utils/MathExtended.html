@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MathExtended</title>
+<link rel='stylesheet' type='text/css' href='../../style.css'>
+</head>
+<body>
+<div class='sidebar'>
+<h2>Documentation</h2>
+<ul>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Assets.html'>Assets</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/UI/Button.html'>Button</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Types/Camera.html'>Camera</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/CircleCollider.html'>CircleCollider</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/CircleRenderer.html'>CircleRenderer</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Collider2D.html'>Collider2D</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Component.html'>Component</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Conversions.html'>Conversions</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/CustomDrawing.html'>CustomDrawing</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/CustomShapes.html'>CustomShapes</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Debug.html'>Debug</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/GameObject.html'>GameObject</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Globals.html'>Globals</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Graphics/GraphicsWindow.html'>GraphicsWindow</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Graphics/GraphicsWindow2D.html'>GraphicsWindow2D</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Graphics/GraphicsWindow3D.html'>GraphicsWindow3D</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Interfaces/IComponent.html'>IComponent</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/UI/Label.html'>Label</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/MathExtended.html'>MathExtended</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Types/ObjectPooling.html'>ObjectPooling</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Types/OnCollisionEnterEventArgs.html'>OnCollisionEnterEventArgs</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/Player.html'>Player</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/UI/ProgressBar.html'>ProgressBar</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Projectile.html'>Projectile</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Renderer.html'>Renderer</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Rigidbody.html'>Rigidbody</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/SpriteRenderer.html'>SpriteRenderer</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/Time.html'>Time</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Components/Transform.html'>Transform</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Types/TransformPositionUpdatedEventArgs.html'>TransformPositionUpdatedEventArgs</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Core/Utils/UI.html'>UI</a></li>
+<li><a href='https://thiagomvas.github.io/GameEngine/Entities/UIElement.html'>UIElement</a></li>
+</ul>
+</div>
+<div class='content'>
+<h1>MathExtended</h1>
+</section>
+<section id='members'>
+<h3>Members</h2>
+<div class='member'>
+<h2><memberType>Method</memberType> LookAtRotation</h3><p>Returns the rotation from the origin if it was looking at a target</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>static</span> <span class='code-type'>Quaternion</span> <span class='code-method'>LookAtRotation</span>(Vector3 origin, Vector3 target, Vector3 up)</code></pre>
+<h3>Parameters</h3>
+<table>
+<tr>
+            <th>Parameter Name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+<tr>
+<td>origin</td>
+<td>Vector3</td>
+<td>The origin coordinates</td>
+</tr>
+<tr>
+<td>target</td>
+<td>Vector3</td>
+<td>The target's position to rotate towards</td>
+</tr>
+<tr>
+<td>up</td>
+<td>Vector3</td>
+<td>The up vector from the origin</td>
+</tr>
+</table>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> GetForwardVector</h3><p>Gets the forward vector of a rotation.</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>static</span> <span class='code-type'>Vector3</span> <span class='code-method'>GetForwardVector</span>(Quaternion rotation)</code></pre>
+<h3>Parameters</h3>
+<table>
+<tr>
+            <th>Parameter Name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+<tr>
+<td>rotation</td>
+<td>Quaternion</td>
+<td>The rotation</td>
+</tr>
+</table>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> WorldToScreenPosition</h3><p>Converts a world coordinate into a screen coordinate</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>static</span> <span class='code-type'>Vector2</span> <span class='code-method'>WorldToScreenPosition</span>(<span class='code-type'>Vector2</span> worldPosition, Camera2D camera)</code></pre>
+<h3>Parameters</h3>
+<table>
+<tr>
+            <th>Parameter Name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+<tr>
+<td>worldPosition</td>
+<td>Vector2</td>
+<td>The world position</td>
+</tr>
+<tr>
+<td>camera</td>
+<td>Camera2D</td>
+<td>The camera used</td>
+</tr>
+</table>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> ScreenToWorldPosition</h3><p>Converts a screen position to world position</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>static</span> <span class='code-type'>Vector2</span> <span class='code-method'>ScreenToWorldPosition</span>(<span class='code-type'>Vector2</span> position, Camera2D camera)</code></pre>
+<h3>Parameters</h3>
+<table>
+<tr>
+            <th>Parameter Name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+<tr>
+<td>position</td>
+<td>Vector2</td>
+<td>The screen position</td>
+</tr>
+<tr>
+<td>camera</td>
+<td>Camera2D</td>
+<td>The camera used</td>
+</tr>
+</table>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> GetZRotation</h3><p>Gets the rotation in the Z axis from a Quaternion</p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>static</span> float <span class='code-method'>GetZRotation</span>(Quaternion quaternion)</code></pre>
+<h3>Parameters</h3>
+<table>
+<tr>
+            <th>Parameter Name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+<tr>
+<td>quaternion</td>
+<td>Quaternion</td>
+<td>The rotation quaternion</td>
+</tr>
+</table>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> GetType</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-type'>Type</span> <span class='code-method'>Get<span class='code-type'>Type</span></span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> MemberwiseClone</h3><p></p>
+<pre><code> <span class='code-type'>Object</span> <span class='code-method'>MemberwiseClone</span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> Finalize</h3><p></p>
+<pre><code> <span class='code-keyword'>override</span> <span class='code-keyword'>void</span> <span class='code-method'>Finalize</span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> ToString</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> string <span class='code-method'>To<span class='code-type'>String</span></span>()</code></pre>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> Equals</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> bool <span class='code-method'>Equals</span>(Object obj)</code></pre>
+<h3>Parameters</h3>
+<table>
+<tr>
+            <th>Parameter Name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+<tr>
+<td>obj</td>
+<td>Object</td>
+<td>No description.</td>
+</tr>
+</table>
+</div>
+
+<div class='member'>
+<h2><memberType>Method</memberType> GetHashCode</h3><p></p>
+<pre><code> <span class='code-keyword'>public</span> <span class='code-keyword'>override</span> <span class='code-keyword'>int</span> <span class='code-method'>GetHashCode</span>()</code></pre>
+</div>
+
+</section>
+</div>
+</body>
+</html>

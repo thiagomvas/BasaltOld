@@ -1,3 +1,5 @@
+using GameEngineProject.Source.Core;
+using GameEngineProject.Source.Core.Graphics;
 using GameEngineProject.Source.Entities;
 using GameEngineProject.Source.Interfaces;
 using Raylib_cs;
@@ -7,7 +9,7 @@ namespace GameEngineProject.Source.Components
     /// <summary>
     /// Generic renderer component used for rendering Game Objects.
     /// </summary>
-    public class Renderer2D : Component
+    public class Renderer : Component
     {
         /// <summary>
         /// The parent's transform.
@@ -18,16 +20,25 @@ namespace GameEngineProject.Source.Components
         public override void Awake(GameObject gameObject)
         {
             base.Awake(gameObject);
-            transform = gameObject.transform;
+            transform = gameObject.Transform;
+            Engine.window.RenderWorldSpace += OnRender;
         }
 
+        /// <summary>
+        /// Passes a few checks before calling <see cref="Render()"/>
+        /// </summary>
+        public void OnRender()
+        {
+            if(!parent.IsActive) return;
+            Render();
+        }
 
         /// <summary>
         /// How the object will be drawn by the GraphicsManager2D.
         /// </summary>
         public virtual void Render()
         {
-            Raylib.DrawCircle((int)transform.Position.X, (int)transform.Position.Y, 25, new Color(255, 0, 255, 255));
+            Console.WriteLine(this.GetType().Name);
         }
 
     }

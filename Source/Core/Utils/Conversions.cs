@@ -29,9 +29,15 @@ namespace GameEngineProject.Source.Core.Utils
                                                                                                  2 * (rotation.Y * rotation.Z + rotation.W * rotation.X),
                                                                                                  1 - 2 * (rotation.X * rotation.X + rotation.Y * rotation.Y)));
 
+        /// <summary>
+        /// Turns a game object and all it's components into readable text.
+        /// </summary>
+        /// <param name="obj">The game object to convert</param>
+        /// <returns>a string containing the object's data and the component's aswell</returns>
         public static string StringifyGameObject(GameObject obj)
         {
             string text = obj.GetType().Name;
+            text += $"\n    IsActive:{obj.IsActive}";
             text += "\n    Components:\n";
             foreach(var component in obj.Components)
             {

@@ -2,7 +2,6 @@ using GameEngineProject.Source.Core;
 using GameEngineProject.Source.Core.Graphics;
 using GameEngineProject.Source.Core.Types;
 using GameEngineProject.Source.Entities;
-using GameEngineProject.Source.Interfaces;
 using System.Numerics;
 
 namespace GameEngineProject.Source.Components
@@ -18,13 +17,13 @@ namespace GameEngineProject.Source.Components
         public Collider2D() { }
         public override void Destroy()
         {
-            GraphicsWindow2D.OnScreenRedraw -= CheckAllCollisions;
+            Engine.window.OnScreenRedraw -= CheckAllCollisions;
         }
 
         public override void Start(GameObject gameObject)
         {
             base.Start(gameObject);
-            GraphicsWindow2D.OnScreenRedraw += CheckAllCollisions;
+            Engine.window.OnScreenRedraw += CheckAllCollisions;
         }
 
         /// <summary>
@@ -32,7 +31,8 @@ namespace GameEngineProject.Source.Components
         /// </summary>
         private void CheckAllCollisions()
         {
-            foreach(var obj in Globals.GameObjectsOnScene)
+            if (!parent.IsActive) return;
+            foreach (var obj in Globals.GameObjectsOnScene)
             {
                 if (obj != parent && obj.TryGetComponent(out Collider2D col)) CheckCollision(obj);
             }
@@ -44,20 +44,20 @@ namespace GameEngineProject.Source.Components
         /// <param name="other">The other object to check collisions with</param>
         public virtual void CheckCollision(GameObject other)
         {
-
+            if (!parent.IsActive) return;
         }
 
         /// <summary>
         /// The method used to solve the collision (Offset the position so it's not inside the object or do something else)
         /// </summary>
         /// <param name="collided">The object that collided with this</param>
-        public virtual void SolveCollision(Collider2D collided){}
+        public virtual void SolveCollision(Collider2D collided) { if (!parent.IsActive) return; }
 
         /// <summary>
         /// Invokes the OnCollisionEvent event.
         /// </summary>
         /// <param name="collided">The GameObject that collided with this object</param>
-        public virtual void InvokeOnCollision(GameObject collided) => OnCollision?.Invoke(this, new OnCollisionEnterEventArgs(collided));
+        public void InvokeOnCollision(GameObject collided) => OnCollision?.Invoke(this, new OnCollisionEnterEventArgs(collided));
 
         /// <summary>
         /// Method used by the Debug System to draw the hitboxes on selection.
@@ -65,7 +65,7 @@ namespace GameEngineProject.Source.Components
         /// <param name="screenPos">The on screen coordinates to use as center</param>
         public virtual void DrawDebugHitbox(Vector2 screenPos)
         {
-
+            if (!parent.IsActive) return;
         }
     }
 }
