@@ -4,7 +4,97 @@ namespace GameEngineProject.Source.Core.Utils
 {
     public static class Assets
     {
+        /// <summary>
+        /// Dictionary containing all the textures loaded. The key is the file name including file extension.
+        /// </summary>
+        public static Dictionary<string, Texture2D> LoadedTextures = new();
+        /// <summary>
+        /// Dictionary containing all the models loaded. The key is the file name including file extension.
+        /// </summary>
+        public static Dictionary<string, Model> LoadedModels = new();
+        /// <summary>
+        /// Dictionary containing all the shaders loaded. The key is the file name including file extension.
+        /// </summary>
+        public static Dictionary<string, Shader> LoadedShaders = new();
+        /// <summary>
+        /// Dictionary containing all the sound assets loaded. The key is the fs file name including file extension.
+        /// </summary>
+        public static Dictionary<string, Sound> LoadedSounds = new();
+        /// <summary>
+        /// Dictionary containing all the music assets loaded. The key is the file name including file extension.
+        /// </summary>
+        public static Dictionary<string, Music> LoadedMusic = new();
+
+        /// <summary>
+        /// Loads a texture from a file and stores it in the LoadedTextures dictionary for future use.
+        /// </summary>
+        /// <param name="fileName">The path to the texture file.</param>
+        /// <returns>The loaded Texture2D object.</returns>
+        public static Texture2D LoadTexture(string fileName)
+        {
+            Texture2D texture = Raylib.LoadTexture(fileName);
+            LoadedTextures[fileName] = texture;
+            return texture;
+        }
+
+        /// <summary>
+        /// Loads a 3D model from a file and stores it in the LoadedModels dictionary for future use.
+        /// </summary>
+        /// <param name="fileName">The path to the 3D model file.</param>
+        /// <returns>The loaded Model object.</returns>
+        public static Model LoadModel(string fileName)
+        {
+            Model model = Raylib.LoadModel(fileName);
+            LoadedModels[fileName] = model;
+            return model;
+        }
+
+        /// <summary>
+        /// Loads a shader from a file and stores it in the LoadedShaders dictionary for future use.
+        /// </summary>
+        /// <param name="vsFileName">The path to the vertex shader file.</param>
+        /// <param name="fsFileName">The path to the fragment shader file.</param>
+        /// <returns>The loaded Shader object.</returns>
+        public static Shader LoadShader(string vsFileName, string fsFileName)
+        {
+            Shader shader = Raylib.LoadShader(vsFileName, fsFileName);
+            LoadedShaders[fsFileName] = shader;
+            return shader;
+        }
+
+        /// <summary>
+        /// Loads a sound effect from a file and stores it in the LoadedSounds dictionary for future use.
+        /// </summary>
+        /// <param name="fileName">The path to the sound effect file.</param>
+        /// <returns>The loaded Sound object.</returns>
+        public static Sound LoadSound(string fileName)
+        {
+            Sound sound = Raylib.LoadSound(fileName);
+            LoadedSounds[fileName] = sound;
+            return sound;
+        }
+
+        /// <summary>
+        /// Loads a music track from a file and stores it in the LoadedMusic dictionary for future use.
+        /// </summary>
+        /// <param name="fileName">The path to the music track file.</param>
+        /// <returns>The loaded Music object.</returns>
+        public static Music LoadMusic(string fileName)
+        {
+            Music music = Raylib.LoadMusicStream(fileName);
+            LoadedMusic[fileName] = music;
+            return music;
+        }
+
+
+        /// <summary>
+        /// Gets the Resources Folder used by the engine.
+        /// </summary>
         public static string ResourcesFolder { get { return FindTargetFolder("Resources"); } }
+        
+        /// <summary>
+        /// Default Lighting Shader.
+        /// </summary>
         public static Shader LightingShader;
 
         /// <summary>
