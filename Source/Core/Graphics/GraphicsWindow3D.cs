@@ -15,7 +15,7 @@ namespace GameEngineProject.Source.Core.Graphics
         public unsafe override void Init(int Width = -1, int Height = -1, Camera cameraObject = null)
         {
             Configuration.PreInitConfiguration();
-            InitWindow(1920, 1080, "3D Game");
+            InitWindow(800, 800, "3D Game");
             Configuration.PostInitConfiguration();
             int cubeSize = 1;
             int cubeWidth = 1;
@@ -26,26 +26,19 @@ namespace GameEngineProject.Source.Core.Graphics
             plane.materials[0].shader = Assets.LightingShader;
             cube.materials[0].shader = Assets.LightingShader;
 
-            Light[] lights = new Light[2];
-
+            Light[] lights = new Light[1];
             lights[0] = Rlights.CreateLight(0,
                 LightType.Point,
                 new Vector3(25, 0, 0),
                 Vector3.Zero,
                 Color.WHITE,
                 Assets.LightingShader);
-            lights[1] = Rlights.CreateLight(1,
-                LightType.Point,
-                new Vector3(-25, 0, 0),
-                Vector3.Zero,
-                Color.WHITE,
-                Assets.LightingShader);
-
 
             List<GameObject> cubes = new();
 
             while (!WindowShouldClose())
             {
+
                 // Update
                 // You can add your game logic here.
                 CallOnRedraw();
@@ -62,7 +55,7 @@ namespace GameEngineProject.Source.Core.Graphics
                 UpdateCameraPro(ref Engine.Camera.Camera3D,
                                 Engine.Player.Movement,
                                 rotation,
-                                GetMouseWheelMove() * 2.0f);
+                                0);
 
                 if(IsKeyPressed(KeyboardKey.KEY_K))
                 {
@@ -80,19 +73,15 @@ namespace GameEngineProject.Source.Core.Graphics
                         }
                     }
                 }
+
+                //lights[0].Position = new Vector3(MathF.Sin((float)GetTime()) * 100, 0 ,MathF.Cos((float)GetTime()) * 100);
+
                 Rlights.UpdateLightValues(Assets.LightingShader, lights[0]);
                 SetShaderValue(
                     Assets.LightingShader,
                     Assets.LightingShader.locs[(int)ShaderLocationIndex.SHADER_LOC_VECTOR_VIEW],
                     Engine.Camera.Camera3D.position,
                     ShaderUniformDataType.SHADER_UNIFORM_VEC3);
-                Rlights.UpdateLightValues(Assets.LightingShader, lights[1]);
-                SetShaderValue(
-                    Assets.LightingShader,
-                    Assets.LightingShader.locs[(int)ShaderLocationIndex.SHADER_LOC_VECTOR_VIEW],
-                    Engine.Camera.Camera3D.position,
-                    ShaderUniformDataType.SHADER_UNIFORM_VEC3);
-
                 BeginDrawing();
                 {
                     ClearBackground(Color.BLACK);
@@ -101,6 +90,9 @@ namespace GameEngineProject.Source.Core.Graphics
 
                     // Draw a 3D cube
                     BeginMode3D(Engine.Camera.Camera3D);
+
+                    CallRenderWorldSpace();
+
                     DrawSphere(new Vector3(25, 0, 0), 1, Color.RED);
                     DrawSphere(new Vector3(-25, 0, 0), 1, Color.RED);
                     DrawSphere(new Vector3(0, 25, 0), 1, Color.BLUE);
@@ -108,14 +100,16 @@ namespace GameEngineProject.Source.Core.Graphics
                     DrawSphere(new Vector3(0, 0, 25), 1, Color.GREEN);
                     DrawSphere(new Vector3(0, 0, -25), 1, Color.GREEN);
 
+                    DrawSphere(lights[0].Position, 1, Color.PINK);
+
+
                     DrawModel(plane, Vector3.Zero - Vector3.UnitY * 5, 1, Color.WHITE);
                     int renders = 0;
-
                     foreach(var obj in cubes)
                     {
                         if (PassByCulling(Engine.Camera, obj))
                         {
-                            DrawModel(cube, obj.Transform.Position, 1, Color.ORANGE);
+                            DrawModel(cube, obj.Transform.Position, 1, Color.WHITE);
                             renders++;
                         }
                     }

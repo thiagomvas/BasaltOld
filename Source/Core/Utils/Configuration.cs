@@ -6,7 +6,7 @@ namespace GameEngineProject.Source.Core.Utils
     {
         public static void PreInitConfiguration()
         {
-            SetConfigFlags(ConfigFlags.FLAG_FULLSCREEN_MODE);
+            //SetConfigFlags(ConfigFlags.FLAG_FULLSCREEN_MODE);
             SetConfigFlags(ConfigFlags.FLAG_MSAA_4X_HINT);
         }
 

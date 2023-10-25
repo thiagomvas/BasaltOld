@@ -26,11 +26,16 @@ namespace GameEngineProject.Source.Core
             window = new GraphicsWindow3D();
             Camera.Camera3D.target = new(50, 0, 0);
             GameObject obj = new();
+            obj.AddComponent<LineRenderer3D>().Points = new Vector3[]
+{
+
+};
             obj.AddComponent<Rigidbody>();
             Player player = new(obj);
             Player = player;
             Instantiate(obj);
             window.Init(1000, 1000, Camera);
+
 
         }
 

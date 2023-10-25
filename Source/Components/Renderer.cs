@@ -38,6 +38,7 @@ namespace GameEngineProject.Source.Components
         /// </summary>
         public virtual void Render()
         {
+            Console.WriteLine(this.GetType().Name);
         }
 
     }

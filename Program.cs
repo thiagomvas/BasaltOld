@@ -5,6 +5,7 @@ using static Raylib_cs.Raylib;
 using System.Numerics;
 using Raylib_cs;
 using GameEngineProject.Source.Core.Utils;
+using GameEngineProject.Source.Components;
 
 namespace GameEngineProject
 {
@@ -19,7 +20,6 @@ namespace GameEngineProject
             //AutoDocumentation.GenerateAutoDocumentation();
             
             Engine.Setup();
-
 
         }
     }

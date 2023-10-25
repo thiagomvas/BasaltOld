@@ -14,7 +14,7 @@ namespace GameEngineProject.Source.Components
         /// <summary>
         /// The fill color of the rendered circle.
         /// </summary>
-        public Color Color = Color.WHITE;
+        public Color Color = Color.PINK;
 
         public override void Start(GameObject gameObject)
         {
