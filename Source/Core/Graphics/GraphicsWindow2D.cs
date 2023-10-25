@@ -12,7 +12,7 @@ namespace GameEngineProject.Source.Core.Graphics
     {
         public override void Init(int Width, int Height, Camera cameraObject)
         {
-            Debug.Setup();
+            Debug.Setup(); 
             SetConfigFlags(ConfigFlags.FLAG_WINDOW_RESIZABLE);
             SetConfigFlags(ConfigFlags.FLAG_WINDOW_MAXIMIZED);
 

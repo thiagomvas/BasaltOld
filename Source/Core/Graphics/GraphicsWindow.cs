@@ -3,7 +3,7 @@ using Raylib_cs;
 
 namespace GameEngineProject.Source.Core.Graphics
 {
-    public class GraphicsWindow
+    public abstract class GraphicsWindow
     {
 
         /// <summary>
@@ -34,14 +34,11 @@ namespace GameEngineProject.Source.Core.Graphics
         /// Event called whenever the UI is rendered.
         /// </summary>
         public event Action RenderUI;
-        public virtual void Init(int Width = -1, int Height = -1, Camera cameraObject = null)
-        {
+        public abstract void Init(int Width = -1, int Height = -1, Camera cameraObject = null);
 
-        }
-
-        public void CallOnRedraw() => OnScreenRedraw?.Invoke();
-        public void CallOnResize() => OnScreenResize?.Invoke();
-        public void CallRenderWorldSpace() => RenderWorldSpace?.Invoke();
-        public void CallRenderUI() => RenderUI?.Invoke();
+        protected void CallOnRedraw() => OnScreenRedraw?.Invoke();
+        protected void CallOnResize() => OnScreenResize?.Invoke();
+        protected void CallRenderWorldSpace() => RenderWorldSpace?.Invoke();
+        protected void CallRenderUI() => RenderUI?.Invoke();
     }
 }

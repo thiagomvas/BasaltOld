@@ -10,7 +10,7 @@ using static GameEngineProject.Source.Core.Globals;
 
 namespace GameEngineProject.Source.Core
 {
-    public static class Engine
+    public static partial class Engine
     {
         public static Camera Camera = new(Camera.RenderType.Camera3D);
         public static GraphicsWindow window;

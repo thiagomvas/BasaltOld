@@ -7,6 +7,7 @@ using GameEngineProject.Source.Entities;
 using System;
 using System.Text;
 using GameEngineProject.Libraries;
+using System.Runtime.InteropServices;
 
 namespace GameEngineProject.Source.Core.Graphics
 {
@@ -16,6 +17,7 @@ namespace GameEngineProject.Source.Core.Graphics
         {
             Configuration.PreInitConfiguration();
             InitWindow(800, 800, "3D Game");
+            InitAudioDevice();
             Configuration.PostInitConfiguration();
             int cubeSize = 1;
             int cubeWidth = 1;
@@ -36,9 +38,14 @@ namespace GameEngineProject.Source.Core.Graphics
 
             List<GameObject> cubes = new();
 
+            Music music = LoadMusicStream(Assets.GetResourcesPath("Audio\\country.mp3"));
+            PlayMusicStream(music);
+
+
             while (!WindowShouldClose())
             {
-
+                SetMusicPan(music, 0.5f + (float)Math.Sin(GetTime()) * 0.5f);
+                UpdateMusicStream(music);
                 // Update
                 // You can add your game logic here.
                 CallOnRedraw();
