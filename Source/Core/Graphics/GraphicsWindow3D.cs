@@ -17,7 +17,6 @@ namespace GameEngineProject.Source.Core.Graphics
         {
             Configuration.PreInitConfiguration();
             InitWindow(800, 800, "3D Game");
-            InitAudioDevice();
             Configuration.PostInitConfiguration();
             int cubeSize = 1;
             int cubeWidth = 1;
@@ -25,8 +24,8 @@ namespace GameEngineProject.Source.Core.Graphics
             Model plane = LoadModelFromMesh(GenMeshPlane(25, 25, 3, 3));
             Model cube = LoadModelFromMesh(GenMeshCube(4, 4, 4));
 
-            plane.materials[0].shader = Assets.LightingShader;
-            cube.materials[0].shader = Assets.LightingShader;
+            plane.materials[0].shader = Assets.LoadedShaders["lighting.fs"];
+            cube.materials[0].shader = Assets.LoadedShaders["lighting.fs"];
 
             Light[] lights = new Light[1];
             lights[0] = Rlights.CreateLight(0,
@@ -34,7 +33,7 @@ namespace GameEngineProject.Source.Core.Graphics
                 new Vector3(25, 0, 0),
                 Vector3.Zero,
                 Color.WHITE,
-                Assets.LightingShader);
+                Assets.LoadedShaders["lighting.fs"]);
 
             List<GameObject> cubes = new();
 
@@ -83,10 +82,10 @@ namespace GameEngineProject.Source.Core.Graphics
 
                 //lights[0].Position = new Vector3(MathF.Sin((float)GetTime()) * 100, 0 ,MathF.Cos((float)GetTime()) * 100);
 
-                Rlights.UpdateLightValues(Assets.LightingShader, lights[0]);
+                Rlights.UpdateLightValues(Assets.LoadedShaders["lighting.fs"], lights[0]);
                 SetShaderValue(
-                    Assets.LightingShader,
-                    Assets.LightingShader.locs[(int)ShaderLocationIndex.SHADER_LOC_VECTOR_VIEW],
+                    Assets.LoadedShaders["lighting.fs"],
+                    Assets.LoadedShaders["lighting.fs"].locs[(int)ShaderLocationIndex.SHADER_LOC_VECTOR_VIEW],
                     Engine.Camera.Camera3D.position,
                     ShaderUniformDataType.SHADER_UNIFORM_VEC3);
                 BeginDrawing();
@@ -107,7 +106,7 @@ namespace GameEngineProject.Source.Core.Graphics
                     DrawSphere(new Vector3(0, 0, 25), 1, Color.GREEN);
                     DrawSphere(new Vector3(0, 0, -25), 1, Color.GREEN);
 
-                    DrawSphere(lights[0].Position, 1, Color.PINK);
+
 
 
                     DrawModel(plane, Vector3.Zero - Vector3.UnitY * 5, 1, Color.WHITE);

@@ -58,7 +58,7 @@ namespace GameEngineProject.Source.Core.Utils
         public static Shader LoadShader(string vsFileName, string fsFileName)
         {
             Shader shader = Raylib.LoadShader(vsFileName, fsFileName);
-            LoadedShaders[fsFileName] = shader;
+            LoadedShaders[Path.GetFileName(fsFileName)] = shader;
             return shader;
         }
 
@@ -92,10 +92,6 @@ namespace GameEngineProject.Source.Core.Utils
         /// </summary>
         public static string ResourcesFolder { get { return FindTargetFolder("Resources"); } }
         
-        /// <summary>
-        /// Default Lighting Shader.
-        /// </summary>
-        public static Shader LightingShader;
 
         /// <summary>
         /// Gets the (expected) Assets folder used by the engine.

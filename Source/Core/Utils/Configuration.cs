@@ -23,22 +23,22 @@ namespace GameEngineProject.Source.Core.Utils
             DisableCursor();
 
 
-            Assets.LightingShader = LoadShader("C:\\Users\\Thiago\\source\\repos\\GameEngineProject\\Resources\\Shaders\\lighting.vs", "C:\\Users\\Thiago\\source\\repos\\GameEngineProject\\Resources\\Shaders\\lighting.fs");
+            Assets.LoadShader("C:\\Users\\Thiago\\source\\repos\\GameEngineProject\\Resources\\Shaders\\lighting.vs", "C:\\Users\\Thiago\\source\\repos\\GameEngineProject\\Resources\\Shaders\\lighting.fs");
             // Get some required shader loactions
-            Assets.LightingShader.locs[(int)ShaderLocationIndex.SHADER_LOC_VECTOR_VIEW] = GetShaderLocation(Assets.LightingShader, "viewPos");
+            Assets.LoadedShaders["lighting.fs"].locs[(int)ShaderLocationIndex.SHADER_LOC_VECTOR_VIEW] = GetShaderLocation(Assets.LoadedShaders["lighting.fs"], "viewPos");
 
             // ambient light level
-            int ambientLoc = GetShaderLocation(Assets.LightingShader, "ambient");
+            int ambientLoc = GetShaderLocation(Assets.LoadedShaders["lighting.fs"], "ambient");
             float[] ambient = new[] { 0.1f, 0.1f, 0.1f, 1.0f };
-            SetShaderValue(Assets.LightingShader, ambientLoc, ambient, ShaderUniformDataType.SHADER_UNIFORM_VEC4);
-
+            SetShaderValue(Assets.LoadedShaders["lighting.fs"], ambientLoc, ambient, ShaderUniformDataType.SHADER_UNIFORM_VEC4);
+            Assets.LoadedShaders["lighting.fs"] = Assets.LoadedShaders["lighting.fs"];
             OnPostInit?.Invoke();
         }
 
         public static void Deinitialize()
         {
             OnDeinitialize?.Invoke();
-            UnloadShader(Assets.LightingShader);
+            UnloadShader(Assets.LoadedShaders["lighting.fs"]);
             CloseAudioDevice();
             CloseWindow();
         }
