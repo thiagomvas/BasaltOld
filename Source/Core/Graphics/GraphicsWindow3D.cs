@@ -27,13 +27,13 @@ namespace GameEngineProject.Source.Core.Graphics
             plane.materials[0].shader = Assets.LoadedShaders["lighting.fs"];
             cube.materials[0].shader = Assets.LoadedShaders["lighting.fs"];
 
-            Light[] lights = new Light[1];
-            lights[0] = Rlights.CreateLight(0,
-                LightType.Point,
-                new Vector3(25, 0, 0),
-                Vector3.Zero,
-                Color.WHITE,
-                Assets.LoadedShaders["lighting.fs"]);
+            //Light[] lights = new Light[1];
+            //lights[0] = Rlights.CreateLight(0,
+            //    LightType.Point,
+            //    new Vector3(25, 0, 0),
+            //    Vector3.Zero,
+            //    Color.WHITE,
+            //    Assets.LoadedShaders["lighting.fs"]);
 
             List<GameObject> cubes = new();
 
@@ -49,11 +49,7 @@ namespace GameEngineProject.Source.Core.Graphics
                 // You can add your game logic here.
                 CallOnRedraw();
 
-                Vector3 movement = new Vector3((IsKeyDown(KeyboardKey.KEY_W) || IsKeyDown(KeyboardKey.KEY_UP) ? 1 : 0) * 0.1f -      // Move forward-backward
-                                (IsKeyDown(KeyboardKey.KEY_S) || IsKeyDown(KeyboardKey.KEY_DOWN) ? 1 : 0) * 0.1f,
-                                (IsKeyDown(KeyboardKey.KEY_D) || IsKeyDown(KeyboardKey.KEY_RIGHT) ? 1 : 0) * 0.1f -   // Move right-left
-                                (IsKeyDown(KeyboardKey.KEY_A) || IsKeyDown(KeyboardKey.KEY_LEFT) ? 1 : 0) * 0.1f,
-                                0.0f);
+
                 Vector3 rotation = new(GetMouseDelta().X * 0.05f,                            // Rotation: yaw
                                        GetMouseDelta().Y * 0.05f,                            // Rotation: pitch
                                        0.0f);                                             // Rotation: roll
@@ -62,6 +58,7 @@ namespace GameEngineProject.Source.Core.Graphics
                                 Engine.Player.Movement,
                                 rotation,
                                 0);
+
 
                 if(IsKeyPressed(KeyboardKey.KEY_K))
                 {
@@ -82,7 +79,7 @@ namespace GameEngineProject.Source.Core.Graphics
 
                 //lights[0].Position = new Vector3(MathF.Sin((float)GetTime()) * 100, 0 ,MathF.Cos((float)GetTime()) * 100);
 
-                Rlights.UpdateLightValues(Assets.LoadedShaders["lighting.fs"], lights[0]);
+                //Rlights.UpdateLightValues(Assets.LoadedShaders["lighting.fs"], lights[0]);
                 SetShaderValue(
                     Assets.LoadedShaders["lighting.fs"],
                     Assets.LoadedShaders["lighting.fs"].locs[(int)ShaderLocationIndex.SHADER_LOC_VECTOR_VIEW],
@@ -106,7 +103,7 @@ namespace GameEngineProject.Source.Core.Graphics
                     DrawSphere(new Vector3(0, 0, 25), 1, Color.GREEN);
                     DrawSphere(new Vector3(0, 0, -25), 1, Color.GREEN);
 
-
+                    DrawCube(Engine.Player.gameObject.Transform.Position, 2, 2, 2, Color.RED);
 
 
                     DrawModel(plane, Vector3.Zero - Vector3.UnitY * 5, 1, Color.WHITE);
@@ -123,7 +120,8 @@ namespace GameEngineProject.Source.Core.Graphics
                     int totalObjs = cubeSize * cubeSize * cubeSize;
                     DrawText($"{totalObjs} objects", 20, 60, 15, Color.GREEN);
                     DrawText($"{renders} rendered", 20, 100, 15, Color.GREEN);
-                    DrawText($"{Engine.Camera.Camera3D.position}", 20, 140, 15, Color.GREEN);
+                    DrawText($"Camera: {Engine.Camera.Camera3D.position}", 20, 140, 15, Color.GREEN);
+                    DrawText($"Player: {Engine.Player.gameObject.Transform.Position}", 20, 180, 15, Color.GREEN);
                     DrawFPS(10, 10);
 
                     // End the drawing

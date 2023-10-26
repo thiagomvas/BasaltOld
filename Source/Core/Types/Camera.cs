@@ -28,6 +28,15 @@ namespace GameEngineProject.Source.Core.Types
         /// </summary>
         public Camera3D Camera3D = new();
 
+        public Vector3 Position
+        {
+            get
+            {
+                if (Type == RenderType.Camera2D) return Transform.Position;
+                else return Camera3D.position;
+            }
+        }
+
         /// <summary>
         /// Gets the forward vector of the object's orientation.
         /// </summary>

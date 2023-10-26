@@ -1,3 +1,4 @@
+using GameEngineProject.Libraries;
 using GameEngineProject.Source.Entities;
 
 namespace GameEngineProject.Source.Core.Types
@@ -12,6 +13,8 @@ namespace GameEngineProject.Source.Core.Types
         /// All the UI Elements on scene.
         /// </summary>
         public List<UIElement> UI = new();
+
+        public List<Light> Lights = new();
 
         /// <summary>
         /// Adds a Game Object to this scene.

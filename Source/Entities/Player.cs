@@ -71,7 +71,7 @@ namespace GameEngineProject.Source.Entities
                                 (Raylib.IsKeyDown(KeyboardKey.KEY_D)    || Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT) ? 1 : 0) * MovementSpeed * Time.DeltaTime -   // Move right-left
                                 (Raylib.IsKeyDown(KeyboardKey.KEY_A)    || Raylib.IsKeyDown(KeyboardKey.KEY_LEFT) ? 1 : 0) * MovementSpeed * Time.DeltaTime,
                                 0.0f);
-            gameObject.Transform.Move(Movement);
+            gameObject.Transform.MoveTo(Engine.Camera.Position); // See Issue #19
             if (Raylib.IsKeyDown(KeyboardKey.KEY_R)) gameObject.Transform.MoveTo(Vector3.Zero);
 
             if(Raylib.IsMouseButtonPressed(MouseButton.MOUSE_BUTTON_RIGHT))

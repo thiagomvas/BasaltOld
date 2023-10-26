@@ -1,3 +1,4 @@
+using GameEngineProject.Libraries;
 using GameEngineProject.Source.Components;
 using GameEngineProject.Source.Core.Graphics;
 using GameEngineProject.Source.Core.Types;
@@ -15,6 +16,7 @@ namespace GameEngineProject.Source.Core
         public static Camera Camera = new(Camera.RenderType.Camera3D);
         public static GraphicsWindow window;
         public static Player Player;
+        public static List<Light> lights = new();
         public static void Setup()
         {
             Example3DSetup();
@@ -31,9 +33,13 @@ namespace GameEngineProject.Source.Core
 
 };
             obj.AddComponent<Rigidbody>();
+            obj.AddComponent<LightEmitter>().Color = Color.GREEN;
             Player player = new(obj);
             Player = player;
             Instantiate(obj);
+
+
+
             window.Init(1000, 1000, Camera);
 
 
