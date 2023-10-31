@@ -51,16 +51,6 @@ namespace GameEngineProject.Source.Core.Utils
             if(SelectedObject != null)
             {
                 label.Text = Conversions.StringifyGameObject(SelectedObject);
-
-
-                Vector2 screenPosition = MathExtended.WorldToScreenPosition(
-                    Conversions.XYFromVector3(SelectedObject.Transform.Position), 
-                    Engine.Camera.Camera2D);
-
-
-                if(ObjectCollider != null) ObjectCollider.DrawDebugHitbox(screenPosition);
-                Vector3 forward = SelectedObject.Transform.Forward;
-                DrawLine((int)screenPosition.X, (int)screenPosition.Y, (int)(screenPosition.X + forward.X * 100), (int)(screenPosition.Y + forward.Y*100), Color.LIME);
             }
                 
         }

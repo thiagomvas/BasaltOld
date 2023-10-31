@@ -5,6 +5,7 @@ namespace GameEngineProject.Source.Core.Types
 {
     public class Scene
     {
+        public static Player Player;
         /// <summary>
         /// All the game objects on scene.
         /// </summary>
@@ -14,7 +15,22 @@ namespace GameEngineProject.Source.Core.Types
         /// </summary>
         public List<UIElement> UI = new();
 
+        /// <summary>
+        /// All the light sources on scene.
+        /// </summary>
         public List<Light> Lights = new();
+
+        public List<Camera> Cameras = new();
+        public Scene() { }
+
+        public Scene(List<GameObject> gameObjects, List<UIElement> uI, List<Light> lights)
+        {
+            GameObjects = gameObjects;
+            UI = uI;
+            Lights = lights;
+        }
+
+
 
         /// <summary>
         /// Adds a Game Object to this scene.
@@ -27,5 +43,6 @@ namespace GameEngineProject.Source.Core.Types
         /// </summary>
         /// <param name="obj">The element to be added.</param>
         public void InstantiateUIElement(UIElement elem) => UI.Add(elem);
+
     }
 }

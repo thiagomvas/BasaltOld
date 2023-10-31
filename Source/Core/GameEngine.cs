@@ -13,73 +13,119 @@ namespace GameEngineProject.Source.Core
 {
     public static partial class Engine
     {
-        public static Camera Camera = new(Camera.RenderType.Camera3D);
+        //public static Camera Camera = new(Camera.RenderType.Camera3D);
         public static GraphicsWindow window;
-        public static Player Player;
-        public static List<Light> lights = new();
+        //public static List<Light> lights = new();
+        public static Scene CurrentScene;
         public static void Setup()
         {
-            Example3DSetup();
-        }
-
-        private static void Example3DSetup()
-        {
-            int cubeSize = 5;
             window = new GraphicsWindow3D();
-            Camera.Camera3D.target = new(50, 0, 0);
-            GameObject obj = new();
-            obj.AddComponent<LineRenderer3D>().Points = new Vector3[]
-{
-
-};
-            obj.AddComponent<Rigidbody>();
-            obj.AddComponent<LightEmitter>().Color = Color.GREEN;
-            Player player = new(obj);
-            Player = player;
-            Instantiate(obj);
-
-
-
-            window.Init(1000, 1000, Camera);
-
-
+            CurrentScene = Default3DScene();
+            window.Init(1000, 1000, CurrentScene.Cameras[0]);
         }
 
-        private static void Example2DSetup()
+        public static Scene Default3DScene()
         {
-            window = new GraphicsWindow2D();
-            GameObject obj = new GameObject(new Vector3(400, 400, 0));
-            Camera.Transform.Position = obj.Transform.Position;
-            var rend = obj.AddComponent<CircleRenderer>();
-            obj.AddComponent<CircleCollider>();
+            List<GameObject> objects = new();
+            List<Light> lights = new();
+            GameObject obj = new();
             obj.AddComponent<Rigidbody>();
-            obj.AddChildren(Camera);
-            //Instantiate(obj);
-            Player player = new Player(obj);
-            for (int i = 0; i < 5; i++)
-            {
-                GameObject obstacle = new GameObject(new Vector3(100 + i * 50, 0, 0));
-                obstacle.AddComponent<SpriteRenderer>().texturePath = Assets.GetAssetPath("circleheadtest.png");
-                var col = obstacle.AddComponent<CircleCollider>();
-                col.Radius = 25;
-                Instantiate(obstacle);
-            }
+            Player player = new(obj);
+            objects.Add(obj);
 
-            Button button = new Button(UI.ScreenBottom + new Vector2(0, -150), 200, 50);
-            button.SetPivot(UIElement.PivotPoint.Bottom);
+            GameObject lightsource = new();
+            lightsource.Transform.Position = new(0, 0, 50);
+            SphereRenderer rend = lightsource.AddComponent<SphereRenderer>();
+            rend.Color = Color.GREEN;
+            rend.Radius = 2;
 
-            Label label = new(UI.ScreenBottom + new Vector2(0, -50));
-            label.SetPivot(UIElement.PivotPoint.Bottom);
-            label.Text = "PROTOTYPE ENGINE TEST";
-            label.FontSize = 24;
-            label.TextColor = Color.GREEN;
-            UI.Instantiate(button);
-            UI.Instantiate(label);
+            var light = lightsource.AddComponent<LightEmitter>();
+            light.Color = Color.GREEN;
+            light.index = 0;
+            objects.Add(lightsource);
+            lights.Add(light.Source);
 
+            GameObject lightsource2 = new();
+            lightsource2.Transform.Position = new(50, 0, 0);
+            SphereRenderer rend2 = lightsource2.AddComponent<SphereRenderer>();
+            rend2.Color = Color.RED;
+            rend2.Radius = 2;
+            var light2 = lightsource2.AddComponent<LightEmitter>();
+            light2.Color = Color.RED;
+            light2.index = 1;
+            lights.Add(light2.Source);
+            objects.Add(lightsource2);
 
+            Scene scene = new(objects, null, lights);
+            scene.Cameras.Add(new(Camera.RenderType.Camera3D));
 
-
-            window.Init(800, 800, Camera);
+            return scene;
         }
+
+        //private static void Example3DSetup()
+        //{
+        //    int cubeSize = 5;
+        //    window = new GraphicsWindow3D();
+        //    Camera.Camera3D.target = new(50, 0, 0);
+        //    GameObject obj = new();
+        //    obj.AddComponent<Rigidbody>();
+        //    Player player = new(obj);
+        //    Player = player;
+        //    Instantiate(obj);
+
+        //    GameObject lightsource = new();
+        //    lightsource.Transform.Position = new(0, 0, 50);
+        //    var light = lightsource.AddComponent<LightEmitter>();
+        //    light.Color = Color.BLUE;
+        //    Instantiate(lightsource);
+
+        //    GameObject lightsource2 = new();
+        //    lightsource2.Transform.Position = new(50, 0, 0);
+        //    var light2 = lightsource2.AddComponent<LightEmitter>();
+        //    light2.Color = Color.RED;
+        //    Instantiate(lightsource);
+
+
+        //    window.Init(1000, 1000, Camera);
+
+
+        //}
+
+        //private static void Example2DSetup()
+        //{
+        //    window = new GraphicsWindow2D();
+        //    GameObject obj = new GameObject(new Vector3(400, 400, 0));
+        //    Camera.Transform.Position = obj.Transform.Position;
+        //    var rend = obj.AddComponent<CircleRenderer>();
+        //    obj.AddComponent<CircleCollider>();
+        //    obj.AddComponent<Rigidbody>();
+        //    obj.AddChildren(Camera);
+        //    //Instantiate(obj);
+        //    Player player = new Player(obj);
+        //    for (int i = 0; i < 5; i++)
+        //    {
+        //        GameObject obstacle = new GameObject(new Vector3(100 + i * 50, 0, 0));
+        //        obstacle.AddComponent<SpriteRenderer>().texturePath = Assets.GetAssetPath("circleheadtest.png");
+        //        var col = obstacle.AddComponent<CircleCollider>();
+        //        col.Radius = 25;
+        //        Instantiate(obstacle);
+        //    }
+
+        //    Button button = new Button(UI.ScreenBottom + new Vector2(0, -150), 200, 50);
+        //    button.SetPivot(UIElement.PivotPoint.Bottom);
+
+        //    Label label = new(UI.ScreenBottom + new Vector2(0, -50));
+        //    label.SetPivot(UIElement.PivotPoint.Bottom);
+        //    label.Text = "PROTOTYPE ENGINE TEST";
+        //    label.FontSize = 24;
+        //    label.TextColor = Color.GREEN;
+        //    UI.Instantiate(button);
+        //    UI.Instantiate(label);
+
+
+
+
+        //    window.Init(800, 800, Camera);
+        //}
     }
 }

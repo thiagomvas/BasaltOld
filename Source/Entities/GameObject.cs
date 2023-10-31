@@ -19,6 +19,10 @@ namespace GameEngineProject.Source.Entities
         /// </summary>
         public Transform Transform { get; private set; }
 
+        public Renderer Renderer { get; private set; }
+
+        public Collider2D Collider { get; private set; }
+
         /// <summary>
         /// The object's rigidbody
         /// </summary>
@@ -119,7 +123,8 @@ namespace GameEngineProject.Source.Entities
             }
             component.Awake(this);
             Components.Add(component);
-            if (Rigidbody != null && component.GetType() == typeof(Rigidbody)) Rigidbody = GetComponent<Rigidbody>();
+            if (Rigidbody == null && component.GetType().BaseType == typeof(Rigidbody)) Rigidbody = GetComponent<Rigidbody>();
+            if (Renderer == null && component.GetType().BaseType == typeof(Renderer)) Renderer = GetComponent<Renderer>();
             return component;
         }
 

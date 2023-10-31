@@ -32,6 +32,8 @@ namespace GameEngineProject.Source.Core.Utils
             float[] ambient = new[] { 0.1f, 0.1f, 0.1f, 1.0f };
             SetShaderValue(Assets.LoadedShaders["lighting.fs"], ambientLoc, ambient, ShaderUniformDataType.SHADER_UNIFORM_VEC4);
             Assets.LoadedShaders["lighting.fs"] = Assets.LoadedShaders["lighting.fs"];
+
+
             OnPostInit?.Invoke();
         }
 

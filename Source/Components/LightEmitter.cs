@@ -9,22 +9,30 @@ namespace GameEngineProject.Source.Components
 {
     public class LightEmitter : Component
     {
-        Light Source;
-        int index;
+        public Light Source;
+        public int index = -1;
         public Color Color = Color.WHITE;
         public LightType Type = LightType.Point;
         public void Setup()
         {
-            Source = Rlights.CreateLight(Engine.lights.Count,
+            Source = Rlights.CreateLight(index,
                                          Type,
                                          Vector3.One,
                                          Vector3.Zero,
                                          Color,
                                          Assets.LoadedShaders["lighting.fs"]);
-            index = Engine.lights.Count;
-            Engine.lights.Add(Source);
         }
 
+
+        public void CreateLight(int lightIndex)
+        {
+            Source = Rlights.CreateLight(lightIndex,
+                             Type,
+                             Vector3.One,
+                             Vector3.Zero,
+                             Color,
+                             Assets.LoadedShaders["lighting.fs"]);
+        }
 
         public override void Update()
         {

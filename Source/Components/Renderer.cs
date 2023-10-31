@@ -9,7 +9,7 @@ namespace GameEngineProject.Source.Components
     /// <summary>
     /// Generic renderer component used for rendering Game Objects.
     /// </summary>
-    public class Renderer : Component
+    public abstract class Renderer : Component
     {
         /// <summary>
         /// The parent's transform.
@@ -36,10 +36,7 @@ namespace GameEngineProject.Source.Components
         /// <summary>
         /// How the object will be drawn by the GraphicsManager2D.
         /// </summary>
-        public virtual void Render()
-        {
-            Console.WriteLine(this.GetType().Name);
-        }
+        public abstract void Render();
 
     }
 }
