@@ -22,4 +22,4 @@ If you encounter any issues or have questions, please [start an issue](https://g
 If you have any ideas, you can [start an issue](https://github.com/thiagomvas/Basalt/issues) or, if you'd like to contribute with code, feel free to fork the repository and make changes as you'd like. Once again, pull requests are welcome.
 
 ## License
-Lush is licensed under the [MIT License](https://github.com/thiagomvas/Basalt/blob/master/LICENSE.txt)
+Basalt is licensed under the [MIT License](https://github.com/thiagomvas/Basalt/blob/master/LICENSE.txt)
