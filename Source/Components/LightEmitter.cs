@@ -1,7 +1,7 @@
 using GameEngineProject.Libraries;
 using GameEngineProject.Source.Core;
+using GameEngineProject.Source.Core.Types;
 using GameEngineProject.Source.Core.Utils;
-using GameEngineProject.Source.Entities;
 using Raylib_cs;
 using System.Numerics;
 
@@ -21,17 +21,6 @@ namespace GameEngineProject.Source.Components
                                          Vector3.Zero,
                                          Color,
                                          Assets.LoadedShaders["lighting.fs"]);
-        }
-
-
-        public void CreateLight(int lightIndex)
-        {
-            Source = Rlights.CreateLight(lightIndex,
-                             Type,
-                             Vector3.One,
-                             Vector3.Zero,
-                             Color,
-                             Assets.LoadedShaders["lighting.fs"]);
         }
 
         public override void Update()

@@ -1,9 +1,9 @@
-using GameEngineProject.Source.Entities;
 using static Raylib_cs.Raylib;
 using System.Numerics;
 using Raylib_cs;
 using GameEngineProject.Source.Components;
-using GameEngineProject.Source.Entities.UI;
+using GameEngineProject.Source.Core.Types;
+using GameEngineProject.Source.Core.UI;
 
 namespace GameEngineProject.Source.Core.Utils
 {

@@ -1,6 +1,6 @@
 using GameEngineProject.Source.Core;
 using GameEngineProject.Source.Core.Graphics;
-using GameEngineProject.Source.Entities;
+using GameEngineProject.Source.Core.Types;
 using GameEngineProject.Source.Interfaces;
 
 namespace GameEngineProject.Source.Components

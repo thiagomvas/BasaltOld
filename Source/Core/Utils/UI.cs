@@ -1,5 +1,5 @@
 
-using GameEngineProject.Source.Entities;
+using GameEngineProject.Source.Core.Types;
 using System.Numerics;
 using static Raylib_cs.Raylib;
 

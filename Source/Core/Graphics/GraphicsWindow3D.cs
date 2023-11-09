@@ -3,7 +3,6 @@ using static Raylib_cs.Raylib;
 using Raylib_cs;
 using System.Numerics;
 using GameEngineProject.Source.Core.Utils;
-using GameEngineProject.Source.Entities;
 using System;
 using System.Text;
 using GameEngineProject.Libraries;
@@ -21,13 +20,11 @@ namespace GameEngineProject.Source.Core.Graphics
             Configuration.PostInitConfiguration();
             int cubeSize = 1;
             int cubeWidth = 1;
-
             Model plane = LoadModelFromMesh(GenMeshPlane(250, 250, 3, 3));
             Model cube = LoadModelFromMesh(GenMeshCube(4, 4, 4));
 
             plane.materials[0].shader = Assets.LoadedShaders["lighting.fs"];
             cube.materials[0].shader = Assets.LoadedShaders["lighting.fs"];
-
 
             List<GameObject> cubes = new();
 

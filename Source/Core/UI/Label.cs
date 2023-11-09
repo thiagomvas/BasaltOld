@@ -1,9 +1,10 @@
+using GameEngineProject.Source.Core.Types;
 using GameEngineProject.Source.Core.Utils;
 using Raylib_cs;
 using System.Numerics;
 using static Raylib_cs.Raylib;
 
-namespace GameEngineProject.Source.Entities.UI
+namespace GameEngineProject.Source.Core.UI
 {
     public class Label : UIElement
     {
@@ -36,7 +37,7 @@ namespace GameEngineProject.Source.Entities.UI
             DrawTextPro(GetFontDefault(),
                         Text,
                         Position,
-                        MeasureTextEx(GetFontDefault(), Text, FontSize, Spacing)/2,
+                        MeasureTextEx(GetFontDefault(), Text, FontSize, Spacing) / 2,
                         MathExtended.GetZRotation(Rotation) + 90,
                         FontSize,
                         Spacing,

@@ -1,4 +1,4 @@
-﻿using GameEngineProject.Source.Entities;
+﻿using GameEngineProject.Source.Core.Types;
 
 namespace GameEngineProject.Source.Interfaces
 {
