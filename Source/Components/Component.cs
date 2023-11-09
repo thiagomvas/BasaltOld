@@ -23,6 +23,7 @@ namespace GameEngineProject.Source.Components
         {
             parent = gameObject;
             Engine.window.OnScreenRedraw += OnUpdate;
+            Start(gameObject);
         }
 
         /// <summary>

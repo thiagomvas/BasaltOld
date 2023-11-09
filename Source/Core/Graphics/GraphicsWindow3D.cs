@@ -18,6 +18,7 @@ namespace GameEngineProject.Source.Core.Graphics
             Configuration.PreInitConfiguration();
             InitWindow(800, 800, "3D Game");
             Configuration.PostInitConfiguration();
+            CallOnResize();
             int cubeSize = 1;
             int cubeWidth = 1;
             Model plane = LoadModelFromMesh(GenMeshPlane(250, 250, 3, 3));
@@ -89,6 +90,12 @@ namespace GameEngineProject.Source.Core.Graphics
                     DrawText($"{Engine.CurrentScene.GameObjects.Count} objects", 20, 60, 15, Color.GREEN);
                     DrawText($"{renders} rendered", 20, 100, 15, Color.GREEN);
                     DrawText($"Camera: {cameraObject.Camera3D.position}", 20, 140, 15, Color.GREEN);
+                    CallRenderUI();
+                    foreach(UIElement elem in Engine.CurrentScene.UI)
+                    {
+                        elem.Render();
+                    }
+
                     DrawFPS(10, 10);
 
                     // End the drawing

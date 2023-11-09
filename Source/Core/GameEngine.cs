@@ -2,6 +2,8 @@ using GameEngineProject.Libraries;
 using GameEngineProject.Source.Components;
 using GameEngineProject.Source.Core.Graphics;
 using GameEngineProject.Source.Core.Types;
+using GameEngineProject.Source.Core.UI;
+using GameEngineProject.Source.Core.Utils;
 using GameEngineProject.Source.Entities;
 using Raylib_cs;
 using System.Numerics;
@@ -54,7 +56,17 @@ namespace GameEngineProject.Source.Core
             lights.Add(light2.Source);
             objects.Add(lightsource2);
 
-            Scene scene = new(objects, null, lights);
+            Panel panel = new(new Vector2(-200, 00));
+            panel.SetPivot(UIElement.PivotPoint.Right);
+            panel.Width = 20;
+            panel.Height = 20;
+            panel.Color = Color.RED;
+
+            Label label = new(new Vector2(-200, 200));
+            label.SetPivot(UIElement.PivotPoint.Right);
+
+
+            Scene scene = new(objects, new() { panel, label }, lights);
             scene.Cameras.Add(new(Camera.RenderType.Camera3D));
 
             return scene;

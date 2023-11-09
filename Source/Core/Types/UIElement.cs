@@ -37,13 +37,14 @@ namespace GameEngineProject.Source.Core.Types
             OriginalPosition = position;
             Engine.window.RenderUI += Render;
             Engine.window.RenderUI += Update;
+            Engine.window.OnScreenResize += UpdatePositionOnResize;
         }
 
 
         /// <summary>
         /// Updates the element's position whenever its resized.
         /// </summary>
-        public void UpdatePosition()
+        public void UpdatePositionOnResize()
         {
             Vector2 newPos = Vector2.Zero;
             switch (Pivot)

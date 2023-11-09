@@ -23,20 +23,6 @@ namespace GameEngineProject.Source.Core.Graphics
             defaultCamera.rotation = 0.0f;
             defaultCamera.zoom = 1.0f;
 
-
-            foreach (var obj in Globals.GameObjectsOnScene)
-                foreach (var component in obj.Components) component.Awake(obj);
-
-            foreach (var obj in Globals.GameObjectsOnScene)
-                foreach (var component in obj.Components) component.Start(obj);
-
-            foreach (var element in Globals.UIElementsOnScene)
-            {
-                element.UpdatePosition();
-                OnScreenResize += element.UpdatePosition;
-            }
-
-
             foreach (var obj in Globals.GameObjectsOnScene)
             {
                 if (obj.TryGetComponent<Renderer>(out Renderer rend)) RenderWorldSpace += rend.OnRender;
