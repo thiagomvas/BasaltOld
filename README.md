@@ -1,6 +1,6 @@
 # Basalt Game Engine
 
-Lush is a lightweight and versatile game engine designed for creating games using pure C#. While it currently does not have a visual editor, this feature is in the pipeline for future development.
+Basalt is a lightweight and versatile game engine designed for creating games using pure C#. While it currently does not have a visual editor, this feature is in the pipeline for future development.
 
 This is a project currently only being developed by me in my free time, so contributions are always welcome.
 
