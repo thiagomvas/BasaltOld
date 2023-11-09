@@ -6,7 +6,7 @@ using static Raylib_cs.Raylib;
 using GameEngineProject.Source.Core.Graphics;
 using GameEngineProject.Source.Core;
 
-namespace GameEngineProject.Source.Entities
+namespace GameEngineProject.Source.Core.Types
 {
     public class UIElement
     {
@@ -23,10 +23,10 @@ namespace GameEngineProject.Source.Entities
         public PivotPoint Pivot { get; private set; } = PivotPoint.Center;
 
         public bool IsActive = true;
-    
+
         public Vector2 Position { get; private set; }
         public Quaternion Rotation { get; private set; } = Quaternion.Zero;
-        
+
         /// <summary>
         /// The element's original position.
         /// </summary>
@@ -46,7 +46,7 @@ namespace GameEngineProject.Source.Entities
         public void UpdatePosition()
         {
             Vector2 newPos = Vector2.Zero;
-            switch(Pivot)
+            switch (Pivot)
             {
                 case PivotPoint.Center:
                     newPos = ScreenCenter + Delta;

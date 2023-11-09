@@ -1,4 +1,3 @@
-using GameEngineProject.Source.Entities;
 using System.Numerics;
 
 namespace GameEngineProject.Source.Core.Types

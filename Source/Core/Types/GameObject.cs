@@ -4,7 +4,7 @@ using GameEngineProject.Source.Core;
 using GameEngineProject.Source.Interfaces;
 using System.Numerics;
 
-namespace GameEngineProject.Source.Entities
+namespace GameEngineProject.Source.Core.Types
 {
     /// <summary>
     /// The Object Class used by the entire engine. It represents any object and it's components that are in any world.
@@ -18,6 +18,10 @@ namespace GameEngineProject.Source.Entities
         /// The object's transform.
         /// </summary>
         public Transform Transform { get; private set; }
+
+        public Renderer Renderer { get; private set; }
+
+        public Collider2D Collider { get; private set; }
 
         /// <summary>
         /// The object's rigidbody
@@ -49,17 +53,17 @@ namespace GameEngineProject.Source.Entities
             Transform = new Transform(position);
             Components.Add(Transform);
         }
-        
+
         public GameObject(Transform transform, List<Component> components, List<GameObject> children)
         {
-            this.Transform = transform;
-            this.Components = components;
-            this.Children = children;
+            Transform = transform;
+            Components = components;
+            Children = children;
         }
 
         public GameObject(GameObject other)
         {
-            Transform = new Transform(other.Transform.Position, other.Transform.Rotation); 
+            Transform = new Transform(other.Transform.Position, other.Transform.Rotation);
             Components = new List<Component>(other.Components);
             Children = new List<GameObject>(other.Children);
         }
@@ -79,7 +83,8 @@ namespace GameEngineProject.Source.Entities
         /// <summary>
         /// Ran whenever a game object is instantiated.
         /// </summary>
-        public virtual void Awake() {
+        public virtual void Awake()
+        {
             if (AwakeCalled) return;
             AwakeCalled = true;
         }
@@ -87,9 +92,9 @@ namespace GameEngineProject.Source.Entities
         /// <summary>
         /// Ran on the first frame of its existance.
         /// </summary>
-        public virtual void Start() 
+        public virtual void Start()
         {
-            if(StartCalled) return; 
+            if (StartCalled) return;
             StartCalled = true;
         }
 
@@ -119,7 +124,8 @@ namespace GameEngineProject.Source.Entities
             }
             component.Awake(this);
             Components.Add(component);
-            if (Rigidbody != null && component.GetType() == typeof(Rigidbody)) Rigidbody = GetComponent<Rigidbody>();
+            if (Rigidbody == null && component.GetType().BaseType == typeof(Rigidbody)) Rigidbody = GetComponent<Rigidbody>();
+            if (Renderer == null && component.GetType().BaseType == typeof(Renderer)) Renderer = GetComponent<Renderer>();
             return component;
         }
 

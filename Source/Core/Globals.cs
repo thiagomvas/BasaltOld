@@ -1,5 +1,5 @@
 using GameEngineProject.Source.Components;
-using GameEngineProject.Source.Entities;
+using GameEngineProject.Source.Core.Types;
 using GameEngineProject.Source.Interfaces;
 using Raylib_cs;
 

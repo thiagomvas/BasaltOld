@@ -3,9 +3,9 @@ using static GameEngineProject.Source.Core.Utils.UI;
 using Raylib_cs;
 using System.Numerics;
 using static Raylib_cs.Raylib;
+using GameEngineProject.Source.Core.Types;
 
-
-namespace GameEngineProject.Source.Entities.UI
+namespace GameEngineProject.Source.Core.UI
 {
     /// <summary>
     /// Represents a UI button element.
@@ -81,7 +81,7 @@ namespace GameEngineProject.Source.Entities.UI
         public override void Render()
         {
             base.Render();
-            Color drawColor = IsHovered ? ( IsClicked ? ClickColor : HoverColor) : NormalColor;
+            Color drawColor = IsHovered ? IsClicked ? ClickColor : HoverColor : NormalColor;
             DrawRectangle((int)Position.X, (int)Position.Y, Width, Height, drawColor);
         }
     }

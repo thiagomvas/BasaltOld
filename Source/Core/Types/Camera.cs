@@ -1,5 +1,4 @@
 using GameEngineProject.Source.Core.Utils;
-using GameEngineProject.Source.Entities;
 using Raylib_cs;
 using System.Numerics;
 
@@ -27,6 +26,15 @@ namespace GameEngineProject.Source.Core.Types
         /// The actual Camera3D instance used for 3D rendering.
         /// </summary>
         public Camera3D Camera3D = new();
+
+        public Vector3 Position
+        {
+            get
+            {
+                if (Type == RenderType.Camera2D) return Transform.Position;
+                else return Camera3D.position;
+            }
+        }
 
         /// <summary>
         /// Gets the forward vector of the object's orientation.

@@ -1,5 +1,4 @@
 ﻿using GameEngineProject.Source.Core.Types;
-using GameEngineProject.Source.Entities;
 using GameEngineProject.Source.Interfaces;
 using System.Numerics;
 using static GameEngineProject.Source.Core.Utils.MathExtended;

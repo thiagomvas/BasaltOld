@@ -71,7 +71,8 @@ namespace GameEngineProject.Source.Entities
                                 (Raylib.IsKeyDown(KeyboardKey.KEY_D)    || Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT) ? 1 : 0) * MovementSpeed * Time.DeltaTime -   // Move right-left
                                 (Raylib.IsKeyDown(KeyboardKey.KEY_A)    || Raylib.IsKeyDown(KeyboardKey.KEY_LEFT) ? 1 : 0) * MovementSpeed * Time.DeltaTime,
                                 0.0f);
-            gameObject.Transform.Move(Movement);
+
+            //gameObject.Transform.MoveTo(Engine.Camera.Position); // See Issue #19
             if (Raylib.IsKeyDown(KeyboardKey.KEY_R)) gameObject.Transform.MoveTo(Vector3.Zero);
 
             if(Raylib.IsMouseButtonPressed(MouseButton.MOUSE_BUTTON_RIGHT))
@@ -82,9 +83,20 @@ namespace GameEngineProject.Source.Entities
                 obj.Transform.Rotation = gameObject.Transform.Rotation;
             }
 
-            Vector2 mouseCoordsOnWorld = ScreenToWorldPosition(Raylib.GetMousePosition(), Engine.Camera.Camera2D);
 
-            gameObject.Transform.Rotation = LookAtRotation(gameObject.Transform.Position, Conversions.XYToVector3(mouseCoordsOnWorld), Vector3.UnitY);
+
+            Vector3 rotation = new(Raylib.GetMouseDelta().X * 0.05f,                            // Rotation: yaw
+                                   Raylib.GetMouseDelta().Y * 0.05f,                            // Rotation: pitch
+                                   0.0f);                                             // Rotation: roll
+
+            Raylib.UpdateCameraPro(ref Engine.CurrentScene.Cameras[0].Camera3D,
+                            Movement,
+                            rotation,
+                            0);
+
+            //Vector2 mouseCoordsOnWorld = ScreenToWorldPosition(Raylib.GetMousePosition(), Engine.Camera.Camera2D);
+
+            //gameObject.Transform.Rotation = LookAtRotation(gameObject.Transform.Position, Conversions.XYToVector3(mouseCoordsOnWorld), Vector3.UnitY);
         }
     }
 

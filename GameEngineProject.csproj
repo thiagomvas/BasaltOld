@@ -9,11 +9,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Audio\country.mp3" />
+    <None Remove="Resources\Audio\mini1111.xm" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Raylib-cs" Version="4.5.0.4" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Source\Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Audio\country.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Resources\Audio\mini1111.xm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
