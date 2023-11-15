@@ -1,6 +1,6 @@
 using System.Numerics;
 
-namespace GameEngineProject.Source.Core.Types
+namespace Basalt.Source.Core.Types
 {
     public class TransformPositionUpdatedEventArgs : EventArgs
     {

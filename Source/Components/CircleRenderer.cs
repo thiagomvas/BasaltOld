@@ -1,8 +1,8 @@
-using GameEngineProject.Source.Core.Types;
-using GameEngineProject.Source.Core.Utils;
+using Basalt.Source.Core.Types;
+using Basalt.Source.Core.Utils;
 using Raylib_cs;
 using static Raylib_cs.Raylib;
-namespace GameEngineProject.Source.Components
+namespace Basalt.Source.Components
 {
     public class CircleRenderer : Renderer
     {

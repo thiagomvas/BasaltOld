@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace GameEngineProject.Libraries.AutoDocumentation
+namespace Basalt.Libraries.AutoDocumentation
 {
     /// <summary>
     /// Base class for holding documentation info for AutoDocumentation
@@ -38,8 +38,8 @@ namespace GameEngineProject.Libraries.AutoDocumentation
 
             // Add links to different sections or classes in your documentation
             html.AppendLine("<ul>");
-            foreach(var type in types)
-            html.AppendLine($"<li><a href='{RootWebsite}{type.relativePathToDocs.Replace(".md",".html").Replace('\\','/')}'>{type.type.Name}</a></li>");
+            foreach (var type in types)
+                html.AppendLine($"<li><a href='{RootWebsite}{type.relativePathToDocs.Replace(".md", ".html").Replace('\\', '/')}'>{type.type.Name}</a></li>");
             html.AppendLine("</ul>");
             html.AppendLine("</div>");
 
@@ -55,14 +55,14 @@ namespace GameEngineProject.Libraries.AutoDocumentation
             // Members
             html.AppendLine("<section id='members'>");
             html.AppendLine("<h3>Members</h2>");
-            foreach(var member in members) html.AppendLine(member.ToHTML());
+            foreach (var member in members) html.AppendLine(member.ToHTML());
 
             html.AppendLine("</section>");
 
             html.AppendLine("</div>");  // Close content div
             html.AppendLine("</body>");
             html.AppendLine("</html>");
-            return html.ToString(); 
+            return html.ToString();
         }
     }
 

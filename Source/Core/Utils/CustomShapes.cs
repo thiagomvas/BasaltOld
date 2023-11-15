@@ -1,7 +1,7 @@
 using Raylib_cs;
 using System.Numerics;
 
-namespace GameEngineProject.Source.Core.Utils
+namespace Basalt.Source.Core.Utils
 {
     public static class CustomShapes
     {
@@ -14,7 +14,7 @@ namespace GameEngineProject.Source.Core.Utils
         {
             Vector2[] pointsLooped = points.Append(points[0]).ToArray();
             Raylib.DrawLineStrip(pointsLooped, pointsLooped.Length, color);
-            for(int i = 1; i < points.Length - 1; i++)
+            for (int i = 1; i < points.Length - 1; i++)
             {
                 Raylib.DrawTriangle(points[0], points[i], points[i + 1], color);
             }

@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace GameEngineProject.Libraries.AutoDocumentation
+namespace Basalt.Libraries.AutoDocumentation
 {
     /// <summary>
     /// Base class for holding elements for automatic documentation
@@ -54,7 +54,7 @@ namespace GameEngineProject.Libraries.AutoDocumentation
         public string ToHTML()
         {
             StringBuilder html = new StringBuilder();
-            html.AppendLine("<div class='member'>"); 
+            html.AppendLine("<div class='member'>");
             html.Append($"<h2><memberType>{type}</memberType> {Title}</h3>");
             html.AppendLine($"<p>{Summary}</p>");
             html.AppendLine($"<pre><code>{HTMLHighlightKeywords(Signature)}</code></pre>");

@@ -1,10 +1,7 @@
-using GameEngineProject.Source.Core;
-using GameEngineProject.Source.Core.Graphics;
-using GameEngineProject.Source.Core.Types;
-using GameEngineProject.Source.Interfaces;
-using Raylib_cs;
+using Basalt.Source.Core;
+using Basalt.Source.Core.Types;
 
-namespace GameEngineProject.Source.Components
+namespace Basalt.Source.Components
 {
     /// <summary>
     /// Generic renderer component used for rendering Game Objects.
@@ -29,7 +26,7 @@ namespace GameEngineProject.Source.Components
         /// </summary>
         public void OnRender()
         {
-            if(!parent.IsActive) return;
+            if (!parent.IsActive) return;
             Render();
         }
 

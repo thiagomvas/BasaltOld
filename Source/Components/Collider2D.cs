@@ -1,9 +1,8 @@
-using GameEngineProject.Source.Core;
-using GameEngineProject.Source.Core.Graphics;
-using GameEngineProject.Source.Core.Types;
+using Basalt.Source.Core;
+using Basalt.Source.Core.Types;
 using System.Numerics;
 
-namespace GameEngineProject.Source.Components
+namespace Basalt.Source.Components
 {
     public class Collider2D : Component
     {

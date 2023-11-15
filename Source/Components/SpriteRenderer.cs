@@ -1,9 +1,9 @@
-using GameEngineProject.Source.Core.Types;
-using GameEngineProject.Source.Core.Utils;
+using Basalt.Source.Core.Types;
+using Basalt.Source.Core.Utils;
 using Raylib_cs;
 using System.Numerics;
 
-namespace GameEngineProject.Source.Components
+namespace Basalt.Source.Components
 {
     /// <summary>
     /// Renders a texture at a object's position. <br /> <br />
@@ -39,7 +39,7 @@ namespace GameEngineProject.Source.Components
                                                                      transform.Position.Y,
                                                                      texture.Value.width,
                                                                      texture.Value.height),
-                                                       new Vector2(texture.Value.width/2, texture.Value.height/2),
+                                                       new Vector2(texture.Value.width / 2, texture.Value.height / 2),
                                                        MathExtended.GetZRotation(transform.Rotation),
                                                        Color.WHITE);
             else Raylib.DrawCircle((int)transform.Position.X, (int)transform.Position.Y, 25, Color.BLUE);

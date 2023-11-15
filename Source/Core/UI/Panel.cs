@@ -1,8 +1,8 @@
-using GameEngineProject.Source.Core.Types;
+using Basalt.Source.Core.Types;
 using Raylib_cs;
 using System.Numerics;
 
-namespace GameEngineProject.Source.Core.UI
+namespace Basalt.Source.Core.UI
 {
     public class Panel : UIElement
     {

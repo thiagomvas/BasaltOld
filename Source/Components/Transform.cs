@@ -1,11 +1,8 @@
-﻿using GameEngineProject.Source.Core.Types;
-using GameEngineProject.Source.Interfaces;
-using System.Numerics;
-using static GameEngineProject.Source.Core.Utils.MathExtended;
-using static GameEngineProject.Source.Core.Utils.Conversions;
-using GameEngineProject.Source.Core.Utils;
+﻿using System.Numerics;
+using static Basalt.Source.Core.Utils.MathExtended;
+using Basalt.Source.Core.Types;
 
-namespace GameEngineProject.Source.Components
+namespace Basalt.Source.Components
 {
     /// <summary>
     /// Holds the object's positional data, like the Position and Rotation. It is always included in every Game Object
@@ -53,10 +50,10 @@ namespace GameEngineProject.Source.Components
 
         public Transform(Transform other, GameObject parent)
         {
-            this.Position = other.Position;
-            this.Rotation = other.Rotation;
+            Position = other.Position;
+            Rotation = other.Rotation;
             this.parent = parent;
-            this.Children = new List<Transform>(other.Children);
+            Children = new List<Transform>(other.Children);
         }
 
         public Transform(Vector3 position)
@@ -80,7 +77,7 @@ namespace GameEngineProject.Source.Components
         /// <param name="units">The amount to move in each axis</param>
         public void Move(Vector3 units)
         {
-            foreach(Transform t in Children)
+            foreach (Transform t in Children)
                 t.Move(units);
 
             Position += units;
@@ -93,7 +90,7 @@ namespace GameEngineProject.Source.Components
         /// <param name="point">The point to set the position as</param>
         public void MoveTo(Vector3 point)
         {
-            foreach(Transform t in Children)
+            foreach (Transform t in Children)
             {
                 Vector3 offset = t.Position - Position;
                 t.MoveTo(point + offset);

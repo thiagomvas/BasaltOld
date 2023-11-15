@@ -1,8 +1,4 @@
-using GameEngineProject.Source.Components;
-using System.Numerics;
-using System.Security.AccessControl;
-
-namespace GameEngineProject.Source.Core.Types
+namespace Basalt.Source.Core.Types
 {
     /// <summary>
     /// Manages object pooling for GameObjects, allowing efficient reuse of objects.

@@ -2,7 +2,7 @@ using static Raylib_cs.Raylib;
 using Raylib_cs;
 using System.Numerics;
 
-namespace GameEngineProject.Libraries
+namespace Basalt.Libraries
 {
 
     public struct Light
@@ -65,29 +65,29 @@ namespace GameEngineProject.Libraries
         public static void UpdateLightValues(Shader shader, Light light)
         {
             // Send to shader light enabled state and type
-            Raylib.SetShaderValue(
+            SetShaderValue(
                 shader,
                 light.EnabledLoc,
                 light.Enabled ? 1 : 0,
                 ShaderUniformDataType.SHADER_UNIFORM_INT
             );
-            Raylib.SetShaderValue(shader, light.TypeLoc, (int)light.Type, ShaderUniformDataType.SHADER_UNIFORM_INT);
+            SetShaderValue(shader, light.TypeLoc, (int)light.Type, ShaderUniformDataType.SHADER_UNIFORM_INT);
 
             // Send to shader light target position values
-            Raylib.SetShaderValue(shader, light.PosLoc, light.Position, ShaderUniformDataType.SHADER_UNIFORM_VEC3);
+            SetShaderValue(shader, light.PosLoc, light.Position, ShaderUniformDataType.SHADER_UNIFORM_VEC3);
 
             // Send to shader light target position values
-            Raylib.SetShaderValue(shader, light.TargetLoc, light.Target, ShaderUniformDataType.SHADER_UNIFORM_VEC3);
+            SetShaderValue(shader, light.TargetLoc, light.Target, ShaderUniformDataType.SHADER_UNIFORM_VEC3);
 
             // Send to shader light color values
             float[] color = new[]
             {
-                (float)light.Color.r / (float)255,
-                (float)light.Color.g / (float)255,
-                (float)light.Color.b / (float)255,
-                (float)light.Color.a / (float)255
+                light.Color.r / (float)255,
+                light.Color.g / (float)255,
+                light.Color.b / (float)255,
+                light.Color.a / (float)255
             };
-            Raylib.SetShaderValue(shader, light.ColorLoc, color, ShaderUniformDataType.SHADER_UNIFORM_VEC4);
+            SetShaderValue(shader, light.ColorLoc, color, ShaderUniformDataType.SHADER_UNIFORM_VEC4);
         }
     }
 

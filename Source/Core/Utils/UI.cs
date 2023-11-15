@@ -1,9 +1,10 @@
 
-using GameEngineProject.Source.Core.Types;
+using Basalt.Source.Core;
+using Basalt.Source.Core.Types;
 using System.Numerics;
 using static Raylib_cs.Raylib;
 
-namespace GameEngineProject.Source.Core.Utils
+namespace Basalt.Source.Core.Utils
 {
     /// <summary>
     /// Support class for creating UI Elements

@@ -1,7 +1,7 @@
-using GameEngineProject.Libraries;
-using GameEngineProject.Source.Entities;
+using Basalt.Libraries;
+using Basalt.Source.Entities;
 
-namespace GameEngineProject.Source.Core.Types
+namespace Basalt.Source.Core.Types
 {
     public class Scene
     {
@@ -37,7 +37,7 @@ namespace GameEngineProject.Source.Core.Types
         /// </summary>
         /// <param name="obj">The object to be added.</param>
         public void InstantiateGameObject(GameObject obj) => GameObjects.Add(obj);
-        
+
         /// <summary>
         /// Adds an UI Element to this scene.
         /// </summary>

@@ -1,6 +1,6 @@
 using Raylib_cs;
 
-namespace GameEngineProject.Source.Core.Utils
+namespace Basalt.Source.Core.Utils
 {
     public static class Assets
     {
@@ -91,7 +91,7 @@ namespace GameEngineProject.Source.Core.Utils
         /// Gets the Resources Folder used by the engine.
         /// </summary>
         public static string ResourcesFolder { get { return FindTargetFolder("Resources"); } }
-        
+
 
         /// <summary>
         /// Gets the (expected) Assets folder used by the engine.

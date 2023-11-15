@@ -1,9 +1,8 @@
-using GameEngineProject.Source.Core;
-using GameEngineProject.Source.Core.Graphics;
-using GameEngineProject.Source.Core.Types;
-using GameEngineProject.Source.Interfaces;
+using Basalt.Source.Core;
+using Basalt.Source.Core.Types;
+using Basalt.Source.Interfaces;
 
-namespace GameEngineProject.Source.Components
+namespace Basalt.Source.Components
 {
     /// <summary>
     /// Represents a base component that can be attached to a GameObject.

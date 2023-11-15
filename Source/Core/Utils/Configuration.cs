@@ -1,6 +1,6 @@
 using Raylib_cs;
 using static Raylib_cs.Raylib;
-namespace GameEngineProject.Source.Core.Utils
+namespace Basalt.Source.Core.Utils
 {
     public static class Configuration
     {
@@ -15,7 +15,7 @@ namespace GameEngineProject.Source.Core.Utils
             OnBeforeInit?.Invoke();
         }
 
-        public unsafe static void PostInitConfiguration() 
+        public unsafe static void PostInitConfiguration()
         {
             SetTargetFPS(120);
             InitAudioDevice();

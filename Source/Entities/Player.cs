@@ -1,14 +1,11 @@
-using GameEngineProject.Source.Core;
-using GameEngineProject.Source.Core.Graphics;
-using GameEngineProject.Source.Core.Utils;
 using Raylib_cs;
 using System.Numerics;
-using static GameEngineProject.Source.Core.Utils.MathExtended;
-using static GameEngineProject.Source.Core.Utils.Conversions;
-using GameEngineProject.Source.Components;
-using GameEngineProject.Source.Core.Types;
+using Basalt.Source.Components;
+using Basalt.Source.Core.Utils;
+using Basalt.Source.Core;
+using Basalt.Source.Core.Types;
 
-namespace GameEngineProject.Source.Entities
+namespace Basalt.Source.Entities
 {
     /// <summary>
     /// Represents a player in the game.
@@ -67,15 +64,15 @@ namespace GameEngineProject.Source.Entities
 
             if (!gameObject.IsActive) return;
             Movement = new Vector3((Raylib.IsKeyDown(KeyboardKey.KEY_W) || Raylib.IsKeyDown(KeyboardKey.KEY_UP) ? 1 : 0) * MovementSpeed * Time.DeltaTime -      // Move forward-backward
-                                (Raylib.IsKeyDown(KeyboardKey.KEY_S)    || Raylib.IsKeyDown(KeyboardKey.KEY_DOWN) ? 1 : 0) * MovementSpeed * Time.DeltaTime,
-                                (Raylib.IsKeyDown(KeyboardKey.KEY_D)    || Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT) ? 1 : 0) * MovementSpeed * Time.DeltaTime -   // Move right-left
-                                (Raylib.IsKeyDown(KeyboardKey.KEY_A)    || Raylib.IsKeyDown(KeyboardKey.KEY_LEFT) ? 1 : 0) * MovementSpeed * Time.DeltaTime,
+                                (Raylib.IsKeyDown(KeyboardKey.KEY_S) || Raylib.IsKeyDown(KeyboardKey.KEY_DOWN) ? 1 : 0) * MovementSpeed * Time.DeltaTime,
+                                (Raylib.IsKeyDown(KeyboardKey.KEY_D) || Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT) ? 1 : 0) * MovementSpeed * Time.DeltaTime -   // Move right-left
+                                (Raylib.IsKeyDown(KeyboardKey.KEY_A) || Raylib.IsKeyDown(KeyboardKey.KEY_LEFT) ? 1 : 0) * MovementSpeed * Time.DeltaTime,
                                 0.0f);
 
             //gameObject.Transform.MoveTo(Engine.Camera.Position); // See Issue #19
             if (Raylib.IsKeyDown(KeyboardKey.KEY_R)) gameObject.Transform.MoveTo(Vector3.Zero);
 
-            if(Raylib.IsMouseButtonPressed(MouseButton.MOUSE_BUTTON_RIGHT))
+            if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_BUTTON_RIGHT))
             {
                 var obj = pool.Get();
                 obj.Transform.Position = gameObject.Transform.Position + gameObject.Transform.Forward * 25;

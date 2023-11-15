@@ -1,7 +1,7 @@
-using GameEngineProject.Source.Core.Utils;
+using Basalt.Source.Core.Utils;
 using System.Numerics;
 
-namespace GameEngineProject.Source.Components
+namespace Basalt.Source.Components
 {
     /// <summary>
     /// A component representing the physics properties of a game object, including mass, linear drag, velocity, and acceleration.

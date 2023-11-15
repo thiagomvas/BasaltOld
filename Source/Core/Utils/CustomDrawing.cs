@@ -1,7 +1,7 @@
 using Raylib_cs;
 using System.Numerics;
 
-namespace GameEngineProject.Source.Core.Utils
+namespace Basalt.Source.Core.Utils
 {
     /// <summary>
     /// Extends the Drawing calls from Raylib to accept different parameters

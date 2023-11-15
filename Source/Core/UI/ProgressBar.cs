@@ -1,12 +1,12 @@
-using GameEngineProject.Source.Core.Types;
-using GameEngineProject.Source.Core.Utils;
+using Basalt.Source.Core.Types;
+using Basalt.Source.Core.Utils;
 using Raylib_cs;
 using System.ComponentModel.DataAnnotations;
 using System.Numerics;
 using static Raylib_cs.Raylib;
 
 
-namespace GameEngineProject.Source.Core.UI
+namespace Basalt.Source.Core.UI
 {
     /// <summary>
     /// Represents a progress bar that can be used for visualizing progress or completion.

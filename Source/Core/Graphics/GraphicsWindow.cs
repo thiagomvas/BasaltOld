@@ -1,7 +1,7 @@
-using GameEngineProject.Source.Core.Types;
+using Basalt.Source.Core.Types;
 using Raylib_cs;
 
-namespace GameEngineProject.Source.Core.Graphics
+namespace Basalt.Source.Core.Graphics
 {
     public abstract class GraphicsWindow
     {

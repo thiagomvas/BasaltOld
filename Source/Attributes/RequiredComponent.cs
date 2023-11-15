@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameEngine.Source.Attributes
+namespace Basalt.Source.Attributes
 {
     /// <summary>
     /// Determines which components should be included in the object for this component to work.
@@ -13,7 +13,7 @@ namespace GameEngine.Source.Attributes
     public class RequiredComponentsAttribute : Attribute
     {
         public Type[] RequiredTypes { get; }
-        public RequiredComponentsAttribute(params Type[] requiredTypes) 
+        public RequiredComponentsAttribute(params Type[] requiredTypes)
         {
             RequiredTypes = requiredTypes;
         }

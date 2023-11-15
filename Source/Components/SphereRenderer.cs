@@ -1,5 +1,5 @@
 using Raylib_cs;
-namespace GameEngineProject.Source.Components
+namespace Basalt.Source.Components
 {
     public class SphereRenderer : Renderer
     {

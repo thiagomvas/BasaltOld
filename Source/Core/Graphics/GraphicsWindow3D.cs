@@ -1,15 +1,11 @@
-using GameEngineProject.Source.Core.Types;
 using static Raylib_cs.Raylib;
 using Raylib_cs;
 using System.Numerics;
-using GameEngineProject.Source.Core.Utils;
-using System;
-using System.Text;
-using GameEngineProject.Libraries;
-using System.Runtime.InteropServices;
-using GameEngineProject.Source.Components;
+using Basalt.Source.Core.Utils;
+using Basalt.Source.Core.Types;
+using Basalt.Source.Components;
 
-namespace GameEngineProject.Source.Core.Graphics
+namespace Basalt.Source.Core.Graphics
 {
     public class GraphicsWindow3D : GraphicsWindow
     {
@@ -39,11 +35,11 @@ namespace GameEngineProject.Source.Core.Graphics
                 UpdateMusicStream(music);                                               // Temporary until proper audio system
 
 
-                CallOnRedraw(); 
+                CallOnRedraw();
 
 
                 // Testing purposes
-                if(IsKeyPressed(KeyboardKey.KEY_K))
+                if (IsKeyPressed(KeyboardKey.KEY_K))
                 {
                     cubeSize++;
                     cubes.Clear();
@@ -78,7 +74,7 @@ namespace GameEngineProject.Source.Core.Graphics
 
                     DrawModel(plane, Vector3.Zero - Vector3.UnitY * 5, 1, Color.WHITE);
                     int renders = 0;
-                    foreach(var obj in Engine.CurrentScene.GameObjects)
+                    foreach (var obj in Engine.CurrentScene.GameObjects)
                     {
                         if (obj.Renderer != null && PassByCulling(cameraObject, obj))
                         {
@@ -91,7 +87,7 @@ namespace GameEngineProject.Source.Core.Graphics
                     DrawText($"{renders} rendered", 20, 100, 15, Color.GREEN);
                     DrawText($"Camera: {cameraObject.Camera3D.position}", 20, 140, 15, Color.GREEN);
                     CallRenderUI();
-                    foreach(UIElement elem in Engine.CurrentScene.UI)
+                    foreach (UIElement elem in Engine.CurrentScene.UI)
                     {
                         elem.Render();
                     }

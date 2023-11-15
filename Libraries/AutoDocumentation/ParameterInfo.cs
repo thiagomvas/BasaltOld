@@ -1,4 +1,4 @@
-﻿namespace GameEngineProject.Libraries.AutoDocumentation
+﻿namespace Basalt.Libraries.AutoDocumentation
 {
     /// <summary>
     /// Base class for holding data about parameters for automatic documentation

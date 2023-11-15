@@ -1,18 +1,16 @@
-﻿using GameEngineProject.Source.Components;
-using GameEngineProject.Source.Core.Types;
-using GameEngineProject.Source.Core.Utils;
-using GameEngineProject.Source.Entities;
+﻿using Basalt.Source.Components;
+using Basalt.Source.Core.Types;
+using Basalt.Source.Core.Utils;
 using Raylib_cs;
-using System.Numerics;
 using static Raylib_cs.Raylib;
 
-namespace GameEngineProject.Source.Core.Graphics
+namespace Basalt.Source.Core.Graphics
 {
     public class GraphicsWindow2D : GraphicsWindow
     {
         public override void Init(int Width, int Height, Camera cameraObject)
         {
-            Debug.Setup(); 
+            Debug.Setup();
             SetConfigFlags(ConfigFlags.FLAG_WINDOW_RESIZABLE);
             SetConfigFlags(ConfigFlags.FLAG_WINDOW_MAXIMIZED);
 
@@ -25,7 +23,7 @@ namespace GameEngineProject.Source.Core.Graphics
 
             foreach (var obj in Globals.GameObjectsOnScene)
             {
-                if (obj.TryGetComponent<Renderer>(out Renderer rend)) RenderWorldSpace += rend.OnRender;
+                if (obj.TryGetComponent(out Renderer rend)) RenderWorldSpace += rend.OnRender;
             }
 
 
@@ -45,7 +43,7 @@ namespace GameEngineProject.Source.Core.Graphics
                 ClearBackground(BackgroundColor);
 
                 BeginMode2D(cameraObject.Camera2D); // Setting the camera view | Anything drawn inside Mode2D will be affected by the camera's POV
-           
+
                 CallRenderWorldSpace();
                 EndMode2D();
 

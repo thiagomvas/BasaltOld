@@ -1,11 +1,11 @@
 using System.Numerics;
-using static GameEngineProject.Source.Core.Utils.UI;
+using static Basalt.Source.Core.Utils.UI;
 using Raylib_cs;
 using System.Numerics;
 using static Raylib_cs.Raylib;
-using GameEngineProject.Source.Core.Types;
+using Basalt.Source.Core.Types;
 
-namespace GameEngineProject.Source.Core.UI
+namespace Basalt.Source.Core.UI
 {
     /// <summary>
     /// Represents a UI button element.

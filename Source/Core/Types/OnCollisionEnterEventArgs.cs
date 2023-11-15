@@ -1,6 +1,6 @@
 using System.Numerics;
 
-namespace GameEngineProject.Source.Core.Types
+namespace Basalt.Source.Core.Types
 {
     public class OnCollisionEnterEventArgs : EventArgs
     {
@@ -11,7 +11,7 @@ namespace GameEngineProject.Source.Core.Types
 
         public OnCollisionEnterEventArgs(GameObject collision)
         {
-            this.Collision = collision;
+            Collision = collision;
         }
     }
 }

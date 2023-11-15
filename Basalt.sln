@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameEngineProject", "GameEngineProject.csproj", "{2B175C2E-9BF6-4A4B-9C3A-EF98618BEC27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basalt", "Basalt.csproj", "{2B175C2E-9BF6-4A4B-9C3A-EF98618BEC27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

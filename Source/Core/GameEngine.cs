@@ -1,15 +1,13 @@
-using GameEngineProject.Libraries;
-using GameEngineProject.Source.Components;
-using GameEngineProject.Source.Core.Graphics;
-using GameEngineProject.Source.Core.Types;
-using GameEngineProject.Source.Core.UI;
-using GameEngineProject.Source.Core.Utils;
-using GameEngineProject.Source.Entities;
+using Basalt.Libraries;
+using Basalt.Source.Components;
+using Basalt.Source.Core.Graphics;
+using Basalt.Source.Core.Types;
+using Basalt.Source.Core.UI;
+using Basalt.Source.Entities;
 using Raylib_cs;
 using System.Numerics;
-using static GameEngineProject.Source.Core.Globals;
 
-namespace GameEngineProject.Source.Core
+namespace Basalt.Source.Core
 {
     public static partial class Engine
     {

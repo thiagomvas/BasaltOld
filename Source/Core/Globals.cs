@@ -1,9 +1,7 @@
-using GameEngineProject.Source.Components;
-using GameEngineProject.Source.Core.Types;
-using GameEngineProject.Source.Interfaces;
-using Raylib_cs;
+using Basalt.Source.Core.Types;
+using Basalt.Source.Interfaces;
 
-namespace GameEngineProject.Source.Core
+namespace Basalt.Source.Core
 {
     public static class Globals
     {

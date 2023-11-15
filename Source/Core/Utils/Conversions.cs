@@ -1,8 +1,8 @@
-using GameEngineProject.Source.Core.Types;
+using Basalt.Source.Core.Types;
 using System.Numerics;
 using System.Reflection;
 
-namespace GameEngineProject.Source.Core.Utils
+namespace Basalt.Source.Core.Utils
 {
     public static class Conversions
     {
@@ -39,10 +39,10 @@ namespace GameEngineProject.Source.Core.Utils
             string text = obj.GetType().Name;
             text += $"\n    IsActive:{obj.IsActive}";
             text += "\n    Components:\n";
-            foreach(var component in obj.Components)
+            foreach (var component in obj.Components)
             {
                 text += "        -" + component.GetType().Name + "\n";
-                foreach(var field in component.GetType().GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic))
+                foreach (var field in component.GetType().GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic))
                 {
                     text += $"            {field.Name}: {field.GetValue(component)}\n";
                 }

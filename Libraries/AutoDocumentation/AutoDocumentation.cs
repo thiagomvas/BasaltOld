@@ -1,9 +1,7 @@
-using GameEngineProject.Source.Components;
 using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
-namespace GameEngineProject.Libraries.AutoDocumentation
+namespace Basalt.Libraries.AutoDocumentation
 {
 
     public static class AutoDocumentation
@@ -20,9 +18,9 @@ namespace GameEngineProject.Libraries.AutoDocumentation
             typesFound.Clear();
             FetchAllTypes(SourceDirectory, "");
             StringBuilder sb = new();
-            foreach(var type in typesFound)
+            foreach (var type in typesFound)
             {
-                sb.AppendLine($" - [{type.type.Name}]({GithubPagesLink.Replace('\\','/')}{type.relativePathToDocs.Replace('\\', '/').Replace(".md",".html")})");
+                sb.AppendLine($" - [{type.type.Name}]({GithubPagesLink.Replace('\\', '/')}{type.relativePathToDocs.Replace('\\', '/').Replace(".md", ".html")})");
             }
             return sb.ToString();
         }
@@ -42,7 +40,7 @@ namespace GameEngineProject.Libraries.AutoDocumentation
                 string documentation = "# " + type.type.Name + "\n";
                 string text = File.ReadAllText(type.originalFilePath);
                 var lines = text.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
-             
+
                 foreach (var member in type.members)
                 {
                     ExtractSummary(lines, member);
@@ -52,8 +50,8 @@ namespace GameEngineProject.Libraries.AutoDocumentation
 
 
                 }
-            //Console.WriteLine(type.ToHTML(typesFound, GithubPagesLink));
-            WriteTextToFile(type.ToHTML(typesFound, GithubPagesLink), Path.Combine(DocsRootDirectory, type.relativePathToDocs.Replace(".md", ".html")));
+                //Console.WriteLine(type.ToHTML(typesFound, GithubPagesLink));
+                WriteTextToFile(type.ToHTML(typesFound, GithubPagesLink), Path.Combine(DocsRootDirectory, type.relativePathToDocs.Replace(".md", ".html")));
             }
         }
 
@@ -130,7 +128,7 @@ namespace GameEngineProject.Libraries.AutoDocumentation
                 // Skip specific folders (e.g., "obj", "bin", ".vs")
                 if (!ShouldSkipFolder(subdirectoryName))
                 {
-                    var path = Path.Combine(DocsRootDirectory, Path.Combine(currentPath,subdirectoryName));
+                    var path = Path.Combine(DocsRootDirectory, Path.Combine(currentPath, subdirectoryName));
                     if (!Directory.Exists(path)) Directory.CreateDirectory(path);
                     ReflectFolders(subdirectory, Path.Combine(currentPath, subdirectoryName));
                 }
@@ -182,7 +180,7 @@ namespace GameEngineProject.Libraries.AutoDocumentation
 
             typesFound = typesFound.GroupBy(x => x.type).Select(y => y.First()).OrderBy(e => e.type.Name).ToList();
 
-            foreach(var t in typesFound)
+            foreach (var t in typesFound)
             {
                 t.members = ClassDoc(t.type, typesFound);
             }
@@ -237,7 +235,7 @@ namespace GameEngineProject.Libraries.AutoDocumentation
                 if (getMethod != null)
                 {
                     string getText = $"{(getMethod.IsPublic ? "public" : "private")} get;";
-                    string setText = $"{(setMethod != null ? (setMethod.IsPublic ? "public " : "private ") : "")}set;";
+                    string setText = $"{(setMethod != null ? setMethod.IsPublic ? "public " : "private " : "")}set;";
                     doc.Signature = $"{(getMethod.IsPublic ? "public" : "private")} {property.PropertyType.Name} {property.Name} {{ {getText} {setText} }}";
                     doc.BasicSignature = $"{(getMethod.IsPublic ? "public" : "private")} {FormatTypes(property.PropertyType.Name)} {property.Name}";
                 }
@@ -263,7 +261,7 @@ namespace GameEngineProject.Libraries.AutoDocumentation
                 if (method.GetBaseDefinition() != method) sig.Append("override ");
                 sig.Append($"{FormatTypes(method.ReturnType.Name)} ");
                 sig.Append($"{method.Name}(");
-          
+
                 var parameters = method.GetParameters();
                 foreach (var param in parameters)
                 {
@@ -297,7 +295,7 @@ namespace GameEngineProject.Libraries.AutoDocumentation
         private static bool BlacklistedMethod(MethodInfo method)
         {
             string[] blacklist = new string[] { "get_", "set_", "add_", "remove_" };
-            foreach (string black in blacklist) if(method.Name.Contains(black)) return true;
+            foreach (string black in blacklist) if (method.Name.Contains(black)) return true;
             return false;
         }
         public static bool IsNullable<T>(T? t) where T : struct { return true; }
@@ -310,8 +308,8 @@ namespace GameEngineProject.Libraries.AutoDocumentation
                 {"Boolean", "bool"},
                 {"String", "string" },
                 {"Void", "void" },
-                {"Int32", "int" },     
-                {"Int64", "long" },    
+                {"Int32", "int" },
+                {"Int64", "long" },
                 {"Decimal", "decimal"},
                 {"Char", "char"},
                 {"EventHandler`1", "EventHandler" },

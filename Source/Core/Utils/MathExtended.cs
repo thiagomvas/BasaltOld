@@ -1,7 +1,7 @@
 using Raylib_cs;
 using System.Numerics;
 
-namespace GameEngineProject.Source.Core.Utils
+namespace Basalt.Source.Core.Utils
 {
     /// <summary>
     /// A support math class with more methods and functions.
@@ -50,7 +50,7 @@ namespace GameEngineProject.Source.Core.Utils
         /// <returns>The screen position equivalent to that world position</returns>
         public static Vector2 WorldToScreenPosition(Vector2 worldPosition, Camera2D camera)
         {
-            Vector2 topLeftScreenCornerRelativePos = camera.target - new Vector2((int)(Raylib.GetScreenWidth() / 2), (int)(Raylib.GetScreenHeight() / 2));
+            Vector2 topLeftScreenCornerRelativePos = camera.target - new Vector2(Raylib.GetScreenWidth() / 2, Raylib.GetScreenHeight() / 2);
             Vector2 onScreenCoords = worldPosition - topLeftScreenCornerRelativePos;
             return onScreenCoords;
         }
@@ -63,7 +63,7 @@ namespace GameEngineProject.Source.Core.Utils
         /// <returns>The world position equivalent to that screen position</returns>
         public static Vector2 ScreenToWorldPosition(Vector2 position, Camera2D camera)
         {
-            Vector2 topLeftScreenCornerRelativePos = camera.target - new Vector2((int)(Raylib.GetScreenWidth() / 2), (int)(Raylib.GetScreenHeight() / 2));
+            Vector2 topLeftScreenCornerRelativePos = camera.target - new Vector2(Raylib.GetScreenWidth() / 2, Raylib.GetScreenHeight() / 2);
             Vector2 worldPosition = topLeftScreenCornerRelativePos + position;
             return worldPosition;
         }

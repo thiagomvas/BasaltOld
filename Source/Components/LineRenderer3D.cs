@@ -1,9 +1,9 @@
-using GameEngineProject.Source.Core.Types;
+using Basalt.Source.Core.Types;
 using Raylib_cs;
 using System.Numerics;
 using static Raylib_cs.Raylib;
 
-namespace GameEngineProject.Source.Components
+namespace Basalt.Source.Components
 {
     public class LineRenderer3D : Renderer
     {
@@ -15,11 +15,11 @@ namespace GameEngineProject.Source.Components
         public bool RoundCorners = true;
         public override void Render()
         {
-            for(int i = 0; i < Points.Length - 1; i++)
+            for (int i = 0; i < Points.Length - 1; i++)
             {
                 float delta = (EndThickness - StartThickness) / (Points.Length - 1);
                 float startRadius = StartThickness + delta * i;
-                float endRadius = StartThickness + delta * (i+1);
+                float endRadius = StartThickness + delta * (i + 1);
                 DrawCylinderEx(Points[i], Points[i + 1], startRadius, endRadius, LineSides, LineColor);
                 if (RoundCorners) DrawSphere(Points[i + 1], endRadius, Color.WHITE);
             }

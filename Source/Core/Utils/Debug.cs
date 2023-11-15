@@ -1,11 +1,12 @@
 using static Raylib_cs.Raylib;
 using System.Numerics;
 using Raylib_cs;
-using GameEngineProject.Source.Components;
-using GameEngineProject.Source.Core.Types;
-using GameEngineProject.Source.Core.UI;
+using Basalt.Source.Core;
+using Basalt.Source.Components;
+using Basalt.Source.Core.Types;
+using Basalt.Source.Core.UI;
 
-namespace GameEngineProject.Source.Core.Utils
+namespace Basalt.Source.Core.Utils
 {
     public static class Debug
     {
@@ -28,7 +29,7 @@ namespace GameEngineProject.Source.Core.Utils
         public static void ToggleDebug() => IsDebugEnabled = !IsDebugEnabled;
 
         private static Label label;
-        
+
         public static void Setup()
         {
             label = new(UI.ScreenLeft + new Vector2(600, 0));
@@ -48,11 +49,11 @@ namespace GameEngineProject.Source.Core.Utils
                 label.Text = "";
                 return;
             }
-            if(SelectedObject != null)
+            if (SelectedObject != null)
             {
                 label.Text = Conversions.StringifyGameObject(SelectedObject);
             }
-                
+
         }
 
         /// <summary>
@@ -63,7 +64,7 @@ namespace GameEngineProject.Source.Core.Utils
         {
             GameObject? nearest = null;
             int i = 0;
-            foreach(var obj in Globals.GameObjectsOnScene)
+            foreach (var obj in Globals.GameObjectsOnScene)
             {
                 float distanceToObject = Vector2.Distance(mousePos, Conversions.XYFromVector3(obj.Transform.Position));
                 if (distanceToObject > MaxSelectionDistance) continue;

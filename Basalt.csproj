@@ -1,26 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
-
   <ItemGroup>
     <None Remove="Resources\Audio\country.mp3" />
     <None Remove="Resources\Audio\mini1111.xm" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Raylib-cs" Version="4.5.0.4" />
   </ItemGroup>
-
   <ItemGroup>
     <Folder Include="Source\Models\" />
   </ItemGroup>
-
   <ItemGroup>
     <Content Include="Resources\Audio\country.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -29,5 +24,4 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
-
 </Project>

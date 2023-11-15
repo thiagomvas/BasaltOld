@@ -1,6 +1,6 @@
-﻿using GameEngineProject.Source.Core.Types;
+﻿using Basalt.Source.Core.Types;
 
-namespace GameEngineProject.Source.Interfaces
+namespace Basalt.Source.Interfaces
 {
     /// <summary>
     /// Base Interface that all components will inherit

@@ -1,10 +1,9 @@
-using GameEngineProject.Source.Core;
-using GameEngineProject.Source.Core.Types;
-using GameEngineProject.Source.Core.Utils;
+using Basalt.Source.Core.Types;
+using Basalt.Source.Core.Utils;
 using Raylib_cs;
 using System.Numerics;
 
-namespace GameEngineProject.Source.Components
+namespace Basalt.Source.Components
 {/// <summary>
  /// Represents a 2D circle collider used for collision detection and resolution.
  /// </summary>
@@ -21,7 +20,7 @@ namespace GameEngineProject.Source.Components
         /// <param name="gameObject">The GameObject to which this collider is attached.</param>
         public override void Start(GameObject gameObject)
         {
-            if (gameObject.TryGetComponent<SpriteRenderer>(out SpriteRenderer renderer))
+            if (gameObject.TryGetComponent(out SpriteRenderer renderer))
             {
                 // Calculate the radius based on the sprite's dimensions.
                 Radius = (renderer.texture.Value.width + renderer.texture.Value.height) / 4;
@@ -38,7 +37,7 @@ namespace GameEngineProject.Source.Components
             base.CheckCollision(other);
             Vector2 direction = Conversions.XYFromVector3(parent.Transform.Position - other.Transform.Position);
             var distance = direction.Length();
-            if (other.TryGetComponent<CircleCollider>(out CircleCollider collider) && distance < Radius + collider.Radius)
+            if (other.TryGetComponent(out CircleCollider collider) && distance < Radius + collider.Radius)
             {
                 InvokeOnCollision(other);
                 SolveCollision(collider);

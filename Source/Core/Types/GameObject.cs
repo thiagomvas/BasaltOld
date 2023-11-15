@@ -1,10 +1,10 @@
-﻿using GameEngine.Source.Attributes;
-using GameEngineProject.Source.Components;
-using GameEngineProject.Source.Core;
-using GameEngineProject.Source.Interfaces;
+﻿using Basalt.Source.Attributes;
+using Basalt.Source.Components;
+using Basalt.Source.Core;
+using Basalt.Source.Interfaces;
 using System.Numerics;
 
-namespace GameEngineProject.Source.Core.Types
+namespace Basalt.Source.Core.Types
 {
     /// <summary>
     /// The Object Class used by the entire engine. It represents any object and it's components that are in any world.

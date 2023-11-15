@@ -1,6 +1,6 @@
 using Raylib_cs;
 
-namespace GameEngineProject.Source.Core.Utils
+namespace Basalt.Source.Core.Utils
 {
     public static class AudioSystem
     {

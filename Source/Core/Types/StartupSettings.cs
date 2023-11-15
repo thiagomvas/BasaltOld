@@ -1,6 +1,6 @@
 using Raylib_cs;
 
-namespace GameEngineProject.Source.Core.Types
+namespace Basalt.Source.Core.Types
 {
     public class StartupSettings
     {

@@ -1,12 +1,7 @@
-using Raylib_cs;
 using System.Numerics;
-using static GameEngineProject.Source.Core.Utils.UI;
-using static GameEngineProject.Source.Core.Utils.Conversions;
-using static Raylib_cs.Raylib;
-using GameEngineProject.Source.Core.Graphics;
-using GameEngineProject.Source.Core;
+using static Basalt.Source.Core.Utils.UI;
 
-namespace GameEngineProject.Source.Core.Types
+namespace Basalt.Source.Core.Types
 {
     public class UIElement
     {

@@ -1,6 +1,6 @@
 using Raylib_cs;
 
-namespace GameEngineProject.Source.Core.Utils
+namespace Basalt.Source.Core.Utils
 {
     /// <summary>
     /// Support class for all time related data.
