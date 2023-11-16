@@ -17,10 +17,13 @@ namespace Basalt.Source.Core
         public static Scene CurrentScene;
 
         public static event Action OnUpdate;
+
+        public static void CallUpdate() => OnUpdate?.Invoke();
         public static void Setup()
         {
             window = new GameWindow3D();
             CurrentScene = Default3DScene();
+            window.Start();
             //window.Init(1000, 1000, CurrentScene.Cameras[0]);
         }
 

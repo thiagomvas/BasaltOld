@@ -9,6 +9,10 @@ namespace Basalt.Source.Core.Graphics
 {
     public class GameWindow3D : GameWindow
     {
+        public override void Start(string name = "Window")
+        {
+            Init(0, 0, Engine.CurrentScene.Cameras[0]); // Temporary Fix
+        }
         public unsafe override void Init(int Width = -1, int Height = -1, Camera cameraObject = null)
         {
             Configuration.PreInitConfiguration();
@@ -30,6 +34,7 @@ namespace Basalt.Source.Core.Graphics
 
             while (!WindowShouldClose())
             {
+                Engine.CallUpdate();
                 SetMusicPan(music, 0.5f + (float)Math.Sin(GetTime()) * 0.5f);           // Temporary until proper audio system
                 UpdateMusicStream(music);                                               // Temporary until proper audio system
 
