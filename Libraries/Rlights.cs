@@ -82,10 +82,10 @@ namespace Basalt.Libraries
             // Send to shader light color values
             float[] color = new[]
             {
-                light.Color.r / (float)255,
-                light.Color.g / (float)255,
-                light.Color.b / (float)255,
-                light.Color.a / (float)255
+                light.Color.R / (float)255,
+                light.Color.G / (float)255,
+                light.Color.B/ (float)255,
+                light.Color.A / (float)255
             };
             SetShaderValue(shader, light.ColorLoc, color, ShaderUniformDataType.SHADER_UNIFORM_VEC4);
         }

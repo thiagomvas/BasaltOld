@@ -44,7 +44,7 @@ namespace Basalt.Source.Entities
         {
             this.gameObject = gameObject;
             id = 0;
-            Engine.window.OnScreenRedraw += OnMovePlayer;
+            Engine.OnUpdate += OnMovePlayer;
             rb = gameObject.GetComponent<Rigidbody>();
 
 

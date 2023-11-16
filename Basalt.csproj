@@ -7,11 +7,16 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="BasaltEditor\**" />
+    <EmbeddedResource Remove="BasaltEditor\**" />
+    <None Remove="BasaltEditor\**" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Resources\Audio\country.mp3" />
     <None Remove="Resources\Audio\mini1111.xm" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Raylib-cs" Version="4.5.0.4" />
+    <PackageReference Include="Raylib-cs" Version="5.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Source\Models\" />

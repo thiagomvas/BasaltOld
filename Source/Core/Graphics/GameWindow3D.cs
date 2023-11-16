@@ -7,21 +7,20 @@ using Basalt.Source.Components;
 
 namespace Basalt.Source.Core.Graphics
 {
-    public class GraphicsWindow3D : GraphicsWindow
+    public class GameWindow3D : GameWindow
     {
         public unsafe override void Init(int Width = -1, int Height = -1, Camera cameraObject = null)
         {
             Configuration.PreInitConfiguration();
             InitWindow(800, 800, "3D Game");
             Configuration.PostInitConfiguration();
-            CallOnResize();
             int cubeSize = 1;
             int cubeWidth = 1;
             Model plane = LoadModelFromMesh(GenMeshPlane(250, 250, 3, 3));
             Model cube = LoadModelFromMesh(GenMeshCube(4, 4, 4));
 
-            plane.materials[0].shader = Assets.LoadedShaders["lighting.fs"];
-            cube.materials[0].shader = Assets.LoadedShaders["lighting.fs"];
+            plane.Materials[0].Shader = Assets.LoadedShaders["lighting.fs"];
+            cube.Materials[0].Shader = Assets.LoadedShaders["lighting.fs"];
 
             List<GameObject> cubes = new();
 
@@ -35,7 +34,6 @@ namespace Basalt.Source.Core.Graphics
                 UpdateMusicStream(music);                                               // Temporary until proper audio system
 
 
-                CallOnRedraw();
 
 
                 // Testing purposes
@@ -60,8 +58,8 @@ namespace Basalt.Source.Core.Graphics
                 // Update basic lighting shader
                 SetShaderValue(
                     Assets.LoadedShaders["lighting.fs"],
-                    Assets.LoadedShaders["lighting.fs"].locs[(int)ShaderLocationIndex.SHADER_LOC_VECTOR_VIEW],
-                    Engine.CurrentScene.Cameras[0].Camera3D.position,
+                    Assets.LoadedShaders["lighting.fs"].Locs[(int)ShaderLocationIndex.SHADER_LOC_VECTOR_VIEW],
+                    Engine.CurrentScene.Cameras[0].Camera3D.Position,
                     ShaderUniformDataType.SHADER_UNIFORM_VEC3);
 
                 BeginDrawing();
@@ -85,8 +83,7 @@ namespace Basalt.Source.Core.Graphics
                     EndMode3D();
                     DrawText($"{Engine.CurrentScene.GameObjects.Count} objects", 20, 60, 15, Color.GREEN);
                     DrawText($"{renders} rendered", 20, 100, 15, Color.GREEN);
-                    DrawText($"Camera: {cameraObject.Camera3D.position}", 20, 140, 15, Color.GREEN);
-                    CallRenderUI();
+                    DrawText($"Camera: {cameraObject.Camera3D.Position}", 20, 140, 15, Color.GREEN);
                     foreach (UIElement elem in Engine.CurrentScene.UI)
                     {
                         elem.Render();
@@ -103,7 +100,7 @@ namespace Basalt.Source.Core.Graphics
 
         bool PassByCulling(Camera origin, GameObject target)
         {
-            if (Vector3.Dot(Vector3.Normalize(origin.Forward), Vector3.Normalize(target.Transform.Position - origin.Camera3D.position)) > 0.5) return true;
+            if (Vector3.Dot(Vector3.Normalize(origin.Forward), Vector3.Normalize(target.Transform.Position - origin.Camera3D.Position)) > 0.5) return true;
             else return false;
 
         }

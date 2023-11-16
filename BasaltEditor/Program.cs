@@ -1,10 +1,14 @@
-﻿namespace BasaltEditor
+﻿using BasaltEditor.Core;
+using System.ComponentModel.DataAnnotations;
+
+namespace BasaltEditor
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, Basalt Editor!");
+            Editor editor = new();
+            editor.Init();
         }
     }
 }

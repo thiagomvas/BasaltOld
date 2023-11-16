@@ -34,12 +34,12 @@ namespace Basalt.Source.Components
         {
             if (!parent.IsActive) return;
             if (texture != null) Raylib.DrawTexturePro(texture.Value,
-                                                       new Rectangle(0, 0, texture.Value.width, texture.Value.height),
+                                                       new Rectangle(0, 0, texture.Value.Width, texture.Value.Height),
                                                        new Rectangle(transform.Position.X,
                                                                      transform.Position.Y,
-                                                                     texture.Value.width,
-                                                                     texture.Value.height),
-                                                       new Vector2(texture.Value.width / 2, texture.Value.height / 2),
+                                                                     texture.Value.Width,
+                                                                     texture.Value.Height),
+                                                       new Vector2(texture.Value.Width / 2, texture.Value.Height / 2),
                                                        MathExtended.GetZRotation(transform.Rotation),
                                                        Color.WHITE);
             else Raylib.DrawCircle((int)transform.Position.X, (int)transform.Position.Y, 25, Color.BLUE);

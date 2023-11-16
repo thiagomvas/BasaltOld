@@ -30,9 +30,6 @@ namespace Basalt.Source.Core.Types
         public UIElement(Vector2 position)
         {
             OriginalPosition = position;
-            Engine.window.RenderUI += Render;
-            Engine.window.RenderUI += Update;
-            Engine.window.OnScreenResize += UpdatePositionOnResize;
         }
 
 

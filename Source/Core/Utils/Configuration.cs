@@ -25,7 +25,7 @@ namespace Basalt.Source.Core.Utils
 
             Assets.LoadShader("C:\\Users\\Thiago\\source\\repos\\GameEngineProject\\Resources\\Shaders\\lighting.vs", "C:\\Users\\Thiago\\source\\repos\\GameEngineProject\\Resources\\Shaders\\lighting.fs");
             // Get some required shader loactions
-            Assets.LoadedShaders["lighting.fs"].locs[(int)ShaderLocationIndex.SHADER_LOC_VECTOR_VIEW] = GetShaderLocation(Assets.LoadedShaders["lighting.fs"], "viewPos");
+            Assets.LoadedShaders["lighting.fs"].Locs[(int)ShaderLocationIndex.SHADER_LOC_VECTOR_VIEW] = GetShaderLocation(Assets.LoadedShaders["lighting.fs"], "viewPos");
 
             // ambient light level
             int ambientLoc = GetShaderLocation(Assets.LoadedShaders["lighting.fs"], "ambient");

@@ -23,7 +23,7 @@ namespace Basalt.Source.Components
             if (gameObject.TryGetComponent(out SpriteRenderer renderer))
             {
                 // Calculate the radius based on the sprite's dimensions.
-                Radius = (renderer.texture.Value.width + renderer.texture.Value.height) / 4;
+                Radius = (renderer.texture.Value.Width + renderer.texture.Value.Height) / 4;
             }
             base.Start(gameObject);
         }

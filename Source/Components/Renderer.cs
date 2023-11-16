@@ -18,7 +18,6 @@ namespace Basalt.Source.Components
         {
             base.Awake(gameObject);
             transform = gameObject.Transform;
-            Engine.window.RenderWorldSpace += OnRender;
         }
 
         /// <summary>
