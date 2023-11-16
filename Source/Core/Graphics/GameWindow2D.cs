@@ -6,7 +6,7 @@ using static Raylib_cs.Raylib;
 
 namespace Basalt.Source.Core.Graphics
 {
-    public class GraphicsWindow2D : GraphicsWindow
+    public class GameWindow2D : GameWindow
     {
         public override void Init(int Width, int Height, Camera cameraObject)
         {
@@ -18,8 +18,8 @@ namespace Basalt.Source.Core.Graphics
 
             // 2D Camera used on the game
             Camera2D defaultCamera = new Camera2D();
-            defaultCamera.rotation = 0.0f;
-            defaultCamera.zoom = 1.0f;
+            defaultCamera.Rotation = 0.0f;
+            defaultCamera.Zoom = 1.0f;
 
             foreach (var obj in Globals.GameObjectsOnScene)
             {
@@ -31,13 +31,11 @@ namespace Basalt.Source.Core.Graphics
 
             while (!WindowShouldClose())
             {
-                if (IsWindowResized()) CallOnResize();
 
                 if (IsKeyPressed(KeyboardKey.KEY_F1)) Debug.ToggleDebug(); // Temporary
                 if (Debug.IsDebugEnabled && IsMouseButtonPressed(MouseButton.MOUSE_BUTTON_LEFT))
                     Debug.SelectedNearestGameObject(GetScreenToWorld2D(GetMousePosition(), cameraObject.Camera2D));
 
-                CallOnRedraw();
 
                 BeginDrawing();
                 ClearBackground(BackgroundColor);
@@ -47,7 +45,6 @@ namespace Basalt.Source.Core.Graphics
                 CallRenderWorldSpace();
                 EndMode2D();
 
-                CallRenderUI();
                 Debug.DrawDebugUI();
 
                 EndDrawing();

@@ -21,7 +21,7 @@ namespace Basalt.Source.Components
         public virtual void Awake(GameObject gameObject)
         {
             parent = gameObject;
-            Engine.window.OnScreenRedraw += OnUpdate;
+            Engine.OnUpdate += OnUpdate;
             Start(gameObject);
         }
 

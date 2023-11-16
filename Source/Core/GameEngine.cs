@@ -12,14 +12,19 @@ namespace Basalt.Source.Core
     public static partial class Engine
     {
         //public static Camera Camera = new(Camera.RenderType.Camera3D);
-        public static GraphicsWindow window;
+        public static Window window;
         //public static List<Light> lights = new();
         public static Scene CurrentScene;
+
+        public static event Action OnUpdate;
+
+        public static void CallUpdate() => OnUpdate?.Invoke();
         public static void Setup()
         {
-            window = new GraphicsWindow3D();
+            window = new GameWindow3D();
             CurrentScene = Default3DScene();
-            window.Init(1000, 1000, CurrentScene.Cameras[0]);
+            window.Start();
+            //window.Init(1000, 1000, CurrentScene.Cameras[0]);
         }
 
         public static Scene Default3DScene()
@@ -74,7 +79,7 @@ namespace Basalt.Source.Core
         //{
         //    int cubeSize = 5;
         //    window = new GraphicsWindow3D();
-        //    Camera.Camera3D.target = new(50, 0, 0);
+        //    Camera.Camera3D.Target = new(50, 0, 0);
         //    GameObject obj = new();
         //    obj.AddComponent<Rigidbody>();
         //    Player player = new(obj);

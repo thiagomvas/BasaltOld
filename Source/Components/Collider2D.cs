@@ -15,13 +15,13 @@ namespace Basalt.Source.Components
         public Collider2D() { }
         public override void Destroy()
         {
-            Engine.window.OnScreenRedraw -= CheckAllCollisions;
+            Engine.OnUpdate -= CheckAllCollisions;
         }
 
         public override void Start(GameObject gameObject)
         {
             base.Start(gameObject);
-            Engine.window.OnScreenRedraw += CheckAllCollisions;
+            Engine.OnUpdate += CheckAllCollisions;
         }
 
         /// <summary>

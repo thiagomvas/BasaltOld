@@ -32,7 +32,7 @@ namespace Basalt.Source.Core.Types
             get
             {
                 if (Type == RenderType.Camera2D) return Transform.Position;
-                else return Camera3D.position;
+                else return Camera3D.Position;
             }
         }
 
@@ -52,7 +52,7 @@ namespace Basalt.Source.Core.Types
                 }
                 else
                 {
-                    return Vector3.Normalize(Camera3D.target - Camera3D.position);
+                    return Vector3.Normalize(Camera3D.Target - Camera3D.Position);
                 }
             }
         }
@@ -74,7 +74,7 @@ namespace Basalt.Source.Core.Types
                 else
                 {
                     float radians = (float)Math.PI / 2;
-                    Quaternion rotationQuaternion = Quaternion.CreateFromAxisAngle(Camera3D.up, radians);
+                    Quaternion rotationQuaternion = Quaternion.CreateFromAxisAngle(Camera3D.Up, radians);
                     Vector3 f = Forward;
                     Vector3 forwardOnXZ = Vector3.Normalize(new(f.X, 0, f.Z));
                     Vector3 dir = Vector3.Transform(forwardOnXZ, rotationQuaternion);
@@ -108,15 +108,15 @@ namespace Basalt.Source.Core.Types
 
             if (type == RenderType.Camera2D)
             {
-                Camera2D.zoom = 1;
-                Camera2D.rotation = 0;
+                Camera2D.Zoom = 1;
+                Camera2D.Rotation = 0;
             }
 
             if (type == RenderType.Camera3D)
             {
-                Camera3D.target = Vector3.UnitX;
-                Camera3D.up = Vector3.UnitY;
-                Camera3D.fovy = 70;
+                Camera3D.Target = Vector3.UnitX;
+                Camera3D.Up = Vector3.UnitY;
+                Camera3D.FovY = 70;
 
             }
 
@@ -128,14 +128,14 @@ namespace Basalt.Source.Core.Types
         {
             if (Type == RenderType.Camera2D)
             {
-                Camera2D.target = Conversions.XYFromVector3(Transform.Position);
-                Camera2D.offset = new(Raylib.GetScreenWidth() / 2, Raylib.GetScreenHeight() / 2);
+                Camera2D.Target = Conversions.XYFromVector3(Transform.Position);
+                Camera2D.Offset = new(Raylib.GetScreenWidth() / 2, Raylib.GetScreenHeight() / 2);
 
             }
             else
             {
-                Camera3D.target = Transform.Position + Transform.Forward;
-                Camera3D.position = Transform.Position;
+                Camera3D.Target = Transform.Position + Transform.Forward;
+                Camera3D.Position = Transform.Position;
             }
         }
 
