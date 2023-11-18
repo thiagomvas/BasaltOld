@@ -1,11 +1,13 @@
-# Basalt Game Engine
+# Basalt
+
+![Basalt Banner](Resources/Images/basaltbannerwide.png)
 
 Basalt is a lightweight and versatile game engine designed for creating games using pure C#. While it currently does not have a visual editor, this feature is in the pipeline for future development.
 
 This is a project currently only being developed by me in my free time, so contributions are always welcome.
 
 ## Getting Started
-To get started with Lush, follow these simple steps:
+To get started with Basalt, follow these simple steps:
 
 1. Clone the repository.
 2. Open a console in the cloned folder.
