@@ -44,5 +44,9 @@ namespace Basalt.Source.Core.Types
         /// <param name="obj">The element to be added.</param>
         public void InstantiateUIElement(UIElement elem) => UI.Add(elem);
 
+        public void InstantiateLight(Light light) => Lights.Add(light);
+
+        public void InstantiateCamera(Camera camera) => Cameras.Add(camera);
+
     }
 }

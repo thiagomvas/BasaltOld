@@ -14,7 +14,7 @@ namespace Basalt.Source.Core
         //public static Camera Camera = new(Camera.RenderType.Camera3D);
         public static Window window;
         //public static List<Light> lights = new();
-        public static Scene CurrentScene;
+        public static Scene CurrentScene = new();
 
         public static event Action OnUpdate;
 
@@ -22,31 +22,33 @@ namespace Basalt.Source.Core
         public static void Setup()
         {
             window = new GameWindow3D();
-            CurrentScene = Default3DScene();
+            Default3DScene();
             window.Start();
             //window.Init(1000, 1000, CurrentScene.Cameras[0]);
         }
 
-        public static Scene Default3DScene()
+        public static void Instantiate(GameObject obj) => CurrentScene.InstantiateGameObject(obj);
+
+        public static void Default3DScene()
         {
             List<GameObject> objects = new();
             List<Light> lights = new();
             GameObject obj = new();
             obj.AddComponent<Rigidbody>();
             Player player = new(obj);
-            objects.Add(obj);
+            CurrentScene.InstantiateGameObject(obj);
 
             GameObject lightsource = new();
             lightsource.Transform.Position = new(0, 0, 50);
             SphereRenderer rend = lightsource.AddComponent<SphereRenderer>();
             rend.Color = Color.GREEN;
             rend.Radius = 2;
-
             var light = lightsource.AddComponent<LightEmitter>();
             light.Color = Color.GREEN;
             light.index = 0;
-            objects.Add(lightsource);
-            lights.Add(light.Source);
+            lightsource.AddComponent<ParticleSystem>();
+            CurrentScene.InstantiateGameObject(lightsource);
+            CurrentScene.InstantiateLight(light.Source);
 
             GameObject lightsource2 = new();
             lightsource2.Transform.Position = new(50, 0, 0);
@@ -56,8 +58,8 @@ namespace Basalt.Source.Core
             var light2 = lightsource2.AddComponent<LightEmitter>();
             light2.Color = Color.RED;
             light2.index = 1;
-            lights.Add(light2.Source);
-            objects.Add(lightsource2);
+            CurrentScene.InstantiateLight(light2.Source);
+            CurrentScene.InstantiateGameObject(lightsource2);
 
             Panel panel = new(new Vector2(-200, 00));
             panel.SetPivot(UIElement.PivotPoint.Right);
@@ -68,11 +70,11 @@ namespace Basalt.Source.Core
             Label label = new(new Vector2(-200, 200));
             label.SetPivot(UIElement.PivotPoint.Right);
 
+            CurrentScene.InstantiateUIElement(panel);
+            CurrentScene.InstantiateUIElement(label);
 
-            Scene scene = new(objects, new() { panel, label }, lights);
-            scene.Cameras.Add(new(Camera.RenderType.Camera3D));
+            CurrentScene.InstantiateCamera(new(Camera.RenderType.Camera3D));
 
-            return scene;
         }
 
         //private static void Example3DSetup()
