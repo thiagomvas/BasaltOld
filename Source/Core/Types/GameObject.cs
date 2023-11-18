@@ -9,7 +9,7 @@ namespace Basalt.Source.Core.Types
     /// <summary>
     /// The Object Class used by the entire engine. It represents any object and it's components that are in any world.
     /// </summary>
-    public class GameObject
+    public class GameObject : ICloneable
     {
         private bool AwakeCalled = false;
         private bool StartCalled = false;
@@ -99,10 +99,27 @@ namespace Basalt.Source.Core.Types
         }
 
         /// <summary>
+        /// Adds a copy of the passed component to this object.
+        /// </summary>
+        /// <param name="component">The component to be added</param>
+        //TODO: Add required components if it has any.
+        public void AddComponent(Component component)
+        {
+            Component c = (Component) component.Clone();
+            c.Awake(this);
+            Components.Add(c);
+
+
+            if (Rigidbody == null && component.GetType().BaseType == typeof(Rigidbody)) Rigidbody = GetComponent<Rigidbody>();
+            if (Renderer == null && component.GetType().BaseType == typeof(Renderer)) Renderer = GetComponent<Renderer>();
+        }
+
+        /// <summary>
         /// Adds a component of type T to this object
         /// </summary>
         /// <typeparam name="T">The component type to be added</typeparam>
         /// <returns>The reference to the component added</returns>
+        [Obsolete("Use AddComponent(Component component) instead")]
         public T AddComponent<T>() where T : Component, new()
         {
             T component = new();
@@ -158,6 +175,10 @@ namespace Basalt.Source.Core.Types
             Globals.GameObjectsOnScene.Remove(this);
         }
 
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 
 }

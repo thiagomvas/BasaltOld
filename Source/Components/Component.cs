@@ -7,7 +7,7 @@ namespace Basalt.Source.Components
     /// <summary>
     /// Represents a base component that can be attached to a GameObject.
     /// </summary>
-    public class Component : IComponent
+    public class Component : IComponent, ICloneable
     {
         /// <summary>
         /// The GameObject to which this component is attached.
@@ -59,6 +59,11 @@ namespace Basalt.Source.Components
         public virtual void Update()
         {
             // Custom update code can be added here.
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
         }
     }
 
