@@ -1,6 +1,7 @@
 ﻿using Basalt.Source.Core;
 using Basalt.Source.Core.Types;
 using Basalt.Source.Interfaces;
+using Basalt.Source.Modules;
 using System.Numerics;
 
 namespace Basalt.Source.Components
@@ -8,7 +9,7 @@ namespace Basalt.Source.Components
     public class ParticleSystem : Component
     {
         // For testing
-        private List<GameObject> particles = new();
+        private List<Particle> particles = new();
         private List<IParticleSystemModule> modules = new();
 
         public void AddModule(IParticleSystemModule module)
@@ -20,12 +21,15 @@ namespace Basalt.Source.Components
         public override void Awake(GameObject gameObject)
         {
             base.Awake(gameObject);
-
+            AddModule(new ParticleSystemEmissionModule(this));
+            TimeOnly now = TimeOnly.FromDateTime(DateTime.Now);
             for (int i = 0; i < 5; i++)
             {
                 GameObject obj = new();
                 obj.Transform.Position = Vector3.UnitX * i * 5;
-                particles.Add(obj);
+                Particle p = new(obj);
+                p.resetAt = now;
+                particles.Add(p);
                 Engine.Instantiate(obj);
             }
             AddComponentToParticles(new SphereRenderer() { Radius = 1 });
@@ -62,7 +66,7 @@ namespace Basalt.Source.Components
         {
             foreach(var particle in particles)
             {
-                particle.AddComponent(component);
+                particle.Object.AddComponent(component);
             }
         }
 

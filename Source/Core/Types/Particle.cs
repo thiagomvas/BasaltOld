@@ -4,7 +4,7 @@ namespace Basalt.Source.Core.Types
     /// <summary>
     /// Used by the ParticleSystem component to keep track of GameObject lifetimes.
     /// </summary>
-    public struct Particle
+    public class Particle
     {
         /// <summary>
         /// The time this particle was last reset since its instantiation.
@@ -16,9 +16,11 @@ namespace Basalt.Source.Core.Types
         /// </summary>
         public GameObject Object;
 
-        public Particle(GameObject @object) : this()
+        public Particle(GameObject @object)
         {
             Object = @object;
         }
+
+        public void SetResetTime(TimeOnly time) => resetAt = time;
     }
 }

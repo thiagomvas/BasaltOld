@@ -177,7 +177,24 @@ namespace Basalt.Source.Core.Types
 
         public object Clone()
         {
-            return this.MemberwiseClone();
+            GameObject clone = (GameObject) this.MemberwiseClone();
+
+            // Because the cloned object and the original object point to the same references, we clone each component individually.
+
+            List<Type> filters = new()
+            {
+                typeof(Rigidbody),
+                typeof(Renderer),
+                typeof(Collider2D)
+            };
+            clone.Components = clone.Components.Where(component => !filters.Contains(component.GetType()))
+                                    .Select(component => (Component) component.Clone())
+                                    .ToList();
+
+            clone.Rigidbody = (Rigidbody)  clone.Rigidbody.Clone();
+            clone.Collider  = (Collider2D) clone.Collider.Clone();
+            clone.Transform = (Transform)  clone.Transform.Clone();
+            return clone;
         }
     }
 
