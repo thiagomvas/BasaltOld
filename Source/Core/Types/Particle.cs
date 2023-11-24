@@ -6,10 +6,11 @@ namespace Basalt.Source.Core.Types
     /// </summary>
     public class Particle
     {
+
         /// <summary>
-        /// The time in seconds this particle was last reset since its instantiation.
+        /// The amount of time in seconds elapsed since it was last reset.
         /// </summary>
-        public float LastResetTimestamp = 0;
+        public float ElapsedSinceReset = float.MaxValue;
 
         /// <summary>
         /// The reference to this particle's object.
@@ -21,6 +22,5 @@ namespace Basalt.Source.Core.Types
             Object = @object;
         }
 
-        public void AddToResetTime(float timestamp) => LastResetTimestamp += timestamp;
     }
 }

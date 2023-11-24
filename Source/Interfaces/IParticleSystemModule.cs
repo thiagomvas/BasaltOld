@@ -11,22 +11,12 @@ namespace Basalt.Source.Interfaces
         /// <summary>
         /// Initializes the particle system module.
         /// </summary>
-        void Initialize(List<Particle> particles);
+        void Initialize(Particle particle);
 
         /// <summary>
         /// Updates the particle system module based on the elapsed time.
         /// </summary>
-        /// <param name="particles">The list of particles in the current Particle System</param>
-        void Update(List<Particle> particles);
-
-        /// <summary>
-        /// Handles any events or actions when the particle system starts and/or is resumed.
-        /// </summary>
-        void OnStart();
-
-        /// <summary>
-        /// Handles any events or actions when the particle system stops and/or pauses.
-        /// </summary>
-        void OnStop();
+        /// <param name="particle">The reference to the particle being modified</param>
+        void Update(Particle particle);
     }
 }
