@@ -3,18 +3,41 @@ using Basalt.Source.Core.Types;
 using Basalt.Source.Interfaces;
 using Basalt.Source.Modules;
 using System.Numerics;
+using Basalt.Source.Core.Utils;
 using Raylib_cs;
 
 namespace Basalt.Source.Components
 {
+    
+    /// <summary>
+    /// Generates and controls particles to create visual effects. Components that inherit <see cref="Component"/> can be added to any particle in this system.
+    /// </summary>
     public class ParticleSystem : Component, IParticleSystem
     {
-        // For testing
+
+        /// <summary>
+        /// How long the simulation will last before it stops if it isn't looping.
+        /// </summary>
+        public float Duration = 5f;
+        
+        /// <summary>
+        /// Whether or not the simulation should loop and run endlessly.
+        /// </summary>
+        public bool Loop = true;
+        
         private List<Particle> particles = new();
         private List<IParticleSystemModule> modules = new();
-        private readonly GameObject _particleObjectBase = new();
+        private bool isPaused = false;
+        private float elapsed;
+        
+        //A base particle object that all objects will clone.
+        private readonly GameObject particleObjectBase = new();
 
 
+        /// <summary>
+        /// Adds an <see cref="IParticleSystemModule"/> to the Particle System.
+        /// </summary>
+        /// <param name="module">The module to add.</param>
         public void AddModule(IParticleSystemModule module)
         {
             modules.Add(module);
@@ -22,7 +45,7 @@ namespace Basalt.Source.Components
 
         public override void Awake(GameObject gameObject)
         {
-            AddModule(new ParticleSystemEmissionModule());
+            AddModule(new ParticleSystemEmissionModule{Emission = ParticleSystemEmissionModule.EmissionMode.Burst});
             for (int i = 0; i < 5; i++)
             {
                 GameObject obj = new();
@@ -51,6 +74,7 @@ namespace Basalt.Source.Components
         /// </summary>
         public void Resume()
         {
+            isPaused = false;
             foreach (IParticleSystemModule module in modules) module.OnStart();
         }
 
@@ -59,6 +83,7 @@ namespace Basalt.Source.Components
         /// </summary>
         public void Stop()
         {
+            isPaused = true;
             foreach (IParticleSystemModule module in modules) module.OnStop();
         }
 
@@ -72,15 +97,26 @@ namespace Basalt.Source.Components
             {
                 particle.Object.AddComponent(component);
             }
-            _particleObjectBase.AddComponent(component);
+            particleObjectBase.AddComponent(component);
 
         }
 
         public override void Update()
         {
-            foreach (IParticleSystemModule module in modules) module.Update(particles);
+            elapsed += Time.DeltaTime;
+            if (!Loop && elapsed >= Duration)
+                return;
+            
+            if(!isPaused && Parent.IsActive)
+                foreach (IParticleSystemModule module in modules) module.Update(particles);
         }
 
+        /// <summary>
+        /// Resizes the Particle System's particle pool.
+        /// </summary>
+        /// <param name="newSize">The new particle pool size.</param>
+        /// <remarks>Changing the amount of particles in the system may change their emission rate in the <see cref="ParticleSystemEmissionModule"/>
+        /// which is always in the system by default. To know the emission rate, simply divide the amount of particles by the lifetime in that module.</remarks>
         public void ResizePool(int newSize)
         {
             if (particles.Count == newSize) return;
@@ -94,7 +130,7 @@ namespace Basalt.Source.Components
                 while(particles.Count < newSize)
                 {
                     GameObject obj = new();
-                    foreach(Component c in _particleObjectBase.Components)
+                    foreach(Component c in particleObjectBase.Components)
                         obj.AddComponent(c);
             
                     Particle p = new(obj);
@@ -103,7 +139,18 @@ namespace Basalt.Source.Components
                     Engine.Instantiate(obj);
                 }
             }
-            
+        }
+
+        /// <summary>
+        /// Tries to get a specific module in the system.
+        /// </summary>
+        /// <param name="moduleType">The type of the module to try to get</param>
+        /// <returns>
+        /// The module if it finds any instance of it, null if it doesnt.
+        /// </returns>
+        public IParticleSystemModule? TryGetModule(Type moduleType)
+        {
+            return modules.FirstOrDefault(x => x.GetType() == moduleType);
         }
     }
 }

@@ -8,36 +8,37 @@ namespace Basalt.Source.Modules
 {
     public class ParticleSystemEmissionModule : IParticleSystemModule
     {
+
+        /// <summary>
+        /// How long each particle will last for before being reset.
+        /// </summary>
         public float ParticleLifetime = 1;
+        
+        /// <summary>
+        /// The emission mode for the system. Use <see cref="EmissionMode.Overtime"/> for continuous recycling and resetting particles
+        /// and <see cref="EmissionMode.Burst"/> for releasing and resetting all the particles at once.
+        /// </summary>
+        public EmissionMode Emission = EmissionMode.Overtime;
 
-        public ParticleSystemEmissionModule()
-        {
-        }
-
-        Random random = new();
-
+        private readonly Random random = Random.Shared;
 
         public void Initialize(List<Particle> particles)
         {
-            for (var i = 0; i < particles.Count; i++)
+            if (Emission == EmissionMode.Overtime)
             {
-                var p = particles[i];
-                float delta = ParticleLifetime / particles.Count;
-                p.LastResetTimestamp = delta * i;
-                Console.WriteLine($"Emission Log: {delta} {i} {p.LastResetTimestamp}");
+                for (var i = 0; i < particles.Count; i++)
+                {
+                    var p = particles[i];
+                    float delta = ParticleLifetime / particles.Count;
+                    p.LastResetTimestamp = delta * i;
+                    p.Object.Transform.Position = new(0, 100000, 0);
+                }
             }
-            Console.WriteLine("Initialize Called");
         }
         
-        public void OnStart()
-        {
-
-        }
-
-        public void OnStop()
-        {
-
-        }
+        public void OnStart(){ }
+        public void OnStop(){ }
+        
 
 
         public void Update(List<Particle> particles)
@@ -55,6 +56,9 @@ namespace Basalt.Source.Modules
                     p.AddToResetTime(ParticleLifetime);
                 }
             }
-        }
+        }        
+        # region Enums
+        public enum EmissionMode { Overtime, Burst }
+        #endregion
     }
 }
