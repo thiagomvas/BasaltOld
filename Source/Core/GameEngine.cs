@@ -34,31 +34,36 @@ namespace Basalt.Source.Core
             List<GameObject> objects = new();
             List<Light> lights = new();
             GameObject obj = new();
-            obj.AddComponent<Rigidbody>();
             Player player = new(obj);
             CurrentScene.InstantiateGameObject(obj);
 
             GameObject lightsource = new();
             lightsource.Transform.Position = new(0, 0, 50);
-            SphereRenderer rend = lightsource.AddComponent<SphereRenderer>();
-            rend.Color = Color.GREEN;
-            rend.Radius = 2;
-            var light = lightsource.AddComponent<LightEmitter>();
-            light.Color = Color.GREEN;
-            light.index = 0;
-            lightsource.AddComponent<ParticleSystem>();
+            lightsource.AddComponent(new SphereRenderer
+            {
+                Color = Color.GREEN,
+                Radius = 2
+            });
+            lightsource.AddComponent(new LightEmitter
+            {
+                Color = Color.GREEN,
+                index = 0
+            });
+            lightsource.AddComponent(new ParticleSystem());
             CurrentScene.InstantiateGameObject(lightsource);
-            CurrentScene.InstantiateLight(light.Source);
 
             GameObject lightsource2 = new();
             lightsource2.Transform.Position = new(50, 0, 0);
-            SphereRenderer rend2 = lightsource2.AddComponent<SphereRenderer>();
-            rend2.Color = Color.RED;
-            rend2.Radius = 2;
-            var light2 = lightsource2.AddComponent<LightEmitter>();
-            light2.Color = Color.RED;
-            light2.index = 1;
-            CurrentScene.InstantiateLight(light2.Source);
+            lightsource2.AddComponent(new SphereRenderer
+            {
+                Color = Color.RED,
+                Radius = 2
+            });
+            lightsource2.AddComponent(new LightEmitter
+            {
+                Color = Color.RED,
+                index = 1
+            });
             CurrentScene.InstantiateGameObject(lightsource2);
 
             Panel panel = new(new Vector2(-200, 00));

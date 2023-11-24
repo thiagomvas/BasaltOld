@@ -15,7 +15,7 @@ namespace Basalt.Source.Core.Utils
             OnBeforeInit?.Invoke();
         }
 
-        public unsafe static void PostInitConfiguration()
+        public static unsafe void PostInitConfiguration()
         {
             SetTargetFPS(120);
             InitAudioDevice();
@@ -23,7 +23,7 @@ namespace Basalt.Source.Core.Utils
             DisableCursor();
 
 
-            Assets.LoadShader("C:\\Users\\Thiago\\source\\repos\\GameEngineProject\\Resources\\Shaders\\lighting.vs", "C:\\Users\\Thiago\\source\\repos\\GameEngineProject\\Resources\\Shaders\\lighting.fs");
+            Assets.LoadShader("C:\\Users\\Thiago\\source\\repos\\Basalt\\Resources\\Shaders\\lighting.vs", "C:\\Users\\Thiago\\source\\repos\\Basalt\\Resources\\Shaders\\lighting.fs");
             // Get some required shader loactions
             Assets.LoadedShaders["lighting.fs"].Locs[(int)ShaderLocationIndex.SHADER_LOC_VECTOR_VIEW] = GetShaderLocation(Assets.LoadedShaders["lighting.fs"], "viewPos");
 

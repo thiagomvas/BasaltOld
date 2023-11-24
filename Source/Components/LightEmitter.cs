@@ -3,6 +3,7 @@ using Basalt.Source.Core.Types;
 using Basalt.Source.Core.Utils;
 using Raylib_cs;
 using System.Numerics;
+using Basalt.Source.Core;
 
 namespace Basalt.Source.Components
 {
@@ -20,12 +21,13 @@ namespace Basalt.Source.Components
                                          Vector3.Zero,
                                          Color,
                                          Assets.LoadedShaders["lighting.fs"]);
+            Engine.CurrentScene.InstantiateLight(Source);
         }
 
         public override void Update()
         {
             base.Update();
-            Source.Position = parent.Transform.Position;
+            Source.Position = Parent.Transform.Position;
             Rlights.UpdateLightValues(Assets.LoadedShaders["lighting.fs"], Source);
         }
 

@@ -25,7 +25,7 @@ namespace Basalt.Source.Components
         /// </summary>
         public void OnRender()
         {
-            if (!parent.IsActive) return;
+            if (!Parent.IsActive) return;
             Render();
         }
 

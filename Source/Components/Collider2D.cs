@@ -29,10 +29,10 @@ namespace Basalt.Source.Components
         /// </summary>
         private void CheckAllCollisions()
         {
-            if (!parent.IsActive) return;
+            if (!Parent.IsActive) return;
             foreach (var obj in Globals.GameObjectsOnScene)
             {
-                if (obj != parent && obj.TryGetComponent(out Collider2D col)) CheckCollision(obj);
+                if (obj != Parent && obj.TryGetComponent(out Collider2D col)) CheckCollision(obj);
             }
         }
 
@@ -42,14 +42,14 @@ namespace Basalt.Source.Components
         /// <param name="other">The other object to check collisions with</param>
         public virtual void CheckCollision(GameObject other)
         {
-            if (!parent.IsActive) return;
+            if (!Parent.IsActive) return;
         }
 
         /// <summary>
         /// The method used to solve the collision (Offset the position so it's not inside the object or do something else)
         /// </summary>
         /// <param name="collided">The object that collided with this</param>
-        public virtual void SolveCollision(Collider2D collided) { if (!parent.IsActive) return; }
+        public virtual void SolveCollision(Collider2D collided) { if (!Parent.IsActive) return; }
 
         /// <summary>
         /// Invokes the OnCollisionEvent event.
@@ -63,7 +63,7 @@ namespace Basalt.Source.Components
         /// <param name="screenPos">The on screen coordinates to use as center</param>
         public virtual void DrawDebugHitbox(Vector2 screenPos)
         {
-            if (!parent.IsActive) return;
+            if (!Parent.IsActive) return;
         }
     }
 }

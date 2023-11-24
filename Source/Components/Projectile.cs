@@ -10,7 +10,7 @@ namespace Basalt.Source.Components
         public override void Update()
         {
             base.Update();
-            parent.Transform.Move(Velocity * Time.DeltaTime * 25);
+            Parent.Transform.Move(Velocity * Time.DeltaTime * 25);
         }
     }
 }

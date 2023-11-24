@@ -35,7 +35,7 @@ namespace Basalt.Source.Components
         public override void CheckCollision(GameObject other)
         {
             base.CheckCollision(other);
-            Vector2 direction = Conversions.XYFromVector3(parent.Transform.Position - other.Transform.Position);
+            Vector2 direction = Conversions.XYFromVector3(Parent.Transform.Position - other.Transform.Position);
             var distance = direction.Length();
             if (other.TryGetComponent(out CircleCollider collider) && distance < Radius + collider.Radius)
             {
@@ -53,10 +53,10 @@ namespace Basalt.Source.Components
             base.SolveCollision(collided);
             if (collided is CircleCollider circleCollider)
             {
-                Vector2 direction = Conversions.XYFromVector3(parent.Transform.Position - circleCollider.parent.Transform.Position);
+                Vector2 direction = Conversions.XYFromVector3(Parent.Transform.Position - circleCollider.Parent.Transform.Position);
                 var delta = direction.Length();
-                parent.Transform.Move(Conversions.XYToVector3(0.01f * delta * Vector2.Normalize(direction)));
-                circleCollider.parent.Transform.Move(Conversions.XYToVector3(-0.01f * delta * Vector2.Normalize(direction)));
+                Parent.Transform.Move(Conversions.XYToVector3(0.01f * delta * Vector2.Normalize(direction)));
+                circleCollider.Parent.Transform.Move(Conversions.XYToVector3(-0.01f * delta * Vector2.Normalize(direction)));
             }
         }
 

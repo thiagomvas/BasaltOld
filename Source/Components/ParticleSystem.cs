@@ -6,40 +6,39 @@ using System.Numerics;
 
 namespace Basalt.Source.Components
 {
-    public class ParticleSystem : Component
+    public class ParticleSystem : Component, IParticleSystem
     {
         // For testing
         private List<Particle> particles = new();
         private List<IParticleSystemModule> modules = new();
+        private readonly GameObject particleObjectBase = new();
+
 
         public void AddModule(IParticleSystemModule module)
         {
-            module.Initialize();
             modules.Add(module);
         }
 
         public override void Awake(GameObject gameObject)
         {
-            base.Awake(gameObject);
-            AddModule(new ParticleSystemEmissionModule(this));
-            TimeOnly now = TimeOnly.FromDateTime(DateTime.Now);
+            AddModule(new ParticleSystemEmissionModule());
             for (int i = 0; i < 5; i++)
             {
                 GameObject obj = new();
-                obj.Transform.Position = Vector3.UnitX * i * 5;
                 Particle p = new(obj);
-                p.resetAt = now;
                 particles.Add(p);
                 Engine.Instantiate(obj);
             }
             AddComponentToParticles(new SphereRenderer() { Radius = 1 });
+            ResizePool(25);
         }
 
         public override void Start(GameObject gameObject)
         {
             base.Start(gameObject);
+            foreach(IParticleSystemModule module in modules)
+                module.Initialize(particles);
             Resume();
-
         }
 
         /// <summary>
@@ -64,15 +63,44 @@ namespace Basalt.Source.Components
         /// <param name="component">The component to be added.</param>
         public void AddComponentToParticles(Component component)
         {
-            foreach(var particle in particles)
+            foreach (var particle in particles)
             {
                 particle.Object.AddComponent(component);
             }
+            particleObjectBase.AddComponent(component);
+
         }
 
         public override void Update()
         {
             foreach (IParticleSystemModule module in modules) module.Update(particles);
+        }
+
+        // TO-DO: Objects arent cloning properly to resize the particles list.
+        public void ResizePool(int newSize)
+        {
+            if (particles.Count == newSize) return;
+            if(particles.Count > newSize)
+            {
+                int delta = particles.Count - newSize;
+                particles.RemoveRange(particles.Count - delta, delta);
+            }
+            else
+            {
+                while(particles.Count < newSize)
+                {
+                    GameObject obj = new();
+                    foreach(Component c in particleObjectBase.Components)
+                        obj.AddComponent(c);
+                    obj.ResyncComponentParents();
+            
+                    Particle p = new(obj);
+                    particles.Add(p);
+                    
+                    Engine.Instantiate(obj);
+                }
+            }
+            
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Basalt.Source.Interfaces
         /// <summary>
         /// Initializes the particle system module.
         /// </summary>
-        void Initialize();
+        void Initialize(List<Particle> particles);
 
         /// <summary>
         /// Updates the particle system module based on the elapsed time.

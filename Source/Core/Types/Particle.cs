@@ -7,9 +7,9 @@ namespace Basalt.Source.Core.Types
     public class Particle
     {
         /// <summary>
-        /// The time this particle was last reset since its instantiation.
+        /// The time in seconds this particle was last reset since its instantiation.
         /// </summary>
-        public TimeOnly resetAt = TimeOnly.FromDateTime(DateTime.Now);
+        public float LastResetTimestamp = 0;
 
         /// <summary>
         /// The reference to this particle's object.
@@ -21,6 +21,6 @@ namespace Basalt.Source.Core.Types
             Object = @object;
         }
 
-        public void SetResetTime(TimeOnly time) => resetAt = time;
+        public void AddToResetTime(float timestamp) => LastResetTimestamp += timestamp;
     }
 }

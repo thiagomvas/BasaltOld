@@ -45,14 +45,14 @@ namespace Basalt.Source.Components
             Position = position;
             Rotation = rotation;
             Children = children;
-            this.parent = parent;
+            this.Parent = parent;
         }
 
         public Transform(Transform other, GameObject parent)
         {
             Position = other.Position;
             Rotation = other.Rotation;
-            this.parent = parent;
+            this.Parent = parent;
             Children = new List<Transform>(other.Children);
         }
 

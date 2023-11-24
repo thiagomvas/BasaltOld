@@ -32,7 +32,7 @@ namespace Basalt.Source.Components
         }
         public override void Render()
         {
-            if (!parent.IsActive) return;
+            if (!Parent.IsActive) return;
             if (texture != null) Raylib.DrawTexturePro(texture.Value,
                                                        new Rectangle(0, 0, texture.Value.Width, texture.Value.Height),
                                                        new Rectangle(transform.Position.X,

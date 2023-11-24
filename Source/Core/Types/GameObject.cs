@@ -103,10 +103,11 @@ namespace Basalt.Source.Core.Types
         /// </summary>
         /// <param name="component">The component to be added</param>
         //TODO: Add required components if it has any.
+
         public void AddComponent(Component component)
         {
             Component c = (Component) component.Clone();
-            c.Awake(this);
+            c.Initialize(this);
             Components.Add(c);
 
 
@@ -123,7 +124,7 @@ namespace Basalt.Source.Core.Types
         public T AddComponent<T>() where T : Component, new()
         {
             T component = new();
-            component.parent = this;
+            //component.Parent = this;
 
             var requiredComponents = component.GetType().GetCustomAttributes(typeof(RequiredComponentsAttribute), true)
                                                         .Cast<RequiredComponentsAttribute>()
@@ -191,10 +192,19 @@ namespace Basalt.Source.Core.Types
                                     .Select(component => (Component) component.Clone())
                                     .ToList();
 
-            clone.Rigidbody = (Rigidbody)  clone.Rigidbody.Clone();
-            clone.Collider  = (Collider2D) clone.Collider.Clone();
+            if(clone.Rigidbody is not null) clone.Rigidbody = (Rigidbody)  clone.Rigidbody.Clone();
+            if (clone.Collider is not null) clone.Collider  = (Collider2D) clone.Collider.Clone();
             clone.Transform = (Transform)  clone.Transform.Clone();
+
+            clone.ResyncComponentParents();
+
             return clone;
+        }
+
+        public void ResyncComponentParents()
+        {
+            foreach (Component c in Components)
+                c.Parent = this;
         }
     }
 

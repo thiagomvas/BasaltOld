@@ -8,22 +8,28 @@ namespace Basalt.Source.Modules
 {
     public class ParticleSystemEmissionModule : IParticleSystemModule
     {
-        public int ParticleLifetime = 5;
+        public float ParticleLifetime = 1;
         public float BaseSpeed = 5;
-        private readonly ParticleSystem system;
 
-        public ParticleSystemEmissionModule(ParticleSystem system)
+        public ParticleSystemEmissionModule()
         {
-            this.system = system;
-            if(system == null) throw new NullReferenceException(nameof(system));
         }
 
         Random random = new();
-        public void Initialize()
+
+
+        public void Initialize(List<Particle> particles)
         {
-
+            for (var i = 0; i < particles.Count; i++)
+            {
+                var p = particles[i];
+                float delta = ParticleLifetime / particles.Count;
+                p.LastResetTimestamp = delta * i;
+                Console.WriteLine($"Emission Log: {delta} {i} {p.LastResetTimestamp}");
+            }
+            Console.WriteLine("Initialize Called");
         }
-
+        
         public void OnStart()
         {
 
@@ -34,21 +40,24 @@ namespace Basalt.Source.Modules
 
         }
 
+
         public void Update(List<Particle> particles)
         {
-            TimeOnly now = TimeOnly.FromDateTime(DateTime.Now);
-            TimeSpan dur = new(0, 0, ParticleLifetime);
             foreach(Particle p in particles)
             {
-                if(p.resetAt.Add(dur).CompareTo(now) <= 0)
+                if(p.LastResetTimestamp + ParticleLifetime <= Time.TimeSinceStartup)
                 {
                     Vector3 offset = new(random.Next(5), random.Next(5), random.Next(5));
-                    p.Object.Transform.Position = system.parent.Transform.Position + offset;
-                    p.SetResetTime(now);
+                    p.Object.Transform.Position = Vector3.Zero + offset;
+                    p.Object.Transform.Rotation = new((float) random.NextDouble() * 2f - 1, 
+                                                      (float) random.NextDouble() * 2f - 1,
+                                                      (float) random.NextDouble() * 2f - 1,
+                                                      (float) random.NextDouble() * 2f - 1);
+                    p.AddToResetTime(ParticleLifetime);
                 }
                 else
                 {
-                    p.Object.Transform.Move(Vector3.UnitY * Time.DeltaTime * BaseSpeed); // For Testing
+                    p.Object.Transform.Move(p.Object.Transform.Forward * Time.DeltaTime * BaseSpeed); // For Testing
                 }
             }
         }

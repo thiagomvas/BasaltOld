@@ -22,5 +22,7 @@ namespace Basalt.Source.Core.Utils
         /// Values less than 1.0 create slow-motion effects, while values greater than 1.0 create fast-forward effects.
         /// </summary>
         public static float TimeScale = 1f;
+
+        public static float TimeSinceStartup { get { return (float) Raylib.GetTime(); } }
     }
 }
