@@ -9,19 +9,21 @@ namespace Basalt.Source.Components
 {
     public class LightEmitter : Component
     {
+        private static int _index;
         public Light Source;
-        public int index = -1;
         public Color Color = Color.WHITE;
         public LightType Type = LightType.Point;
         public void Setup()
         {
-            Source = Rlights.CreateLight(index,
+            Source = Rlights.CreateLight(_index,
                                          Type,
                                          Vector3.One,
                                          Vector3.Zero,
                                          Color,
                                          Assets.LoadedShaders["lighting.fs"]);
+            _index++;
             Engine.CurrentScene.InstantiateLight(Source);
+            Console.WriteLine($"LIGHT INDEX {_index}");
         }
 
         public override void Update()

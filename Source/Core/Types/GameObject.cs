@@ -196,16 +196,12 @@ namespace Basalt.Source.Core.Types
             if (clone.Collider is not null) clone.Collider  = (Collider2D) clone.Collider.Clone();
             clone.Transform = (Transform)  clone.Transform.Clone();
 
-            clone.ResyncComponentParents();
-
+            foreach(Component c in clone.Components)
+                c.Initialize(clone);
+            
             return clone;
         }
 
-        public void ResyncComponentParents()
-        {
-            foreach (Component c in Components)
-                c.Parent = this;
-        }
     }
 
 }

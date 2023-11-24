@@ -46,8 +46,7 @@ namespace Basalt.Source.Core
             });
             lightsource.AddComponent(new LightEmitter
             {
-                Color = Color.GREEN,
-                index = 0
+                Color = Color.GREEN
             });
             lightsource.AddComponent(new ParticleSystem());
             CurrentScene.InstantiateGameObject(lightsource);
@@ -62,7 +61,6 @@ namespace Basalt.Source.Core
             lightsource2.AddComponent(new LightEmitter
             {
                 Color = Color.RED,
-                index = 1
             });
             CurrentScene.InstantiateGameObject(lightsource2);
 

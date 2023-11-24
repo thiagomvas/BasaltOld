@@ -7,7 +7,7 @@ namespace Basalt.Source.Components
         public Color Color = Color.PINK;
         public override void Render()
         {
-            Raylib.DrawSphereEx(transform.Position, Radius, 5, 5, Color);
+            Raylib.DrawSphereEx(transform.Position, Radius, 8, 8, Color);
         }
     }
 }

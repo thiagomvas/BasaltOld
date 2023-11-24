@@ -12,13 +12,14 @@ namespace Basalt.Source.Components
         /// <summary>
         /// The GameObject to which this component is attached.
         /// </summary>
-        public GameObject Parent;
+        public GameObject Parent { get; private set; }
 
         public void Initialize(GameObject parent)
         {
             Parent = parent;
             Engine.OnUpdate += OnUpdate;
             Awake(parent);
+            Start(parent);
         }
         
         /// <summary>
@@ -27,7 +28,6 @@ namespace Basalt.Source.Components
         /// <param name="gameObject">The GameObject to which this component is attached.</param>
         public virtual void Awake(GameObject gameObject)
         {
-            Start(gameObject);
             
         }
 

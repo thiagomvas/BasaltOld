@@ -39,23 +39,6 @@ namespace Basalt.Source.Components
             Position = Vector3.Zero;
             Rotation = Quaternion.Identity;
         }
-
-        public Transform(Vector3 position, Quaternion rotation, List<Transform> children, GameObject? parent = null)
-        {
-            Position = position;
-            Rotation = rotation;
-            Children = children;
-            this.Parent = parent;
-        }
-
-        public Transform(Transform other, GameObject parent)
-        {
-            Position = other.Position;
-            Rotation = other.Rotation;
-            this.Parent = parent;
-            Children = new List<Transform>(other.Children);
-        }
-
         public Transform(Vector3 position)
         {
             Position = position;
