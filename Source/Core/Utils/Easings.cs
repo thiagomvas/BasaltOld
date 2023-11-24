@@ -5,7 +5,41 @@ namespace Basalt.Source.Core.Utils
     public static class Easings
     {
         public enum EasingType { Linear, InQuad, OutQuad, InOutQuad, InCubic, OutCubic, InOutCubic, InQuart, OutQuart, InOutQuart, InQuint, OutQuint, InOutQuint }
-        
+
+        public static T GetEasing<T>(EasingType type, T t) where T : INumber<T>
+        {
+            switch (type)
+            {
+                case EasingType.Linear:
+                    return Linear(t);
+                case EasingType.InQuad:
+                    return InQuad(t);
+                case EasingType.OutQuad:
+                    return OutQuad(t);
+                case EasingType.InOutQuad:
+                    return InOutQuad(t);
+                case EasingType.InCubic:
+                    return InCubic(t);
+                case EasingType.OutCubic:
+                    return OutCubic(t);
+                case EasingType.InOutCubic:
+                    return InOutCubic(t);
+                case EasingType.InQuart:
+                    return InQuart(t);
+                case EasingType.OutQuart:
+                    return OutQuart(t);
+                case EasingType.InOutQuart:
+                    return InOutQuart(t);
+                case EasingType.InQuint:
+                    return InQuint(t);
+                case EasingType.OutQuint:
+                    return OutQuint(t);
+                case EasingType.InOutQuint:
+                    return InOutQuint(t);
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
+            }
+        }
         
         public static T Two<T>(this T t) where T : INumber<T> => T.One + T.One;
         public static T Linear<T>(T t) where T : INumber<T> => t;
