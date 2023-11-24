@@ -12,7 +12,7 @@ namespace Basalt.Source.Core.Graphics
         public unsafe override void Start(string name = "Window")
         {
             Configuration.PreInitConfiguration();
-            InitWindow(800, 800, "3D Game");
+            InitWindow(1920, 1080, "3D Game");
             Configuration.PostInitConfiguration();
 
             Camera cameraObject = Engine.CurrentScene.Cameras[0];

@@ -6,6 +6,7 @@ using Basalt.Source.Core.UI;
 using Basalt.Source.Entities;
 using Raylib_cs;
 using System.Numerics;
+using Basalt.Source.Modules;
 
 namespace Basalt.Source.Core
 {
@@ -48,7 +49,27 @@ namespace Basalt.Source.Core
             {
                 Color = Color.GREEN
             });
-            lightsource.AddComponent(new ParticleSystem());
+
+            ParticleSystem ps = new ParticleSystem
+            {
+                ParticleLifetime = 2.5f,
+                Duration = 0,
+                SpawnRadius = 1,
+            };
+            ps.AddComponentToParticles(new SphereRenderer
+            {
+                Radius = 1,
+                Color = Color.GREEN
+            });
+            ps.ResizePool(25);
+            ps.AddModule(new ParticleSystemConstSpeedModule
+            {
+                Speed = 25f,
+                Dampen =  5f,
+            });
+            
+
+            lightsource.AddComponent(ps);
             CurrentScene.InstantiateGameObject(lightsource);
 
             GameObject lightsource2 = new();

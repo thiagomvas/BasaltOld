@@ -9,8 +9,9 @@ namespace Basalt.Source.Core.Utils
         public static event Action OnDeinitialize;
         public static void PreInitConfiguration()
         {
-            //SetConfigFlags(ConfigFlags.FLAG_FULLSCREEN_MODE);
+            SetConfigFlags(ConfigFlags.FLAG_FULLSCREEN_MODE);
             SetConfigFlags(ConfigFlags.FLAG_MSAA_4X_HINT);
+            SetConfigFlags(ConfigFlags.FLAG_WINDOW_ALWAYS_RUN);
 
             OnBeforeInit?.Invoke();
         }
