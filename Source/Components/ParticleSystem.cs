@@ -4,7 +4,6 @@ using Basalt.Source.Interfaces;
 using Basalt.Source.Modules;
 using System.Numerics;
 using Basalt.Source.Core.Utils;
-using Raylib_cs;
 
 namespace Basalt.Source.Components
 {
@@ -16,6 +15,10 @@ namespace Basalt.Source.Components
     {
 
         /// <summary>
+        /// How long each particle will last for before being reset.
+        /// </summary>
+        public float ParticleLifetime = 5;
+        /// <summary>
         /// How long the simulation will last before it stops if it isn't looping.
         /// </summary>
         public float Duration = 5f;
@@ -24,12 +27,16 @@ namespace Basalt.Source.Components
         /// Whether or not the simulation should loop and run endlessly.
         /// </summary>
         public bool Loop = true;
+
+        public float SpawnRadius = 0;
+
+        public EmissionMode Mode = EmissionMode.Overtime;
         
         private List<Particle> particles = new();
         private List<IParticleSystemModule> modules = new();
         private bool isPaused = false;
         private float elapsed;
-        
+        private readonly Random random = Random.Shared;
         //A base particle object that all objects will clone.
         private readonly GameObject particleObjectBase = new();
 
@@ -45,47 +52,46 @@ namespace Basalt.Source.Components
 
         public override void Awake(GameObject gameObject)
         {
-            AddModule(new ParticleSystemEmissionModule{Emission = ParticleSystemEmissionModule.EmissionMode.Burst});
-            for (int i = 0; i < 5; i++)
-            {
-                GameObject obj = new();
-                Particle p = new(obj);
-                particles.Add(p);
-                Engine.Instantiate(obj);
-            }
-            AddComponentToParticles(new SphereRenderer
-            {
-                Radius = 1,
-                Color = Color.SKYBLUE
-            });
             
-            ResizePool(125);
         }
 
+        public void FixParticleTimings()
+        {
+            float delta = ParticleLifetime / particles.Count;
+            for (int i = 0; i < particles.Count; i++)
+            {
+                particles[i].ElapsedSinceReset = Mode switch
+                {
+                    EmissionMode.Overtime => i * delta,
+                    EmissionMode.Burst => 0,
+                    _ => throw new ArgumentOutOfRangeException()
+                };
+                particles[i].ElapsedSinceReset = i * delta;
+            }
+                
+        }
+        
         public override void Start(GameObject gameObject)
         {
-            foreach(IParticleSystemModule module in modules)
-                module.Initialize(particles);
+            FixParticleTimings();
+            foreach (Particle particle in particles)
+            {
+                //ResetParticle(particle);
+                foreach(IParticleSystemModule module in modules)
+                    module.Initialize(particle);
+            }
             Resume();
         }
 
         /// <summary>
         /// Starts / Resumes the particle system.
         /// </summary>
-        public void Resume()
-        {
-            isPaused = false;
-            foreach (IParticleSystemModule module in modules) module.OnStart();
-        }
+        public void Resume() => isPaused = false;
 
         /// <summary>
         /// Pauses / Stops the particle system.
         /// </summary>
-        public void Stop()
-        {
-            isPaused = true;
-            foreach (IParticleSystemModule module in modules) module.OnStop();
-        }
+        public void Stop() => isPaused = true;
 
         /// <summary>
         /// Clones a component and adds it to all the particles.
@@ -104,11 +110,32 @@ namespace Basalt.Source.Components
         public override void Update()
         {
             elapsed += Time.DeltaTime;
-            if (!Loop && elapsed >= Duration)
+            if (isPaused || !Parent.IsActive || (!Loop && elapsed >= Duration))
                 return;
             
-            if(!isPaused && Parent.IsActive)
-                foreach (IParticleSystemModule module in modules) module.Update(particles);
+            foreach (Particle particle in particles)
+            {
+                if (particle.ElapsedSinceReset >= ParticleLifetime)
+                {
+                    ResetParticle(particle);
+                }
+                
+                foreach(IParticleSystemModule module in modules)
+                    module.Update(particle);
+                
+                particle.ElapsedSinceReset += Time.DeltaTime;
+            }
+        }
+
+        private void ResetParticle(Particle particle)
+        {
+            Vector3 offset = new(random.NextSingle() * SpawnRadius, random.NextSingle() * SpawnRadius, random.NextSingle() * SpawnRadius);
+            particle.Object.Transform.Position = Parent.Transform.Position + offset;
+            particle.Object.Transform.Rotation = new((float)random.NextDouble() * 2f - 1,
+                (float)random.NextDouble() * 2f - 1,
+                (float)random.NextDouble() * 2f - 1,
+                (float)random.NextDouble() * 2f - 1);
+            particle.ElapsedSinceReset = 0;
         }
 
         /// <summary>
@@ -139,6 +166,7 @@ namespace Basalt.Source.Components
                     Engine.Instantiate(obj);
                 }
             }
+            FixParticleTimings();
         }
 
         /// <summary>
@@ -152,5 +180,7 @@ namespace Basalt.Source.Components
         {
             return modules.FirstOrDefault(x => x.GetType() == moduleType);
         }
+        
+        public enum EmissionMode { Overtime, Burst }
     }
 }
