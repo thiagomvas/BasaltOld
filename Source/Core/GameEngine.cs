@@ -39,7 +39,7 @@ namespace Basalt.Source.Core
             CurrentScene.InstantiateGameObject(obj);
 
             GameObject lightsource = new();
-            lightsource.Transform.Position = new(0, 0, 50);
+            lightsource.Transform.Position = new(0, 50, 50);
             lightsource.AddComponent(new SphereRenderer
             {
                 Color = Color.GREEN,
@@ -52,21 +52,15 @@ namespace Basalt.Source.Core
 
             ParticleSystem ps = new ParticleSystem
             {
-                ParticleLifetime = 2.5f,
-                Duration = 0,
-                SpawnRadius = 1,
+                ParticleLifetime = 10,
             };
             ps.AddComponentToParticles(new SphereRenderer
             {
                 Radius = 1,
                 Color = Color.GREEN
             });
-            ps.ResizePool(25);
-            ps.AddModule(new ParticleSystemConstSpeedModule
-            {
-                Speed = 25f,
-                Dampen =  5f,
-            });
+            ps.ResizePool(100);
+            ps.AddModule(new ParticleSystemSpeedOverLifetimeModule());
             
 
             lightsource.AddComponent(ps);

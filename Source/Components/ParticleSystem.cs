@@ -52,7 +52,6 @@ namespace Basalt.Source.Components
 
         public override void Awake(GameObject gameObject)
         {
-            
         }
 
         public void FixParticleTimings()
@@ -66,9 +65,9 @@ namespace Basalt.Source.Components
                     EmissionMode.Burst => 0,
                     _ => throw new ArgumentOutOfRangeException()
                 };
-                particles[i].ElapsedSinceReset = i * delta;
+                particles[i].Lifetime = ParticleLifetime;
             }
-                
+            
         }
         
         public override void Start(GameObject gameObject)
@@ -76,7 +75,6 @@ namespace Basalt.Source.Components
             FixParticleTimings();
             foreach (Particle particle in particles)
             {
-                //ResetParticle(particle);
                 foreach(IParticleSystemModule module in modules)
                     module.Initialize(particle);
             }
@@ -115,7 +113,7 @@ namespace Basalt.Source.Components
             
             foreach (Particle particle in particles)
             {
-                if (particle.ElapsedSinceReset >= ParticleLifetime)
+                if (particle.ElapsedSinceReset >= particle.Lifetime)
                 {
                     ResetParticle(particle);
                 }
@@ -129,13 +127,13 @@ namespace Basalt.Source.Components
 
         private void ResetParticle(Particle particle)
         {
+            particle.ElapsedSinceReset -= particle.Lifetime;
             Vector3 offset = new(random.NextSingle() * SpawnRadius, random.NextSingle() * SpawnRadius, random.NextSingle() * SpawnRadius);
             particle.Object.Transform.Position = Parent.Transform.Position + offset;
             particle.Object.Transform.Rotation = new((float)random.NextDouble() * 2f - 1,
                 (float)random.NextDouble() * 2f - 1,
                 (float)random.NextDouble() * 2f - 1,
                 (float)random.NextDouble() * 2f - 1);
-            particle.ElapsedSinceReset = 0;
         }
 
         /// <summary>
