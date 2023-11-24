@@ -9,7 +9,6 @@ namespace Basalt.Source.Modules
     public class ParticleSystemEmissionModule : IParticleSystemModule
     {
         public float ParticleLifetime = 1;
-        public float BaseSpeed = 5;
 
         public ParticleSystemEmissionModule()
         {
@@ -54,10 +53,6 @@ namespace Basalt.Source.Modules
                                                       (float) random.NextDouble() * 2f - 1,
                                                       (float) random.NextDouble() * 2f - 1);
                     p.AddToResetTime(ParticleLifetime);
-                }
-                else
-                {
-                    p.Object.Transform.Move(p.Object.Transform.Forward * Time.DeltaTime * BaseSpeed); // For Testing
                 }
             }
         }

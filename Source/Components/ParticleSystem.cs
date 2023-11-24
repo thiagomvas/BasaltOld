@@ -3,6 +3,7 @@ using Basalt.Source.Core.Types;
 using Basalt.Source.Interfaces;
 using Basalt.Source.Modules;
 using System.Numerics;
+using Raylib_cs;
 
 namespace Basalt.Source.Components
 {
@@ -11,7 +12,7 @@ namespace Basalt.Source.Components
         // For testing
         private List<Particle> particles = new();
         private List<IParticleSystemModule> modules = new();
-        private readonly GameObject particleObjectBase = new();
+        private readonly GameObject _particleObjectBase = new();
 
 
         public void AddModule(IParticleSystemModule module)
@@ -29,13 +30,17 @@ namespace Basalt.Source.Components
                 particles.Add(p);
                 Engine.Instantiate(obj);
             }
-            AddComponentToParticles(new SphereRenderer() { Radius = 1 });
-            ResizePool(25);
+            AddComponentToParticles(new SphereRenderer
+            {
+                Radius = 1,
+                Color = Color.SKYBLUE
+            });
+            
+            ResizePool(125);
         }
 
         public override void Start(GameObject gameObject)
         {
-            base.Start(gameObject);
             foreach(IParticleSystemModule module in modules)
                 module.Initialize(particles);
             Resume();
@@ -67,7 +72,7 @@ namespace Basalt.Source.Components
             {
                 particle.Object.AddComponent(component);
             }
-            particleObjectBase.AddComponent(component);
+            _particleObjectBase.AddComponent(component);
 
         }
 
@@ -76,7 +81,6 @@ namespace Basalt.Source.Components
             foreach (IParticleSystemModule module in modules) module.Update(particles);
         }
 
-        // TO-DO: Objects arent cloning properly to resize the particles list.
         public void ResizePool(int newSize)
         {
             if (particles.Count == newSize) return;
@@ -90,9 +94,8 @@ namespace Basalt.Source.Components
                 while(particles.Count < newSize)
                 {
                     GameObject obj = new();
-                    foreach(Component c in particleObjectBase.Components)
+                    foreach(Component c in _particleObjectBase.Components)
                         obj.AddComponent(c);
-                    obj.ResyncComponentParents();
             
                     Particle p = new(obj);
                     particles.Add(p);
