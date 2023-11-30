@@ -19,6 +19,11 @@ namespace Basalt.Source.Components
         public Quaternion Rotation { get; set; }
 
         /// <summary>
+        /// This object's current scale.
+        /// </summary>
+        public Vector3 Scale { get; set; } = Vector3.One;
+
+        /// <summary>
         /// Returns a direction vector representing the direction this object is looking at.
         /// </summary>
         public Vector3 Forward { get { return GetForwardVector(Rotation); } }
