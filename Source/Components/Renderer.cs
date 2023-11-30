@@ -1,5 +1,6 @@
 using Basalt.Source.Core;
 using Basalt.Source.Core.Types;
+using Raylib_cs;
 
 namespace Basalt.Source.Components
 {
@@ -12,6 +13,7 @@ namespace Basalt.Source.Components
         /// The parent's transform.
         /// </summary>
         public Transform transform { get; private set; }
+        public Color Color = Color.PINK;
 
 
         public override void Awake(GameObject gameObject)
