@@ -85,7 +85,7 @@ namespace Basalt.Source.Core.Graphics
                     {
                         if (obj.Renderer != null && PassByCulling(cameraObject, obj))
                         {
-                            obj.Renderer.Render();
+                            obj.Renderer.OnRender();
                             renders++;
                         }
                     }
@@ -182,7 +182,7 @@ namespace Basalt.Source.Core.Graphics
                     {
                         if (obj.Renderer != null && PassByCulling(cameraObject, obj))
                         {
-                            obj.Renderer.Render();
+                            obj.Renderer.OnRender();
                             renders++;
                         }
                     }

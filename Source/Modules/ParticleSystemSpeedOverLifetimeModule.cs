@@ -17,7 +17,8 @@ namespace Basalt.Source.Modules
 
         public void Update(Particle particle)
         {
-            float speed = TEasings.GetEasing(Easing,particle.ElapsedSinceReset / particle.Lifetime) *  MathF.Abs(StartSpeed - EndSpeed);
+            float speed = StartSpeed + TEasings.GetEasing(Easing,particle.ElapsedSinceReset / particle.Lifetime) *
+                          (EndSpeed - StartSpeed);
             particle.Object.Transform.Position += particle.Object.Transform.Forward * speed * Time.DeltaTime;
         }
         

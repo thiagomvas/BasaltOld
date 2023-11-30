@@ -7,6 +7,7 @@ using Basalt.Source.Entities;
 using Raylib_cs;
 using System.Numerics;
 using Basalt.Source.Modules;
+using TMath;
 
 namespace Basalt.Source.Core
 {
@@ -59,8 +60,14 @@ namespace Basalt.Source.Core
                 Radius = 1,
                 Color = Color.GREEN
             });
-            ps.ResizePool(100);
-            ps.AddModule(new ParticleSystemSpeedOverLifetimeModule());
+            ps.ResizePool(1000);
+            ps.AddModule(new ParticleSystemSpeedOverLifetimeModule
+            {
+                StartSpeed = 25,
+                EndSpeed = 0,
+                Easing = TEasings.EasingType.InOutQuart
+            });
+            ps.AddModule(new ParticleSystemColorOverLifetimeModule());
             
 
             lightsource.AddComponent(ps);
@@ -85,8 +92,11 @@ namespace Basalt.Source.Core
             panel.Height = 20;
             panel.Color = Color.RED;
 
-            Label label = new(new Vector2(-200, 200));
-            label.SetPivot(UIElement.PivotPoint.Right);
+            Label label = new(new Vector2(0, 50))
+            {
+                Text = "BASALT ENGINE - PARTICLE SYSTEM TEST BRANCH"
+            };
+            label.SetPivot(UIElement.PivotPoint.Top);
 
             CurrentScene.InstantiateUIElement(panel);
             CurrentScene.InstantiateUIElement(label);
