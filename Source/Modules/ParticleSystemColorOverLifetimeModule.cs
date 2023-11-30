@@ -4,8 +4,14 @@ using Raylib_cs;
 
 namespace Basalt.Source.Modules
 {
+    /// <summary>
+    /// Modifies each particle's color over its lifetime.
+    /// </summary>
     public class ParticleSystemColorOverLifetimeModule : IParticleSystemModule
     {
+        /// <summary>
+        /// A list of colors to transition between over the lifetime of the particle.
+        /// </summary>
         public Color[] Colors = {
             Color.RED,
             Color.ORANGE,

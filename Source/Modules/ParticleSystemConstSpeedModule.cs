@@ -5,10 +5,20 @@ using Basalt.Source.Interfaces;
 
 namespace Basalt.Source.Modules
 {
+    /// <summary>
+    /// Moves the particle at a constant speed.
+    /// </summary>
     public class ParticleSystemConstSpeedModule : IParticleSystemModule
     {
+        /// <summary>
+        /// The starting speed for any given particle.
+        /// </summary>
         public float Speed = 20;
-        public float Dampen = 0f;
+
+
+        /// <summary>
+        /// Whether to use Scaled or Unscaled delta time.
+        /// </summary>
         public DeltaTimeMode DeltaTimeScaling = DeltaTimeMode.Scaled;
 
         private float deltaTime
@@ -34,8 +44,7 @@ namespace Basalt.Source.Modules
 
         public void Update(Particle particle)
         {
-            float particleSpeed = Math.Max(0, Speed / (Dampen * particle.ElapsedSinceReset * particle.ElapsedSinceReset + 1));
-            particle.Object.Transform.Position += particle.Object.Transform.Forward * particleSpeed * deltaTime;
+            particle.Object.Transform.Position += particle.Object.Transform.Forward * Speed * deltaTime;
             
         }
         

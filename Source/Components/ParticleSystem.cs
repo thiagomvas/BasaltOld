@@ -28,14 +28,24 @@ namespace Basalt.Source.Components
         /// </summary>
         public bool Loop = true;
 
+        /// <summary>
+        /// Whether or not objects should be randomly rotated when spawned.
+        /// </summary>
         public bool RandomRotation = true;
 
-        public float SpawnRadius = 0;
 
+        /// <summary>
+        /// The maximum distance an object will be from the center of the system when spawned.
+        /// </summary>
+        public float SpawnRadius = 0;
+        
+        /// <summary>
+        /// The emission mode of the system. Burst will spawn all particles at once, Overtime will spawn them over time.
+        /// </summary>
         public EmissionMode Mode = EmissionMode.Overtime;
         
-        private List<Particle> particles = new();
-        private List<IParticleSystemModule> modules = new();
+        private readonly List<Particle> particles = new();
+        private readonly List<IParticleSystemModule> modules = new();
         private bool isPaused = false;
         private float elapsed;
         private readonly Random random = Random.Shared;
@@ -52,10 +62,11 @@ namespace Basalt.Source.Components
             modules.Add(module);
         }
 
-        public override void Awake(GameObject gameObject)
-        {
-        }
 
+        /// <summary>
+        /// Fixes the timings of the particles in the system.
+        /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public void FixParticleTimings()
         {
             float delta = ParticleLifetime / particles.Count;
@@ -186,6 +197,6 @@ namespace Basalt.Source.Components
         }
         
         public enum EmissionMode { Overtime, Burst }
-        public enum EmissionShape { Sphere, Box, Cone, Circle, Rectangle, Line, Point }
+        public enum EmissionShape { Sphere, Box, Cone, Circle, Rectangle, Line, Point } // For a future version.
     }
 }
