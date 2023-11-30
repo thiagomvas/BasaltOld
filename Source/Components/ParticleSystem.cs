@@ -28,6 +28,8 @@ namespace Basalt.Source.Components
         /// </summary>
         public bool Loop = true;
 
+        public bool RandomRotation = true;
+
         public float SpawnRadius = 0;
 
         public EmissionMode Mode = EmissionMode.Overtime;
@@ -131,9 +133,9 @@ namespace Basalt.Source.Components
         {
             particle.ElapsedSinceReset -= particle.Lifetime;
             if(!particle.Object.IsActive) particle.Object.IsActive = true;
-            Vector3 offset = new(random.NextSingle() * SpawnRadius, random.NextSingle() * SpawnRadius, random.NextSingle() * SpawnRadius);
+            Vector3 offset = new((random.NextSingle() * 2 - 1) * SpawnRadius, (random.NextSingle() * 2 - 1) * SpawnRadius, (random.NextSingle() * 2 - 1) * SpawnRadius);
             particle.Object.Transform.Position = Parent.Transform.Position + offset;
-            particle.Object.Transform.Rotation = new((float)random.NextDouble() * 2f - 1,
+            if(RandomRotation) particle.Object.Transform.Rotation = new((float)random.NextDouble() * 2f - 1,
                 (float)random.NextDouble() * 2f - 1,
                 (float)random.NextDouble() * 2f - 1,
                 (float)random.NextDouble() * 2f - 1);
@@ -184,5 +186,6 @@ namespace Basalt.Source.Components
         }
         
         public enum EmissionMode { Overtime, Burst }
+        public enum EmissionShape { Sphere, Box, Cone, Circle, Rectangle, Line, Point }
     }
 }
