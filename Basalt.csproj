@@ -17,6 +17,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Raylib-cs" Version="5.0.0" />
+    <PackageReference Include="TMath" Version="1.1.2" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Source\Models\" />
