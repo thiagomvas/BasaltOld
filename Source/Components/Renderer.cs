@@ -34,7 +34,7 @@ namespace Basalt.Source.Components
         /// <summary>
         /// How the object will be drawn by the GraphicsManager2D.
         /// </summary>
-        public abstract void Render();
+        protected abstract void Render();
 
     }
 }

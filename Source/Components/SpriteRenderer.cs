@@ -30,7 +30,7 @@ namespace Basalt.Source.Components
             base.Awake(gameObject);
             texture = Raylib.LoadTexture(texturePath);
         }
-        public override void Render()
+        protected override void Render()
         {
             if (!Parent.IsActive) return;
             if (texture != null) Raylib.DrawTexturePro(texture.Value,

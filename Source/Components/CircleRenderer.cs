@@ -22,7 +22,7 @@ namespace Basalt.Source.Components
             if (gameObject.TryGetComponent(out CircleCollider col)) Radius = col.Radius;
         }
 
-        public override void Render()
+        protected override void Render()
         {
             CustomDrawing.DrawCircle(Conversions.XYFromVector3(transform.Position), Radius, Color);
         }

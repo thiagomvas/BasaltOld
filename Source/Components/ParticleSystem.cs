@@ -66,6 +66,8 @@ namespace Basalt.Source.Components
                     _ => throw new ArgumentOutOfRangeException()
                 };
                 particles[i].Lifetime = ParticleLifetime;
+                particles[i].Object.IsActive = false;
+
             }
             
         }
@@ -128,6 +130,7 @@ namespace Basalt.Source.Components
         private void ResetParticle(Particle particle)
         {
             particle.ElapsedSinceReset -= particle.Lifetime;
+            if(!particle.Object.IsActive) particle.Object.IsActive = true;
             Vector3 offset = new(random.NextSingle() * SpawnRadius, random.NextSingle() * SpawnRadius, random.NextSingle() * SpawnRadius);
             particle.Object.Transform.Position = Parent.Transform.Position + offset;
             particle.Object.Transform.Rotation = new((float)random.NextDouble() * 2f - 1,
@@ -155,6 +158,7 @@ namespace Basalt.Source.Components
                 while(particles.Count < newSize)
                 {
                     GameObject obj = new();
+                    obj.IsActive = false;
                     foreach(Component c in particleObjectBase.Components)
                         obj.AddComponent(c);
             
