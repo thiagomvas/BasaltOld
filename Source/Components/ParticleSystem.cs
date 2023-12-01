@@ -23,6 +23,11 @@ namespace Basalt.Source.Components
         /// How long the simulation will last before it stops if it isn't looping.
         /// </summary>
         public float Duration = 5f;
+
+        /// <summary>
+        /// How many seconds to wait before starting the simulation.
+        /// </summary>
+        public float StartDelay = 0f;
         
         /// <summary>
         /// Whether or not the simulation should loop and run endlessly.
@@ -38,7 +43,7 @@ namespace Basalt.Source.Components
         /// <summary>
         /// The maximum distance an object will be from the center of the system when spawned.
         /// </summary>
-        public float SpawnRadius = 0;
+        public float SpawnRadius = 1;
         
         /// <summary>
         /// The emission mode of the system. Burst will spawn all particles at once, Overtime will spawn them over time.
@@ -133,9 +138,10 @@ namespace Basalt.Source.Components
 
         public override void Update()
         {
-            elapsed += Time.DeltaTime;
             if (isPaused || !Parent.IsActive || (!Loop && elapsed >= Duration))
                 return;
+            elapsed += Time.DeltaTime;
+            if (elapsed < StartDelay) return;
             
             foreach (Particle particle in particles)
             {
@@ -160,16 +166,21 @@ namespace Basalt.Source.Components
             switch (Shape)
             {
                 case EmissionShape.Sphere:
+                {
                     Vector3 rand = new((random.NextSingle() * 2 - 1) * SpawnRadius,
                         (random.NextSingle() * 2 - 1) * SpawnRadius, (random.NextSingle() * 2 - 1) * SpawnRadius);
                     offset = Vector3.Normalize(rand) * SpawnRadius;
+                }
                     break;
                 case EmissionShape.Box:
+                {
                     offset = new Vector3((random.NextSingle() * 2 - 1) * SpawnRadius,
-                                               (random.NextSingle() * 2 - 1) * SpawnRadius, (random.NextSingle() * 2 - 1) * SpawnRadius);
+                        (random.NextSingle() * 2 - 1) * SpawnRadius, (random.NextSingle() * 2 - 1) * SpawnRadius);
+                }
                     break;
-                case EmissionShape.Cone:
 
+                case EmissionShape.OpenCone:
+                {
                     float angle = random.NextSingle() * MathF.PI * 2;
                     float height = 5;
                     float radius = SpawnRadius;
@@ -181,8 +192,29 @@ namespace Basalt.Source.Components
                     float randomRadius = r * radius * random.NextSingle();
                     float randomHeight = height * r;
 
-                    offset = direction * randomHeight + Vector3.Transform(new Vector3(randomRadius, 0, 0), Quaternion.CreateFromAxisAngle(direction, angle));
+                    offset = direction * randomHeight + Vector3.Transform(new Vector3(randomRadius, 0, 0),
+                        Quaternion.CreateFromAxisAngle(direction, angle));
+                    particle.Object.Transform.Rotation =
+                        MathExtended.LookAtRotation(Vector3.Zero, offset, Vector3.UnitY);
+                }
+                    break;
 
+                case EmissionShape.ClosedCone:
+                {
+                    float angle = random.NextSingle() * MathF.PI * 2;
+                    float height = 5;
+                    float radius = SpawnRadius;
+
+                    Vector3 direction = Parent.Transform.Forward;
+
+                    float r = random.NextSingle();
+
+                    float randomRadius = r * radius * random.NextSingle();
+                    float randomHeight = height * r;
+
+                    offset = direction * randomHeight + Vector3.Transform(new Vector3(randomRadius, 0, 0),
+                        Quaternion.CreateFromAxisAngle(direction, angle));
+                    }
                     break;
                 case EmissionShape.Point:
                     break;
@@ -196,7 +228,7 @@ namespace Basalt.Source.Components
                     (float)random.NextDouble() * 2f - 1,
                     (float)random.NextDouble() * 2f - 1,
                     (float)random.NextDouble() * 2f - 1);
-            else particle.Object.Transform.Rotation = MathExtended.LookAtRotation(Vector3.Zero, FlowDirection, Vector3.UnitY);
+            else if(Shape != EmissionShape.OpenCone) particle.Object.Transform.Rotation = MathExtended.LookAtRotation(Vector3.Zero, FlowDirection, Vector3.UnitY);
         }
 
         /// <summary>
@@ -236,7 +268,7 @@ namespace Basalt.Source.Components
         /// </summary>
         /// <param name="moduleType">The type of the module to try to get</param>
         /// <returns>
-        /// The module if it finds any instance of it, null if it doesnt.
+        /// The module if it finds any instance of it, null if it doesn't.
         /// </returns>
         public IParticleSystemModule? TryGetModule(Type moduleType)
         {
@@ -244,6 +276,6 @@ namespace Basalt.Source.Components
         }
         
         public enum EmissionMode { Overtime, Burst }
-        public enum EmissionShape { Sphere, Box, Cone, Point } 
+        public enum EmissionShape { Sphere, Box, ClosedCone, OpenCone, Point } 
     }
 }
