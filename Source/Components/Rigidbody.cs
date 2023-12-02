@@ -61,7 +61,7 @@ namespace Basalt.Source.Components
             }
 
             // Move the parent object using the updated velocity
-            parent.Transform.Move(Velocity);
+            Parent.Transform.Move(Velocity);
         }
 
         /// <summary>

@@ -9,7 +9,7 @@ namespace Basalt.Source.Core.Types
     /// <summary>
     /// The Object Class used by the entire engine. It represents any object and it's components that are in any world.
     /// </summary>
-    public class GameObject
+    public class GameObject : ICloneable
     {
         private bool AwakeCalled = false;
         private bool StartCalled = false;
@@ -99,14 +99,32 @@ namespace Basalt.Source.Core.Types
         }
 
         /// <summary>
+        /// Adds a copy of the passed component to this object.
+        /// </summary>
+        /// <param name="component">The component to be added</param>
+        //TODO: Add required components if it has any.
+
+        public void AddComponent(Component component)
+        {
+            Component c = (Component) component.Clone();
+            c.Initialize(this);
+            Components.Add(c);
+
+
+            if (Rigidbody == null && component.GetType().BaseType == typeof(Rigidbody)) Rigidbody = GetComponent<Rigidbody>();
+            if (Renderer == null && component.GetType().BaseType == typeof(Renderer)) Renderer = GetComponent<Renderer>();
+        }
+
+        /// <summary>
         /// Adds a component of type T to this object
         /// </summary>
         /// <typeparam name="T">The component type to be added</typeparam>
         /// <returns>The reference to the component added</returns>
+        [Obsolete("Use AddComponent(Component component) instead")]
         public T AddComponent<T>() where T : Component, new()
         {
             T component = new();
-            component.parent = this;
+            //component.Parent = this;
 
             var requiredComponents = component.GetType().GetCustomAttributes(typeof(RequiredComponentsAttribute), true)
                                                         .Cast<RequiredComponentsAttribute>()
@@ -156,6 +174,32 @@ namespace Basalt.Source.Core.Types
         {
             foreach (var component in Components) component.Destroy();
             Globals.GameObjectsOnScene.Remove(this);
+        }
+
+        public object Clone()
+        {
+            GameObject clone = (GameObject) this.MemberwiseClone();
+
+            // Because the cloned object and the original object point to the same references, we clone each component individually.
+
+            List<Type> filters = new()
+            {
+                typeof(Rigidbody),
+                typeof(Renderer),
+                typeof(Collider2D)
+            };
+            clone.Components = clone.Components.Where(component => !filters.Contains(component.GetType()))
+                                    .Select(component => (Component) component.Clone())
+                                    .ToList();
+
+            if(clone.Rigidbody is not null) clone.Rigidbody = (Rigidbody)  clone.Rigidbody.Clone();
+            if (clone.Collider is not null) clone.Collider  = (Collider2D) clone.Collider.Clone();
+            clone.Transform = (Transform)  clone.Transform.Clone();
+
+            foreach(Component c in clone.Components)
+                c.Initialize(clone);
+            
+            return clone;
         }
 
     }

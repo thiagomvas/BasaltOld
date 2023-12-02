@@ -13,7 +13,7 @@ namespace Basalt.Source.Components
         public float StartThickness = 1;
         public float EndThickness = 2;
         public bool RoundCorners = true;
-        public override void Render()
+        protected override void Render()
         {
             for (int i = 0; i < Points.Length - 1; i++)
             {

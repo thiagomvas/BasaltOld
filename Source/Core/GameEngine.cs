@@ -6,6 +6,8 @@ using Basalt.Source.Core.UI;
 using Basalt.Source.Entities;
 using Raylib_cs;
 using System.Numerics;
+using Basalt.Source.Modules;
+using TMath;
 
 namespace Basalt.Source.Core
 {
@@ -14,7 +16,7 @@ namespace Basalt.Source.Core
         //public static Camera Camera = new(Camera.RenderType.Camera3D);
         public static Window window;
         //public static List<Light> lights = new();
-        public static Scene CurrentScene;
+        public static Scene CurrentScene = new();
 
         public static event Action OnUpdate;
 
@@ -22,123 +24,115 @@ namespace Basalt.Source.Core
         public static void Setup()
         {
             window = new GameWindow3D();
-            CurrentScene = Default3DScene();
+            TestScene();
             window.Start();
             //window.Init(1000, 1000, CurrentScene.Cameras[0]);
         }
 
-        public static Scene Default3DScene()
+        public static void Instantiate(GameObject obj) => CurrentScene.InstantiateGameObject(obj);
+
+        public static void TestScene()
         {
             List<GameObject> objects = new();
             List<Light> lights = new();
             GameObject obj = new();
-            obj.AddComponent<Rigidbody>();
             Player player = new(obj);
-            objects.Add(obj);
+            CurrentScene.InstantiateGameObject(obj);
 
             GameObject lightsource = new();
-            lightsource.Transform.Position = new(0, 0, 50);
-            SphereRenderer rend = lightsource.AddComponent<SphereRenderer>();
-            rend.Color = Color.GREEN;
-            rend.Radius = 2;
+            lightsource.Transform.Position = new(0, 5, 50);
+            lightsource.Transform.Rotation = new(0, 1, 1, 1);
+            lightsource.AddComponent(new SphereRenderer
+            {
+                Color = Color.GREEN,
+                Radius = 2
+            });
+            lightsource.AddComponent(new LightEmitter
+            {
+                Color = Color.GREEN
+            });
 
-            var light = lightsource.AddComponent<LightEmitter>();
-            light.Color = Color.GREEN;
-            light.index = 0;
-            objects.Add(lightsource);
-            lights.Add(light.Source);
+            ParticleSystem ps = new ParticleSystem
+            {
+                Mode = ParticleSystem.EmissionMode.Overtime,
+                Loop = false,
+                Duration = 2,
+                StartDelay = 2,
+                ParticleLifetime = 1,
+                SpawnRadius = 25,
+                RandomRotation = false,
+                Shape = ParticleSystem.EmissionShape.OpenCone,
+                FlowDirection = lightsource.Transform.Forward
+            };
+            ps.AddComponentToParticles(new SphereRenderer
+            {
+                Radius = 1,
+                Color = Color.GREEN
+            });
+            ps.ResizePool(1000);
+
+            ps.AddModule(new ParticleSystemSpeedOverLifetimeModule
+            {
+                Easing = TEasings.EasingType.Linear,
+                StartSpeed = 100,
+                EndSpeed = 25
+            });
+            ps.AddModule(new ParticleSystemColorOverLifetimeModule());
+            
+
+            lightsource.AddComponent(ps);
+            CurrentScene.InstantiateGameObject(lightsource);
 
             GameObject lightsource2 = new();
             lightsource2.Transform.Position = new(50, 0, 0);
-            SphereRenderer rend2 = lightsource2.AddComponent<SphereRenderer>();
-            rend2.Color = Color.RED;
-            rend2.Radius = 2;
-            var light2 = lightsource2.AddComponent<LightEmitter>();
-            light2.Color = Color.RED;
-            light2.index = 1;
-            lights.Add(light2.Source);
-            objects.Add(lightsource2);
+            lightsource2.AddComponent(new SphereRenderer
+            {
+                Color = Color.RED,
+                Radius = 2
+            });
+            lightsource2.AddComponent(new LightEmitter
+            {
+                Color = Color.RED,
+            });
 
-            Panel panel = new(new Vector2(-200, 00));
-            panel.SetPivot(UIElement.PivotPoint.Right);
-            panel.Width = 20;
-            panel.Height = 20;
-            panel.Color = Color.RED;
+            ParticleSystem ps2 = new ParticleSystem
+            {
+                Shape = ParticleSystem.EmissionShape.Sphere,
+                Mode = ParticleSystem.EmissionMode.Overtime,
+                ParticleLifetime = 3,
+                RandomRotation = true,
+                SpawnRadius = 6,
+            };
 
-            Label label = new(new Vector2(-200, 200));
-            label.SetPivot(UIElement.PivotPoint.Right);
+            ps2.AddComponentToParticles(new SphereRenderer
+            {
+                Color = new(255, 255, 255, 40),
+                Radius = 15
+            });
+
+            ps2.AddModule(new ParticleSystemConstSpeedModule
+            {
+                Speed = 1
+            });
+
+            ps2.ResizePool(25);
+            lightsource2.AddComponent(ps2);
+
+            
+
+            CurrentScene.InstantiateGameObject(lightsource2);
 
 
-            Scene scene = new(objects, new() { panel, label }, lights);
-            scene.Cameras.Add(new(Camera.RenderType.Camera3D));
+            Label label = new(new Vector2(0, 50))
+            {
+                Text = "BASALT ENGINE - PARTICLE SYSTEM TEST BRANCH"
+            };
+            label.SetPivot(UIElement.PivotPoint.Top);
 
-            return scene;
+            CurrentScene.InstantiateUIElement(label);
+
+            CurrentScene.InstantiateCamera(new(Camera.RenderType.Camera3D));
+
         }
-
-        //private static void Example3DSetup()
-        //{
-        //    int cubeSize = 5;
-        //    window = new GraphicsWindow3D();
-        //    Camera.Camera3D.Target = new(50, 0, 0);
-        //    GameObject obj = new();
-        //    obj.AddComponent<Rigidbody>();
-        //    Player player = new(obj);
-        //    Player = player;
-        //    Instantiate(obj);
-
-        //    GameObject lightsource = new();
-        //    lightsource.Transform.Position = new(0, 0, 50);
-        //    var light = lightsource.AddComponent<LightEmitter>();
-        //    light.Color = Color.BLUE;
-        //    Instantiate(lightsource);
-
-        //    GameObject lightsource2 = new();
-        //    lightsource2.Transform.Position = new(50, 0, 0);
-        //    var light2 = lightsource2.AddComponent<LightEmitter>();
-        //    light2.Color = Color.RED;
-        //    Instantiate(lightsource);
-
-
-        //    window.Init(1000, 1000, Camera);
-
-
-        //}
-
-        //private static void Example2DSetup()
-        //{
-        //    window = new GraphicsWindow2D();
-        //    GameObject obj = new GameObject(new Vector3(400, 400, 0));
-        //    Camera.Transform.Position = obj.Transform.Position;
-        //    var rend = obj.AddComponent<CircleRenderer>();
-        //    obj.AddComponent<CircleCollider>();
-        //    obj.AddComponent<Rigidbody>();
-        //    obj.AddChildren(Camera);
-        //    //Instantiate(obj);
-        //    Player player = new Player(obj);
-        //    for (int i = 0; i < 5; i++)
-        //    {
-        //        GameObject obstacle = new GameObject(new Vector3(100 + i * 50, 0, 0));
-        //        obstacle.AddComponent<SpriteRenderer>().texturePath = Assets.GetAssetPath("circleheadtest.png");
-        //        var col = obstacle.AddComponent<CircleCollider>();
-        //        col.Radius = 25;
-        //        Instantiate(obstacle);
-        //    }
-
-        //    Button button = new Button(UI.ScreenBottom + new Vector2(0, -150), 200, 50);
-        //    button.SetPivot(UIElement.PivotPoint.Bottom);
-
-        //    Label label = new(UI.ScreenBottom + new Vector2(0, -50));
-        //    label.SetPivot(UIElement.PivotPoint.Bottom);
-        //    label.Text = "PROTOTYPE ENGINE TEST";
-        //    label.FontSize = 24;
-        //    label.TextColor = Color.GREEN;
-        //    UI.Instantiate(button);
-        //    UI.Instantiate(label);
-
-
-
-
-        //    window.Init(800, 800, Camera);
-        //}
     }
 }

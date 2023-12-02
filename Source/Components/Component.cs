@@ -7,22 +7,28 @@ namespace Basalt.Source.Components
     /// <summary>
     /// Represents a base component that can be attached to a GameObject.
     /// </summary>
-    public class Component : IComponent
+    public class Component : IComponent, ICloneable
     {
         /// <summary>
         /// The GameObject to which this component is attached.
         /// </summary>
-        public GameObject parent;
+        public GameObject Parent { get; private set; }
 
+        public void Initialize(GameObject parent)
+        {
+            Parent = parent;
+            Engine.OnUpdate += OnUpdate;
+            Awake(parent);
+            Start(parent);
+        }
+        
         /// <summary>
         /// Initializes the component when a GameObject is awakened.
         /// </summary>
         /// <param name="gameObject">The GameObject to which this component is attached.</param>
         public virtual void Awake(GameObject gameObject)
         {
-            parent = gameObject;
-            Engine.OnUpdate += OnUpdate;
-            Start(gameObject);
+            
         }
 
         /// <summary>
@@ -47,7 +53,7 @@ namespace Basalt.Source.Components
         /// </summary>
         public void OnUpdate()
         {
-            if (!parent.IsActive)
+            if (!Parent.IsActive)
                 return;
 
             Update();
@@ -59,6 +65,11 @@ namespace Basalt.Source.Components
         public virtual void Update()
         {
             // Custom update code can be added here.
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
         }
     }
 

@@ -19,6 +19,11 @@ namespace Basalt.Source.Components
         public Quaternion Rotation { get; set; }
 
         /// <summary>
+        /// This object's current scale.
+        /// </summary>
+        public Vector3 Scale { get; set; } = Vector3.One;
+
+        /// <summary>
         /// Returns a direction vector representing the direction this object is looking at.
         /// </summary>
         public Vector3 Forward { get { return GetForwardVector(Rotation); } }
@@ -39,23 +44,6 @@ namespace Basalt.Source.Components
             Position = Vector3.Zero;
             Rotation = Quaternion.Identity;
         }
-
-        public Transform(Vector3 position, Quaternion rotation, List<Transform> children, GameObject? parent = null)
-        {
-            Position = position;
-            Rotation = rotation;
-            Children = children;
-            this.parent = parent;
-        }
-
-        public Transform(Transform other, GameObject parent)
-        {
-            Position = other.Position;
-            Rotation = other.Rotation;
-            this.parent = parent;
-            Children = new List<Transform>(other.Children);
-        }
-
         public Transform(Vector3 position)
         {
             Position = position;
