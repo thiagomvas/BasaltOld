@@ -63,11 +63,11 @@ namespace Basalt.Source.Components
         
         private readonly List<Particle> particles = new();
         private readonly List<IParticleSystemModule> modules = new();
+        private readonly Random random = Random.Shared;
+        private readonly GameObject particleObjectBase = new(); //A base particle object that all objects will clone.
+
         private bool isPaused = false;
         private float elapsed;
-        private readonly Random random = Random.Shared;
-        //A base particle object that all objects will clone.
-        private readonly GameObject particleObjectBase = new();
         private bool Stopped = false;
 
         /// <summary>
@@ -148,12 +148,12 @@ namespace Basalt.Source.Components
 
         public override void Update()
         {
-            if (!Parent.IsActive || Stopped)
+            if (!Parent.IsActive || Stopped) // If the parent is active or the simulation is stopped
                 return;
             elapsed += Time.DeltaTime;
-            if (elapsed < StartDelay) return;
+            if (elapsed < StartDelay) return; // If the start delay isn't over.
 
-            if (elapsed > Duration + StartDelay && !Loop)
+            if (elapsed > Duration + StartDelay && !Loop) // If the duration is over and the simulation isn't looping.
                 Stop();
             
 
@@ -176,14 +176,18 @@ namespace Basalt.Source.Components
         private void ResetParticle(Particle particle)
         {
             particle.ElapsedSinceReset -= particle.Lifetime;
-            if (isPaused)
+            if (isPaused) // Smoothly deactivate any particles if the simulation is paused.
             {
                 particle.Object.IsActive = false;
                 return;
             }
+
+
             if(!particle.Object.IsActive) particle.Object.IsActive = true;
+
             Vector3 offset = Vector3.Zero;
 
+            // Calculating the spawning offset based off of the Emission Shape
             switch (Shape)
             {
                 case EmissionShape.Sphere:

@@ -12,6 +12,9 @@ namespace Basalt.Source.Core.Types
         /// </summary>
         public float ElapsedSinceReset = float.MaxValue;
 
+        /// <summary>
+        /// How long this particle should live for.
+        /// </summary>
         public float Lifetime = 0;
 
         /// <summary>

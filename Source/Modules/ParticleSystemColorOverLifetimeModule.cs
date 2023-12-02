@@ -34,6 +34,7 @@ namespace Basalt.Source.Modules
 
             Color c1 = Colors[(index) % Colors.Length], c2 = Colors[(index + 1) % Colors.Length];
 
+            // Smoothly transition between the two colors.
             Color color = new(
                 (byte)(c1.R + (c2.R - c1.R) * (lifetime * Colors.Length % 1)),
                 (byte)(c1.G + (c2.G - c1.G) * (lifetime * Colors.Length % 1)),

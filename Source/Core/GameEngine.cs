@@ -54,7 +54,7 @@ namespace Basalt.Source.Core
 
             ParticleSystem ps = new ParticleSystem
             {
-                Mode = ParticleSystem.EmissionMode.Burst,
+                Mode = ParticleSystem.EmissionMode.Overtime,
                 Loop = false,
                 Duration = 2,
                 StartDelay = 2,
