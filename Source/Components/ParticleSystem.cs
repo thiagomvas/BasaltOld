@@ -5,6 +5,7 @@ using Basalt.Source.Interfaces;
 using Basalt.Source.Modules;
 using System.Numerics;
 using Basalt.Source.Core.Utils;
+using Raylib_cs;
 
 namespace Basalt.Source.Components
 {
@@ -67,7 +68,7 @@ namespace Basalt.Source.Components
         private readonly Random random = Random.Shared;
         //A base particle object that all objects will clone.
         private readonly GameObject particleObjectBase = new();
-
+        private bool Stopped = false;
 
         /// <summary>
         /// Adds an <see cref="IParticleSystemModule"/> to the Particle System.
@@ -91,7 +92,7 @@ namespace Basalt.Source.Components
                 particles[i].ElapsedSinceReset = Mode switch
                 {
                     EmissionMode.Overtime => i * delta,
-                    EmissionMode.Burst => 0,
+                    EmissionMode.Burst => i * 0.2f/particles.Count,
                     _ => throw new ArgumentOutOfRangeException()
                 };
                 particles[i].Lifetime = ParticleLifetime;
@@ -115,12 +116,21 @@ namespace Basalt.Source.Components
         /// <summary>
         /// Starts / Resumes the particle system.
         /// </summary>
-        public void Resume() => isPaused = false;
+        public void Resume()
+        {
+            isPaused = false;
+            FixParticleTimings();
+            elapsed = 0;
+        
+        }
 
         /// <summary>
         /// Pauses / Stops the particle system.
         /// </summary>
-        public void Stop() => isPaused = true;
+        public void Stop()
+        { 
+            isPaused = true;
+        }
 
         /// <summary>
         /// Clones a component and adds it to all the particles.
@@ -138,11 +148,15 @@ namespace Basalt.Source.Components
 
         public override void Update()
         {
-            if (isPaused || !Parent.IsActive || (!Loop && elapsed >= Duration))
+            if (!Parent.IsActive || Stopped)
                 return;
             elapsed += Time.DeltaTime;
             if (elapsed < StartDelay) return;
+
+            if (elapsed > Duration + StartDelay && !Loop)
+                Stop();
             
+
             foreach (Particle particle in particles)
             {
                 if (particle.ElapsedSinceReset >= particle.Lifetime)
@@ -155,11 +169,18 @@ namespace Basalt.Source.Components
                 
                 particle.ElapsedSinceReset += Time.DeltaTime;
             }
+            if(isPaused && !particles.Any(x => x.Object.IsActive)) Stopped = true;
+
         }
 
         private void ResetParticle(Particle particle)
         {
             particle.ElapsedSinceReset -= particle.Lifetime;
+            if (isPaused)
+            {
+                particle.Object.IsActive = false;
+                return;
+            }
             if(!particle.Object.IsActive) particle.Object.IsActive = true;
             Vector3 offset = Vector3.Zero;
 

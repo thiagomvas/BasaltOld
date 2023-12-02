@@ -54,11 +54,15 @@ namespace Basalt.Source.Core
 
             ParticleSystem ps = new ParticleSystem
             {
+                Mode = ParticleSystem.EmissionMode.Burst,
+                Loop = false,
+                Duration = 2,
+                StartDelay = 2,
                 ParticleLifetime = 1,
-                SpawnRadius = 5,
+                SpawnRadius = 25,
                 RandomRotation = false,
-                Shape = ParticleSystem.EmissionShape.Cone,
-                FlowDirection = lightsource.Transform.Forward,
+                Shape = ParticleSystem.EmissionShape.OpenCone,
+                FlowDirection = lightsource.Transform.Forward
             };
             ps.AddComponentToParticles(new SphereRenderer
             {
@@ -66,14 +70,13 @@ namespace Basalt.Source.Core
                 Color = Color.GREEN
             });
             ps.ResizePool(1000);
-            //ps.AddModule(new ParticleSystemSpeedOverLifetimeModule
-            //{
-            //    StartSpeed = 25,
-            //    EndSpeed = 0,
-            //    Easing = TEasings.EasingType.InOutQuart
-            //});
 
-            ps.AddModule(new ParticleSystemConstSpeedModule());
+            ps.AddModule(new ParticleSystemSpeedOverLifetimeModule
+            {
+                Easing = TEasings.EasingType.Linear,
+                StartSpeed = 100,
+                EndSpeed = 25
+            });
             ps.AddModule(new ParticleSystemColorOverLifetimeModule());
             
 
@@ -91,13 +94,34 @@ namespace Basalt.Source.Core
             {
                 Color = Color.RED,
             });
+
+            ParticleSystem ps2 = new ParticleSystem
+            {
+                Shape = ParticleSystem.EmissionShape.Sphere,
+                Mode = ParticleSystem.EmissionMode.Overtime,
+                ParticleLifetime = 3,
+                RandomRotation = true,
+                SpawnRadius = 6,
+            };
+
+            ps2.AddComponentToParticles(new SphereRenderer
+            {
+                Color = new(255, 255, 255, 40),
+                Radius = 15
+            });
+
+            ps2.AddModule(new ParticleSystemConstSpeedModule
+            {
+                Speed = 1
+            });
+
+            ps2.ResizePool(25);
+            lightsource2.AddComponent(ps2);
+
+            
+
             CurrentScene.InstantiateGameObject(lightsource2);
 
-            Panel panel = new(new Vector2(-200, 00));
-            panel.SetPivot(UIElement.PivotPoint.Right);
-            panel.Width = 20;
-            panel.Height = 20;
-            panel.Color = Color.RED;
 
             Label label = new(new Vector2(0, 50))
             {
@@ -105,7 +129,6 @@ namespace Basalt.Source.Core
             };
             label.SetPivot(UIElement.PivotPoint.Top);
 
-            CurrentScene.InstantiateUIElement(panel);
             CurrentScene.InstantiateUIElement(label);
 
             CurrentScene.InstantiateCamera(new(Camera.RenderType.Camera3D));
