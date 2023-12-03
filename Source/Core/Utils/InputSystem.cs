@@ -1,4 +1,5 @@
-﻿using Raylib_cs;
+﻿using Basalt.Source.Core.Types;
+using Raylib_cs;
 
 namespace Basalt.Source.Core.Utils
 {
@@ -25,6 +26,7 @@ namespace Basalt.Source.Core.Utils
         #endregion
 
         private HashSet<int> keysDown = new();
+        private InputBindings bindings = new();
         internal void CheckForInputs()
         {
             int key = Raylib.GetKeyPressed();
@@ -42,13 +44,18 @@ namespace Basalt.Source.Core.Utils
             }
         }
 
-        public bool GetKey(KeyboardKey key) => keysDown.Contains((int)key);
-        public bool GetKey(int keyCode) => keysDown.Contains(keyCode);
+        public bool GetKeyDown(KeyboardKey key) => keysDown.Contains((int)key);
+        public bool GetKeyDown(int keyCode) => keysDown.Contains(keyCode);
 
         public bool GetKeyPressed(KeyboardKey key) => Raylib.IsKeyPressed(key);
         public bool GetKeyPressed(int keyCode) => Raylib.IsKeyPressed((KeyboardKey)keyCode);
 
         public bool GetKeyReleased(KeyboardKey key) => Raylib.IsKeyReleased(key);
         public bool GetKeyReleased(int keyCode) => Raylib.IsKeyReleased((KeyboardKey)keyCode);
+
+        public bool GetBindingDown(string binding) => GetKeyDown(bindings.GetBinding(binding));
+        public bool GetBindingPressed(string binding) => GetKeyPressed(bindings.GetBinding(binding));
+        public bool GetBindingReleased(string binding) => GetKeyReleased(bindings.GetBinding(binding));
+
     }
 }
