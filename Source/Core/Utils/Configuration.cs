@@ -23,6 +23,8 @@ namespace Basalt.Source.Core.Utils
             HideCursor();
             DisableCursor();
 
+            Engine.OnUpdate += InputSystem.Instance.CheckForInputs;
+
 
             Assets.LoadShader("C:\\Users\\Thiago\\source\\repos\\Basalt\\Resources\\Shaders\\lighting.vs", "C:\\Users\\Thiago\\source\\repos\\Basalt\\Resources\\Shaders\\lighting.fs");
             // Get some required shader loactions
