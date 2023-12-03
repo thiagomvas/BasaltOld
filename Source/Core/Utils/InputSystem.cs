@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Raylib_cs;
+﻿using Raylib_cs;
 
 namespace Basalt.Source.Core.Utils
 {
@@ -29,28 +24,31 @@ namespace Basalt.Source.Core.Utils
         }
         #endregion
 
-        private List<int> keysPressed = new();
-
+        private HashSet<int> keysDown = new();
         internal void CheckForInputs()
         {
             int key = Raylib.GetKeyPressed();
             if (key != 0)
             {
-                keysPressed.Add(key);
+                keysDown.Add(key);
             }
 
-            foreach (int k in keysPressed.ToArray())
+            foreach (int k in keysDown)
             {
                 if (Raylib.IsKeyReleased((KeyboardKey)k))
                 {
-                    keysPressed.Remove(k);
+                    keysDown.Remove(k);
                 }
             }
         }
 
-        public static bool GetKey(KeyboardKey key)
-        {
-            return Raylib.IsKeyDown(key);
-        }
+        public bool GetKey(KeyboardKey key) => keysDown.Contains((int)key);
+        public bool GetKey(int keyCode) => keysDown.Contains(keyCode);
+
+        public bool GetKeyPressed(KeyboardKey key) => Raylib.IsKeyPressed(key);
+        public bool GetKeyPressed(int keyCode) => Raylib.IsKeyPressed((KeyboardKey)keyCode);
+
+        public bool GetKeyReleased(KeyboardKey key) => Raylib.IsKeyReleased(key);
+        public bool GetKeyReleased(int keyCode) => Raylib.IsKeyReleased((KeyboardKey)keyCode);
     }
 }
