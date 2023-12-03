@@ -125,7 +125,7 @@ namespace Basalt.Source.Core
 
             Label label = new(new Vector2(0, 50))
             {
-                Text = "BASALT ENGINE - PARTICLE SYSTEM TEST BRANCH"
+                Text = "BASALT ENGINE - INPUT SYSTEM BRANCH"
             };
             label.SetPivot(UIElement.PivotPoint.Top);
 
